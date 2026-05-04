@@ -24,6 +24,7 @@ radius = 0.25
 height = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_on558"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_on558"]
 radius = 1.0
 
@@ -54,7 +55,7 @@ player_camera = NodePath("PlayerPhysics/PlayerCamera")
 player_gravity_controller = NodePath("PlayerPhysics/gravityController")
 
 [node name="PlayerPhysics" parent="." unique_id=1615832908 node_paths=PackedStringArray("player") instance=ExtResource("1_l8h54")]
-collision_layer = 3
+collision_layer = 11
 player = NodePath("..")
 
 [node name="PlayerCamera" parent="PlayerPhysics" unique_id=693967780 node_paths=PackedStringArray("player") instance=ExtResource("3_btcbx")]
@@ -103,6 +104,7 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPhysics/PlayerMarker" unique_id=208028236]
 shape = SubResource("BoxShape3D_on558")
+
 [node name="InteractionArea" type="Area3D" parent="PlayerPhysics" unique_id=1733871244]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPhysics/InteractionArea" unique_id=1854980343]
