@@ -112,7 +112,6 @@ func get_spawn_area() -> EnemySpawnArea:
 func despawn_enemy(enemy: Node3D) -> void:
 	enemy.queue_free()
 	active_entities.erase(enemy)
-	
 	if debug_log:
 		print("Despawned enemy: ", enemy)
 
