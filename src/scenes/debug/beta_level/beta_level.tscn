@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://s0k1bcrvckmc" path="res://shared/nature_generators/tree_generator/tree_parameters.gd" id="15_ka4ke"]
 [ext_resource type="Script" uid="uid://bxobj8lbccu64" path="res://shared/nature_generators/foliage_generator/foliage_generator.gd" id="16_ty04b"]
 [ext_resource type="Resource" uid="uid://ced0jemwdds0r" path="res://shared/nature_generators/foliage_generator/foliage_materials/bush/bush.tres" id="17_ogsgd"]
+[ext_resource type="Resource" uid="uid://cu3velky86qgt" path="res://shared/nature_generators/tree_generator/tree_materials/branches/branches.tres" id="18_gf26r"]
 [ext_resource type="PackedScene" uid="uid://bfg8tc60mayvi" path="res://shared/nature_generators/foliage_generator/foliage_materials/bush/bush.tscn" id="18_oye0k"]
 [ext_resource type="Script" uid="uid://cs824opuvcx8k" path="res://shared/nature_generators/foliage_generator/foliage_parameters.gd" id="19_kiit6"]
 [ext_resource type="PackedScene" uid="uid://cwgdxw2n1ey7s" path="res://shared/papers/sheet_music/sheet_music.tscn" id="27_kiit6"]
@@ -104,6 +105,7 @@ trunk_segment_length = 3.0
 max_count = 3
 branch_radius = 1.2000000000000002
 branch_segment_length = 2.9
+foliage_parameters = ExtResource("18_gf26r")
 metadata/_custom_type_script = "uid://s0k1bcrvckmc"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_col47"]
@@ -543,7 +545,7 @@ params = SubResource("Resource_ty04b")
 metadata/_custom_type_script = "uid://d3priws45vp1i"
 
 [node name="Player" parent="." unique_id=1889026106 instance=ExtResource("8_dq2wt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6612322, 1.435396, 3.9698668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6612322, 1.435396, 0.46986675)
 
 [node name="DayNightCycle" type="Node3D" parent="." unique_id=1548690370]
 script = ExtResource("9_j53l1")
@@ -595,6 +597,8 @@ enemy_spawn_node = NodePath("../Enemies")
 metadata/_custom_type_script = "uid://d3b3ejnxvoa3s"
 
 [node name="EnemySpawnArea3" type="Area3D" parent="EnemySpawnManager2" unique_id=1467942450]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("29_22jgx")
 enemy_scene = ExtResource("30_n4cpq")
 
@@ -603,6 +607,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 24.5, -46.600002)
 shape = SubResource("BoxShape3D_col47")
 
 [node name="EnemySpawnArea4" type="Area3D" parent="EnemySpawnManager2" unique_id=18630948]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("29_22jgx")
 enemy_scene = ExtResource("30_n4cpq")
 
@@ -611,6 +617,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 56.350002)
 shape = SubResource("BoxShape3D_col47")
 
 [node name="EnemySpawnArea5" type="Area3D" parent="EnemySpawnManager2" unique_id=519043842]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("29_22jgx")
 enemy_scene = ExtResource("30_n4cpq")
 
