@@ -13,7 +13,11 @@ func record_death():
 
 
 func game_over():
+	_death_count = 0
 	SceneManager.goto_scene("uid://d0kdyvkq8gmfg")
 
 func is_game_over() -> bool:
 	return _death_count >= max_death_count
+
+func win():
+	SceneManager.goto_scene("uid://b7x4eyygbdby5")
