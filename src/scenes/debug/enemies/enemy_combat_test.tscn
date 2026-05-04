@@ -4,7 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="2_qqkcj"]
 [ext_resource type="PackedScene" uid="uid://b3pq3lm4pjpdk" path="res://characters/enemies/basic_enemy/enemy.tscn" id="3_66nb8"]
 [ext_resource type="PackedScene" uid="uid://dx21c5ighykbx" path="res://shared/projectiles/rock_placeholder.tscn" id="4_56sqr"]
-[ext_resource type="NavigationMesh" uid="uid://c2k4xq161o4fj" path="res://characters/enemies/basic_enemy/basic_enemy_navmesh_setup.tres" id="5_g2hnt"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ibuoj"]
+vertices = PackedVector3Array(-9, 0.4479983, 0.5, -3, 0.4479983, 0.5, -3, 0.4479983, -1.75, -1.75, 0.4479983, -2.5, -1.75, 0.4479983, -9, -9, 0.4479983, -9, -0.25, 0.4479983, -1.75, -0.25, 0.4479983, 1.25, 0.5, 0.4479983, 1.25, 0.5, 0.4479983, -1.75, 1.25, 0.4479983, -2.5, 2, 0.4479983, -9, -1, 0.4479983, -2.5, 2, 0.4479983, -2.5, 3.25, 0.4479983, -1.75, 3.25, 0.4479983, -0.25, 9, 0.4479983, -0.5, 9, 0.4479983, -9, 3, 0.4479983, 3.25, 3, 0.4479983, 9, 9, 0.4479983, 9, -2.75, 0.4479983, 3.25, -9, 0.4479983, 9, -2.75, 0.4479983, 9, 0.5, 0.4479983, 3, -0.25, 0.4479983, 3, -1, 0.4479983, 3.75, -2.25, 0.4479983, 3.75, 1.25, 0.4479983, 3.75, 2.5, 0.4479983, 3.75)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 4), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(6, 12, 9), PackedInt32Array(9, 12, 10), PackedInt32Array(10, 12, 4), PackedInt32Array(10, 4, 11), PackedInt32Array(11, 13, 10), PackedInt32Array(12, 3, 4), PackedInt32Array(16, 15, 14), PackedInt32Array(14, 13, 16), PackedInt32Array(16, 13, 11), PackedInt32Array(16, 11, 17), PackedInt32Array(15, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 16, 20), PackedInt32Array(1, 21, 0), PackedInt32Array(0, 21, 23), PackedInt32Array(0, 23, 22), PackedInt32Array(25, 7, 24), PackedInt32Array(24, 7, 8), PackedInt32Array(23, 27, 26), PackedInt32Array(24, 28, 25), PackedInt32Array(25, 28, 26), PackedInt32Array(26, 28, 19), PackedInt32Array(26, 19, 23), PackedInt32Array(28, 29, 19), PackedInt32Array(29, 18, 19), PackedInt32Array(27, 23, 21)]
+agent_height = 3.0
+agent_radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w01rd"]
 albedo_color = Color(0.15479487, 0.21179658, 0.23663604, 1)
@@ -58,7 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83766675, 1.3342495, 0)
 transform = Transform3D(1, 0, 0, 0, 0.90547997, 0.42438912, 0, -0.42438912, 0.90547997, 0, 0, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1713826842]
-navigation_mesh = ExtResource("5_g2hnt")
+navigation_mesh = SubResource("NavigationMesh_ibuoj")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=2121414612]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
