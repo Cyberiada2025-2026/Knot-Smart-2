@@ -17,6 +17,7 @@ var active_chunks_end: Vector2i
 
 var player: Player
 
+
 func setup(manager: MapRenderer) -> void:
 	blueprint = manager.blueprint
 	world_generation_params = manager.world_generation_params
