@@ -33,7 +33,7 @@ func begin_generation():
 	map_instancer = MapInstancer.new(self)
 
 	map_instancer.create_map_instance()
-	
+
 	if Engine.is_editor_hint() == true:
 		chunk_manager = ChunkManager.new()
 		chunk_manager.setup(self)
@@ -58,4 +58,3 @@ func _ready():
 		chunk_manager = ChunkManager.new()
 		chunk_manager.setup(self)
 		chunk_manager.name = "Chunks"
-		
