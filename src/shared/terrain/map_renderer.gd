@@ -33,10 +33,11 @@ func begin_generation():
 	map_instancer = MapInstancer.new(self)
 
 	map_instancer.create_map_instance()
-
-	chunk_manager = ChunkManager.new()
-	chunk_manager.setup(self)
-	chunk_manager.name = "Chunks"
+	
+	if Engine.is_editor_hint() == true:
+		chunk_manager = ChunkManager.new()
+		chunk_manager.setup(self)
+		chunk_manager.name = "Chunks"
 
 
 func clear_generation():
@@ -48,10 +49,13 @@ func clear_generation():
 			child.queue_free()
 
 	blueprint = null
-	chunk_manager = null
 	map_instancer = null
 
 
 func _ready():
+	clear_generation()
 	if Engine.is_editor_hint() == false:
-		begin_generation()
+		chunk_manager = ChunkManager.new()
+		chunk_manager.setup(self)
+		chunk_manager.name = "Chunks"
+		
