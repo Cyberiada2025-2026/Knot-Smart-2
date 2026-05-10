@@ -2,8 +2,11 @@
 class_name TerrainGenerator
 extends Node
 
+@export var terrain_params: TerrainParams
+
 var world_generation_params: WorldGenerationParams
 var blueprint: MapTileData
+
 
 func run_generation(manager: GridGenerationPipeline) -> void:
 	blueprint = manager.blueprint
@@ -13,11 +16,18 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 		for z in blueprint.world_size:
 			var coord = Vector2i(x, z)
 
-			var raw_val = world_generation_params.noise.get_noise_2d(x, z)
+			var raw_val = terrain_params.noise.get_noise_2d(x, z)
+			if x % 2 == 1 and z % 2 == 1:
+				raw_val = terrain_params.noise.get_noise_2d(x - 1, z - 1)
+			elif x % 2 == 1:
+				raw_val = terrain_params.noise.get_noise_2d(x - 1, z)
+			elif z % 2 == 1:
+				raw_val = terrain_params.noise.get_noise_2d(x, z - 1)
+
 			var normalized = (raw_val + 1) / 2.0
 			var level = floor(
 				(
-					(normalized + world_generation_params.height_displacement)
+					(normalized + terrain_params.height_displacement)
 					* world_generation_params.map_height
 				)
 			)

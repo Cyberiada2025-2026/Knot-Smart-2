@@ -7,10 +7,10 @@ var world_size: int
 
 func _init(declared_map_size: int = 16) -> void:
 	self.world_size = declared_map_size
-	generate()
+	create()
 
 
-func generate() -> void:
+func create() -> void:
 	data.clear()
 	for x in world_size:
 		for z in world_size:

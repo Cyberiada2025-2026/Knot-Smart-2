@@ -9,6 +9,7 @@ extends Node3D
 @export_group("Debug")
 @export var debug_flag: bool
 @export_tool_button("Generate Map") var generate_map = begin_generation
+@export_tool_button("Clear Map") var clear_map = clear_generation
 
 var blueprint: MapTileData
 var chunk_manager: ChunkManager
@@ -16,6 +17,7 @@ var map_instancer: MapInstancer
 
 
 func begin_generation():
+	clear_generation()
 	var world_size = world_generation_params.map_size * world_generation_params.chunk_size
 	blueprint = MapTileData.new(world_size)
 
@@ -36,5 +38,19 @@ func begin_generation():
 	chunk_manager.name = "Chunks"
 
 
+func clear_generation():
+	for child in get_children():
+		if child.name == "Chunks" or child is ChunkManager:
+			if debug_flag:
+				print("%s: Removing existing ChunkManager: %s" % [self.name, child.name])
+
+			child.queue_free()
+
+	blueprint = null
+	chunk_manager = null
+	map_instancer = null
+
+
 func _ready():
-	begin_generation()
+	if Engine.is_editor_hint() == false:
+		begin_generation()

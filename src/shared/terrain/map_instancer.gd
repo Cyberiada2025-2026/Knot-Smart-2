@@ -22,6 +22,12 @@ func _init(manager: MapRenderer):
 
 func create_map_instance(map_path: String = scene_path) -> void:
 	scene_path = map_path
+	if FileAccess.file_exists(scene_path):
+		var dir = DirAccess.open(scene_path.get_base_dir())
+		if dir:
+			var file_name = scene_path.get_file()
+			dir.remove(file_name)
+
 	var root_node := Node3D.new()
 	root_node.name = root_name
 
@@ -45,7 +51,6 @@ func create_map_instance(map_path: String = scene_path) -> void:
 		DirAccess.make_dir_recursive_absolute(scene_path)
 	scene.take_over_path(scene_path + scene_name + ".tscn")
 
-	# Only `node` and `body` are now packed.
 	var result = scene.pack(root_node)
 	if result == OK:
 		var error = ResourceSaver.save(scene, scene_path + scene_name + ".tscn")
@@ -71,7 +76,6 @@ func create_chunk_scene(chunk_coord: Vector2i, chunk_final_path: String) -> void
 
 	var chunk_start = chunk_coord * world_generation_params.chunk_size
 
-	# --- 3. POPULATE MESHES ---
 	for x in world_generation_params.chunk_size:
 		for z in world_generation_params.chunk_size:
 			var world_coord = chunk_start + Vector2i(x, z)

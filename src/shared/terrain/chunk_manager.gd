@@ -22,6 +22,7 @@ func _init(manager: MapRenderer) -> void:
 	blueprint = manager.blueprint
 	world_generation_params = manager.world_generation_params
 	world_display_params = manager.world_display_params
+	debug_flag = manager.debug_flag
 
 	active_chunks_start = Vector2i.ZERO
 	active_chunks_end = -Vector2i.ONE
@@ -96,10 +97,9 @@ func update_active_chunks() -> void:
 			var coord = Vector2i(x, y)
 			if not active_chunks.has(coord):
 				var chunk_path = "user://" + scene_dir + "chunks/chunk_%d_%d.tscn" % [x, y]
-				var chunk = ResourceLoader.load(chunk_path)
+				var chunk = ResourceLoader.load(chunk_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 				var chunk_node = chunk.instantiate()
 				add_child(chunk_node)
-				#if Engine.is_editor_hint() == false:
 				if get_tree().edited_scene_root:
 					chunk_node.owner = get_tree().edited_scene_root
 				chunk_node.global_position = Vector3(

@@ -9,8 +9,6 @@ extends Resource
 ## Unit: [b]float[/b] (Godot units / meters).
 @export_range(4, 2048, 4.0) var map_height := 64.0
 
-@export_range(-0.5, 0.5, 0.05) var height_displacement := -0.5
-
 ## The size of an individual data chunk.
 ## Unit: [b]int[/b] (Tiles).
 @export_range(4, 32, 4) var chunk_size := 4
@@ -21,9 +19,6 @@ extends Resource
 
 ## Unit: [b]float[/b] (Godot units / meters).
 @export_range(1, 100, 0.5) var tile_height := 8.0
-
-## The noise algorithm used to calculate elevation.
-@export var noise: FastNoiseLite
 
 
 func get_chunk_unit_size():
