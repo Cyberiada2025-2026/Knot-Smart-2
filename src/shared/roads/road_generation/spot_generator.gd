@@ -2,7 +2,7 @@
 class_name SpotGenerator
 extends Resource
 
-var _blueprint: Dictionary
+var _blueprint: MapTileData
 var _map_size: int
 var _final_spots: Array[Spot] = []
 
@@ -79,13 +79,13 @@ func _is_valid_tile(position: Vector2i, axis: int):
 	return (
 			(
 				axis == Utils.Axis2.X
-				and _blueprint[position]["can_place"] == "slope_x"
+				and _blueprint.data[position].placement_rule == TileInfo.PlacementRule.SLOPE_X
 			)
 			or (
 				axis == Utils.Axis2.Y
-				and _blueprint[position]["can_place"] == "slope_z"
+				and _blueprint.data[position].placement_rule == TileInfo.PlacementRule.SLOPE_Z
 			)
-			or _blueprint[position]["can_place"] == "any"
+			or _blueprint.data[position].placement_rule == TileInfo.PlacementRule.FLAT
 		)
 
 

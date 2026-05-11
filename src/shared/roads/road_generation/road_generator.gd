@@ -4,7 +4,7 @@ extends Node
 
 @export var generation_params: RoadGenerationParams = RoadGenerationParams.new()
 
-@export_tool_button("Generate roads") var generate_action = generate_roads.bind(Dictionary())
+@export_tool_button("Generate roads") var generate_action = run_generation.bind(blueprint)
 
 @export_group("Testing")
 @export var limit_areas_visualization: bool
@@ -19,9 +19,10 @@ extends Node
 	_print_to_console.bind("rotation")
 )
 
-var blueprint: Dictionary
+var blueprint: MapTileData
 var _spot_generator = SpotGenerator.new()
 var _map_size: int
+var _generation_manager: GridGenerationPipeline
 
 func _process(_delta: float) -> void:
 	if limit_areas_visualization:
@@ -35,17 +36,15 @@ func _process(_delta: float) -> void:
 ## Clicking "Generate roads" will auto-initialize road generator [br][br]
 ## Changes tile "type" to "road" from "empty" when places road [br][br]
 ## Returns false on error
-func generate_roads(_blueprint: Dictionary) -> bool:
+func run_generation(manager: GridGenerationPipeline) -> bool:
 	if log_generation_steps:
 		print("start road generation!")
 
+	_generation_manager = manager
+	generation_params.map_size = manager.blueprint.world_size
 	_map_size = generation_params.map_size
 
-	if _blueprint.is_empty():
-		# will be replaced by default creation from blueprint class
-		_create_default_blueprint()
-	else:
-		blueprint = _blueprint
+	blueprint = manager.blueprint
 
 	generation_params.generation_areas = _get_generation_areas()
 	generation_params.prepare_generation_areas()
@@ -55,10 +54,10 @@ func generate_roads(_blueprint: Dictionary) -> bool:
 	_spot_generator.cast_spots_to_blueprint()
 
 	# later will be splitted and used outside of road generator
-	var autotiler: RoadAutotile = RoadAutotile.new()
+	#var autotiler: RoadAutotile = RoadAutotile.new()
 
-	if not autotiler.autotile_roads(blueprint, _map_size):
-		return false
+	#if not autotiler.autotile_roads(blueprint, _map_size):
+		#return false
 
 	if log_generation_steps:
 		print("finished full generation!\n")
@@ -89,36 +88,26 @@ func _get_generation_areas() -> Array[LimiterArea]:
 #####################################################
 
 
-func _create_default_blueprint() -> void:
-	for x in _map_size:
-		for y in _map_size:
-			var coord: Vector2i = Vector2i(x, y)
-			blueprint[coord]= {
-				"height": 0.0,
-				"type": "empty",
-				"can_place": "any",
-			}
-
-
 ## Printing blueprint map data from given dictionary key for debug
 func _print_to_console(key: String) -> void:
-	if blueprint.is_empty():
+	if blueprint.data.is_empty():
 		return
 	print("printing '", key, "':")
 
 	for y in _map_size:
 		var output: String = ""
 		for x in _map_size:
-			if blueprint[Vector2i(x, y)]["type"] == "road":
+			#if blueprint.data[Vector2i(x, y)].placement_rule == TileInfo.PlacementRule.FLAT:
+			if blueprint.data[Vector2i(x, y)].tile_type == TileInfo.Type.ROAD:
 				if key == "type":
 					output += " R"
-				if key == "rotation":
-					output += " " + str(blueprint[Vector2i(x, y)][key] / 90)
-				if key == "id":
-					if blueprint[Vector2i(x, y)][key] >= 0 and blueprint[Vector2i(x, y)][key] < 10:
-						output += " " + str(blueprint[Vector2i(x, y)][key])
-					else:
-						output += str(blueprint[Vector2i(x, y)][key])
+				#if key == "rotation":
+					#output += " " + str(blueprint[Vector2i(x, y)][key] / 90)
+				#if key == "id":
+					#if blueprint[Vector2i(x, y)][key] >= 0 and blueprint[Vector2i(x, y)][key] < 10:
+						#output += " " + str(blueprint[Vector2i(x, y)][key])
+					#else:
+						#output += str(blueprint[Vector2i(x, y)][key])
 			else:
 				output += "  "
 		print(output)
@@ -126,17 +115,20 @@ func _print_to_console(key: String) -> void:
 
 ## Simple test visualization
 func _visualize() -> void:
+	if not _generation_manager:
+		return
+	var scale = _generation_manager.world_generation_params.tile_size
 	# visualize spots
 	for spot in _spot_generator.get_spots():
-		spot.visualize()
+		spot.visualize(scale)
 
 	# visualize roads
-	for coord in blueprint.keys():
-		if blueprint[coord]["type"] == "road":
+	for coord in blueprint.data.keys():
+		if blueprint.data[coord].tile_type == TileInfo.Type.ROAD:
 			DebugDraw3D.draw_box(
-				Vector3(coord.x, 0, coord.y),
+				Vector3(coord.x * scale, blueprint.data[coord].height, coord.y * scale),
 					Quaternion.IDENTITY,
-					Vector3(1, 0.01, 1),
+					Vector3(scale, 0.01, scale),
 					Color.WHITE,
 					false
 				)

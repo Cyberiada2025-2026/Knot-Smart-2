@@ -48,16 +48,16 @@ func _get_spot_border_coordinates() -> Array[Vector2i]:
 	return coordinates
 
 
-func cast_on_blueprint(blueprint: Dictionary):
+func cast_on_blueprint(blueprint: MapTileData):
 	for pos in _get_spot_border_coordinates():
-		blueprint[pos]["type"] = "road"
+		blueprint.data[pos].tile_type = TileInfo.Type.ROAD
 
 
-func visualize(color: Color = VISUALIZATION_COLOR):
+func visualize(scale: int = 1, color: Color = VISUALIZATION_COLOR):
 	DebugDraw3D.draw_box(
-		Vector3(start.x, 0, start.y),
+		Vector3(start.x, 0, start.y) * scale,
 		Quaternion.IDENTITY,
-		Vector3(size().x, 1, size().y),
+		Vector3(size().x * scale, 1, size().y * scale),
 		color,
 		false
 	)
