@@ -7,6 +7,12 @@ extends Node
 var world_generation_params: WorldGenerationParams
 var blueprint: MapTileData
 
+## temporary solution only for current tile size
+const Slopes = {
+	FLAT = Vector3(0.0, 1.0, 0.0),
+	SLOPE_X = Vector3(0.0, 0.8, 0.6),
+	SLOPE_Z = Vector3(0.6, 0.8, 0.0),
+}
 
 func run_generation(manager: GridGenerationPipeline) -> void:
 	blueprint = manager.blueprint
@@ -73,11 +79,14 @@ func generate_tile_mesh(coord: Vector2i) -> Mesh:
 	var v2 = Vector3(0, h2, ts)
 	var v3 = Vector3(ts, h3, ts)
 
-	add_triangle(st, [v0, v1, v2])
-	add_triangle(st, [v1, v3, v2])
+	var n1 = add_triangle(st, [v0, v1, v2])
+	var n2 = add_triangle(st, [v1, v3, v2])
+
+	slopify(n1, n2, coord)
 
 	st.generate_tangents()
 	return st.commit()
+
 
 
 func add_triangle(st: SurfaceTool, vertices: Array):
@@ -88,3 +97,23 @@ func add_triangle(st: SurfaceTool, vertices: Array):
 		st.set_normal(normal)
 		st.set_uv(uv)
 		st.add_vertex(v)
+
+	# added for temp slope fix
+	return normal
+
+
+func slopify(n1: Vector3, n2: Vector3, coord: Vector2i):
+	n1 = abs(n1)
+	n2 = abs(n2)
+
+	if n1 != n2:
+		blueprint.data[coord].placement_rule = TileInfo.PlacementRule.BLOCKED
+	match n1:
+		Slopes.FLAT:
+			blueprint.data[coord].placement_rule = TileInfo.PlacementRule.FLAT
+		Slopes.SLOPE_X:
+			blueprint.data[coord].placement_rule = TileInfo.PlacementRule.SLOPE_X
+		Slopes.SLOPE_Z:
+			blueprint.data[coord].placement_rule = TileInfo.PlacementRule.SLOPE_Z
+		_:
+			print("no value")
