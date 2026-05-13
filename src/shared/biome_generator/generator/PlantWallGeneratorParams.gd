@@ -1,6 +1,6 @@
 @tool
-extends Resource
 class_name PlantWallGeneratorParams
+extends Resource
 
 
 
@@ -31,7 +31,9 @@ class_name PlantWallGeneratorParams
 }
 
 @export_group("passages")
-@export var passage_prefab: PackedScene = preload("res://shared/biome_generator/wall/biome_passage.tscn")
+@export var passage_prefab: PackedScene = preload(
+	"res://shared/biome_generator/wall/biome_passage.tscn"
+)
 @export var number_of_passages_per_biomes_border: int = 3
 
 

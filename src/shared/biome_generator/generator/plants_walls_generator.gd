@@ -53,16 +53,15 @@ func reset() -> void:
 
 func regenerate_seed() -> void:
 	params.regenerate_seed()
-	
+
 func load_data() -> void:
 	if data == null:
 		data = PlantWallsSaver.new()
-	var path: String = (data.path_location + data.path_folder + data.path_file_name + data.path_file_extension)
+	var path: String = data.get_file_path()
 	if data != null:
 		data.queue_free()
 	var loded_data : PackedScene = load(path)
 	data = loded_data.instantiate()
-	
 	add_child(data)
 	params.custom_seed = data.custom_seed
 	_set_rng()

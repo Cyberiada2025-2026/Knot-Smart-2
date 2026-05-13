@@ -1,6 +1,6 @@
 @tool
-extends Node3D
 class_name PlantWallsSaver
+extends Node3D
 
 # LINE TYPES
 const VERTICAL_LINE = 0
@@ -29,7 +29,7 @@ const DIAGONAL_LINE = 2
 var rng: RandomNumberGeneratorUpgraded
 
 func save() -> void:
-	var path: String = path_location + path_folder + path_file_name + path_file_extension
+	var path: String = get_file_path()
 	if FileAccess.file_exists(path):
 		var error = DirAccess.remove_absolute(path)
 		if error != OK:
@@ -42,7 +42,5 @@ func save() -> void:
 	scene.pack(self)
 	ResourceSaver.save(scene, path)
 
-#func load() -> PlantsWallsGenerator:
-	#var path: String = path_location + path_folder + path_file_name + path_file_extension
-	#var loded_generator = load(path)
-	#return loded_generator
+func get_file_path() -> String:
+	return path_location + path_folder + path_file_name + path_file_extension
