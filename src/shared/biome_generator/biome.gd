@@ -1,8 +1,8 @@
 @tool
 class_name Biome
-extends Node
+extends Resource
 
-var biome_name: String = ""
+@export var name: String = ""
 var area: float = 0
 var adjustent_biomes: Array[Biome] = []
 var triangles: Array[BiomeTriangle] = []

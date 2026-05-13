@@ -3,33 +3,25 @@ class_name BiomeGenerator
 extends Node3D
 
 @export var generator_main: PlantsWallsGenerator
-@export var biomes_parent: Node
-@export_category("GeneratorVariables")
-## Minimal area of biomes in m^2
-@export var biomes_desired_minimum_area: Dictionary[String, int] = {
-	"biome1": 10000,
-	"biome2": 10000,
-	"biome3": 10000
-}
-@export_group("triangles selection")
-## chance to shuffle possible triangles, during every selection of next biome triangle
-@export var chance_to_shuffle: float = 0.01
 
-var biomes: Array[Biome]
+var params: PlantWallGeneratorParams
+var data: PlantWallsSaver
+
 
 var _free_triangles: Array[BiomeTriangle]
 var _size_proportion: Dictionary[Biome, float]
 
 func reset() -> void:
-	biomes.clear()
+	params = generator_main.params
+	data = generator_main.data
+	data.biomes.clear()
 	_free_triangles.clear()
 	_size_proportion.clear()
-	for child in biomes_parent.get_children():
-		child.reparent(self)
-		child.queue_free()
 
 func generate() -> void:
-	_free_triangles = generator_main.triangle_generator.triangles.duplicate(false)
+	params = generator_main.params
+	data = generator_main.data
+	_free_triangles = data.triangles.duplicate(false)
 	_init_biomes()
 	while _free_triangles.size() > 0:
 		var minimal: float = _size_proportion.values().min()
@@ -38,8 +30,8 @@ func generate() -> void:
 		if not biome.is_able_to_expand:
 			_size_proportion[biome] = INF
 		else:
-			_size_proportion[biome] = biome.area / biomes_desired_minimum_area[biome.biome_name]
-	for biome in biomes:
+			_size_proportion[biome] = biome.area / params.biomes_desired_minimum_area[biome.name]
+	for biome in data.biomes:
 		for line in biome.lines:
 			for l_biome in line.biomes:
 				if not l_biome in biome.adjustent_biomes:
@@ -53,22 +45,19 @@ func generate() -> void:
 
 
 func _init_biomes() -> void:
-	for biome_name in biomes_desired_minimum_area:
+	for biome_name in params.biomes_desired_minimum_area:
 		var biome: Biome = Biome.new()
 		_init_biome(biome, biome_name)
 		_get_biome_random_free_triangle(biome)
-		_size_proportion[biome] = biome.area / biomes_desired_minimum_area[biome_name]
+		_size_proportion[biome] = biome.area / params.biomes_desired_minimum_area[biome_name]
 
 func _init_biome(biome: Biome, biome_name: String) -> void:
-	biomes_parent.add_child(biome)
-	biome.owner = generator_main
-	biomes.append(biome)
+	data.biomes.append(biome)
 	biome.name = biome_name
-	biome.biome_name = biome_name
 
 
 func _get_biome_random_free_triangle(biome: Biome) -> void:
-	var triangle: BiomeTriangle = generator_main.rng.pick_random(_free_triangles)
+	var triangle: BiomeTriangle = data.rng.pick_random(_free_triangles)
 	_add_triangle_to_biome(biome, triangle)
 
 
@@ -92,8 +81,8 @@ func _add_line_to_biome(biome: Biome, line: BiomeLine) -> void:
 
 
 func _get_biome_new_triangle(biome: Biome) -> void:
-	if generator_main.rng.randf() <= chance_to_shuffle:
-		generator_main.rng.shuffle(biome.lines)
+	if data.rng.randf() <= params.chance_to_shuffle:
+		data.rng.shuffle(biome.lines)
 	var line_count: int = biome.lines.size()
 	for i in range(line_count):
 		var line: BiomeLine = biome.lines.pop_front()
@@ -102,7 +91,6 @@ func _get_biome_new_triangle(biome: Biome) -> void:
 				_add_triangle_to_biome(biome, triangle)
 				return
 		biome.lines.push_back(line)
-	if biome.area >= biomes_desired_minimum_area[biome.biome_name]:
+	if biome.area >= params.biomes_desired_minimum_area[biome.name]:
 		biome.is_able_to_expand = false
-	else:
-		_get_biome_random_free_triangle(biome)
+	_get_biome_random_free_triangle(biome)

@@ -1,6 +1,6 @@
 @tool
 class_name BiomeLine
-extends Node
+extends Resource
 
 var start_point: Vector2
 var end_point: Vector2

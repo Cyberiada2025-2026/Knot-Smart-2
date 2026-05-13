@@ -1,6 +1,6 @@
 @tool
 class_name BiomeTriangle
-extends Node
+extends Resource
 
 var lines: Array[BiomeLine]
 var biome: Biome
