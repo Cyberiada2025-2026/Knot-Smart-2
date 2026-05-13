@@ -13,6 +13,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	time_since_last_step += delta
-	if character.velocity.length() > 0 && time_since_last_step > step_interval && character.is_on_floor():
+	if (
+		character.velocity.length() > 0
+		&& time_since_last_step > step_interval
+		&& character.is_on_floor()
+	):
 		time_since_last_step = 0
 		play()
