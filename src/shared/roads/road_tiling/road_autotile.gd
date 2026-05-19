@@ -94,6 +94,9 @@ const BASE_TILES: Dictionary = {
 const NEIGHBOUR_ARRAY_SIZE: int = 9
 var _road_id_bitmask: Dictionary = {}
 
+@export var roads: Array[Node3D]
+@export var road_slope: Node3D
+
 ## Simple clockwise neighbour array rotation function, returns copy of provided array
 static func _rotate_array(angle: int, array: Array):
 	# avoid editing original array
@@ -166,12 +169,15 @@ func _create_bitmask() -> bool:
 
 
 ## Create bitmask key for tile located in the blueprint
-func _get_tile_connections_bitmask(position: Vector2i, blueprint: Dictionary):
+func _get_tile_connections_bitmask(position: Vector2i, blueprint: MapTileData):
 	var bitmask: int = 0
 	var i: int = 0
 	for y in range(position.y - 1, position.y + 2):
 		for x in range(position.x - 1, position.x + 2):
-			if blueprint.has(Vector2i(x, y)) and blueprint[Vector2i(x, y)]["type"] == "road":
+			if (
+				blueprint.data.has(Vector2i(x, y))
+				and blueprint.data[Vector2i(x, y)].tile_type == TileInfo.Type.ROAD
+			):
 				bitmask += 1 << i
 			i += 1
 	return bitmask
@@ -192,16 +198,29 @@ func _get_road_data_from_bitmask(bitmask_key: int) -> Dictionary:
 ## Generates road tile ID's and rotations and writes them to blueprint [br][br]
 ## Returns false on error [br]
 ## For tile description see class description
-func autotile_roads(blueprint: Dictionary, map_size: int) -> bool:
+func run_generation(manager: GridGenerationPipeline) -> bool:
+	#_generation_manager = manager
+	var map_size = manager.blueprint.world_size
+	var blueprint = manager.blueprint
+	#_map_size = generation_params.map_size
+
 	if not _create_bitmask():
 		printerr("failed creating bitmask, autotile was skipped")
 		return false
 
+	var tile_scale = manager.world_generation_params.tile_size
 	for x in range(map_size):
 		for y in range(map_size):
-			if blueprint[Vector2i(x, y)]["type"] == "road":
+			if blueprint.data[Vector2i(x, y)].tile_type == TileInfo.Type.ROAD:
 				var bitmask_key = _get_tile_connections_bitmask(Vector2i(x, y), blueprint)
 				var data: Dictionary = _get_road_data_from_bitmask(bitmask_key)
-				blueprint[Vector2i(x, y)]["id"]  = data["id"]
-				blueprint[Vector2i(x, y)]["rotation"]  = data["rotation"]
+				# change
+				var road_mesh: MeshInstance3D = roads[data["id"]]
+				road_mesh.rotate_y(deg_to_rad(data["rotation"]))
+				road_mesh.scale = tile_scale
+				#blueprint[Vector2i(x, y)]["id"]  = data["id"]
+				#blueprint[Vector2i(x, y)]["rotation"]  = data["rotation"]
+				var tile = blueprint.data[Vector2i(x, y)]
+				tile.objects.append(road_mesh.get_child(0))
+
 	return true

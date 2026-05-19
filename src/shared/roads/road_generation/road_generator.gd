@@ -55,8 +55,8 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 
 	# later will be splitted and used outside of road generator
 	#var autotiler: RoadAutotile = RoadAutotile.new()
-
-	#if not autotiler.autotile_roads(blueprint, _map_size):
+#
+	#if not autotiler.autotile_roads(manager):
 		#return false
 
 	if log_generation_steps:
@@ -97,8 +97,7 @@ func _print_to_console(key: String) -> void:
 	for y in _map_size:
 		var output: String = ""
 		for x in _map_size:
-			if blueprint.data[Vector2i(x, y)].placement_rule == TileInfo.PlacementRule.FLAT:
-			#if blueprint.data[Vector2i(x, y)].tile_type == TileInfo.Type.ROAD:
+			if blueprint.data[Vector2i(x, y)].tile_type == TileInfo.Type.ROAD:
 				if key == "type":
 					output += " R"
 				#if key == "rotation":
