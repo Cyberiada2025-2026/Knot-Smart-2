@@ -94,8 +94,8 @@ const BASE_TILES: Dictionary = {
 const NEIGHBOUR_ARRAY_SIZE: int = 9
 var _road_id_bitmask: Dictionary = {}
 
-@export var roads: Array[Node3D]
-@export var road_slope: Node3D
+@export var roads: Array[PackedScene]
+@export var road_slope: PackedScene
 
 ## Simple clockwise neighbour array rotation function, returns copy of provided array
 static func _rotate_array(angle: int, array: Array):
@@ -215,12 +215,27 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 				var bitmask_key = _get_tile_connections_bitmask(Vector2i(x, y), blueprint)
 				var data: Dictionary = _get_road_data_from_bitmask(bitmask_key)
 				# change
-				var road_mesh: MeshInstance3D = roads[data["id"]]
-				road_mesh.rotate_y(deg_to_rad(data["rotation"]))
-				road_mesh.scale = tile_scale
+				var road: PackedScene
+				if (data["id"] == RoadId.HORIZONTAL_STRAIGHT
+					and (
+						blueprint.data[Vector2i(x, y)].placement_rule == TileInfo.PlacementRule.SLOPE_X
+						or blueprint.data[Vector2i(x, y)].placement_rule == TileInfo.PlacementRule.SLOPE_Z
+					)
+				):
+					road = road_slope
+				else:
+					road = roads[data["id"]]
+				var tr: Transform3D = Transform3D()
+				tr = tr.scaled(tile_scale)
+				tr = tr.rotated(Vector3.UP, deg_to_rad(data["rotation"]))
+
+				#road_mesh.rotate_y(deg_to_rad(data["rotation"]))
+				#road_mesh.scale = tile_scale
 				#blueprint[Vector2i(x, y)]["id"]  = data["id"]
 				#blueprint[Vector2i(x, y)]["rotation"]  = data["rotation"]
 				var tile = blueprint.data[Vector2i(x, y)]
-				tile.objects.append(road_mesh.get_child(0))
+
+				# here add this to new sceneData and give to blueprint
+				tile.objects.append(road)
 
 	return true
