@@ -44,7 +44,7 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			mi.position = Vector3(
 				x * world_generation_params.tile_size, 0, z * world_generation_params.tile_size
 			)
-			
+
 			if terrain_params.terrain_material:
 				mi.material_override = terrain_params.terrain_material
 
@@ -96,7 +96,7 @@ func add_triangle(st: SurfaceTool, vertices: Array):
 
 func slopify(n1: Vector3, n2: Vector3, coord: Vector2i):
 	var n = abs(n1)
-	
+
 	if n1 != n2 and n1 != Vector3.ZERO:
 		blueprint.data[coord].placement_rule = TileInfo.PlacementRule.BLOCKED
 	elif n.y == 1.0:

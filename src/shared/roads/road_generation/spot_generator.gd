@@ -142,10 +142,13 @@ func _is_spot_touching_map_bounds(spot: Spot) -> bool:
 func _move_spot_start(spots: Array[Spot]):
 	for axis in Utils.Axis2.values():
 		for spot in spots:
-			var end: Vector2i = spot.start
-			end[axis] = spot.end[axis]
+			# off by 1 but different axis
+			var start: Vector2i = spot.start
+			start[axis] = spot.start[axis] + 1 # probably won't work
+			var end: Vector2i = spot.end
+			end[axis] = start[axis]
 			if (
 				spot.start[axis] != 0
-				and not _is_line_containing_blockers(spot.start, end, axis)
+				and not _is_line_containing_blockers(start, end, axis)
 			):
 				spot.start[axis] += 1
