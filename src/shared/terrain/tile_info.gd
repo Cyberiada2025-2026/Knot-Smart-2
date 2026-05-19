@@ -8,7 +8,6 @@ enum PlacementRule {
 	BLOCKED,
 }
 
-
 enum Type {
 	TERRAIN,
 	ROAD,
