@@ -214,7 +214,7 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 			if blueprint.data[Vector2i(x, y)].tile_type == TileInfo.Type.ROAD:
 				var bitmask_key = _get_tile_connections_bitmask(Vector2i(x, y), blueprint)
 				var data: Dictionary = _get_road_data_from_bitmask(bitmask_key)
-				# change
+
 				var road: PackedScene
 				if (data["id"] == RoadId.HORIZONTAL_STRAIGHT
 					and (
@@ -225,9 +225,9 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 					road = road_slope
 				else:
 					road = roads[data["id"]]
-				var tr: Transform3D = Transform3D()
-				tr = tr.scaled(tile_scale)
-				tr = tr.rotated(Vector3.UP, deg_to_rad(data["rotation"]))
+				var _transform: Transform3D = Transform3D()
+				_transform = _transform.scaled(tile_scale)
+				_transform = _transform.rotated(Vector3.UP, deg_to_rad(data["rotation"]))
 
 				#road_mesh.rotate_y(deg_to_rad(data["rotation"]))
 				#road_mesh.scale = tile_scale
@@ -236,6 +236,6 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 				var tile = blueprint.data[Vector2i(x, y)]
 
 				# here add this to new sceneData and give to blueprint
-				tile.objects.append(road)
+				tile.scenes.append(SceneData.new(road, _transform))
 
 	return true
