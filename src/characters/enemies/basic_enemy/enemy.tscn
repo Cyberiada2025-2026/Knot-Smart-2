@@ -18,25 +18,26 @@
 [ext_resource type="Script" uid="uid://crjqmr7expgtl" path="res://addons/beehave/nodes/decorators/limiter.gd" id="15_eykdo"]
 [ext_resource type="Script" uid="uid://ch6b2rcr58t23" path="res://shared/beehave/action/set_tracking.gd" id="16_2vyja"]
 [ext_resource type="Script" uid="uid://we22430vcb44" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="16_nr11u"]
-[ext_resource type="Script" uid="uid://stdko1cvpgmi" path="res://shared/beehave/action/set_speed.gd" id="17_id0xw"]
+[ext_resource type="Script" path="res://characters/enemies/basic_enemy/set_speed.gd" id="17_id0xw"]
 [ext_resource type="Script" uid="uid://7sxs6ubjcqmo" path="res://shared/health/hit_box.gd" id="18_3myrp"]
 [ext_resource type="Script" uid="uid://bgknqprqq0468" path="res://shared/beehave/action/set_nav_target_in_direction.gd" id="18_eykdo"]
-[ext_resource type="Script" uid="uid://0jgj5q1d0fkh" path="res://shared/beehave/action/set_attack_area.gd" id="19_ect5e"]
+[ext_resource type="Script" path="res://characters/enemies/basic_enemy/set_attack_area.gd" id="19_ect5e"]
 [ext_resource type="Script" uid="uid://b5oot86kgom7d" path="res://shared/health/health_component.gd" id="19_fcxfv"]
 [ext_resource type="Script" uid="uid://c24bwn0043vhi" path="res://shared/health/toggleable_area.gd" id="20_16ot4"]
 [ext_resource type="Script" uid="uid://dy0ohauxfd8go" path="res://shared/health/death_component.gd" id="20_fcxfv"]
 [ext_resource type="Script" uid="uid://djg0m48s04bny" path="res://shared/health/base_damage_component.gd" id="20_id0xw"]
 [ext_resource type="Script" uid="uid://dsf3a8vlolhx8" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="20_mpfi1"]
-[ext_resource type="Script" uid="uid://d31ydnb6g12l8" path="res://shared/beehave/action/set_target_around_group.gd" id="23_wjvgd"]
+[ext_resource type="Script" path="res://shared/beehave/action/set_target_around_group.gd" id="23_wjvgd"]
 [ext_resource type="Script" uid="uid://bwbgvbw8rs0aa" path="res://shared/vfx/player/vfx_player_sequence.gd" id="27_eykdo"]
 [ext_resource type="PackedScene" uid="uid://d2ucnrebee3ji" path="res://shared/vfx/blood/blood_vfx.tscn" id="27_mpfi1"]
-[ext_resource type="Script" uid="uid://bxjrubfcv84ac" path="res://shared/health/stun_component.gd" id="28_yedos"]
+[ext_resource type="Script" path="res://shared/health/stun_component.gd" id="28_yedos"]
 [ext_resource type="Script" uid="uid://bm0wrygl0ikje" path="res://shared/point_of_interest/point_of_interest.gd" id="29_mjaka"]
 [ext_resource type="Script" uid="uid://krqwntoiv6fm" path="res://shared/point_of_interest/components/speech_poi.gd" id="30_qd6q6"]
 [ext_resource type="Script" uid="uid://dhpmrqniojeb4" path="res://shared/dialogue/dialogue.gd" id="31_y1krv"]
 [ext_resource type="Script" uid="uid://kpru7f8vmtp5" path="res://shared/dialogue/sentence.gd" id="32_yedos"]
 [ext_resource type="Script" uid="uid://cfbfg51ucp1a2" path="res://shared/journal/journal_entry_poi.gd" id="33_o1m3g"]
 [ext_resource type="Script" uid="uid://gfr35mbc1ij6" path="res://shared/journal/journal_entry.gd" id="34_qd6q6"]
+[ext_resource type="PackedScene" uid="uid://b32uxhadospgh" path="res://characters/enemies/basic_enemy/enemy_health.tscn" id="38_wjvgd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1krv"]
 radius = 1.0
@@ -100,7 +101,7 @@ shape = SubResource("CapsuleShape3D_y1krv")
 
 [node name="BeehaveTree" type="Node" parent="." unique_id=1892085315 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_r2ijf")
-blackboard = NodePath("@Node@121393")
+blackboard = NodePath("@Node@394457")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
@@ -541,6 +542,10 @@ dialogue = SubResource("Resource_wjvgd")
 [node name="JournalEntryPOI" type="Node" parent="PointOfInterest" unique_id=1237039963]
 script = ExtResource("33_o1m3g")
 journal_entry = SubResource("Resource_y1krv")
+
+[node name="EnemyHealth" parent="." unique_id=1346969921 node_paths=PackedStringArray("health", "character") instance=ExtResource("38_wjvgd")]
+health = NodePath("../HealthComponent")
+character = NodePath("..")
 
 [connection signal="health_decreased" from="HealthComponent" to="VfxPlayerSequence" method="play"]
 [connection signal="health_depleted" from="HealthComponent" to="DeathComponent" method="_on_death"]
