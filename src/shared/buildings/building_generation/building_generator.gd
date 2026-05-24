@@ -19,9 +19,6 @@ var cells_generator: CellGenerator = CellGenerator.new(self)
 var models_placer: ModelsPlacer = ModelsPlacer.new(self)
 var nav_obstacle_generator: BuildingNavObstacleGenerator = BuildingNavObstacleGenerator.new(self)
 
-func _ready() -> void:
-	print(generated_building_node)
-
 
 func setup_generated_building_node() -> void:
 	generated_building_node = Node3D.new()
