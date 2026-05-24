@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="1_s4hfs"]
 [ext_resource type="Script" uid="uid://djg0m48s04bny" path="res://shared/health/base_damage_component.gd" id="3_x8hl5"]
 [ext_resource type="Script" uid="uid://bxjrubfcv84ac" path="res://shared/health/stun_component.gd" id="4_vas5k"]
+[ext_resource type="Script" uid="uid://bh2wj72adhamc" path="res://shared/changing_parts/changing_part.gd" id="5_321mu"]
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="9_rjtpl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2d8t"]
@@ -18,6 +19,8 @@ albedo_color = Color(0.27876335, 0.5639823, 0.7337263, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vas5k"]
 albedo_color = Color(0.1218568, 0.49706048, 0.3086675, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_321mu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_321mu"]
 albedo_color = Color(0.7582494, 0.332663, 0.35947967, 1)
@@ -202,14 +205,27 @@ stun_duration = 0.5
 speed_multiplier = 0.8
 metadata/_custom_type_script = "uid://bxjrubfcv84ac"
 
-[node name="TowerStanding" type="CSGBox3D" parent="Graybox/CombatTutorialArea" unique_id=1683246960]
+[node name="ChangePartDebug" type="Area3D" parent="Graybox/CombatTutorialArea" unique_id=1285574594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 0, 47.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graybox/CombatTutorialArea/ChangePartDebug" unique_id=201986538]
+shape = SubResource("BoxShape3D_321mu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Graybox/CombatTutorialArea/ChangePartDebug" unique_id=873592550]
+
+[node name="ChangingPart" type="Node3D" parent="Graybox/CombatTutorialArea" unique_id=47721873 node_paths=PackedStringArray("before_change", "after_change")]
+script = ExtResource("5_321mu")
+before_change = NodePath("TowerStanding")
+after_change = NodePath("TowerFallen")
+
+[node name="TowerStanding" type="CSGBox3D" parent="Graybox/CombatTutorialArea/ChangingPart" unique_id=1683246960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 11.5, 56.25)
 use_collision = true
 collision_layer = 257
 size = Vector3(11.5, 24, 12)
 material = SubResource("StandardMaterial3D_321mu")
 
-[node name="TowerFallen" type="CSGBox3D" parent="Graybox/CombatTutorialArea" unique_id=739714956]
+[node name="TowerFallen" type="CSGBox3D" parent="Graybox/CombatTutorialArea/ChangingPart" unique_id=739714956]
 transform = Transform3D(1, 0, 0, 0, 0.087155715, -0.9961948, 0, 0.9961948, 0.087155715, 66, -4.5, 74)
 use_collision = true
 collision_layer = 257
@@ -394,3 +410,5 @@ script = ExtResource("4_vas5k")
 stun_duration = 0.5
 speed_multiplier = 0.8
 metadata/_custom_type_script = "uid://bxjrubfcv84ac"
+
+[connection signal="area_entered" from="Graybox/CombatTutorialArea/ChangePartDebug" to="Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
