@@ -236,11 +236,12 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 				#var child = road.get_child(0)
 				#child.position.y *= tile_scale
 				road.rotate_y(-deg_to_rad(data["rotation"]))
-				road.get_child(0).transform.origin += Vector3(tile_scale / 2.0, 0, tile_scale / 2.0)
-
+				var noad = Node3D.new()
+				road.transform.origin += Vector3(tile_scale / 2.0, 0, tile_scale / 2.0)
+				noad.add_child(road)
 				var tile = blueprint.data[Vector2i(x, y)]
 
 				# here add this to new sceneData and give to blueprint
-				tile.objects.append(road)
+				tile.objects.append(noad)
 
 	return true

@@ -99,7 +99,7 @@ func _print_to_console(key: String) -> void:
 		for x in _map_size:
 			if blueprint.data[Vector2i(x, y)].tile_type == TileInfo.Type.ROAD:
 				if key == "type":
-					output += " R"
+					output += " " + str(blueprint.data[Vector2i(x, y)].height)
 				#if key == "rotation":
 					#output += " " + str(blueprint[Vector2i(x, y)][key] / 90)
 				#if key == "id":

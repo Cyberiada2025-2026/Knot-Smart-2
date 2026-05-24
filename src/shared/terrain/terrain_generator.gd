@@ -49,10 +49,10 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 
 			if terrain_params.terrain_material:
 				mi.material_override = terrain_params.terrain_material
-				
+
 			mi.create_trimesh_collision()
-			
-			
+
+
 			tile.objects.clear()
 			tile.objects.append(mi)
 
