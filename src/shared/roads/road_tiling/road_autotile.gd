@@ -228,7 +228,9 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 				#add_child(road)
 				road.scale = Vector3.ONE * tile_scale
 				road.rotate_y(deg_to_rad(data["rotation"]))
-				road.name = "road"
+				print(data["rotation"])
+				#road.name = "road_%d_%d" % [x, y]
+
 				#_transform = _transform.scaled(Vector3.ONE * tile_scale)
 				#_transform = _transform.rotated(Vector3.UP, deg_to_rad(data["rotation"]))
 				#road_mesh.rotate_y(deg_to_rad(data["rotation"]))
