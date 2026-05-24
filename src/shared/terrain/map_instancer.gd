@@ -21,7 +21,7 @@ func _init(manager: MapRenderer):
 
 
 func set_owner_recursive(node: Node, owner_node: Node):
-	if node != owner_node:
+	if node != owner_node and node.owner == null:
 		node.owner = owner_node
 	for child in node.get_children():
 		set_owner_recursive(child, owner_node)
