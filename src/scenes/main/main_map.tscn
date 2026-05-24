@@ -6,6 +6,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2d8t"]
 albedo_color = Color(0.63810116, 0.80370927, 0.39393768, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8fwh"]
+albedo_color = Color(0.22790968, 0.22790965, 0.22790965, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iftqu"]
 albedo_color = Color(0.27876335, 0.5639823, 0.7337263, 1)
 
@@ -40,6 +43,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, -5.5, 155.75)
 use_collision = true
 size = Vector3(300, 10, 141.5)
 material = SubResource("StandardMaterial3D_e2d8t")
+
+[node name="Roads" type="Node3D" parent="Graybox" unique_id=1895084787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Graybox/Roads" unique_id=1859024586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -50.5)
+size = Vector3(5, 1, 39)
+material = SubResource("StandardMaterial3D_f8fwh")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Graybox/Roads" unique_id=1866861419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -30)
+size = Vector3(89, 1, 5)
+material = SubResource("StandardMaterial3D_f8fwh")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/Roads" unique_id=1421188391]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9999985, 0, -19.5)
+size = Vector3(20, 1, 5)
+material = SubResource("StandardMaterial3D_f8fwh")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/Roads" unique_id=215262565]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.499997, 0, 43.5)
+size = Vector3(75, 1, 5)
+material = SubResource("StandardMaterial3D_f8fwh")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/Roads" unique_id=1910054904]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44, 0, 19.75)
+size = Vector3(98.5, 1, 5)
+material = SubResource("StandardMaterial3D_f8fwh")
 
 [node name="Areas" type="CSGCombiner3D" parent="Graybox" unique_id=1293147461]
 
@@ -154,3 +185,50 @@ material = SubResource("StandardMaterial3D_321mu")
 transform = Transform3D(1, 0, 0, 0, 0.258819, -0.9659258, 0, 0.9659258, 0.258819, 66, -2, 74)
 size = Vector3(11.5, 24, 10.5)
 material = SubResource("StandardMaterial3D_321mu")
+
+[node name="GeneratorArea" type="Node3D" parent="Graybox" unique_id=1515897305]
+
+[node name="Buildings" type="CSGCombiner3D" parent="Graybox/GeneratorArea" unique_id=2077970911]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Graybox/GeneratorArea/Buildings" unique_id=392916813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 8.25, -11)
+size = Vector3(12, 17.5, 26)
+material = SubResource("StandardMaterial3D_x8hl5")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/GeneratorArea/Buildings" unique_id=1745195512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.75, 16.25, -36.25)
+size = Vector3(30, 33.5, 24)
+material = SubResource("StandardMaterial3D_x8hl5")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/GeneratorArea/Buildings" unique_id=1267087160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 9.5, -47.25)
+size = Vector3(22, 20, 22)
+material = SubResource("StandardMaterial3D_x8hl5")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/GeneratorArea/Buildings" unique_id=1322280279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2.5, 2.75)
+size = Vector3(8.5, 6, 15)
+material = SubResource("StandardMaterial3D_x8hl5")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Graybox/GeneratorArea/Buildings" unique_id=357310780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5.5, -12.75)
+size = Vector3(8.5, 12, 22)
+material = SubResource("StandardMaterial3D_x8hl5")
+
+[node name="Plants" type="CSGCombiner3D" parent="Graybox/GeneratorArea" unique_id=1863165742]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/GeneratorArea/Plants" unique_id=1159960838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.75, -49)
+size = Vector3(16, 17.5, 16)
+material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/GeneratorArea/Plants" unique_id=951346813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.75, 2, -22.5)
+size = Vector3(32.5, 23, 63)
+material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/GeneratorArea/Plants" unique_id=1981472708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0.5, -50.75)
+size = Vector3(48, 20, 27.5)
+material = SubResource("StandardMaterial3D_vas5k")
