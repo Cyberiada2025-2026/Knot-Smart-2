@@ -38,18 +38,21 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 	for x in blueprint.world_size:
 		for z in blueprint.world_size:
 			var coord = Vector2i(x, z)
+			var tile = blueprint.data[coord]
+			tile.height = blueprint.get_height(coord)
 
 			var mi = MeshInstance3D.new()
 			mi.mesh = generate_tile_mesh(coord)
 			mi.position = Vector3(
-				x * world_generation_params.tile_size, 0, z * world_generation_params.tile_size
+				0, -tile.height , 0
 			)
 
 			if terrain_params.terrain_material:
 				mi.material_override = terrain_params.terrain_material
-
-			var tile = blueprint.data[coord]
-			tile.height = blueprint.get_height(coord)
+				
+			mi.create_trimesh_collision()
+			
+			
 			tile.objects.clear()
 			tile.objects.append(mi)
 
