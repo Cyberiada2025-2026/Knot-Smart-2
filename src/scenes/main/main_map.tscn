@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="1_s4hfs"]
 [ext_resource type="Script" uid="uid://djg0m48s04bny" path="res://shared/health/base_damage_component.gd" id="3_x8hl5"]
+[ext_resource type="Script" uid="uid://bxjrubfcv84ac" path="res://shared/health/stun_component.gd" id="4_vas5k"]
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="9_rjtpl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2d8t"]
@@ -195,6 +196,12 @@ material = SubResource("StandardMaterial3D_vas5k")
 script = ExtResource("3_x8hl5")
 metadata/_custom_type_script = "uid://djg0m48s04bny"
 
+[node name="StunComponent" type="Node" parent="Graybox/CombatTutorialArea/Plants" unique_id=881413334]
+script = ExtResource("4_vas5k")
+stun_duration = 0.5
+speed_multiplier = 0.8
+metadata/_custom_type_script = "uid://bxjrubfcv84ac"
+
 [node name="TowerStanding" type="CSGBox3D" parent="Graybox/CombatTutorialArea" unique_id=1683246960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 11.5, 56.25)
 use_collision = true
@@ -259,6 +266,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0.5, -50.75)
 size = Vector3(48, 20, 27.5)
 material = SubResource("StandardMaterial3D_vas5k")
 
+[node name="StunComponent" type="Node" parent="Graybox/GeneratorArea/Plants" unique_id=2130930386]
+script = ExtResource("4_vas5k")
+stun_duration = 0.5
+speed_multiplier = 0.8
+metadata/_custom_type_script = "uid://bxjrubfcv84ac"
+
+[node name="BaseDamageComponent" type="Node" parent="Graybox/GeneratorArea/Plants" unique_id=350268414]
+script = ExtResource("3_x8hl5")
+metadata/_custom_type_script = "uid://djg0m48s04bny"
+
 [node name="SpawnArea" type="Node3D" parent="Graybox" unique_id=125470212]
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1227748875]
@@ -307,6 +324,12 @@ material = SubResource("StandardMaterial3D_vas5k")
 [node name="BaseDamageComponent" type="Node" parent="Graybox/SpawnArea/Plants" unique_id=1987923743]
 script = ExtResource("3_x8hl5")
 metadata/_custom_type_script = "uid://djg0m48s04bny"
+
+[node name="StunComponent" type="Node" parent="Graybox/SpawnArea/Plants" unique_id=1189655218]
+script = ExtResource("4_vas5k")
+stun_duration = 0.5
+speed_multiplier = 0.8
+metadata/_custom_type_script = "uid://bxjrubfcv84ac"
 
 [node name="Part1Area" type="Node3D" parent="Graybox" unique_id=1242172551]
 
@@ -365,3 +388,9 @@ material = SubResource("StandardMaterial3D_vas5k")
 [node name="BaseDamageComponent" type="Node" parent="Graybox/Part1Area/Plants" unique_id=1846411361]
 script = ExtResource("3_x8hl5")
 metadata/_custom_type_script = "uid://djg0m48s04bny"
+
+[node name="StunComponent" type="Node" parent="Graybox/Part1Area/Plants" unique_id=1677459953]
+script = ExtResource("4_vas5k")
+stun_duration = 0.5
+speed_multiplier = 0.8
+metadata/_custom_type_script = "uid://bxjrubfcv84ac"
