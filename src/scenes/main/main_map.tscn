@@ -38,12 +38,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="Floor" type="CSGBox3D" parent="Graybox" unique_id=1815111816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, -5.5, -8.25)
 use_collision = true
+collision_layer = 257
 size = Vector3(300, 10, 141.5)
 material = SubResource("StandardMaterial3D_e2d8t")
 
 [node name="Floor2" type="CSGBox3D" parent="Graybox" unique_id=1157939142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, -5.5, 155.75)
 use_collision = true
+collision_layer = 257
 size = Vector3(300, 10, 141.5)
 material = SubResource("StandardMaterial3D_e2d8t")
 
@@ -120,6 +122,7 @@ material = SubResource("StandardMaterial3D_iftqu")
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=1781205539]
 use_collision = true
+collision_layer = 257
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Buildings" unique_id=881207289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 6.5, 23.5)
@@ -157,6 +160,7 @@ size = Vector3(11.5, 7.5, 20)
 material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=775013810]
+use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=362324514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 2.75, 32.5)
@@ -185,11 +189,15 @@ material = SubResource("StandardMaterial3D_vas5k")
 
 [node name="TowerStanding" type="CSGBox3D" parent="Graybox/CombatTutorialArea" unique_id=1683246960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 11.5, 56.25)
+use_collision = true
+collision_layer = 257
 size = Vector3(11.5, 24, 12)
 material = SubResource("StandardMaterial3D_321mu")
 
 [node name="TowerFallen" type="CSGBox3D" parent="Graybox/CombatTutorialArea" unique_id=739714956]
 transform = Transform3D(1, 0, 0, 0, 0.087155715, -0.9961948, 0, 0.9961948, 0.087155715, 66, -4.5, 74)
+use_collision = true
+collision_layer = 257
 size = Vector3(11.5, 24, 10.5)
 material = SubResource("StandardMaterial3D_321mu")
 
@@ -197,6 +205,7 @@ material = SubResource("StandardMaterial3D_321mu")
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/GeneratorArea" unique_id=2077970911]
 use_collision = true
+collision_layer = 257
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/GeneratorArea/Buildings" unique_id=392916813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 8.25, -11)
@@ -224,6 +233,7 @@ size = Vector3(8.5, 12, 9)
 material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/GeneratorArea" unique_id=1863165742]
+use_collision = true
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/GeneratorArea/Plants" unique_id=1159960838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.75, -49)
@@ -244,6 +254,7 @@ material = SubResource("StandardMaterial3D_vas5k")
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1227748875]
 use_collision = true
+collision_layer = 257
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/SpawnArea/Buildings" unique_id=1554940834]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11, 6.5, -2.5000002)
@@ -276,6 +287,7 @@ size = Vector3(8.5, 0.25, 1)
 material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1753470266]
+use_collision = true
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/SpawnArea/Plants" unique_id=660983950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, -0.75, 31)
@@ -290,6 +302,7 @@ material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=1723774338]
 use_collision = true
+collision_layer = 257
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/Part1Area/Buildings" unique_id=442063163]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36, 6.5, 13.75)
@@ -317,6 +330,7 @@ size = Vector3(15.5, 1.8, 1)
 material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=252669456]
+use_collision = true
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/Part1Area/Plants" unique_id=1053066061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.75, -2.75, -42.75)
