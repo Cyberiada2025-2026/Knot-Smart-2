@@ -226,9 +226,8 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 				else:
 					road = roads[data["id"]]
 				var _transform: Transform3D = Transform3D()
-				_transform = _transform.scaled(tile_scale)
+				_transform = _transform.scaled(Vector3.ONE * tile_scale)
 				_transform = _transform.rotated(Vector3.UP, deg_to_rad(data["rotation"]))
-
 				#road_mesh.rotate_y(deg_to_rad(data["rotation"]))
 				#road_mesh.scale = tile_scale
 				#blueprint[Vector2i(x, y)]["id"]  = data["id"]

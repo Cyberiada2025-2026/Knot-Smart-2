@@ -113,6 +113,14 @@ func create_chunk_scene(chunk_coord: Vector2i, chunk_final_path: String) -> void
 				sb.owner = chunk_node
 				col.owner = chunk_node
 
+			for data_node: SceneData in tile_info.scenes:
+				var instanced_scene: Node3D = data_node.scene.instantiate()
+
+				instanced_scene.transform = data_node.transform
+				chunk_node.add_child(instanced_scene)
+				print(instanced_scene.position)
+
+
 	var scene = PackedScene.new()
 	var directory_path = chunk_final_path.get_base_dir()
 	if not DirAccess.dir_exists_absolute(directory_path):

@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://clo0d36f066q1" path="res://shared/roads/road_generation/generation_areas.gd" id="10_c10gb"]
 [ext_resource type="Script" uid="uid://o5exsbtpsbth" path="res://shared/roads/road_generation/limiter_area.gd" id="11_s8a3y"]
 [ext_resource type="Script" uid="uid://1sivp1454oma" path="res://shared/roads/road_generation/spot.gd" id="12_e4dki"]
-[ext_resource type="Script" uid="uid://sys3su2nn6fm" path="res://shared/roads/road_tiling/road_autotile.gd" id="13_e4dki"]
+[ext_resource type="PackedScene" uid="uid://beo772cow55jo" path="res://shared/roads/road_tiling/road_autotile_usable.tscn" id="13_e4dki"]
 [ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="28_w730l"]
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="29_kwi1n"]
 
@@ -92,9 +92,7 @@ min_spot_size = Vector2i(2, 2)
 max_spot_size = Vector2i(4, 4)
 area_limits = SubResource("Resource_u22j8")
 
-[node name="RoadAutotile" type="Node" parent="MapRenderer/GridGenerationPipeline" unique_id=1261168313]
-script = ExtResource("13_e4dki")
-metadata/_custom_type_script = "uid://sys3su2nn6fm"
+[node name="RoadAutotileUsable" parent="MapRenderer/GridGenerationPipeline" unique_id=1777804066 instance=ExtResource("13_e4dki")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52888776]
 transform = Transform3D(1, 0, 0, 0, 0.90547997, 0.42438912, 0, -0.42438912, 0.90547997, 0, 0, 0)

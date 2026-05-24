@@ -59,7 +59,7 @@ func cast_spots_to_blueprint():
 	for spot in _final_spots:
 		spot.cast_on_blueprint(_blueprint)
 	# adjust spot sizes to avoid intersection with roads when they will be exported
-	_move_spot_start(_final_spots)
+	_move_spot_start(_final_spots, true)
 
 
 func get_spots():
@@ -139,7 +139,7 @@ func _is_spot_touching_map_bounds(spot: Spot) -> bool:
 
 
 ## Move spots' start 1 tile forward
-func _move_spot_start(spots: Array[Spot]):
+func _move_spot_start(spots: Array[Spot], ignore_blockers: bool = false):
 	for axis in Utils.Axis2.values():
 		for spot in spots:
 			# off by 1 but different axis
@@ -149,6 +149,9 @@ func _move_spot_start(spots: Array[Spot]):
 			end[axis] = start[axis]
 			if (
 				spot.start[axis] != 0
-				and not _is_line_containing_blockers(start, end, axis)
+				and (
+					not _is_line_containing_blockers(start, end, axis)
+					or ignore_blockers
+					)
 			):
 				spot.start[axis] += 1
