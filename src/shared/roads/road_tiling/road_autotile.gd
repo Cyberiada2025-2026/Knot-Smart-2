@@ -227,16 +227,11 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 					road = roads[data["id"]].instantiate()
 				#add_child(road)
 				road.scale = Vector3.ONE * tile_scale
-				road.rotate_y(deg_to_rad(data["rotation"]))
-				print(data["rotation"])
-				#road.name = "road_%d_%d" % [x, y]
+				#var child = road.get_child(0)
+				#child.position.y *= tile_scale
+				road.rotate_y(-deg_to_rad(data["rotation"]))
+				road.transform.origin += Vector3(tile_scale / 2.0, 0, tile_scale / 2.0)
 
-				#_transform = _transform.scaled(Vector3.ONE * tile_scale)
-				#_transform = _transform.rotated(Vector3.UP, deg_to_rad(data["rotation"]))
-				#road_mesh.rotate_y(deg_to_rad(data["rotation"]))
-				#road_mesh.scale = tile_scale
-				#blueprint[Vector2i(x, y)]["id"]  = data["id"]
-				#blueprint[Vector2i(x, y)]["rotation"]  = data["rotation"]
 				var tile = blueprint.data[Vector2i(x, y)]
 
 				# here add this to new sceneData and give to blueprint
