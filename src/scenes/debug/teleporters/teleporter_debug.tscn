@@ -76,8 +76,28 @@ shape = SubResource("BoxShape3D_hjmx7")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="25x25 floor" unique_id=685513414]
 mesh = SubResource("BoxMesh_r707f")
 
+[node name="25x25 floor3" type="StaticBody3D" parent="." unique_id=406721690]
+transform = Transform3D(1, 0, 0, 0, 0.8894164, -0.45709795, 0, 0.45709795, 0.8894164, -3.7776089, 1.649229, 25.327469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="25x25 floor3" unique_id=1905663034]
+shape = SubResource("BoxShape3D_hjmx7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="25x25 floor3" unique_id=1268403230]
+mesh = SubResource("BoxMesh_r707f")
+skeleton = NodePath("../../25x25 floor3")
+
+[node name="25x25 floor2" type="StaticBody3D" parent="." unique_id=1364520831]
+transform = Transform3D(1, 0, 0, 0, 0.971961, -0.23514211, 0, 0.23514211, 0.971961, 0, -2.9196548, 24.262262)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="25x25 floor2" unique_id=2127006985]
+shape = SubResource("BoxShape3D_hjmx7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="25x25 floor2" unique_id=1116022674]
+mesh = SubResource("BoxMesh_r707f")
+skeleton = NodePath("../../25x25 floor2")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1457415016]
 transform = Transform3D(0.9350857, 0.2908988, 0.20246622, -0.35442162, 0.76749074, 0.5341753, 0, -0.57125807, 0.8207705, 0.7263887, 1.4881086, 0)
 
 [node name="Player" parent="." unique_id=1889026106 instance=ExtResource("1_dbjob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2833438, 0)
