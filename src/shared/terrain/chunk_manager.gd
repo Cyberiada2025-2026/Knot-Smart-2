@@ -7,6 +7,7 @@ var debug_flag: bool = false
 var is_rendering: bool = false
 
 var blueprint: MapTileData
+var managerRef: MapRenderer
 var world_generation_params: WorldGenerationParams
 var world_display_params: WorldDisplayParams
 
@@ -20,6 +21,7 @@ var player: Player
 
 func setup(manager: MapRenderer) -> void:
 	blueprint = manager.blueprint
+	managerRef = manager
 	world_generation_params = manager.world_generation_params
 	world_display_params = manager.world_display_params
 	debug_flag = manager.debug_flag
@@ -57,10 +59,13 @@ func update_active_chunks_borders() -> void:
 	if player != null:
 		var player_position = player.player_physics.global_position
 		render_position = Vector2i(player_position.x, player_position.z)
+		if managerRef:
+			render_position.x -= managerRef.position.x
+			render_position.y -= managerRef.position.y
 		render_distance = Vector2i(
 			world_display_params.render_distance, world_display_params.render_distance
 		)
-
+	
 	var current_chunk: Vector2i = floor(
 		render_position / world_generation_params.get_chunk_unit_size()
 	)
@@ -107,6 +112,8 @@ func update_active_chunks() -> void:
 					0,
 					y * world_generation_params.get_chunk_unit_size()
 				)
+				if managerRef:
+					chunk_node.global_position += managerRef.position
 
 				active_chunks[coord] = chunk_node
 

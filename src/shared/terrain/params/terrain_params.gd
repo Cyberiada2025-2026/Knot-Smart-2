@@ -7,6 +7,8 @@ extends Resource
 ## The noise algorithm used to calculate elevation.
 @export var noise: FastNoiseLite
 
+@export var water: NoiseTexture2D
+
 ## The material applied to the generated mesh surface.
 ## Expects a type of Material (e.g., StandardMaterial3D or ShaderMaterial).
 @export var terrain_material: Material
