@@ -134,7 +134,8 @@ func _convert_array_to_bitmask(
 			_:
 				printerr("wrong data type '", array[current_position], '\' in "BASE_TILES" dictionary')
 				return
-	_road_id_bitmask.get_or_add(bitmask_result, data)
+	else:
+		_road_id_bitmask.get_or_add(bitmask_result, data)
 
 
 ## Create bitmasks for all possible positions for single road tile id [br]
