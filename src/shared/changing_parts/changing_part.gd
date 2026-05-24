@@ -1,4 +1,3 @@
-@tool
 class_name ChangingPart
 extends Node3D
 
@@ -9,24 +8,20 @@ func _ready() -> void:
 	if before_change == null or after_change == null:
 		return
 	before_change.visible = true
-	before_change.scale = Vector3.ONE
 	if before_change is CSGShape3D:
 		after_change.use_collision = true
 
 	after_change.visible = false
-	after_change.scale = Vector3.ZERO
 	if after_change is CSGShape3D:
 		after_change.use_collision = false
 
 func _on_change_part(_node: Node) -> void:
 	if before_change == null or after_change == null:
 		return
-	before_change.scale = Vector3.ZERO
 	before_change.visible = false
 	if before_change is CSGShape3D:
 		before_change.use_collision = false
 
-	after_change.scale = Vector3.ONE
 	after_change.visible = true
 	if after_change is CSGShape3D:
 		after_change.use_collision = true

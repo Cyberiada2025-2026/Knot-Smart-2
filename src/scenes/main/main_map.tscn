@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://djg0m48s04bny" path="res://shared/health/base_damage_component.gd" id="3_x8hl5"]
 [ext_resource type="Script" uid="uid://bxjrubfcv84ac" path="res://shared/health/stun_component.gd" id="4_vas5k"]
 [ext_resource type="Script" uid="uid://bh2wj72adhamc" path="res://shared/changing_parts/changing_part.gd" id="5_321mu"]
+[ext_resource type="PackedScene" uid="uid://cwmyt6y2863aq" path="res://shared/antennas/radio_tower/radio_tower.tscn" id="6_f8fwh"]
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="9_rjtpl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2d8t"]
@@ -226,8 +227,7 @@ size = Vector3(11.5, 24, 12)
 material = SubResource("StandardMaterial3D_321mu")
 
 [node name="TowerFallen" type="CSGBox3D" parent="Graybox/CombatTutorialArea/ChangingPart" unique_id=739714956]
-transform = Transform3D(1, 0, 0, 0, 0.087155715, -0.9961948, 0, 0.9961948, 0.087155715, 66, -4.5, 74)
-use_collision = true
+transform = Transform3D(1, 0, 0, 0, 0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 66, -4.5, 74)
 collision_layer = 257
 size = Vector3(11.5, 24, 10.5)
 material = SubResource("StandardMaterial3D_321mu")
@@ -410,5 +410,8 @@ script = ExtResource("4_vas5k")
 stun_duration = 0.5
 speed_multiplier = 0.8
 metadata/_custom_type_script = "uid://bxjrubfcv84ac"
+
+[node name="RadioTower" parent="Graybox" unique_id=336301379 instance=ExtResource("6_f8fwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 39, -16.5)
 
 [connection signal="area_entered" from="Graybox/CombatTutorialArea/ChangePartDebug" to="Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
