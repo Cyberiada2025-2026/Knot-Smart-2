@@ -223,14 +223,20 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 					)
 				):
 					road = road_slope.instantiate()
+					if (
+						blueprint.data[Vector2i(x + 1, y)].height < blueprint.data[Vector2i(x - 1, y)].height
+						or blueprint.data[Vector2i(x, y + 1)].height < blueprint.data[Vector2i(x, y - 1)].height
+					):
+						road.rotate_y(PI)
 				else:
 					road = roads[data["id"]].instantiate()
+
 				#add_child(road)
 				road.scale = Vector3.ONE * tile_scale
 				#var child = road.get_child(0)
 				#child.position.y *= tile_scale
 				road.rotate_y(-deg_to_rad(data["rotation"]))
-				road.transform.origin += Vector3(tile_scale / 2.0, 0, tile_scale / 2.0)
+				road.get_child(0).transform.origin += Vector3(tile_scale / 2.0, 0, tile_scale / 2.0)
 
 				var tile = blueprint.data[Vector2i(x, y)]
 
