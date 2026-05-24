@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dme4q7clvb5fi"]
 
 [ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="1_s4hfs"]
+[ext_resource type="Script" uid="uid://djg0m48s04bny" path="res://shared/health/base_damage_component.gd" id="3_x8hl5"]
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="9_rjtpl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2d8t"]
@@ -161,6 +162,7 @@ material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=775013810]
 use_collision = true
+collision_layer = 33
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=362324514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 2.75, 32.5)
@@ -177,15 +179,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 14.5, 10)
 size = Vector3(16, 48, 16)
 material = SubResource("StandardMaterial3D_vas5k")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=688359211]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.75, 0.5, 14)
-size = Vector3(25.5, 20, 16)
-material = SubResource("StandardMaterial3D_vas5k")
-
 [node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=14782089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.75, -3, 13.25)
 size = Vector3(21.5, 13, 13.5)
 material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=688359211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.75, 0.5, 14)
+use_collision = true
+collision_layer = 33
+size = Vector3(25.5, 20, 16)
+material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="BaseDamageComponent" type="Node" parent="Graybox/CombatTutorialArea/Plants" unique_id=888718752]
+script = ExtResource("3_x8hl5")
+metadata/_custom_type_script = "uid://djg0m48s04bny"
 
 [node name="TowerStanding" type="CSGBox3D" parent="Graybox/CombatTutorialArea" unique_id=1683246960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 11.5, 56.25)
@@ -234,6 +242,7 @@ material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/GeneratorArea" unique_id=1863165742]
 use_collision = true
+collision_layer = 33
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/GeneratorArea/Plants" unique_id=1159960838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.75, -49)
@@ -288,11 +297,16 @@ material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1753470266]
 use_collision = true
+collision_layer = 33
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/SpawnArea/Plants" unique_id=660983950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, -0.75, 31)
 size = Vector3(16.5, 17.5, 8)
 material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="BaseDamageComponent" type="Node" parent="Graybox/SpawnArea/Plants" unique_id=1987923743]
+script = ExtResource("3_x8hl5")
+metadata/_custom_type_script = "uid://djg0m48s04bny"
 
 [node name="Part1Area" type="Node3D" parent="Graybox" unique_id=1242172551]
 
@@ -331,6 +345,7 @@ material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=252669456]
 use_collision = true
+collision_layer = 33
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/Part1Area/Plants" unique_id=1053066061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.75, -2.75, -42.75)
@@ -346,3 +361,7 @@ material = SubResource("StandardMaterial3D_vas5k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.75, 9.25, 12.5)
 size = Vector3(29.5, 29.5, 15)
 material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="BaseDamageComponent" type="Node" parent="Graybox/Part1Area/Plants" unique_id=1846411361]
+script = ExtResource("3_x8hl5")
+metadata/_custom_type_script = "uid://djg0m48s04bny"

@@ -20,8 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://ci0kee6ebyhk4" path="res://ui/health/health.tscn" id="18_d2agh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hysn5"]
-radius = 0.25
-height = 0.8
+radius = 0.3
+height = 0.85
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_on558"]
 
@@ -90,6 +90,7 @@ health_component = NodePath("../../HealthComponent")
 metadata/_custom_type_script = "uid://7sxs6ubjcqmo"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPhysics/HitBox" unique_id=1332460509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0)
 shape = SubResource("CapsuleShape3D_hysn5")
 
 [node name="VfxPlayerSequence" type="Node3D" parent="PlayerPhysics" unique_id=2032308502]
