@@ -1,7 +1,5 @@
 extends Node
 
-var prev_mouse_mode
-
 
 func unpause_game() -> void:
 	PauseController.unpause_game()

@@ -19,11 +19,13 @@ const ANIM_OFF: String = "break"
 @export var splash: CPUParticles3D
 @export var break1: CPUParticles3D
 @export var break2: CPUParticles3D
+@export var fuse_vfx1: GPUParticles3D
+@export var fuse_vfx2: GPUParticles3D
 
 
 ## Call when creating rope
 func start(params: RopeParams):
-	var neutral_length: float = (params.max_rope_length - params.min_rope_length)/2;
+	var neutral_length: float = (params.max_rope_length - params.min_rope_length) / 2
 	mat.set_shader_parameter(MAX_LENGTH_PARAM, params.max_rope_length)
 	mat.set_shader_parameter(MIN_LENGTH_PARAM, params.min_rope_length)
 	mat.set_shader_parameter(START_LENGTH_PARAM, neutral_length)
@@ -45,3 +47,8 @@ func end() -> void:
 	self.reparent(get_tree().root)
 	await get_tree().create_timer(5.0).timeout
 	queue_free()
+
+
+func on_fuse() -> void:
+	fuse_vfx1.emitting = true
+	fuse_vfx2.emitting = true
