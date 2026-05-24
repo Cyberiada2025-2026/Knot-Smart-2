@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dme4q7clvb5fi"]
 
 [ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="1_s4hfs"]
+[ext_resource type="Script" uid="uid://djg0m48s04bny" path="res://shared/health/base_damage_component.gd" id="3_x8hl5"]
+[ext_resource type="Script" uid="uid://bxjrubfcv84ac" path="res://shared/health/stun_component.gd" id="4_vas5k"]
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="9_rjtpl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2d8t"]
@@ -38,12 +40,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="Floor" type="CSGBox3D" parent="Graybox" unique_id=1815111816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, -5.5, -8.25)
 use_collision = true
+collision_layer = 257
 size = Vector3(300, 10, 141.5)
 material = SubResource("StandardMaterial3D_e2d8t")
 
 [node name="Floor2" type="CSGBox3D" parent="Graybox" unique_id=1157939142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, -5.5, 155.75)
 use_collision = true
+collision_layer = 257
 size = Vector3(300, 10, 141.5)
 material = SubResource("StandardMaterial3D_e2d8t")
 
@@ -120,6 +124,7 @@ material = SubResource("StandardMaterial3D_iftqu")
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=1781205539]
 use_collision = true
+collision_layer = 257
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Buildings" unique_id=881207289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 6.5, 23.5)
@@ -157,6 +162,8 @@ size = Vector3(11.5, 7.5, 20)
 material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=775013810]
+use_collision = true
+collision_layer = 33
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=362324514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 2.75, 32.5)
@@ -173,23 +180,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 14.5, 10)
 size = Vector3(16, 48, 16)
 material = SubResource("StandardMaterial3D_vas5k")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=688359211]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.75, 0.5, 14)
-size = Vector3(25.5, 20, 16)
-material = SubResource("StandardMaterial3D_vas5k")
-
 [node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=14782089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.75, -3, 13.25)
 size = Vector3(21.5, 13, 13.5)
 material = SubResource("StandardMaterial3D_vas5k")
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/CombatTutorialArea/Plants" unique_id=688359211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.75, 0.5, 14)
+use_collision = true
+collision_layer = 33
+size = Vector3(25.5, 20, 16)
+material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="BaseDamageComponent" type="Node" parent="Graybox/CombatTutorialArea/Plants" unique_id=888718752]
+script = ExtResource("3_x8hl5")
+metadata/_custom_type_script = "uid://djg0m48s04bny"
+
+[node name="StunComponent" type="Node" parent="Graybox/CombatTutorialArea/Plants" unique_id=881413334]
+script = ExtResource("4_vas5k")
+stun_duration = 0.5
+speed_multiplier = 0.8
+metadata/_custom_type_script = "uid://bxjrubfcv84ac"
+
 [node name="TowerStanding" type="CSGBox3D" parent="Graybox/CombatTutorialArea" unique_id=1683246960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 11.5, 56.25)
+use_collision = true
+collision_layer = 257
 size = Vector3(11.5, 24, 12)
 material = SubResource("StandardMaterial3D_321mu")
 
 [node name="TowerFallen" type="CSGBox3D" parent="Graybox/CombatTutorialArea" unique_id=739714956]
 transform = Transform3D(1, 0, 0, 0, 0.087155715, -0.9961948, 0, 0.9961948, 0.087155715, 66, -4.5, 74)
+use_collision = true
+collision_layer = 257
 size = Vector3(11.5, 24, 10.5)
 material = SubResource("StandardMaterial3D_321mu")
 
@@ -197,6 +220,7 @@ material = SubResource("StandardMaterial3D_321mu")
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/GeneratorArea" unique_id=2077970911]
 use_collision = true
+collision_layer = 257
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/GeneratorArea/Buildings" unique_id=392916813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 8.25, -11)
@@ -224,6 +248,8 @@ size = Vector3(8.5, 12, 9)
 material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/GeneratorArea" unique_id=1863165742]
+use_collision = true
+collision_layer = 33
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/GeneratorArea/Plants" unique_id=1159960838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.75, -49)
@@ -240,10 +266,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0.5, -50.75)
 size = Vector3(48, 20, 27.5)
 material = SubResource("StandardMaterial3D_vas5k")
 
+[node name="StunComponent" type="Node" parent="Graybox/GeneratorArea/Plants" unique_id=2130930386]
+script = ExtResource("4_vas5k")
+stun_duration = 0.5
+speed_multiplier = 0.8
+metadata/_custom_type_script = "uid://bxjrubfcv84ac"
+
+[node name="BaseDamageComponent" type="Node" parent="Graybox/GeneratorArea/Plants" unique_id=350268414]
+script = ExtResource("3_x8hl5")
+metadata/_custom_type_script = "uid://djg0m48s04bny"
+
 [node name="SpawnArea" type="Node3D" parent="Graybox" unique_id=125470212]
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1227748875]
 use_collision = true
+collision_layer = 257
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Graybox/SpawnArea/Buildings" unique_id=1554940834]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11, 6.5, -2.5000002)
@@ -276,11 +313,23 @@ size = Vector3(8.5, 0.25, 1)
 material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1753470266]
+use_collision = true
+collision_layer = 33
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/SpawnArea/Plants" unique_id=660983950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, -0.75, 31)
 size = Vector3(16.5, 17.5, 8)
 material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="BaseDamageComponent" type="Node" parent="Graybox/SpawnArea/Plants" unique_id=1987923743]
+script = ExtResource("3_x8hl5")
+metadata/_custom_type_script = "uid://djg0m48s04bny"
+
+[node name="StunComponent" type="Node" parent="Graybox/SpawnArea/Plants" unique_id=1189655218]
+script = ExtResource("4_vas5k")
+stun_duration = 0.5
+speed_multiplier = 0.8
+metadata/_custom_type_script = "uid://bxjrubfcv84ac"
 
 [node name="Part1Area" type="Node3D" parent="Graybox" unique_id=1242172551]
 
@@ -290,6 +339,7 @@ material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Buildings" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=1723774338]
 use_collision = true
+collision_layer = 257
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/Part1Area/Buildings" unique_id=442063163]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36, 6.5, 13.75)
@@ -317,6 +367,8 @@ size = Vector3(15.5, 1.8, 1)
 material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=252669456]
+use_collision = true
+collision_layer = 33
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/Part1Area/Plants" unique_id=1053066061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.75, -2.75, -42.75)
@@ -332,3 +384,13 @@ material = SubResource("StandardMaterial3D_vas5k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.75, 9.25, 12.5)
 size = Vector3(29.5, 29.5, 15)
 material = SubResource("StandardMaterial3D_vas5k")
+
+[node name="BaseDamageComponent" type="Node" parent="Graybox/Part1Area/Plants" unique_id=1846411361]
+script = ExtResource("3_x8hl5")
+metadata/_custom_type_script = "uid://djg0m48s04bny"
+
+[node name="StunComponent" type="Node" parent="Graybox/Part1Area/Plants" unique_id=1677459953]
+script = ExtResource("4_vas5k")
+stun_duration = 0.5
+speed_multiplier = 0.8
+metadata/_custom_type_script = "uid://bxjrubfcv84ac"
