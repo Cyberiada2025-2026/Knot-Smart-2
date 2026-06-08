@@ -22,6 +22,17 @@ stencil_mode = 3
 stencil_flags = 6
 stencil_reference = 11
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kombx"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_color = Color(0, 0.7666669, 1, 0.15686275)
+distance_fade_mode = 1
+distance_fade_min_distance = 0.5
+distance_fade_max_distance = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ora5x"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4o7t"]
 blend_mode = 1
 cull_mode = 1
@@ -55,7 +66,6 @@ max_radius = 30.0
 growing_time = 5.0
 
 [node name="SwitchR" type="MeshInstance3D" parent="." unique_id=911738945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47986364, 1.5356572, -6.2488346)
 layers = 262144
 material_override = SubResource("StandardMaterial3D_1vq4j")
 cast_shadow = 0
@@ -69,8 +79,12 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_1vq4j")
 skeleton = NodePath("../../..")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SwitchR" unique_id=280025419]
+material_override = SubResource("StandardMaterial3D_kombx")
+mesh = SubResource("SphereMesh_ora5x")
+
 [node name="SwitchG" type="MeshInstance3D" parent="." unique_id=1181979009]
-transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, -0.47986364, 1.5356572, -6.2488346)
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 layers = 262144
 material_override = SubResource("StandardMaterial3D_m4o7t")
 cast_shadow = 0
