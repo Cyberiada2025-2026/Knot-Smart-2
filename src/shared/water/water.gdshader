@@ -31,5 +31,4 @@ void fragment() {
 	col = mix(col, ripple_col, smoothstep(ripple_egdes.x, ripple_egdes.y, 1.0 - ripple));
 	
 	ALBEDO = col.rgb;
-	ALPHA = col.a;
 }

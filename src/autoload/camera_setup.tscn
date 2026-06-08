@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rnx3yu0ofiwg"]
 
 [ext_resource type="Script" uid="uid://b2qmm8ipalct6" path="res://shared/camera/camera_helper.gd" id="1_5jark"]
+[ext_resource type="Script" uid="uid://cjfkfd2g18hop" path="res://shared/utils/CopyCamera.gd" id="2_2oa4g"]
 [ext_resource type="PackedScene" uid="uid://ds23isyj385on" path="res://ui/pause_menu/pause_menu.tscn" id="2_5jark"]
 [ext_resource type="Shader" uid="uid://52ly07y5efea" path="res://shared/post_processing/shaders/dithering.gdshader" id="3_1y1hh"]
 [ext_resource type="PackedScene" uid="uid://bopd2svf1i85m" path="res://ui/respawn/respawn.tscn" id="3_ka213"]
@@ -8,6 +9,18 @@
 [ext_resource type="Shader" uid="uid://dyrchmhjjjh7p" path="res://shared/post_processing/shaders/crt.gdshader" id="4_ka213"]
 [ext_resource type="Texture2D" uid="uid://csyj8k3wnbqha" path="res://shared/radiation_storm/white_noise.png" id="4_us3k4"]
 [ext_resource type="Script" uid="uid://l1jyrcpmag6w" path="res://shared/post_processing/toggle_crt.gd" id="5_u1xjy"]
+[ext_resource type="Shader" uid="uid://bm53bthutmkf6" path="res://shared/post_processing/terraformation/combine_cameras.gdshader" id="7_ir214"]
+[ext_resource type="Texture2D" uid="uid://b883s1pqfeq6o" path="res://shared/post_processing/terraformation/post_terra.tres" id="9_2oa4g"]
+[ext_resource type="Texture2D" uid="uid://xdew44115sk6" path="res://shared/post_processing/terraformation/main_render.tres" id="9_4yjki"]
+[ext_resource type="Texture2D" uid="uid://dq7m15316rajn" path="res://shared/post_processing/terraformation/terra_switch.tres" id="10_07qnf"]
+[ext_resource type="Texture2D" uid="uid://3c1hfo1l3dl2" path="res://shared/post_processing/terraformation/UI.tres" id="12_impd1"]
+
+[sub_resource type="Environment" id="Environment_impd1"]
+background_mode = 1
+background_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xylyt"]
+shader = ExtResource("3_1y1hh")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1y1hh"]
 noise_type = 2
@@ -39,8 +52,18 @@ shader_parameter/anim = 0.0
 shader_parameter/smoothness = 0.2000000095
 shader_parameter/black_delay = 0.3330000158175
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xylyt"]
-shader = ExtResource("3_1y1hh")
+[sub_resource type="Environment" id="Environment_4yjki"]
+background_mode = 1
+background_energy_multiplier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2oa4g"]
+resource_local_to_scene = true
+shader = ExtResource("7_ir214")
+shader_parameter/main_render = ExtResource("9_4yjki")
+shader_parameter/terraformed_render = ExtResource("9_2oa4g")
+shader_parameter/ui_render = ExtResource("12_impd1")
+shader_parameter/switch_render = ExtResource("10_07qnf")
+shader_parameter/terraformation_color = Color(0.3137255, 0.9372549, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tvswt"]
 shader = ExtResource("4_ka213")
@@ -59,10 +82,10 @@ projection = 1
 current = true
 far = 0.1
 script = ExtResource("1_5jark")
-camera = NodePath("Control/SubViewportContainer/SubViewport/MainCamera")
-scene = NodePath("Control/SubViewportContainer/SubViewport/MainCamera/MainScene")
-radiation_post = NodePath("Control/SubViewportContainer/SubViewport/MainCamera/RadiationLayer/Radiation")
-respawn_animator = NodePath("Control/SubViewportContainer/SubViewport/MainCamera/RespawnLayer/Respawn")
+camera = NodePath("Control/MainRender/SubViewport/Pre-Terraformation")
+scene = NodePath("Control/UIRender/SubViewport3/UI/MainScene")
+radiation_post = NodePath("Control/RadiationLayer/Radiation")
+respawn_animator = NodePath("Control/RespawnLayer/Respawn")
 
 [node name="Control" type="Control" parent="." unique_id=1065790436]
 light_mask = 0
@@ -77,29 +100,28 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=1778585895]
-light_mask = 524288
-visibility_layer = 524288
-texture_filter = 1
-texture_repeat = 1
-layout_mode = 1
+[node name="UIRender" type="SubViewportContainer" parent="Control" unique_id=1485031529]
+light_mask = 0
+visibility_layer = 0
+layout_mode = 0
 offset_right = 320.0
 offset_bottom = 240.0
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=917133895]
+[node name="SubViewport3" type="SubViewport" parent="Control/UIRender" unique_id=56486660]
+transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(320, 240)
-size_2d_override = Vector2i(320, 240)
-size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="MainCamera" type="Camera3D" parent="Control/SubViewportContainer/SubViewport" unique_id=675698684]
-transform = Transform3D(0.9914175, -2.231977e-08, -0.1307338, 0.053353444, 0.91293395, 0.40460476, 0.11935132, -0.40810734, 0.90509874, -3.765843, 8.939763, 12.39052)
-cull_mask = 524287
+[node name="UI" type="Camera3D" parent="Control/UIRender/SubViewport3" unique_id=1039868131 node_paths=PackedStringArray("origin")]
+cull_mask = 196608
+environment = SubResource("Environment_impd1")
+script = ExtResource("2_2oa4g")
+origin = NodePath("../../../MainRender/SubViewport/Pre-Terraformation")
 
-[node name="MainScene" type="Control" parent="Control/SubViewportContainer/SubViewport/MainCamera" unique_id=1610041003]
+[node name="MainScene" type="Control" parent="Control/UIRender/SubViewport3/UI" unique_id=1610041003]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 15
@@ -108,12 +130,70 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseMenu" parent="Control/SubViewportContainer/SubViewport/MainCamera/MainScene" unique_id=473504245 instance=ExtResource("2_5jark")]
+[node name="PauseMenu" parent="Control/UIRender/SubViewport3/UI/MainScene" unique_id=473504245 instance=ExtResource("2_5jark")]
 
-[node name="RadiationLayer" type="CanvasLayer" parent="Control/SubViewportContainer/SubViewport/MainCamera" unique_id=289687839]
+[node name="MainRender" type="SubViewportContainer" parent="Control" unique_id=1778585895]
+light_mask = 0
+visibility_layer = 0
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/MainRender" unique_id=917133895]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 240)
+size_2d_override = Vector2i(320, 240)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Pre-Terraformation" type="Camera3D" parent="Control/MainRender/SubViewport" unique_id=675698684]
+transform = Transform3D(0.9914175, -2.231977e-08, -0.1307338, 0.053353444, 0.91293395, 0.40460476, 0.11935132, -0.40810734, 0.90509874, -3.765843, 8.939763, 12.39052)
+cull_mask = 2047
+
+[node name="TerraformedRender" type="SubViewportContainer" parent="Control" unique_id=1677213939]
+light_mask = 0
+visibility_layer = 0
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport2" type="SubViewport" parent="Control/TerraformedRender" unique_id=1118416946]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 240)
+render_target_update_mode = 4
+
+[node name="Post-Terraformation" type="Camera3D" parent="Control/TerraformedRender/SubViewport2" unique_id=1338219488 node_paths=PackedStringArray("origin")]
+cull_mask = 129151
+script = ExtResource("2_2oa4g")
+origin = NodePath("../../../MainRender/SubViewport/Pre-Terraformation")
+
+[node name="Dithering" type="ColorRect" parent="Control" unique_id=2005476111]
+visibility_layer = 1048575
+z_index = 4096
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_xylyt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RadiationLayer" type="CanvasLayer" parent="Control" unique_id=289687839]
 layer = -1
 
-[node name="Radiation" type="ColorRect" parent="Control/SubViewportContainer/SubViewport/MainCamera/RadiationLayer" unique_id=1109211409]
+[node name="Radiation" type="ColorRect" parent="Control/RadiationLayer" unique_id=1109211409]
 visible = false
 visibility_layer = 1048575
 z_index = 4096
@@ -128,24 +208,38 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="RespawnLayer" type="CanvasLayer" parent="Control/SubViewportContainer/SubViewport/MainCamera" unique_id=742471497]
+[node name="RespawnLayer" type="CanvasLayer" parent="Control" unique_id=742471497]
 
-[node name="Respawn" parent="Control/SubViewportContainer/SubViewport/MainCamera/RespawnLayer" unique_id=328929917 instance=ExtResource("3_ka213")]
+[node name="Respawn" parent="Control/RespawnLayer" unique_id=328929917 instance=ExtResource("3_ka213")]
 mouse_filter = 2
 
-[node name="Dithering" type="ColorRect" parent="Control/SubViewportContainer/SubViewport/MainCamera" unique_id=2005476111]
-visibility_layer = 1048575
-z_index = 4096
-z_as_relative = false
-texture_filter = 1
-material = SubResource("ShaderMaterial_xylyt")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Switch" type="SubViewportContainer" parent="Control" unique_id=1255912695]
+light_mask = 0
+visibility_layer = 0
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+stretch = true
+
+[node name="SubViewport3" type="SubViewport" parent="Control/Switch" unique_id=1259128749]
+handle_input_locally = false
+size = Vector2i(320, 240)
+render_target_update_mode = 4
+
+[node name="TerraformationSwitch" type="Camera3D" parent="Control/Switch/SubViewport3" unique_id=1083812119 node_paths=PackedStringArray("origin")]
+cull_mask = 327679
+environment = SubResource("Environment_4yjki")
+script = ExtResource("2_2oa4g")
+origin = NodePath("../../../MainRender/SubViewport/Pre-Terraformation")
+
+[node name="CombineCameras" type="ColorRect" parent="Control" unique_id=1326560772]
+material = SubResource("ShaderMaterial_2oa4g")
+custom_minimum_size = Vector2(320, 240)
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 2
 
 [node name="CRT" type="ColorRect" parent="Control" unique_id=1296600594]
 visibility_layer = 1048575
