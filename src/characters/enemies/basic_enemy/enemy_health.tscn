@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b32uxhadospgh"]
+
+[ext_resource type="Script" uid="uid://ckqppnfr8l5ja" path="res://characters/enemies/basic_enemy/enemy_health.gd" id="1_iadiq"]
+
+[sub_resource type="Gradient" id="Gradient_qtf7b"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.5194, 0.5224033, 0.53, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vk5xh"]
+gradient = SubResource("Gradient_qtf7b")
+width = 100
+height = 30
+
+[sub_resource type="Gradient" id="Gradient_cid76"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.91, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_318by"]
+gradient = SubResource("Gradient_cid76")
+width = 88
+height = 22
+
+[node name="EnemyHealth" type="Control" unique_id=1346969921]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(5, 5)
+script = ExtResource("1_iadiq")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1897609437]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 30.0
+value = 100.0
+texture_under = SubResource("GradientTexture2D_vk5xh")
+texture_progress = SubResource("GradientTexture2D_318by")
+texture_progress_offset = Vector2(6, 4)
