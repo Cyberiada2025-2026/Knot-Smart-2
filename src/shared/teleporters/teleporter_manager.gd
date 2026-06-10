@@ -11,10 +11,10 @@ var camera: PlayerCamera
 
 @onready var teleporters = $Teleporters
 @onready var input_window: InputWindow = $InputWindow
-@onready var teleporter_buttons = (
-	$TeleporterSelectionWindow/Control/VBoxContainer2/ScrollContainer/VBoxContainer
-	)
+@onready
+var teleporter_buttons = $TeleporterSelectionWindow/Control/VBoxContainer2/ScrollContainer/VBoxContainer
 @onready var teleporter_selection_window = $TeleporterSelectionWindow/Control
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("teleporter_place_mode"):
@@ -48,9 +48,7 @@ func _physics_process(_delta: float) -> void:
 	):
 		return
 
-	var raycast_result = (
-		UnsafeRaycastBuilder.new(self).enable_collisions_with_areas().raycast()
-	)
+	var raycast_result = UnsafeRaycastBuilder.new(self).enable_collisions_with_areas().raycast()
 
 	if raycast_result.is_empty():
 		return

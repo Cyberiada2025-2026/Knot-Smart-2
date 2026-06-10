@@ -1,11 +1,12 @@
 class_name InputWindow
 extends Node
 
-signal text_submitted()
+signal text_submitted
 
 @onready var submit_field: LineEdit = $Control/VBoxContainer/LineEdit
-@onready var submit_button: Button  = $Control/VBoxContainer/SubmitButton
+@onready var submit_button: Button = $Control/VBoxContainer/SubmitButton
 @onready var label: RichTextLabel = $Control/VBoxContainer/RichTextLabel
+
 
 func unpause_game() -> void:
 	PauseController.unpause_game()

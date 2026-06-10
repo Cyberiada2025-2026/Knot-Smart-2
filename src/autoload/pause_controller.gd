@@ -2,8 +2,10 @@ extends Node
 
 var _prev_mouse_mode
 
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
 
 ## Pauses tree processing [br]
 ## additionally shows cursor

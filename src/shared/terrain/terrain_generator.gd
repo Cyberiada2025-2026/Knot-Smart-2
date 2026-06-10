@@ -7,6 +7,7 @@ extends Node
 var world_generation_params: WorldGenerationParams
 var blueprint: MapTileData
 
+
 func run_generation(manager: GridGenerationPipeline) -> void:
 	blueprint = manager.blueprint
 	world_generation_params = manager.world_generation_params
@@ -43,15 +44,12 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 
 			var mi = MeshInstance3D.new()
 			mi.mesh = generate_tile_mesh(coord)
-			mi.position = Vector3(
-				0, -tile.height , 0
-			)
+			mi.position = Vector3(0, -tile.height, 0)
 
 			if terrain_params.terrain_material:
 				mi.material_override = terrain_params.terrain_material
 
 			mi.create_trimesh_collision()
-
 
 			tile.objects.clear()
 			tile.objects.append(mi)
@@ -69,8 +67,8 @@ func generate_tile_mesh(coord: Vector2i) -> Mesh:
 	var h1 = blueprint.get_height(Vector2i(x + 1, z))  # Neighbor X (Top-Right)
 	var h2 = blueprint.get_height(Vector2i(x, z + 1))  # Neighbor Z (Bottom-Left)
 	var h3 = blueprint.get_height(Vector2i(x + 1, z + 1))  # Neighbor Diag (Bottom-Right)
-	
-	blueprint.data[coord].height = min(h0,h1,h2,h3)
+
+	blueprint.data[coord].height = min(h0, h1, h2, h3)
 
 	var v0 = Vector3(0, h0, 0)
 	var v1 = Vector3(ts, h1, 0)
@@ -80,11 +78,10 @@ func generate_tile_mesh(coord: Vector2i) -> Mesh:
 	var n1 = add_triangle(st, [v0, v1, v2])
 	var n2 = add_triangle(st, [v1, v3, v2])
 
-	slopify(n1,n2, coord)
+	slopify(n1, n2, coord)
 
 	st.generate_tangents()
 	return st.commit()
-
 
 
 func add_triangle(st: SurfaceTool, vertices: Array):

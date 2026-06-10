@@ -11,18 +11,17 @@ extends Node
 @export var map_visualization: bool
 
 @export var log_generation_steps: bool
-@export_tool_button("Log Generated Map") var log_generated_map_to_console = (
-	_print_to_console.bind("type")
-)
+@export_tool_button("Log Generated Map")
+var log_generated_map_to_console = _print_to_console.bind("type")
 @export_tool_button("Log ID's") var log_id_to_console = _print_to_console.bind("id")
-@export_tool_button("Log Rotations") var log_rotations_to_console = (
-	_print_to_console.bind("rotation")
-)
+@export_tool_button("Log Rotations")
+var log_rotations_to_console = _print_to_console.bind("rotation")
 
 var blueprint: MapTileData
 var _spot_generator = SpotGenerator.new()
 var _map_size: int
 var _generation_manager: GridGenerationPipeline
+
 
 func _process(_delta: float) -> void:
 	if limit_areas_visualization:
@@ -57,7 +56,7 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 	#var autotiler: RoadAutotile = RoadAutotile.new()
 #
 	#if not autotiler.autotile_roads(manager):
-		#return false
+	#return false
 
 	if log_generation_steps:
 		print("finished full generation!\n")
@@ -102,12 +101,12 @@ func _print_to_console(key: String) -> void:
 					output += " R"
 					#output += " " + str(blueprint.data[Vector2i(x, y)].height)
 				#if key == "rotation":
-					#output += " " + str(blueprint[Vector2i(x, y)][key] / 90)
+				#output += " " + str(blueprint[Vector2i(x, y)][key] / 90)
 				#if key == "id":
-					#if blueprint[Vector2i(x, y)][key] >= 0 and blueprint[Vector2i(x, y)][key] < 10:
-						#output += " " + str(blueprint[Vector2i(x, y)][key])
-					#else:
-						#output += str(blueprint[Vector2i(x, y)][key])
+				#if blueprint[Vector2i(x, y)][key] >= 0 and blueprint[Vector2i(x, y)][key] < 10:
+				#output += " " + str(blueprint[Vector2i(x, y)][key])
+				#else:
+				#output += str(blueprint[Vector2i(x, y)][key])
 			else:
 				output += "  "
 		print(output)
@@ -127,11 +126,11 @@ func _visualize() -> void:
 		if blueprint.data[coord].tile_type == TileInfo.Type.ROAD:
 			DebugDraw3D.draw_box(
 				Vector3(coord.x * scale, blueprint.data[coord].height, coord.y * scale),
-					Quaternion.IDENTITY,
-					Vector3(scale, 0.01, scale),
-					Color.WHITE,
-					false
-				)
+				Quaternion.IDENTITY,
+				Vector3(scale, 0.01, scale),
+				Color.WHITE,
+				false
+			)
 
 
 ## visualization for better areas setup

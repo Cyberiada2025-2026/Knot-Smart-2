@@ -4,6 +4,7 @@ extends Node3D
 @export var before_change: Node3D
 @export var after_change: Node3D
 
+
 func _ready() -> void:
 	if before_change == null or after_change == null:
 		return
@@ -14,6 +15,7 @@ func _ready() -> void:
 	after_change.visible = false
 	if after_change is CSGShape3D:
 		after_change.use_collision = false
+
 
 func _on_change_part(_node: Node) -> void:
 	if before_change == null or after_change == null:

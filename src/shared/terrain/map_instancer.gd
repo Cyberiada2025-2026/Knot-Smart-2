@@ -26,6 +26,7 @@ func set_owner_recursive(node: Node, owner_node: Node):
 	for child in node.get_children():
 		set_owner_recursive(child, owner_node)
 
+
 func create_map_instance(map_path: String = scene_path) -> void:
 	scene_path = map_path
 	if FileAccess.file_exists(scene_path):
@@ -95,14 +96,15 @@ func create_chunk_scene(chunk_coord: Vector2i, chunk_final_path: String) -> void
 				mi.name = "Tile_%d_%d" % [x, z]
 
 				var local_pos = Vector3(
-					x * world_generation_params.tile_size, tile_info["height"] + mi.position.y, z * world_generation_params.tile_size
+					x * world_generation_params.tile_size,
+					tile_info["height"] + mi.position.y,
+					z * world_generation_params.tile_size
 				)
 				mi.position = local_pos
 
 				chunk_node.add_child(mi)
 				mi.owner = chunk_node
 				set_owner_recursive(mi, chunk_node)
-
 
 	var scene = PackedScene.new()
 	var directory_path = chunk_final_path.get_base_dir()
