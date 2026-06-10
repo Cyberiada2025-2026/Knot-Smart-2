@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://u8e7ivwgn30i"]
 
 [ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="1_s4hfs"]
+[ext_resource type="Script" uid="uid://b0sxpo4x8f11a" path="res://shared/day_night_cycle/day_night_cycle.gd" id="2_si2mp"]
+[ext_resource type="Script" uid="uid://bspfhf53tg7of" path="res://shared/day_night_cycle/time_period.gd" id="3_isd4l"]
 [ext_resource type="Script" uid="uid://djg0m48s04bny" path="res://shared/health/base_damage_component.gd" id="3_x8hl5"]
-[ext_resource type="Script" path="res://shared/health/stun_component.gd" id="4_vas5k"]
+[ext_resource type="CompressedTexture3D" uid="uid://bxk4ky7cnaadh" path="res://shared/day_night_cycle/LUTs/LUT_sunset.png" id="4_mhegm"]
+[ext_resource type="Script" uid="uid://bxjrubfcv84ac" path="res://shared/health/stun_component.gd" id="4_vas5k"]
 [ext_resource type="Script" uid="uid://bh2wj72adhamc" path="res://shared/changing_parts/changing_part.gd" id="5_321mu"]
+[ext_resource type="CompressedTexture3D" uid="uid://dr3gvkecm4lp3" path="res://shared/day_night_cycle/LUTs/LUT_day.png" id="5_jppmo"]
 [ext_resource type="Script" uid="uid://c8acika7wo4ks" path="res://shared/buildings/building_generation/building_generator.gd" id="6_0hmuk"]
+[ext_resource type="CompressedTexture3D" uid="uid://bmqvnf4nb6r6f" path="res://shared/day_night_cycle/LUTs/LUT_night.png" id="6_5psq7"]
 [ext_resource type="PackedScene" uid="uid://cwmyt6y2863aq" path="res://shared/antennas/radio_tower/radio_tower.tscn" id="6_f8fwh"]
 [ext_resource type="Resource" uid="uid://dm1eub1sdan0k" path="res://shared/buildings/model_management/basic_building_tileset.tres" id="7_op0iv"]
 [ext_resource type="Script" uid="uid://uq2ee3iq6x08" path="res://shared/buildings/building_generation/building_generation_params.gd" id="8_e2d8t"]
@@ -104,6 +109,37 @@ size = Vector3(14, 14, 10)
 transform = Transform3D(1, 0, 0, 0, 0.90547997, 0.42438912, 0, -0.42438912, 0.90547997, 0, 0, 0)
 
 [node name="WorldEnvironment" parent="." unique_id=11299357 instance=ExtResource("9_rjtpl")]
+
+[node name="DayNightCycle" type="Node3D" parent="." unique_id=442292492]
+script = ExtResource("2_si2mp")
+current_day = 0
+day_seconds = 0.0
+metadata/_custom_type_script = "uid://b0sxpo4x8f11a"
+
+[node name="Dusk" type="Node" parent="DayNightCycle" unique_id=1431352779]
+script = ExtResource("3_isd4l")
+duration = 20.0
+color_lut = ExtResource("4_mhegm")
+metadata/_custom_type_script = "uid://bspfhf53tg7of"
+
+[node name="Day" type="Node" parent="DayNightCycle" unique_id=203701864]
+script = ExtResource("3_isd4l")
+duration = 60.0
+color_lut = ExtResource("5_jppmo")
+metadata/_custom_type_script = "uid://bspfhf53tg7of"
+
+[node name="Sunset" type="Node" parent="DayNightCycle" unique_id=860001923]
+script = ExtResource("3_isd4l")
+duration = 20.0
+color_lut = ExtResource("4_mhegm")
+metadata/_custom_type_script = "uid://bspfhf53tg7of"
+
+[node name="Night" type="Node" parent="DayNightCycle" unique_id=679576861]
+script = ExtResource("3_isd4l")
+duration = 40.0
+color_lut = ExtResource("6_5psq7")
+is_night = true
+metadata/_custom_type_script = "uid://bspfhf53tg7of"
 
 [node name="Player" parent="." unique_id=1889026106 instance=ExtResource("1_s4hfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
