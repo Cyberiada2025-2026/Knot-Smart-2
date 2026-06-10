@@ -52,7 +52,9 @@ func generate_spots(road_generator: RoadGenerator):
 		_final_spots.append_array(spots.filter(_is_spot_touching_map_bounds))
 
 	if road_generator.log_generation_steps:
-		print("Roads generated, road generation success steps: ", steps_success, " all: ", steps_all)
+		print(
+			"Roads generated, road generation success steps: ", steps_success, " all: ", steps_all
+		)
 
 
 func cast_spots_to_blueprint():
@@ -77,16 +79,16 @@ func _get_area_positions_array(start: Vector2i, end: Vector2i) -> Array:
 
 func _is_valid_tile(position: Vector2i, axis: Utils.Axis2):
 	return (
-			(
-				axis == Utils.Axis2.X
-				and _blueprint.data[position].placement_rule == TileInfo.PlacementRule.SLOPE_X
-			)
-			or (
-				axis == Utils.Axis2.Y
-				and _blueprint.data[position].placement_rule == TileInfo.PlacementRule.SLOPE_Z
-			)
-			or _blueprint.data[position].placement_rule == TileInfo.PlacementRule.FLAT
+		(
+			axis == Utils.Axis2.X
+			and _blueprint.data[position].placement_rule == TileInfo.PlacementRule.SLOPE_X
 		)
+		or (
+			axis == Utils.Axis2.Y
+			and _blueprint.data[position].placement_rule == TileInfo.PlacementRule.SLOPE_Z
+		)
+		or _blueprint.data[position].placement_rule == TileInfo.PlacementRule.FLAT
+	)
 
 
 ## Splits spot into 2 smaller ones if possible
@@ -95,8 +97,7 @@ func _split_spot(spot: Spot, area: LimiterArea, axis: int, spots: Array) -> bool
 		return false
 
 	var split_point = randi_range(
-		area.min_spot_size[axis],
-		spot.size()[axis] - area.min_spot_size[axis]
+		area.min_spot_size[axis], spot.size()[axis] - area.min_spot_size[axis]
 	)
 
 	var e1: Vector2i = spot.end
@@ -130,10 +131,7 @@ func _is_line_containing_blockers(start: Vector2i, end: Vector2i, axis: Utils.Ax
 
 func _is_spot_touching_map_bounds(spot: Spot) -> bool:
 	for axis in Utils.Axis2.values():
-		if(
-			spot.start[axis] == 0
-			or spot.end[axis] ==  _map_size - 1
-		):
+		if spot.start[axis] == 0 or spot.end[axis] == _map_size - 1:
 			return true
 	return false
 
@@ -144,14 +142,11 @@ func _move_spot_start(spots: Array[Spot], ignore_blockers: bool = false):
 		for spot in spots:
 			# off by 1 but different axis
 			var start: Vector2i = spot.start
-			start[axis] = spot.start[axis] + 1 # probably won't work
+			start[axis] = spot.start[axis] + 1  # probably won't work
 			var end: Vector2i = spot.end
 			end[axis] = start[axis]
 			if (
 				spot.start[axis] != 0
-				and (
-					not _is_line_containing_blockers(start, end, axis)
-					or ignore_blockers
-					)
+				and (not _is_line_containing_blockers(start, end, axis) or ignore_blockers)
 			):
 				spot.start[axis] += 1

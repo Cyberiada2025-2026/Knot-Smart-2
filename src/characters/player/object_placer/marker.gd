@@ -7,6 +7,7 @@ var allows_placement = false
 @onready var marker_colliding = $MarkerColliding
 @onready var collision_shape = $CollisionShape3D
 
+
 func resize(size: Vector3) -> void:
 	marker_allowing_placement.mesh.size = size
 	marker_colliding.mesh.size = size

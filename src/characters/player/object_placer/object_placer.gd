@@ -32,6 +32,7 @@ var _item_to_be_placed
 @onready var _marker: Marker = $Marker
 @onready var _camera_mode = $CameraMode
 
+
 ## enter item placement mode [BR]
 ## marker is resized automatically based on provided sprite size [BR]
 ## returns false if enabling placement mode was impossible
@@ -89,9 +90,10 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var raycast_result = (
-		UnsafeRaycastBuilder.new(self)
-			.set_screen_position(get_viewport().get_mouse_position())
-			.raycast()
+		UnsafeRaycastBuilder
+		. new(self)
+		. set_screen_position(get_viewport().get_mouse_position())
+		. raycast()
 	)
 
 	if raycast_result.is_empty():
@@ -111,7 +113,10 @@ func _physics_process(delta: float) -> void:
 
 	raycast_result = roof_checking_raycast(raycast_result.position)
 
-	if raycast_result.is_empty() or abs(_player_position.y - raycast_result.position.y) > max_height_difference:
+	if (
+		raycast_result.is_empty()
+		or abs(_player_position.y - raycast_result.position.y) > max_height_difference
+	):
 		return
 
 	# avoiding too big terrain angles
@@ -150,13 +155,14 @@ func _v3_to_v2(vector: Vector3) -> Vector2:
 
 func roof_checking_raycast(_position: Vector3):
 	var roof = (
-			UnsafeRaycastBuilder.new(self)
-				.set_ray_length(ADDITIONAL_RAYCAST_HEIGHT)
-				.set_raycast_origin(_position)
-				.set_direction(Vector3.UP)
-				.set_collision_mask(1)
-				.raycast()
-		)
+		UnsafeRaycastBuilder
+		. new(self)
+		. set_ray_length(ADDITIONAL_RAYCAST_HEIGHT)
+		. set_raycast_origin(_position)
+		. set_direction(Vector3.UP)
+		. set_collision_mask(1)
+		. raycast()
+	)
 
 	var raycast_origin = _position + Vector3(0, ADDITIONAL_RAYCAST_HEIGHT, 0)
 
@@ -164,11 +170,12 @@ func roof_checking_raycast(_position: Vector3):
 		raycast_origin.y = roof.position.y
 
 	var raycast_result = (
-		UnsafeRaycastBuilder.new(self)
-			.set_ray_length(ADDITIONAL_RAYCAST_HEIGHT * 2)
-			.set_raycast_origin(raycast_origin)
-			.set_direction(Vector3.DOWN)
-			.raycast()
+		UnsafeRaycastBuilder
+		. new(self)
+		. set_ray_length(ADDITIONAL_RAYCAST_HEIGHT * 2)
+		. set_raycast_origin(raycast_origin)
+		. set_direction(Vector3.DOWN)
+		. raycast()
 	)
 	return raycast_result
 
@@ -181,7 +188,6 @@ func update_marker(raycast_result, delta):
 	_marker.global_position = raycast_result.position
 	# fix collision with floor due to low float precision
 	_marker.global_position += Vector3(0, 0.000002, 0)
-
 
 	if Input.is_action_pressed("rotate"):
 		_marker_rotation = _marker_rotation + rotation_speed * delta

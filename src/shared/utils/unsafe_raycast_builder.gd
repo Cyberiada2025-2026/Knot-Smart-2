@@ -49,6 +49,7 @@ func set_direction(_normal: Vector3) -> UnsafeRaycastBuilder:
 	normal = _normal
 	return self
 
+
 func set_collision_mask(value: int) -> UnsafeRaycastBuilder:
 	collision_mask = value
 	return self

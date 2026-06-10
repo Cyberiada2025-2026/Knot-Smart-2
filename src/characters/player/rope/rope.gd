@@ -86,7 +86,7 @@ func fuse():
 		for child in fusable.get_children():
 			if child is NodeLink and child.linked is Rope:
 				child.linked.finish()
-		fusable.hide() # deletion triggers after dialogue end
+		fusable.hide()  # deletion triggers after dialogue end
 		fusable.get_node("FusableWithTower").trigger_dialogue_and_delete_node()
 		tower.item_fused()
 		finish()

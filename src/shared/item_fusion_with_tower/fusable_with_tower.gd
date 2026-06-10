@@ -3,6 +3,7 @@ extends Node
 
 @export var dialogue: Dialogue
 
+
 ## triggers dialogue connected with item that will be fused [br]
 ## after paying dialogue deletes parent node!!!
 func trigger_dialogue_and_delete_node():
