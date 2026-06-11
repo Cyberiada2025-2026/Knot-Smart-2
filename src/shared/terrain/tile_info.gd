@@ -11,6 +11,7 @@ enum PlacementRule {
 var height: float
 var objects: Array[MeshInstance3D]
 var placement_rule: PlacementRule
+var is_water: bool
 
 
 func _init(
@@ -21,3 +22,4 @@ func _init(
 	self.height = _height
 	self.placement_rule = _placement_rule
 	self.objects = _objects
+	self.is_water = false
