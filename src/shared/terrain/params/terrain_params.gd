@@ -17,3 +17,4 @@ extends Resource
 ## The material applied to the generated mesh surface.
 ## Expects a type of Material (e.g., StandardMaterial3D or ShaderMaterial).
 @export var terrain_material: Material
+@export var water_material: Material
