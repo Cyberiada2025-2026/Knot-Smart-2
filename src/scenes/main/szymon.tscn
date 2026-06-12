@@ -1,3 +1,36 @@
 [gd_scene format=3 uid="uid://dok2k0qk1a7ta"]
 
+[ext_resource type="Script" uid="uid://d3priws45vp1i" path="res://shared/nature_generators/tree_generator/tree_generator.gd" id="1_6gbb2"]
+[ext_resource type="PackedScene" uid="uid://cclq7jgpfrccu" path="res://shared/nature_generators/tree_generator/tree_materials/branches/dandelion_branches/dandelion_branches.tscn" id="2_qnicv"]
+[ext_resource type="Script" uid="uid://cs824opuvcx8k" path="res://shared/nature_generators/foliage_generator/foliage_parameters.gd" id="3_2wred"]
+[ext_resource type="Material" uid="uid://wu6m01tfoh1q" path="res://shared/nature_generators/tree_generator/tree_materials/bark/bark.tres" id="4_xihla"]
+[ext_resource type="Script" uid="uid://s0k1bcrvckmc" path="res://shared/nature_generators/tree_generator/tree_parameters.gd" id="5_7crpr"]
+
+[sub_resource type="Resource" id="Resource_q3afr"]
+script = ExtResource("3_2wred")
+mesh = ExtResource("2_qnicv")
+scale = 2.0
+metadata/_custom_type_script = "uid://cs824opuvcx8k"
+
+[sub_resource type="Resource" id="Resource_7u7ig"]
+script = ExtResource("5_7crpr")
+material = ExtResource("4_xihla")
+min_count = 2
+max_count = 3
+branch_recursion_level = 1
+foliage_parameters = SubResource("Resource_q3afr")
+metadata/_custom_type_script = "uid://s0k1bcrvckmc"
+
 [node name="Szymon" type="Node3D" unique_id=904338965]
+
+[node name="TreeGenerator" type="Node3D" parent="." unique_id=1636540979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.159087, -0.5319556, 2.8596125)
+script = ExtResource("1_6gbb2")
+params = SubResource("Resource_7u7ig")
+metadata/_custom_type_script = "uid://d3priws45vp1i"
+
+[node name="TreeGenerator2" type="Node3D" parent="." unique_id=754248397]
+transform = Transform3D(-0.72176015, 0, -0.69214326, 0, 1, 0, 0.69214326, 0, -0.72176015, -16.2693, -0.5319556, -11.699533)
+script = ExtResource("1_6gbb2")
+params = SubResource("Resource_7u7ig")
+metadata/_custom_type_script = "uid://d3priws45vp1i"
