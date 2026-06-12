@@ -7,6 +7,8 @@ var health
 var camera: Camera3D
 var enemy: Node3D
 
+@export var enemy_height: int = 6
+
 
 func _ready() -> void:
 	camera = get_viewport().get_camera_3d().get_node(
@@ -25,24 +27,13 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var screen_pos = camera.unproject_position(enemy.global_position + Vector3(0, 6, 0))
-	visible = not camera.is_position_behind(enemy.global_position + Vector3(0, 6, 0))
+	var screen_pos = camera.unproject_position(enemy.global_position + Vector3(0, enemy_height, 0))
+	visible = not camera.is_position_behind(enemy.global_position + Vector3(0, enemy_height, 0))
 	print(screen_pos)
 	global_position = screen_pos
-	#  you can adjust the position for visual clarity
 	global_position += Vector2(-get_rect().size.x / 2, 0)
 	var distance = camera.global_transform.origin.distance_to(enemy.global_transform.origin)
-	print(
-		(
-			"var distance: "
-			+ str(distance)
-			+ " 2) "
-			+ str(1.0 - distance)
-			+ " 3) "
-			+ str(20.0 / distance)
-		)
-	)
-	var scale_factor = clamp(20.0 / distance, 0.1, 1.0)
+	var scale_factor = clamp(pow(10.0 / distance, 1.5), 0.1, 0.7)
 	scale = Vector2(scale_factor, scale_factor)
 
 
