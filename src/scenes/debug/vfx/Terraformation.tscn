@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cugcib0wigegj"]
+
+[ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="1_5by1l"]
+[ext_resource type="Script" uid="uid://wse4o67cd8o7" path="res://shared/vfx/terraformation/terraformation_test.gd" id="1_p0n74"]
+[ext_resource type="PackedScene" uid="uid://d3do8qjg830l3" path="res://shared/vfx/terraformation/terraformation_vfx.tscn" id="1_v1imk"]
+[ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="2_3c8q3"]
+[ext_resource type="Material" uid="uid://cs6kr88umcnbn" path="res://shared/water/water.tres" id="3_jqf7e"]
+[ext_resource type="Material" uid="uid://bqotukflf007d" path="res://shared/water/water_alien.tres" id="4_1vq4j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c8q3"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v1imk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0n74"]
+albedo_color = Color(6.256998e-07, 0.6447593, 0.25482148, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_p0n74"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jqf7e"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1vq4j"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3c8q3"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1imk"]
+albedo_color = Color(0.32915825, 0.32915843, 0.3291583, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1imk"]
+size = Vector3(20, 1, 100)
+
+[node name="Terraformation" type="Node3D" unique_id=71758995]
+
+[node name="Test" type="Node" parent="." unique_id=523100802 node_paths=PackedStringArray("vfx")]
+script = ExtResource("1_p0n74")
+vfx = NodePath("../TerraformationVFX")
+
+[node name="TerraformationVFX" parent="." unique_id=1310566080 instance=ExtResource("1_v1imk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4638109, -4.434496)
+max_radius = 25.0
+growing_time = 10.0
+
+[node name="Test_object" type="Node3D" parent="." unique_id=1960314616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3510308, 1.569562, -6.096801)
+
+[node name="Cube1" type="MeshInstance3D" parent="Test_object" unique_id=1485417078]
+layers = 256
+material_override = SubResource("StandardMaterial3D_3c8q3")
+mesh = SubResource("BoxMesh_v1imk")
+skeleton = NodePath("../../Player")
+
+[node name="Cube2" type="MeshInstance3D" parent="Test_object" unique_id=948391072]
+layers = 2048
+material_override = SubResource("StandardMaterial3D_p0n74")
+mesh = SubResource("BoxMesh_v1imk")
+skeleton = NodePath("../../Player")
+
+[node name="Cube3" type="MeshInstance3D" parent="Test_object" unique_id=1558947766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0486135, 0, 2.611199)
+layers = 2048
+material_override = SubResource("StandardMaterial3D_p0n74")
+mesh = SubResource("BoxMesh_v1imk")
+skeleton = NodePath("../../Player")
+
+[node name="Test_object2" type="Node3D" parent="." unique_id=1286214293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7143168, 1.3375192, -3.8832374)
+
+[node name="Cube1" type="MeshInstance3D" parent="Test_object2" unique_id=1563254623]
+layers = 256
+material_override = SubResource("StandardMaterial3D_3c8q3")
+mesh = SubResource("SphereMesh_p0n74")
+skeleton = NodePath("../../Player")
+
+[node name="Cube2" type="MeshInstance3D" parent="Test_object2" unique_id=1318759821]
+layers = 2048
+material_override = SubResource("StandardMaterial3D_p0n74")
+mesh = SubResource("BoxMesh_jqf7e")
+skeleton = NodePath("../../Player")
+
+[node name="Test_object3" type="Node3D" parent="." unique_id=1517327674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1702237, 0.4190824, -14.000506)
+
+[node name="Water" type="MeshInstance3D" parent="Test_object3" unique_id=1156518148]
+layers = 256
+material_override = ExtResource("3_jqf7e")
+mesh = SubResource("PlaneMesh_1vq4j")
+
+[node name="Water2" type="MeshInstance3D" parent="Test_object3" unique_id=1005023105]
+layers = 4096
+material_override = ExtResource("4_1vq4j")
+mesh = SubResource("PlaneMesh_1vq4j")
+
+[node name="10x10_floor" type="StaticBody3D" parent="." unique_id=66569231]
+
+[node name="PreTerra" type="MeshInstance3D" parent="10x10_floor" unique_id=1808326668]
+layers = 128
+mesh = SubResource("BoxMesh_3c8q3")
+
+[node name="PostTerra" type="MeshInstance3D" parent="10x10_floor" unique_id=1449614695]
+layers = 2048
+material_override = SubResource("StandardMaterial3D_v1imk")
+mesh = SubResource("BoxMesh_3c8q3")
+skeleton = NodePath("../PreTerra")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="10x10_floor" unique_id=943074453]
+shape = SubResource("BoxShape3D_v1imk")
+
+[node name="Player" parent="." unique_id=1889026106 instance=ExtResource("1_5by1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.569562, 0)
+
+[node name="WorldEnvironment" parent="." unique_id=11299357 instance=ExtResource("2_3c8q3")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1550022967]
+transform = Transform3D(1, 0, 0, 0, 0.90547997, 0.42438912, 0, -0.42438912, 0.90547997, 0, 0, 0)
