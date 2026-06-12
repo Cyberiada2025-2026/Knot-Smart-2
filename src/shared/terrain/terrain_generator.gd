@@ -73,11 +73,19 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 		for z in blueprint.world_size:
 			var coord = Vector2i(x, z)
 			var tile = blueprint.data[coord]
-			tile.height = blueprint.get_height(coord)
 
 			var mi = MeshInstance3D.new()
 			mi.mesh = generate_tile_mesh(coord)
 			mi.position = Vector3(0, -tile.height, 0)
+			var miclone: MeshInstance3D
+			if tile.is_water:
+				miclone = mi.duplicate()
+				var watermesh = PlaneMesh.new()
+				watermesh.size = Vector2(world_generation_params.tile_height*2,world_generation_params.tile_height*2)
+				miclone.mesh = watermesh
+				miclone.material_override = terrain_params.water_material
+				miclone.position.y -= 0.5
+				miclone.create_trimesh_collision()
 
 			if terrain_params.terrain_material:
 				mi.material_override = terrain_params.terrain_material
@@ -85,11 +93,12 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			if texture_data.has(pix):
 					mi.material_override = texture_data[pix]
 
-			tile.height = blueprint.get_height(coord) 
 			mi.create_trimesh_collision()
 
 			tile.objects.clear()
 			tile.objects.append(mi)
+			if tile.is_water:
+				tile.objects.append(miclone)
 
 
 func generate_tile_mesh(coord: Vector2i) -> Mesh:
@@ -104,11 +113,9 @@ func generate_tile_mesh(coord: Vector2i) -> Mesh:
 	var h1 = blueprint.get_height(Vector2i(x + 1, z))  
 	var h2 = blueprint.get_height(Vector2i(x, z + 1))  
 	var h3 = blueprint.get_height(Vector2i(x + 1, z + 1))  
-
+	
 	blueprint.data[coord].height = min(h0,h1,h2,h3)
-
-	blueprint.data[coord].height = min(h0, h1, h2, h3)
-
+		
 	var v0 = Vector3(0, h0, 0)
 	var v1 = Vector3(ts, h1, 0)
 	var v2 = Vector3(0, h2, ts)
