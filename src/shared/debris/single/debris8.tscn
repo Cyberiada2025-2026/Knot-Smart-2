@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bp80rp5ygnnf"]
+
+[ext_resource type="PackedScene" uid="uid://txti00eiha2k" path="res://shared/debris/debris8.glb" id="1_dwnjd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s4ge6"]
+points = PackedVector3Array(-0.599769, -0.2, -0.22372445, -0.599769, 0.5315316, -0.22372445, 0.30840302, -0.2, -0.123703904, -1, -0.2, 1, -1, 0.49307513, 1, 0.30840302, 0.49307513, 1, 0.30840302, 0.49307513, -0.123703904, 0.30840302, -0.2, 1)
+
+[node name="Debris8" type="RigidBody3D" unique_id=407552912]
+mass = 10.0
+
+[node name="debris8" parent="." unique_id=1836523223 instance=ExtResource("1_dwnjd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=462164578]
+shape = SubResource("ConvexPolygonShape3D_s4ge6")
