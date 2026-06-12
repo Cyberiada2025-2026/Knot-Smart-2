@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dl3mfbg382n1p"]
 
-[ext_resource type="PackedScene" uid="uid://dkply4kh56ud4" path="res://shared/debris/debris3.glb" id="1_lvvat"]
+[ext_resource type="PackedScene" uid="uid://dkply4kh56ud4" path="res://shared/debris/single/models/debris3.glb" id="1_lvvat"]
+[ext_resource type="Material" uid="uid://bjkeopeq3ehmb" path="res://shared/buildings/assets/materials/building_base_material.tres" id="2_l5tut"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pxwvx"]
 points = PackedVector3Array(-0.45575565, -0.2, -0.5368183, -0.45575565, 0.19997402, -0.5368183, 1, -0.2, -0.5368183, -1, -0.2, 0.9998496, -1, 0.19997402, 0.9998496, 1, 0.24554951, -0.5368183, 1, -0.2, 0.9998496, 1, 0.19997402, 0.9998496)
@@ -10,5 +11,10 @@ mass = 10.0
 
 [node name="debris3" parent="." unique_id=1410074506 instance=ExtResource("1_lvvat")]
 
+[node name="Debris_003" parent="debris3" index="0" unique_id=1228209557]
+surface_material_override/0 = ExtResource("2_l5tut")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=83535570]
 shape = SubResource("ConvexPolygonShape3D_pxwvx")
+
+[editable path="debris3"]
