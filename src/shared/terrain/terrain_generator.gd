@@ -85,7 +85,6 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			if texture_data.has(pix):
 					mi.material_override = texture_data[pix]
 
-			var tile = blueprint.data[coord]
 			tile.height = blueprint.get_height(coord) 
 			mi.create_trimesh_collision()
 
