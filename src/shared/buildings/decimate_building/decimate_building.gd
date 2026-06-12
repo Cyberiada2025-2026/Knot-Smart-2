@@ -43,8 +43,6 @@ func remove_from_top(gridmaps, start_position: Vector3):
 	var removed_cell = start_position
 
 	while (random.randf() < strength and removed_cell.y >= 0):
-		print("Removing cell:")
-		print(removed_cell)
 		for gridmap in gridmaps:
 			gridmap.set_cell_item(removed_cell, GridMap.INVALID_CELL_ITEM)
 		removed_cell.y -= 1
