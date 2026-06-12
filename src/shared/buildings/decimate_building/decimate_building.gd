@@ -14,6 +14,7 @@ var random = RandomNumberGenerator.new()
 func execute_decimate():
 	random.set_seed(2137)
 
+	get_parent().generate_building()
 	for _i in range(iterations):
 		decimate()
 
