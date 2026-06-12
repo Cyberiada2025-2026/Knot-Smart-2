@@ -53,8 +53,8 @@ func clear_generation():
 
 
 func _ready():
-	clear_generation()
 	if Engine.is_editor_hint() == false:
+		clear_generation()
 		chunk_manager = ChunkManager.new()
 		chunk_manager.setup(self)
 		chunk_manager.name = "Chunks"

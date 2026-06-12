@@ -17,6 +17,7 @@ enum Type {
 var height: float
 var objects: Array[Node3D]
 var placement_rule: PlacementRule
+var is_water: bool
 var tile_type: Type
 
 
@@ -29,4 +30,5 @@ func _init(
 	self.height = _height
 	self.placement_rule = _placement_rule
 	self.objects = _objects
+	self.is_water = false
 	self.tile_type = _tile_type
