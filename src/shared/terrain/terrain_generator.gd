@@ -6,19 +6,29 @@ extends Node
 
 var world_generation_params: WorldGenerationParams
 var blueprint: MapTileData
+var texture_data: Dictionary[Color, Material] = {}
 
 func run_generation(manager: GridGenerationPipeline) -> void:
 	blueprint = manager.blueprint
 	world_generation_params = manager.world_generation_params
 
 	var water_image: Image = null
+	var textures_map: Image = null
 	var img_width: int = 0
 	var img_height: int = 0
+	var txt_width: int = 0
+	var txt_height: int = 0
+	
+	for data in terrain_params.textures:
+		texture_data[data.color] = data.material
 	
 	if terrain_params.water:
 		water_image = terrain_params.water.get_image()
+		textures_map = terrain_params.texture_map.get_image()
 		img_width = water_image.get_width()
 		img_height = water_image.get_height()
+		txt_width = textures_map.get_width()
+		txt_height = textures_map.get_height()
 
 	for x in blueprint.world_size:
 		for z in blueprint.world_size:
@@ -71,6 +81,9 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 
 			if terrain_params.terrain_material:
 				mi.material_override = terrain_params.terrain_material
+			var pix = textures_map.get_pixel(x % txt_width, z % txt_height)
+			if texture_data.has(pix):
+					mi.material_override = texture_data[pix]
 
 			var tile = blueprint.data[coord]
 			tile.height = blueprint.get_height(coord) 
