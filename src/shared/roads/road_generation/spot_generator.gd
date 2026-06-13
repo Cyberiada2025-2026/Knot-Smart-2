@@ -5,6 +5,7 @@ extends Resource
 var _blueprint: MapTileData
 var _map_size: int
 var _final_spots: Array[Spot] = []
+var rng: RandomNumberGenerator
 
 
 func generate_spots(road_generator: RoadGenerator):
@@ -12,6 +13,7 @@ func generate_spots(road_generator: RoadGenerator):
 	var generation_params = road_generator.generation_params
 	_map_size = generation_params.map_size
 	var spots: Array[Spot] = []
+	rng = generation_params.rng
 	# clear previous generation results
 	_final_spots.clear()
 
@@ -24,13 +26,13 @@ func generate_spots(road_generator: RoadGenerator):
 	# splitting rectangles until they reach proper size
 	while not spots.is_empty() and steps_all < generation_params.generation_steps_limit:
 		steps_all += 1
-		var curr_spot_idx: int = randi_range(0, len(spots) - 1)
+		var curr_spot_idx: int = rng.randi_range(0, len(spots) - 1)
 		var curr_spot: Spot = spots[curr_spot_idx]
 
 		var area = generation_params.get_area(curr_spot)
 
 		# action decides whether we are splitting x or y direction
-		var axis = Utils.Axis2.values().pick_random()
+		var axis = Utils.Axis2.values()[rng.randi_range(0, 1)]
 
 		if _split_spot(curr_spot, area, axis, spots):
 			steps_success += 1
@@ -96,7 +98,7 @@ func _split_spot(spot: Spot, area: LimiterArea, axis: int, spots: Array) -> bool
 	if spot.size()[axis] <= area.max_spot_size[axis]:
 		return false
 
-	var split_point = randi_range(
+	var split_point = rng.randi_range(
 		area.min_spot_size[axis], spot.size()[axis] - area.min_spot_size[axis]
 	)
 
