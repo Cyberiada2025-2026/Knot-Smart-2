@@ -61,7 +61,7 @@ func update_active_chunks_borders() -> void:
 		render_position = Vector2i(player_position.x, player_position.z)
 		if managerRef:
 			render_position.x -= managerRef.position.x
-			render_position.y -= managerRef.position.y
+			render_position.y -= managerRef.position.z
 		render_distance = Vector2i(
 			world_display_params.render_distance, world_display_params.render_distance
 		)
