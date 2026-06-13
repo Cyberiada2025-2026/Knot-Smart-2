@@ -3,10 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="1_crhmp"]
 [ext_resource type="Script" uid="uid://d3priws45vp1i" path="res://shared/nature_generators/tree_generator/tree_generator.gd" id="2_7cgt4"]
 [ext_resource type="Resource" uid="uid://cu3velky86qgt" path="res://shared/nature_generators/tree_generator/tree_materials/branches/normal/branches.tres" id="3_ca55m"]
-[ext_resource type="Material" uid="uid://wu6m01tfoh1q" path="res://shared/nature_generators/tree_generator/tree_materials/bark/bark.tres" id="3_rrlkt"]
-[ext_resource type="Script" uid="uid://s0k1bcrvckmc" path="res://shared/nature_generators/tree_generator/tree_parameters.gd" id="4_u5v14"]
+[ext_resource type="Resource" uid="uid://c4cjyeqqa3ian" path="res://shared/nature_generators/tree_generator/tree_types/tree_type_default.tres" id="3_u5v14"]
 [ext_resource type="Script" uid="uid://bxobj8lbccu64" path="res://shared/nature_generators/foliage_generator/foliage_generator.gd" id="5_f225a"]
 [ext_resource type="Resource" uid="uid://ced0jemwdds0r" path="res://shared/nature_generators/foliage_generator/foliage_materials/bush/bush.tres" id="6_ca55m"]
+[ext_resource type="PackedScene" uid="uid://cclq7jgpfrccu" path="res://shared/nature_generators/tree_generator/tree_materials/branches/dandelion_branches/dandelion_branches.tscn" id="7_28rss"]
+[ext_resource type="Script" uid="uid://cs824opuvcx8k" path="res://shared/nature_generators/foliage_generator/foliage_parameters.gd" id="8_foowt"]
+[ext_resource type="Material" uid="uid://wu6m01tfoh1q" path="res://shared/nature_generators/tree_generator/tree_materials/bark/bark.tres" id="9_25se4"]
+[ext_resource type="Script" uid="uid://s0k1bcrvckmc" path="res://shared/nature_generators/tree_generator/tree_parameters.gd" id="10_3u8ey"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_crhmp"]
 size = Vector3(50, 1, 50)
@@ -14,13 +17,23 @@ size = Vector3(50, 1, 50)
 [sub_resource type="BoxShape3D" id="BoxShape3D_v77ug"]
 size = Vector3(50, 1, 50)
 
-[sub_resource type="Resource" id="Resource_f225a"]
-script = ExtResource("4_u5v14")
-material = ExtResource("3_rrlkt")
-max_count = 4
-branch_rate_of_shrinking = 0.76
-foliage_parameters = ExtResource("3_ca55m")
-branch_spawn_percentage = 0.35
+[sub_resource type="Resource" id="Resource_r25w1"]
+script = ExtResource("8_foowt")
+seed = 1313953762
+mesh = ExtResource("7_28rss")
+count = 1
+scale = 2.0
+metadata/_custom_type_script = "uid://cs824opuvcx8k"
+
+[sub_resource type="Resource" id="Resource_sg17b"]
+script = ExtResource("10_3u8ey")
+seed = 65446022
+material = ExtResource("9_25se4")
+branch_spread_angle = 0.312
+min_count = 2
+max_count = 3
+branch_recursion_level = 1
+foliage_parameters = SubResource("Resource_r25w1")
 metadata/_custom_type_script = "uid://s0k1bcrvckmc"
 
 [node name="TreeZoo" type="Node3D" unique_id=1622868612]
@@ -39,12 +52,6 @@ shape = SubResource("BoxShape3D_v77ug")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1744242977]
 transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 0, 0)
 
-[node name="TreeGenerator" type="Node3D" parent="." unique_id=365366120]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.116348, 0, 0)
-script = ExtResource("2_7cgt4")
-params = SubResource("Resource_f225a")
-metadata/_custom_type_script = "uid://d3priws45vp1i"
-
 [node name="FoliageGenerator" type="Node3D" parent="." unique_id=686754679]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.39140916, -9)
 script = ExtResource("5_f225a")
@@ -56,3 +63,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4723964, 0.52106667, 0)
 script = ExtResource("5_f225a")
 params = ExtResource("3_ca55m")
 metadata/_custom_type_script = "uid://bxobj8lbccu64"
+
+[node name="TreeGenerator" type="Node3D" parent="." unique_id=1855016287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.271484, 0, 0)
+script = ExtResource("2_7cgt4")
+params = ExtResource("3_u5v14")
+metadata/_custom_type_script = "uid://d3priws45vp1i"
+
+[node name="TreeGenerator2" type="Node3D" parent="." unique_id=700937633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0562134, 0, 0)
+script = ExtResource("2_7cgt4")
+params = SubResource("Resource_sg17b")
+metadata/_custom_type_script = "uid://d3priws45vp1i"

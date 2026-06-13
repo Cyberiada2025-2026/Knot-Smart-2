@@ -22,8 +22,8 @@ var nav_obstacle_generator: BuildingNavObstacleGenerator = BuildingNavObstacleGe
 
 func setup_generated_building_node() -> void:
 	generated_building_node = Node3D.new()
-	generated_building_node.name = "GeneratedBuilding"
 	add_child(generated_building_node)
+	generated_building_node.name = "GeneratedBuilding"
 	generated_building_node.owner = get_tree().edited_scene_root
 
 
@@ -57,6 +57,7 @@ func clear() -> void:
 		static_body.queue_free()
 
 	if is_instance_valid(generated_building_node):
+		generated_building_node.name = "Removed"
 		generated_building_node.queue_free()
 		generated_building_node = null
 

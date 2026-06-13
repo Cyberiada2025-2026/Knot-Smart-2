@@ -42,6 +42,7 @@ func run_generation(manager: GridGenerationPipeline) -> bool:
 	_generation_manager = manager
 	generation_params.map_size = manager.blueprint.world_size
 	_map_size = generation_params.map_size
+	generation_params.rng.seed = generation_params.generation_seed
 
 	blueprint = manager.blueprint
 
