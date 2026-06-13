@@ -66,8 +66,12 @@
 [ext_resource type="PackedScene" uid="uid://bwrknbc7w8yoc" path="res://generated/terrain/chunks/chunk_5_2.tscn" id="73_m6727"]
 [ext_resource type="PackedScene" uid="uid://emhuc0whgd81" path="res://generated/terrain/chunks/chunk_5_3.tscn" id="74_v8pgu"]
 [ext_resource type="PackedScene" uid="uid://b3pq3lm4pjpdk" path="res://characters/enemies/basic_enemy/enemy.tscn" id="78_7wli1"]
+[ext_resource type="Script" uid="uid://bm0wrygl0ikje" path="res://shared/point_of_interest/point_of_interest.gd" id="78_oveuq"]
+[ext_resource type="Script" uid="uid://krqwntoiv6fm" path="res://shared/point_of_interest/components/speech_poi.gd" id="79_awfjg"]
 [ext_resource type="PackedScene" uid="uid://bie1yxa2arqux" path="res://shared/debris/single/debris1.tscn" id="79_wut8q"]
+[ext_resource type="Script" uid="uid://dhpmrqniojeb4" path="res://shared/dialogue/dialogue.gd" id="80_0a1xl"]
 [ext_resource type="PackedScene" uid="uid://b6dvbytkt43yx" path="res://shared/debris/single/debris2.tscn" id="80_oveuq"]
+[ext_resource type="Script" uid="uid://kpru7f8vmtp5" path="res://shared/dialogue/sentence.gd" id="81_d8whw"]
 [ext_resource type="PackedScene" uid="uid://btmd85pvej0kk" path="res://shared/debris/single/debris5.tscn" id="81_gl766"]
 [ext_resource type="PackedScene" uid="uid://dv3fq7nowfxtd" path="res://generated/terrain/chunks/chunk_6_2.tscn" id="82_0gh5i"]
 [ext_resource type="PackedScene" uid="uid://b6tume7s05gho" path="res://generated/terrain/chunks/chunk_6_3.tscn" id="83_16dvt"]
@@ -167,6 +171,15 @@ size = Vector3(20, 14, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1mj3"]
 size = Vector3(14, 14, 10)
+
+[sub_resource type="Resource" id="Resource_u8h14"]
+script = ExtResource("81_d8whw")
+text = "This is the generator tower. I need to find the parts to assemble it."
+
+[sub_resource type="Resource" id="Resource_tlwao"]
+script = ExtResource("80_0a1xl")
+sentences = Array[ExtResource("81_d8whw")]([SubResource("Resource_u8h14")])
+metadata/_custom_type_script = "uid://dhpmrqniojeb4"
 
 [sub_resource type="Resource" id="Resource_jdm0r"]
 script = ExtResource("25_ws866")
@@ -1659,6 +1672,18 @@ shape = SubResource("BoxShape3D_q1mj3")
 [node name="RadioTower" parent="Map/Graybox" unique_id=336301379 instance=ExtResource("6_f8fwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 39, -16.5)
 
+[node name="PointOfInterest" type="Node3D" parent="Map/Graybox/RadioTower" unique_id=212148188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -41.283195, -0.49552155)
+script = ExtResource("78_oveuq")
+radius = 16.0
+visualize = false
+metadata/_custom_type_script = "uid://bm0wrygl0ikje"
+
+[node name="SpeechPOI" type="Node" parent="Map/Graybox/RadioTower/PointOfInterest" unique_id=937570950]
+script = ExtResource("79_awfjg")
+dialogue = SubResource("Resource_tlwao")
+metadata/_custom_type_script = "uid://krqwntoiv6fm"
+
 [node name="MapRenderer" type="Node3D" parent="Map" unique_id=1064513469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.5, -4.5, -80.80716)
 script = ExtResource("24_wxrke")
@@ -1793,6 +1818,18 @@ metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
 radius = 1.0
 material = SubResource("StandardMaterial3D_tmm0v")
 
+[node name="PointOfInterest" type="Node3D" parent="Part1" unique_id=1022072223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("78_oveuq")
+radius = 8.0
+visualize = false
+metadata/_custom_type_script = "uid://bm0wrygl0ikje"
+
+[node name="SpeechPOI" type="Node" parent="Part1/PointOfInterest" unique_id=2116052097]
+script = ExtResource("79_awfjg")
+dialogue = SubResource("Resource_tlwao")
+metadata/_custom_type_script = "uid://krqwntoiv6fm"
+
 [node name="Part2" type="RigidBody3D" parent="." unique_id=1134422633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.837666, 0.8342514, -0.5)
 collision_mask = 33
@@ -1872,6 +1909,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 3.28685, 32)
 
 [node name="Debris5" parent="." unique_id=88912901 instance=ExtResource("81_gl766")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0.5, 35.5)
+
+[node name="PointOfInterest" type="Node3D" parent="." unique_id=1571521642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 11)
+script = ExtResource("78_oveuq")
+radius = 8.0
+visualize = false
+metadata/_custom_type_script = "uid://bm0wrygl0ikje"
+
+[node name="SpeechPOI" type="Node" parent="PointOfInterest" unique_id=1692632447]
+script = ExtResource("79_awfjg")
+dialogue = SubResource("Resource_tlwao")
+metadata/_custom_type_script = "uid://krqwntoiv6fm"
 
 [connection signal="all_parts_fused" from="Map/Graybox/RadioTower" to="BigBoss" method="_on_start_boss_battle"]
 [connection signal="health_depleted" from="Enemy/HealthComponent" to="Map/Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
