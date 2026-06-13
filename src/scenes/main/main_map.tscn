@@ -20,7 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="9_rjtpl"]
 [ext_resource type="Script" uid="uid://cp8ed61leg0wl" path="res://shared/buildings/building_generation/box_description.gd" id="10_rjtpl"]
 [ext_resource type="MeshLibrary" uid="uid://dxdix3oesovgs" path="res://shared/buildings/assets/models/building_parts_no_collision.tres" id="11_si2mp"]
+[ext_resource type="Script" uid="uid://dk35hvlh1ahhu" path="res://shared/item_fusion_with_tower/fusable_with_tower.gd" id="12_tvikc"]
 [ext_resource type="Resource" uid="uid://c8xhbj0f06miu" path="res://shared/buildings/model_management/basic_building_tileset_thick_walls.tres" id="13_jppmo"]
+[ext_resource type="PackedScene" uid="uid://d0aa1l38pc6jy" path="res://characters/enemies/big_boss/big_boss.tscn" id="18_isd4l"]
 [ext_resource type="Script" uid="uid://cbn62hjlskw0a" path="res://shared/buildings/decimate_building/decimate_building.gd" id="18_mhegm"]
 [ext_resource type="MeshLibrary" uid="uid://bqqgkcaxkvu0g" path="res://shared/buildings/assets/models/building_parts_collision_thick.tres" id="19_5psq7"]
 
@@ -93,9 +95,6 @@ size = Vector3(12, 14, 12)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mhegm"]
 size = Vector3(8, 11.2, 12)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
-albedo_color = Color(1, 0, 1, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jibjt"]
 size = Vector3(12, 8.4, 10)
 
@@ -110,6 +109,48 @@ size = Vector3(20, 14, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1mj3"]
 size = Vector3(14, 14, 10)
+
+[sub_resource type="Animation" id="Animation_mhegm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-38.5, 0, 159.5)]
+}
+
+[sub_resource type="Animation" id="Animation_isd4l"]
+resource_name = "move_to_gen"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-38.5, 0, 159.5), Vector3(33.5, 0, -11)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mhegm"]
+_data = {
+&"RESET": SubResource("Animation_mhegm"),
+&"move_to_gen": SubResource("Animation_isd4l")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tvikc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
+albedo_color = Color(1, 0, 1, 1)
 
 [node name="MainMap" type="Node3D" unique_id=1480515348]
 
@@ -1230,10 +1271,6 @@ shape = SubResource("BoxShape3D_mhegm")
 
 [node name="Part1Area" type="Node3D" parent="Graybox" unique_id=1242172551]
 
-[node name="Part1" type="CSGSphere3D" parent="Graybox/Part1Area" unique_id=629962069]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0, 24.5)
-material = SubResource("StandardMaterial3D_tmm0v")
-
 [node name="BuildingsGraybox" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=1723774338]
 visible = false
 use_collision = true
@@ -1583,4 +1620,68 @@ shape = SubResource("BoxShape3D_q1mj3")
 [node name="RadioTower" parent="Graybox" unique_id=336301379 instance=ExtResource("6_f8fwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 39, -16.5)
 
+[node name="BigBoss" parent="." unique_id=1977180204 node_paths=PackedStringArray("movement_animation") instance=ExtResource("18_isd4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 159.5)
+movement_animation = NodePath("Movement")
+
+[node name="Movement" type="AnimationPlayer" parent="BigBoss" unique_id=1804274704]
+libraries/ = SubResource("AnimationLibrary_mhegm")
+
+[node name="Part1" type="RigidBody3D" parent="." unique_id=2044586578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.662334, 0.3342514, 25)
+collision_mask = 33
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Part1" unique_id=981828222]
+shape = SubResource("SphereShape3D_tvikc")
+
+[node name="FusableWithTower" type="Node" parent="Part1" unique_id=1503711086]
+script = ExtResource("12_tvikc")
+metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
+
+[node name="Part1" type="CSGSphere3D" parent="Part1" unique_id=629962069]
+material = SubResource("StandardMaterial3D_tmm0v")
+
+[node name="Part2" type="RigidBody3D" parent="." unique_id=1134422633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.837666, 0.3342514, -0.5)
+collision_mask = 33
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Part2" unique_id=689238273]
+shape = SubResource("SphereShape3D_tvikc")
+
+[node name="FusableWithTower" type="Node" parent="Part2" unique_id=810577825]
+script = ExtResource("12_tvikc")
+metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
+
+[node name="Part1" type="CSGSphere3D" parent="Part2" unique_id=4008452]
+material = SubResource("StandardMaterial3D_tmm0v")
+
+[node name="Part3" type="RigidBody3D" parent="." unique_id=1268727488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.837666, 0.3342514, -5.5)
+collision_mask = 33
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Part3" unique_id=1917856778]
+shape = SubResource("SphereShape3D_tvikc")
+
+[node name="FusableWithTower" type="Node" parent="Part3" unique_id=964655317]
+script = ExtResource("12_tvikc")
+metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
+
+[node name="Part1" type="CSGSphere3D" parent="Part3" unique_id=1335384461]
+material = SubResource("StandardMaterial3D_tmm0v")
+
+[node name="Part4" type="RigidBody3D" parent="." unique_id=1358025925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.837666, 0.3342514, -9.5)
+collision_mask = 33
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Part4" unique_id=32541308]
+shape = SubResource("SphereShape3D_tvikc")
+
+[node name="FusableWithTower" type="Node" parent="Part4" unique_id=285118178]
+script = ExtResource("12_tvikc")
+metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
+
+[node name="Part1" type="CSGSphere3D" parent="Part4" unique_id=2082941372]
+material = SubResource("StandardMaterial3D_tmm0v")
+
 [connection signal="area_entered" from="Graybox/CombatTutorialArea/ChangePartDebug" to="Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
+[connection signal="all_parts_fused" from="Graybox/RadioTower" to="BigBoss" method="_on_start_boss_battle"]

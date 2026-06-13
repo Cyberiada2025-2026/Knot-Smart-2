@@ -7,8 +7,10 @@ enum { EMPTY_TILE = 0, TERRAIN, ROAD, HIGHWAY }
 ## Determines amount of tile splits after which highways will generate. [br]
 ## For bigger maps higher value recommended
 @export var highway_generation_split_count = 20
+@export var generation_seed = 0
 
 var map_size: int
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 ## Number of all generation steps(including unsuccessful) [br]
 ## after which generator will stop splitting spots. [br][br]
