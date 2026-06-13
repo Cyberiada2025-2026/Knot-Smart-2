@@ -33,8 +33,6 @@ albedo_color = Color(0.22790968, 0.22790965, 0.22790965, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iftqu"]
 albedo_color = Color(0.27876335, 0.5639823, 0.7337263, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8hl5"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vas5k"]
 albedo_color = Color(0.1218568, 0.49706048, 0.3086675, 1)
 
@@ -246,46 +244,6 @@ size = Vector3(308.5, 1, 22.5)
 material = SubResource("StandardMaterial3D_iftqu")
 
 [node name="CombatTutorialArea" type="Node3D" parent="Graybox" unique_id=312884205]
-
-[node name="BuildingsGraybox" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=1781205539]
-visible = false
-use_collision = true
-collision_layer = 257
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=881207289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 6.5, 23.5)
-size = Vector3(12, 14, 8)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=147696832]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.25, 10, 17.25)
-size = Vector3(16, 21, 14)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=1285687967]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.25, 5, 23)
-size = Vector3(20, 11, 14.5)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=772680514]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.25, 7, 43)
-size = Vector3(20, 15, 14.5)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="Fence" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=318606567]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.75, 0.25, 61.75)
-size = Vector3(43, 1.8, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=1509423320]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 3.25, 55)
-size = Vector3(20, 7.5, 14.5)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=1898318992]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 3.25, 27.25)
-size = Vector3(11.5, 7.5, 20)
-material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=775013810]
 use_collision = true
@@ -1017,25 +975,6 @@ avoidance_enabled = false
 
 [node name="SpawnArea" type="Node3D" parent="Graybox" unique_id=125470212]
 
-[node name="BuildingsGraybox" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1227748875]
-use_collision = true
-collision_layer = 257
-
-[node name="Fence" type="CSGBox3D" parent="Graybox/SpawnArea/BuildingsGraybox" unique_id=359913562]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.25, 0.25, 5)
-size = Vector3(3.5, 1.8, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="Fence2" type="CSGBox3D" parent="Graybox/SpawnArea/BuildingsGraybox" unique_id=1309396202]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.25, 0.25, 16)
-size = Vector3(13.5, 1.8, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/SpawnArea/BuildingsGraybox" unique_id=2054404950]
-transform = Transform3D(-4.371139e-08, 0, 1, -0.13054353, 0.9914427, -5.7062373e-09, -0.9914427, -0.13054353, -4.3337334e-08, 19, 5.7377787, 13.2586355)
-size = Vector3(8.5, 0.25, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
-
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1753470266]
 use_collision = true
 collision_layer = 33
@@ -1233,36 +1172,6 @@ shape = SubResource("BoxShape3D_mhegm")
 [node name="Part1" type="CSGSphere3D" parent="Graybox/Part1Area" unique_id=629962069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0, 24.5)
 material = SubResource("StandardMaterial3D_tmm0v")
-
-[node name="BuildingsGraybox" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=1723774338]
-visible = false
-use_collision = true
-collision_layer = 257
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=442063163]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36, 6.5, 13.75)
-size = Vector3(49.5, 14, 11)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=1012150244]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36, 6.5, 54.5)
-size = Vector3(14, 14, 11)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=498311533]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36, 6.5, -28)
-size = Vector3(14, 14, 11)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=1481178941]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.5, 4, -29.5)
-size = Vector3(14, 9, 10)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="Fence" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=1769716163]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.25, 61.75)
-size = Vector3(15.5, 1.8, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=252669456]
 use_collision = true
