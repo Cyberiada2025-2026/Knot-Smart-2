@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://gfr35mbc1ij6" path="res://shared/journal/journal_entry.gd" id="17_aqrcq"]
 [ext_resource type="PackedScene" uid="uid://ci0kee6ebyhk4" path="res://ui/health/health.tscn" id="18_d2agh"]
 [ext_resource type="PackedScene" uid="uid://17qprvlcd6dk" path="res://shared/teleporters/teleporter_selection_window.tscn" id="22_7b6hw"]
+[ext_resource type="Script" uid="uid://d2htmj7u000iy" path="res://characters/player/music_player/music_player.gd" id="26_4cx7u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hysn5"]
 radius = 0.3
@@ -206,6 +207,13 @@ metadata/_custom_type_script = "uid://ejle6y71jiml"
 initial_entries = Array[ExtResource("17_aqrcq")]([SubResource("Resource_aqrcq")])
 
 [node name="Health" parent="." unique_id=1604085787 instance=ExtResource("18_d2agh")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1993961309]
+volume_db = -40.0
+script = ExtResource("26_4cx7u")
+fade_in_duration = 5.0
+fade_out_duration = 5.0
+metadata/_custom_type_script = "uid://d2htmj7u000iy"
 
 [connection signal="camera_rotated" from="PlayerPhysics/PlayerCamera" to="." method="_on_player_camera_camera_rotated"]
 [connection signal="timeout" from="PlayerPhysics/FootstepsMaker/Timer" to="PlayerPhysics/FootstepsMaker" method="_on_timer_timeout"]
