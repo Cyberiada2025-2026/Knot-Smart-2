@@ -50,7 +50,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	var entity = body.get_parent()
 	if entity.is_in_group(trigger_group_name):
 		var music_player: MusicPlayer= entity.get_node("MusicPlayer")
-		music_player.set_soundtrack(soundtrack)
+		if not music_player.areas_disabled:
+			music_player.set_soundtrack(soundtrack)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
@@ -59,4 +60,5 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 	var entity = body.get_parent()
 	if entity.is_in_group(trigger_group_name):
 		var music_player: MusicPlayer = entity.get_node("MusicPlayer")
-		music_player.set_soundtrack(null)
+		if not music_player.areas_disabled:
+			music_player.set_soundtrack(null)
