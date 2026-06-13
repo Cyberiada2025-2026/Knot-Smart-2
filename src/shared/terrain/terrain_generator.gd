@@ -67,6 +67,7 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			blueprint.data[coord].is_water = is_water
 			
 			if is_water:
+				pass
 				#print("wateer", coord)
 				blueprint.data[coord].placement_rule = TileInfo.PlacementRule.BLOCKED
 
@@ -81,13 +82,14 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			mi.position = Vector3(0, -tile.height, 0)
 			var miclone: MeshInstance3D
 			if tile.is_water:
-				miclone = mi.duplicate()
-				var watermesh = PlaneMesh.new()
-				watermesh.size = Vector2(world_generation_params.tile_height*2,world_generation_params.tile_height*2)
-				miclone.mesh = watermesh
-				miclone.material_override = terrain_params.water_material
-				miclone.position.y -= 0.5
-				miclone.create_trimesh_collision()
+				pass
+				#miclone = mi.duplicate()
+				#var watermesh = PlaneMesh.new()
+				#watermesh.size = Vector2(world_generation_params.tile_height*2,world_generation_params.tile_height*2)
+				#miclone.mesh = watermesh
+				#miclone.material_override = terrain_params.water_material
+				#miclone.position.y -= 0.5
+				#miclone.create_trimesh_collision()
 
 			if terrain_params.terrain_material:
 				mi.material_override = terrain_params.terrain_material
@@ -101,7 +103,8 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			tile.objects.clear()
 			tile.objects.append(mi)
 			if tile.is_water:
-				tile.objects.append(miclone)
+				pass
+				#tile.objects.append(miclone)
 
 
 func generate_tile_mesh(coord: Vector2i) -> Mesh:

@@ -7,7 +7,7 @@ extends Resource
 ## The noise algorithm used to calculate elevation.
 @export var noise: FastNoiseLite
 
-@export var water: NoiseTexture2D
+@export var water: Texture2D
 @export_range(0.0,1.0, 0.05) var water_threshold:= 0.8
 @export_range(0.0,10.0, 0.5) var water_levels:= 1.0
 
