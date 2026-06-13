@@ -99,6 +99,9 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 						mi.material_override = texture_data[pix]
 
 			mi.create_trimesh_collision()
+			for child in mi.get_children():
+				if child is StaticBody3D:
+					child.collision_layer = 9
 
 			tile.objects.clear()
 			tile.objects.append(mi)
