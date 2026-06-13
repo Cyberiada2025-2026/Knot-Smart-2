@@ -6,6 +6,6 @@ extends AnimatableBody3D
 
 
 
-func _on_start_boss_battle(_node) -> void:
+func _on_start_boss_battle() -> void:
 	movement_animation.play("move_to_gen")
 
