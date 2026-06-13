@@ -142,9 +142,6 @@ size = Vector3(12, 14, 12)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mhegm"]
 size = Vector3(8, 11.2, 12)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
-albedo_color = Color(1, 0, 1, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jibjt"]
 size = Vector3(12, 8.4, 10)
 
@@ -261,6 +258,9 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tvikc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
+albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_s2x2q"]
 material = ExtResource("33_srf2b")
@@ -1320,10 +1320,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5.6, 6)
 shape = SubResource("BoxShape3D_mhegm")
 
 [node name="Part1Area" type="Node3D" parent="Graybox" unique_id=1242172551]
-
-[node name="Part1" type="CSGSphere3D" parent="Graybox/Part1Area" unique_id=629962069]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0, 24.5)
-material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=252669456]
 use_collision = true
