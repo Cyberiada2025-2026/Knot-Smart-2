@@ -10,17 +10,36 @@
 
 [sub_resource type="Resource" id="Resource_q3afr"]
 script = ExtResource("3_2wred")
+seed = 2715167173
 mesh = ExtResource("2_qnicv")
 scale = 2.0
 metadata/_custom_type_script = "uid://cs824opuvcx8k"
 
 [sub_resource type="Resource" id="Resource_7u7ig"]
 script = ExtResource("5_7crpr")
+seed = 2449010304
 material = ExtResource("4_xihla")
 min_count = 2
 max_count = 3
 branch_recursion_level = 1
 foliage_parameters = SubResource("Resource_q3afr")
+metadata/_custom_type_script = "uid://s0k1bcrvckmc"
+
+[sub_resource type="Resource" id="Resource_2wred"]
+script = ExtResource("3_2wred")
+seed = 2715167173
+mesh = ExtResource("2_qnicv")
+scale = 2.0
+metadata/_custom_type_script = "uid://cs824opuvcx8k"
+
+[sub_resource type="Resource" id="Resource_xihla"]
+script = ExtResource("5_7crpr")
+seed = 563141312
+material = ExtResource("4_xihla")
+min_count = 2
+max_count = 3
+branch_recursion_level = 1
+foliage_parameters = SubResource("Resource_2wred")
 metadata/_custom_type_script = "uid://s0k1bcrvckmc"
 
 [node name="Szymon" type="Node3D" unique_id=904338965]
@@ -34,7 +53,7 @@ metadata/_custom_type_script = "uid://d3priws45vp1i"
 [node name="TreeGenerator2" type="Node3D" parent="." unique_id=754248397]
 transform = Transform3D(-0.72176015, 0, -0.69214326, 0, 1, 0, 0.69214326, 0, -0.72176015, -16.2693, -0.5319556, -11.699533)
 script = ExtResource("1_6gbb2")
-params = SubResource("Resource_7u7ig")
+params = SubResource("Resource_xihla")
 metadata/_custom_type_script = "uid://d3priws45vp1i"
 
 [node name="DebrisPile3" parent="." unique_id=2036146628 instance=ExtResource("6_2wred")]
