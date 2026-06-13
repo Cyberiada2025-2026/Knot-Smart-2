@@ -21,23 +21,23 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 	var img_height: int = 0
 	var txt_width: int = 0
 	var txt_height: int = 0
-	
+
 	for data in terrain_params.textures:
 		texture_data[data.color] = data.material
-	
+
 	if !terrain_params.noise:
 		return
-		
+
 	noise_image = terrain_params.noise.get_image()
 	noise_width = noise_image.get_width()
 	noise_height = noise_image.get_height()
-	
-	
+
+
 	if terrain_params.water:
 		water_image = terrain_params.water.get_image()
 		img_width = water_image.get_width()
 		img_height = water_image.get_height()
-	if terrain_params.texture_map:			
+	if terrain_params.texture_map:
 		textures_map = terrain_params.texture_map.get_image()
 		txt_width = textures_map.get_width()
 		txt_height = textures_map.get_height()
@@ -61,21 +61,21 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			)
 
 			var is_water = false
-			if water_image and terrain_params.water: 
+			if water_image and terrain_params.water:
 				var sample_x = x % img_width
 				var sample_y = z % img_height
-				
+
 				var water_noise_val = water_image.get_pixel(sample_x, sample_y).r
 				#print(water_noise_val, "val")
 				if water_noise_val > terrain_params.water_threshold:
 					is_water = true
-					level -= terrain_params.water_levels 
-					
+					level -= terrain_params.water_levels
+
 			var final_height = level * world_generation_params.tile_height
-			
+
 			blueprint.data[coord].height = final_height
 			blueprint.data[coord].is_water = is_water
-			
+
 
 	for x in blueprint.world_size:
 		for z in blueprint.world_size:
@@ -111,13 +111,13 @@ func generate_tile_mesh(coord: Vector2i) -> Mesh:
 	var z = coord.y
 	var ts = world_generation_params.tile_size
 
-	var h0 = blueprint.get_height(Vector2i(x, z))  
-	var h1 = blueprint.get_height(Vector2i(x + 1, z))  
-	var h2 = blueprint.get_height(Vector2i(x, z + 1))  
-	var h3 = blueprint.get_height(Vector2i(x + 1, z + 1))  
-	
+	var h0 = blueprint.get_height(Vector2i(x, z))
+	var h1 = blueprint.get_height(Vector2i(x + 1, z))
+	var h2 = blueprint.get_height(Vector2i(x, z + 1))
+	var h3 = blueprint.get_height(Vector2i(x + 1, z + 1))
+
 	blueprint.data[coord].height = min(h0,h1,h2,h3)
-		
+
 	var v0 = Vector3(0, h0, 0)
 	var v1 = Vector3(ts, h1, 0)
 	var v2 = Vector3(0, h2, ts)
@@ -144,9 +144,9 @@ func add_triangle(st: SurfaceTool, vertices: Array) -> Vector3:
 
 func slopify(n1: Vector3, n2: Vector3, coord: Vector2i):
 	var tile = blueprint.data[coord]
-	
+
 	if tile.is_water:
-		return 
+		return
 
 	var n = abs(n1)
 
