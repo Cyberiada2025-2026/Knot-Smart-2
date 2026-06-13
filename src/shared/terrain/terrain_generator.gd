@@ -101,7 +101,7 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			mi.create_trimesh_collision()
 			for child in mi.get_children():
 				if child is StaticBody3D:
-					child.collision_layer = 9
+					child.set_collision_layer_value(9, 1)
 
 			tile.objects.clear()
 			tile.objects.append(mi)
