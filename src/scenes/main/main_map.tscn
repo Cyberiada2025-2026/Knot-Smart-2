@@ -66,6 +66,9 @@
 [ext_resource type="PackedScene" uid="uid://bwrknbc7w8yoc" path="res://generated/terrain/chunks/chunk_5_2.tscn" id="73_m6727"]
 [ext_resource type="PackedScene" uid="uid://emhuc0whgd81" path="res://generated/terrain/chunks/chunk_5_3.tscn" id="74_v8pgu"]
 [ext_resource type="PackedScene" uid="uid://b3pq3lm4pjpdk" path="res://characters/enemies/basic_enemy/enemy.tscn" id="78_7wli1"]
+[ext_resource type="PackedScene" uid="uid://bie1yxa2arqux" path="res://shared/debris/single/debris1.tscn" id="79_wut8q"]
+[ext_resource type="PackedScene" uid="uid://b6dvbytkt43yx" path="res://shared/debris/single/debris2.tscn" id="80_oveuq"]
+[ext_resource type="PackedScene" uid="uid://btmd85pvej0kk" path="res://shared/debris/single/debris5.tscn" id="81_gl766"]
 [ext_resource type="PackedScene" uid="uid://dv3fq7nowfxtd" path="res://generated/terrain/chunks/chunk_6_2.tscn" id="82_0gh5i"]
 [ext_resource type="PackedScene" uid="uid://b6tume7s05gho" path="res://generated/terrain/chunks/chunk_6_3.tscn" id="83_16dvt"]
 [ext_resource type="PackedScene" uid="uid://bytcvxv83i5o4" path="res://generated/terrain/chunks/chunk_6_4.tscn" id="84_3vf3h"]
@@ -277,8 +280,6 @@ size = Vector2(400, 140)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_s2x2q"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_321mu"]
-
 [node name="MainMap" type="Node3D" unique_id=1480515348]
 
 [node name="Szymon" parent="." unique_id=904338965 instance=ExtResource("1_isd4l")]
@@ -336,6 +337,7 @@ affect_navigation_mesh = true
 avoidance_enabled = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=691500463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 navigation_mesh = SubResource("NavigationMesh_wvbdd")
 
 [node name="Map" type="Node3D" parent="." unique_id=378162170 groups=["navmesh_combat_tut"]]
@@ -1846,15 +1848,26 @@ script = ExtResource("3_x8hl5")
 base_damage = 2137.0
 metadata/_custom_type_script = "uid://djg0m48s04bny"
 
-[node name="ChangePartDebug" type="Area3D" parent="." unique_id=1578998347]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 0, 47.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChangePartDebug" unique_id=1979788219]
-shape = SubResource("BoxShape3D_321mu")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ChangePartDebug" unique_id=2134923660]
-
 [node name="Enemy" parent="." unique_id=768992349 instance=ExtResource("78_7wli1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
+[node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
+blackboard = NodePath("@Node@97727")
+
+[node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
+max_health = 5.0
+health = 5.0
+
+[node name="Debris1" parent="." unique_id=894731067 instance=ExtResource("79_wut8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 2, 34.5)
+
+[node name="Debris2" parent="." unique_id=36024407 instance=ExtResource("80_oveuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 3.28685, 32)
+
+[node name="Debris5" parent="." unique_id=88912901 instance=ExtResource("81_gl766")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0.5, 35.5)
+
 [connection signal="all_parts_fused" from="Map/Graybox/RadioTower" to="BigBoss" method="_on_start_boss_battle"]
+[connection signal="health_depleted" from="Enemy/HealthComponent" to="Map/Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
+
+[editable path="Enemy"]

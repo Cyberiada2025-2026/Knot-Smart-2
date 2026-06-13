@@ -17,7 +17,7 @@ func _ready() -> void:
 		after_change.use_collision = false
 
 
-func _on_change_part(_node: Node) -> void:
+func _on_change_part() -> void:
 	if before_change == null or after_change == null:
 		return
 	before_change.visible = false
