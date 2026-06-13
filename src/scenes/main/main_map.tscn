@@ -270,6 +270,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tvikc"]
+radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
 albedo_color = Color(1, 0, 1, 1)
@@ -331,6 +332,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.086014, 0.50001144, 12.9285
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=1352849355 groups=["navmesh_combat_tut"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.616135, 0)
+visible = false
 height = 100.0
 vertices = PackedVector3Array(17.556911, 0, 52.68891, 18.407162, 0, 24.77253, 61.34454, 0, 20.09618, 61.34454, 0, 66.009415, 17.69862, 0, 65.726006, 17.41521, 0, 48.15427, -320.41724, 0, -36.77841, -287.15964, 0, -211.42422, 415.5405, 0, -212.32281, 403.8588, 0, 289.0924, 333.3583, 0, 636.9468, -445.04807, 0, 621.1071, -388.4778, 0, -53.210003)
 affect_navigation_mesh = true
@@ -1777,7 +1779,7 @@ movement_animation = NodePath("Movement")
 libraries/ = SubResource("AnimationLibrary_mhegm")
 
 [node name="Part1" type="RigidBody3D" parent="." unique_id=2044586578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.662334, 0.3342514, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.662334, 0.8342514, 25)
 collision_mask = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Part1" unique_id=981828222]
@@ -1788,10 +1790,11 @@ script = ExtResource("12_tvikc")
 metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
 
 [node name="Part1" type="CSGSphere3D" parent="Part1" unique_id=1145446118]
+radius = 1.0
 material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Part2" type="RigidBody3D" parent="." unique_id=1134422633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.837666, 0.3342514, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.837666, 0.8342514, -0.5)
 collision_mask = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Part2" unique_id=689238273]
@@ -1802,10 +1805,11 @@ script = ExtResource("12_tvikc")
 metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
 
 [node name="Part1" type="CSGSphere3D" parent="Part2" unique_id=4008452]
+radius = 1.0
 material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Part3" type="RigidBody3D" parent="." unique_id=1268727488]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.837666, 0.3342514, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.837666, 0.8342514, -5.5)
 collision_mask = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Part3" unique_id=1917856778]
@@ -1816,10 +1820,11 @@ script = ExtResource("12_tvikc")
 metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
 
 [node name="Part1" type="CSGSphere3D" parent="Part3" unique_id=1335384461]
+radius = 1.0
 material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Part4" type="RigidBody3D" parent="." unique_id=1358025925]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.837666, 0.3342514, -9.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.837666, 0.8342514, -9.5)
 collision_mask = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Part4" unique_id=32541308]
@@ -1830,6 +1835,7 @@ script = ExtResource("12_tvikc")
 metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
 
 [node name="Part1" type="CSGSphere3D" parent="Part4" unique_id=2082941372]
+radius = 1.0
 material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=320015939]
