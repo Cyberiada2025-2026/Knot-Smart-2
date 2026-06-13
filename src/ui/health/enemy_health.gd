@@ -29,7 +29,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var screen_pos = camera.unproject_position(enemy.global_position + Vector3(0, enemy_height, 0))
 	visible = not camera.is_position_behind(enemy.global_position + Vector3(0, enemy_height, 0))
-	print(screen_pos)
 	global_position = screen_pos
 	global_position += Vector2(-get_rect().size.x / 2, 0)
 	var distance = camera.global_transform.origin.distance_to(enemy.global_transform.origin)
