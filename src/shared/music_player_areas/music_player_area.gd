@@ -20,6 +20,7 @@ const VISUALIZATION_MATERIAL = preload(
 
 @export var trigger_group_name: StringName = "Player"
 @export var soundtrack: AudioStream
+@export var disable_on_leave: bool = true
 
 var area
 var collider
@@ -47,10 +48,15 @@ func _init():
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	var entity = body.get_parent()
-	var music_player: MusicPlayer= body.get_node("MusicPlayer")
-	music_player.set_soundtrack(soundtrack)
+	if entity.is_in_group(trigger_group_name):
+		var music_player: MusicPlayer= entity.get_node("MusicPlayer")
+		music_player.set_soundtrack(soundtrack)
+
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
+	if not disable_on_leave:
+		return
 	var entity = body.get_parent()
-	var music_player: MusicPlayer = body.get_node("MusicPlayer")
-	music_player.reset_soundtrack()
+	if entity.is_in_group(trigger_group_name):
+		var music_player: MusicPlayer = entity.get_node("MusicPlayer")
+		music_player.set_soundtrack(null)
