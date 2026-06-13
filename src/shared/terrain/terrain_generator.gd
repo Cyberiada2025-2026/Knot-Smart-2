@@ -76,11 +76,6 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 			blueprint.data[coord].height = final_height
 			blueprint.data[coord].is_water = is_water
 			
-			if is_water:
-				pass
-				#print("wateer", coord)
-				blueprint.data[coord].placement_rule = TileInfo.PlacementRule.BLOCKED
-
 
 	for x in blueprint.world_size:
 		for z in blueprint.world_size:

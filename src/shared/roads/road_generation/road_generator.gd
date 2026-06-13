@@ -97,7 +97,7 @@ func _print_to_console(key: String) -> void:
 	for y in _map_size:
 		var output: String = ""
 		for x in _map_size:
-			if blueprint.data[Vector2i(x, y)].tile_type == TileInfo.Type.ROAD:
+			if blueprint.data[Vector2i(x, y)].placement_rule == TileInfo.PlacementRule.BLOCKED:
 				if key == "type":
 					output += " R"
 					#output += " " + str(blueprint.data[Vector2i(x, y)].height)
