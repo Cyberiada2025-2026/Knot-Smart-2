@@ -2,7 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://c0sa3qsels3mj" path="res://shared/roads/assets/glb/highway_diagonal.glb" id="1_nhok2"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nhok2"]
+points = PackedVector3Array(-35.000004, 0, -35.000004, -35.000004, 2.5, -35.000004, -17.2, 0, -35, -35, 0, -17.2, -35.000004, 2.5, -19.987278, -19.898201, 2.5, -35.000004, 34.993, 0, 17.2, 17.2, 0, 34.993, 19.980427, 2.5, 34.993153, 34.993153, 2.5, 19.89135, 35.000004, 0, 34.993153, 19.994, 0, 35, 19.99413, 2.5, 35.000004, 35.000004, 2.5, 34.993153)
+
 [node name="highway_diagonal" unique_id=121347593 instance=ExtResource("1_nhok2")]
 
-[node name="highway_connection_diagonal" parent="." index="0" unique_id=544612831]
+[node name="highway_connection_diagonal" parent="." index="0" unique_id=1965444824]
 transform = Transform3D(-6.244484e-10, 0, -0.014285714, 0, 0.014285714, 0, 0.014285714, 0, -6.244484e-10, 0, 0.022, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="highway_connection_diagonal" index="3" unique_id=1732571778]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="highway_connection_diagonal/StaticBody3D" index="0" unique_id=1898210510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.051758e-05, -1.5000001, -3.0517578e-05)
+shape = SubResource("ConvexPolygonShape3D_nhok2")

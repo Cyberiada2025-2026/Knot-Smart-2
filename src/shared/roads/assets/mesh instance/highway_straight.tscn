@@ -2,7 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://bx8akh3cai021" path="res://shared/roads/assets/glb/highway_straight.glb" id="1_rmfh1"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rmfh1"]
+margin = 0.0
+points = PackedVector3Array(-19.5, -1, -35, 2.5, -1, -35, -19.5, -1, 35, -1, 2.5, -35, 2.5, -1, 35, -1, 2.5, 35, -16, 2.5, 35, -16, 2.5, -35)
+
 [node name="highway_straight" unique_id=1269199765 instance=ExtResource("1_rmfh1")]
 
-[node name="highway" parent="." index="0" unique_id=957857244]
+[node name="highway" parent="." index="0" unique_id=86700657]
 transform = Transform3D(-6.244484e-10, 0, 0.014285714, 0, 0.014285714, 0, -0.014285714, 0, -6.244484e-10, 0, 0.022, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="highway" index="3" unique_id=847760132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -1.5000002, -1.7053026e-13)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="highway/StaticBody3D" index="0" unique_id=1616365965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_rmfh1")
