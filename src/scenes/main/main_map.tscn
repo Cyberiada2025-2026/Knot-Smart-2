@@ -27,17 +27,56 @@
 [ext_resource type="PackedScene" uid="uid://d0aa1l38pc6jy" path="res://characters/enemies/big_boss/big_boss.tscn" id="18_isd4l"]
 [ext_resource type="Script" uid="uid://cbn62hjlskw0a" path="res://shared/buildings/decimate_building/decimate_building.gd" id="18_mhegm"]
 [ext_resource type="MeshLibrary" uid="uid://bqqgkcaxkvu0g" path="res://shared/buildings/assets/models/building_parts_collision_thick.tres" id="19_5psq7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2d8t"]
-albedo_color = Color(0.63810116, 0.80370927, 0.39393768, 1)
+[ext_resource type="Script" uid="uid://cbahrx2fprnxy" path="res://scenes/main/save_texture_as_png.gd" id="24_0a1xl"]
+[ext_resource type="Script" uid="uid://u5hpdit2bo4g" path="res://shared/terrain/map_renderer.gd" id="24_wxrke"]
+[ext_resource type="Texture2D" uid="uid://ceqk0y0wukn30" path="res://shared/terrain/assets/terrain_noise.png" id="25_2oall"]
+[ext_resource type="Script" uid="uid://no1j1oowuup1" path="res://shared/terrain/params/world_generation_params.gd" id="25_ws866"]
+[ext_resource type="Script" uid="uid://bmtv75byrd25q" path="res://shared/terrain/params/world_display_params.gd" id="26_4jxu6"]
+[ext_resource type="Script" uid="uid://cn6l7oaf3xw32" path="res://shared/terrain/grid_generation_pipeline.gd" id="27_0qi78"]
+[ext_resource type="Script" uid="uid://0212vvhximbx" path="res://shared/terrain/terrain_generator.gd" id="28_ohr7h"]
+[ext_resource type="Script" uid="uid://ur8xw3m874ob" path="res://shared/terrain/params/terrain_params.gd" id="29_j3mwb"]
+[ext_resource type="Texture2D" uid="uid://bktcnfeyxmig5" path="res://shared/terrain/assets/terrain_texture_placeholder.jpg" id="30_1a8j3"]
+[ext_resource type="Script" uid="uid://ck40wxh2ro4ev" path="res://shared/terrain/texture_data.gd" id="31_fhsfx"]
+[ext_resource type="Texture2D" uid="uid://bi3lglw6leh1f" path="res://shared/terrain/assets/pavement2.png" id="32_r0r1t"]
+[ext_resource type="Material" uid="uid://cs6kr88umcnbn" path="res://shared/water/water.tres" id="33_srf2b"]
+[ext_resource type="Texture2D" uid="uid://js1ea7svat6e" path="res://shared/terrain/assets/water_map.png" id="33_ws866"]
+[ext_resource type="Script" uid="uid://dan6slu1xdl8l" path="res://shared/terrain/chunk_manager.gd" id="34_e4aw2"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_3_4.tscn" id="35_qe3aq"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_4_4.tscn" id="36_uew8j"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_5_4.tscn" id="37_rb6ph"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_3_3.tscn" id="43_5nyl8"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_4_3.tscn" id="44_ibvgd"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_5_3.tscn" id="45_ie1eq"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_3_2.tscn" id="46_c15vm"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_4_2.tscn" id="47_br2nq"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_5_2.tscn" id="48_eec5s"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_3_1.tscn" id="49_e5j1l"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_4_1.tscn" id="50_edg6u"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_5_1.tscn" id="51_mfnkm"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_3_0.tscn" id="60_53hsn"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_4_0.tscn" id="61_wvhc8"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_5_0.tscn" id="62_a32ct"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_2_0.tscn" id="65_bijk6"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_2_1.tscn" id="66_k40np"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_2_2.tscn" id="67_0j8wk"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_2_3.tscn" id="68_f5udl"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_2_4.tscn" id="69_nt6jo"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_1_0.tscn" id="71_w0tfs"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_1_1.tscn" id="72_w2pkc"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_1_2.tscn" id="73_ym7p6"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_1_3.tscn" id="74_m6727"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_1_4.tscn" id="75_v8pgu"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_0_0.tscn" id="77_8ac62"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_0_1.tscn" id="78_0dyjb"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_0_2.tscn" id="79_0gh5i"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_0_3.tscn" id="80_16dvt"]
+[ext_resource type="PackedScene" path="user://terrain/chunks/chunk_0_4.tscn" id="81_3vf3h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8fwh"]
 albedo_color = Color(0.22790968, 0.22790965, 0.22790965, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iftqu"]
 albedo_color = Color(0.27876335, 0.5639823, 0.7337263, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8hl5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vas5k"]
 albedo_color = Color(0.1218568, 0.49706048, 0.3086675, 1)
@@ -97,6 +136,9 @@ size = Vector3(12, 14, 12)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mhegm"]
 size = Vector3(8, 11.2, 12)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
+albedo_color = Color(1, 0, 1, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_jibjt"]
 size = Vector3(12, 8.4, 10)
 
@@ -111,6 +153,50 @@ size = Vector3(20, 14, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1mj3"]
 size = Vector3(14, 14, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3sml"]
+albedo_texture = ExtResource("30_1a8j3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgk0a"]
+albedo_texture = ExtResource("32_r0r1t")
+
+[sub_resource type="Resource" id="Resource_2s5in"]
+script = ExtResource("31_fhsfx")
+color = Color(0.003921569, 0, 0, 1)
+material = SubResource("StandardMaterial3D_jgk0a")
+metadata/_custom_type_script = "uid://ck40wxh2ro4ev"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4ma6"]
+albedo_color = Color(0.53441477, 0.20030746, 0.65288526, 1)
+
+[sub_resource type="Resource" id="Resource_c4wdo"]
+script = ExtResource("31_fhsfx")
+color = Color(0, 0, 0.9019608, 1)
+material = SubResource("StandardMaterial3D_q4ma6")
+metadata/_custom_type_script = "uid://ck40wxh2ro4ev"
+
+[sub_resource type="Resource" id="Resource_14ps6"]
+script = ExtResource("29_j3mwb")
+noise = ExtResource("25_2oall")
+water = ExtResource("33_ws866")
+water_threshold = 0.5
+water_levels = 5.0
+textures = Array[ExtResource("31_fhsfx")]([SubResource("Resource_2s5in"), SubResource("Resource_c4wdo")])
+terrain_material = SubResource("StandardMaterial3D_m3sml")
+water_material = ExtResource("33_srf2b")
+metadata/_custom_type_script = "uid://ur8xw3m874ob"
+
+[sub_resource type="Resource" id="Resource_jdm0r"]
+script = ExtResource("25_ws866")
+map_height = 8.0
+chunk_size = 12
+tile_size = 5
+tile_height = 2.0
+metadata/_custom_type_script = "uid://no1j1oowuup1"
+
+[sub_resource type="Resource" id="Resource_fpm2n"]
+script = ExtResource("26_4jxu6")
+metadata/_custom_type_script = "uid://bmtv75byrd25q"
 
 [sub_resource type="Animation" id="Animation_mhegm"]
 length = 0.001
@@ -151,8 +237,11 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tvikc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
-albedo_color = Color(1, 0, 1, 1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_s2x2q"]
+material = ExtResource("33_srf2b")
+size = Vector2(400, 140)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_s2x2q"]
 
 [node name="MainMap" type="Node3D" unique_id=1480515348]
 
@@ -204,20 +293,6 @@ metadata/_custom_type_script = "uid://bspfhf53tg7of"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Graybox" type="Node3D" parent="." unique_id=1275630456]
-
-[node name="Floor" type="CSGBox3D" parent="Graybox" unique_id=1815111816]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, -5.5, -8.25)
-use_collision = true
-collision_layer = 257
-size = Vector3(300, 10, 141.5)
-material = SubResource("StandardMaterial3D_e2d8t")
-
-[node name="Floor2" type="CSGBox3D" parent="Graybox" unique_id=1157939142]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, -5.5, 155.75)
-use_collision = true
-collision_layer = 257
-size = Vector3(300, 10, 141.5)
-material = SubResource("StandardMaterial3D_e2d8t")
 
 [node name="Roads" type="Node3D" parent="Graybox" unique_id=1895084787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
@@ -288,6 +363,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.92579, -0.5, 192.19885)
 size = Vector3(30, 1, 30)
 
 [node name="Blockades" type="Node3D" parent="Graybox" unique_id=799741741]
+visible = false
 
 [node name="River" type="CSGBox3D" parent="Graybox/Blockades" unique_id=1459380446]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, -8.5, 73.75)
@@ -295,46 +371,6 @@ size = Vector3(308.5, 1, 22.5)
 material = SubResource("StandardMaterial3D_iftqu")
 
 [node name="CombatTutorialArea" type="Node3D" parent="Graybox" unique_id=312884205]
-
-[node name="BuildingsGraybox" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=1781205539]
-visible = false
-use_collision = true
-collision_layer = 257
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=881207289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 6.5, 23.5)
-size = Vector3(12, 14, 8)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=147696832]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.25, 10, 17.25)
-size = Vector3(16, 21, 14)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=1285687967]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.25, 5, 23)
-size = Vector3(20, 11, 14.5)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=772680514]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.25, 7, 43)
-size = Vector3(20, 15, 14.5)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="Fence" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=318606567]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.75, 0.25, 61.75)
-size = Vector3(43, 1.8, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=1509423320]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 3.25, 55)
-size = Vector3(20, 7.5, 14.5)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Graybox/CombatTutorialArea/BuildingsGraybox" unique_id=1898318992]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 3.25, 27.25)
-size = Vector3(11.5, 7.5, 20)
-material = SubResource("StandardMaterial3D_x8hl5")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/CombatTutorialArea" unique_id=775013810]
 use_collision = true
@@ -1066,25 +1102,6 @@ avoidance_enabled = false
 
 [node name="SpawnArea" type="Node3D" parent="Graybox" unique_id=125470212]
 
-[node name="BuildingsGraybox" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1227748875]
-use_collision = true
-collision_layer = 257
-
-[node name="Fence" type="CSGBox3D" parent="Graybox/SpawnArea/BuildingsGraybox" unique_id=359913562]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.25, 0.25, 5)
-size = Vector3(3.5, 1.8, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="Fence2" type="CSGBox3D" parent="Graybox/SpawnArea/BuildingsGraybox" unique_id=1309396202]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.25, 0.25, 16)
-size = Vector3(13.5, 1.8, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Graybox/SpawnArea/BuildingsGraybox" unique_id=2054404950]
-transform = Transform3D(-4.371139e-08, 0, 1, -0.13054353, 0.9914427, -5.7062373e-09, -0.9914427, -0.13054353, -4.3337334e-08, 19, 5.7377787, 13.2586355)
-size = Vector3(8.5, 0.25, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
-
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/SpawnArea" unique_id=1753470266]
 use_collision = true
 collision_layer = 33
@@ -1279,35 +1296,9 @@ shape = SubResource("BoxShape3D_mhegm")
 
 [node name="Part1Area" type="Node3D" parent="Graybox" unique_id=1242172551]
 
-[node name="BuildingsGraybox" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=1723774338]
-visible = false
-use_collision = true
-collision_layer = 257
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=442063163]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36, 6.5, 13.75)
-size = Vector3(49.5, 14, 11)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=1012150244]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36, 6.5, 54.5)
-size = Vector3(14, 14, 11)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=498311533]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36, 6.5, -28)
-size = Vector3(14, 14, 11)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=1481178941]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.5, 4, -29.5)
-size = Vector3(14, 9, 10)
-material = SubResource("StandardMaterial3D_x8hl5")
-
-[node name="Fence" type="CSGBox3D" parent="Graybox/Part1Area/BuildingsGraybox" unique_id=1769716163]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.25, 61.75)
-size = Vector3(15.5, 1.8, 1)
-material = SubResource("StandardMaterial3D_x8hl5")
+[node name="Part1" type="CSGSphere3D" parent="Graybox/Part1Area" unique_id=629962069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0, 24.5)
+material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Plants" type="CSGCombiner3D" parent="Graybox/Part1Area" unique_id=252669456]
 use_collision = true
@@ -1628,6 +1619,118 @@ shape = SubResource("BoxShape3D_q1mj3")
 [node name="RadioTower" parent="Graybox" unique_id=336301379 instance=ExtResource("6_f8fwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 39, -16.5)
 
+[node name="SaveTextureAsPng" type="Node" parent="." unique_id=1454029013]
+script = ExtResource("24_0a1xl")
+terrain_params = SubResource("Resource_14ps6")
+
+[node name="MapRenderer" type="Node3D" parent="." unique_id=1064513469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.5, -4.5, -80.80716)
+script = ExtResource("24_wxrke")
+world_generation_params = SubResource("Resource_jdm0r")
+world_display_params = SubResource("Resource_fpm2n")
+metadata/_custom_type_script = "uid://u5hpdit2bo4g"
+
+[node name="GridGenerationPipeline" type="Node" parent="MapRenderer" unique_id=488553361]
+script = ExtResource("27_0qi78")
+metadata/_custom_type_script = "uid://cn6l7oaf3xw32"
+
+[node name="TerrainGenerator" type="Node" parent="MapRenderer/GridGenerationPipeline" unique_id=1065370896]
+script = ExtResource("28_ohr7h")
+terrain_params = SubResource("Resource_14ps6")
+metadata/_custom_type_script = "uid://0212vvhximbx"
+
+[node name="Chunks" type="Node3D" parent="MapRenderer" unique_id=48959943]
+script = ExtResource("34_e4aw2")
+
+[node name="ChunkX0Z0" type="Node3D" parent="MapRenderer/Chunks" unique_id=652062250 instance=ExtResource("77_8ac62")]
+
+[node name="ChunkX0Z1" type="Node3D" parent="MapRenderer/Chunks" unique_id=1370901278 instance=ExtResource("78_0dyjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="ChunkX0Z2" type="Node3D" parent="MapRenderer/Chunks" unique_id=1160171919 instance=ExtResource("79_0gh5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 120)
+
+[node name="ChunkX0Z3" type="Node3D" parent="MapRenderer/Chunks" unique_id=637469116 instance=ExtResource("80_16dvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 180)
+
+[node name="ChunkX0Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=1907641282 instance=ExtResource("81_3vf3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 240)
+
+[node name="ChunkX1Z0" type="Node3D" parent="MapRenderer/Chunks" unique_id=1429783452 instance=ExtResource("71_w0tfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="ChunkX1Z1" type="Node3D" parent="MapRenderer/Chunks" unique_id=1437900614 instance=ExtResource("72_w2pkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
+
+[node name="ChunkX1Z2" type="Node3D" parent="MapRenderer/Chunks" unique_id=676037507 instance=ExtResource("73_ym7p6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 120)
+
+[node name="ChunkX1Z3" type="Node3D" parent="MapRenderer/Chunks" unique_id=394829822 instance=ExtResource("74_m6727")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 180)
+
+[node name="ChunkX1Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=1510770967 instance=ExtResource("75_v8pgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 240)
+
+[node name="ChunkX2Z0" type="Node3D" parent="MapRenderer/Chunks" unique_id=1562067574 instance=ExtResource("65_bijk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 0)
+
+[node name="ChunkX2Z1" type="Node3D" parent="MapRenderer/Chunks" unique_id=1099126734 instance=ExtResource("66_k40np")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 60)
+
+[node name="ChunkX2Z2" type="Node3D" parent="MapRenderer/Chunks" unique_id=1365990350 instance=ExtResource("67_0j8wk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 120)
+
+[node name="ChunkX2Z3" type="Node3D" parent="MapRenderer/Chunks" unique_id=2012043188 instance=ExtResource("68_f5udl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 180)
+
+[node name="ChunkX2Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=172018992 instance=ExtResource("69_nt6jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 240)
+
+[node name="ChunkX3Z0" type="Node3D" parent="MapRenderer/Chunks" unique_id=1969473795 instance=ExtResource("60_53hsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 0)
+
+[node name="ChunkX3Z1" type="Node3D" parent="MapRenderer/Chunks" unique_id=1956149416 instance=ExtResource("49_e5j1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 60)
+
+[node name="ChunkX3Z2" type="Node3D" parent="MapRenderer/Chunks" unique_id=2121702489 instance=ExtResource("46_c15vm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 120)
+
+[node name="ChunkX3Z3" type="Node3D" parent="MapRenderer/Chunks" unique_id=1830567086 instance=ExtResource("43_5nyl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 180)
+
+[node name="ChunkX3Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=487381430 instance=ExtResource("35_qe3aq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 240)
+
+[node name="ChunkX4Z0" type="Node3D" parent="MapRenderer/Chunks" unique_id=500125864 instance=ExtResource("61_wvhc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 0)
+
+[node name="ChunkX4Z1" type="Node3D" parent="MapRenderer/Chunks" unique_id=1395723991 instance=ExtResource("50_edg6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 60)
+
+[node name="ChunkX4Z2" type="Node3D" parent="MapRenderer/Chunks" unique_id=777048648 instance=ExtResource("47_br2nq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 120)
+
+[node name="ChunkX4Z3" type="Node3D" parent="MapRenderer/Chunks" unique_id=1895734269 instance=ExtResource("44_ibvgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 180)
+
+[node name="ChunkX4Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=181048903 instance=ExtResource("36_uew8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 240)
+
+[node name="ChunkX5Z0" type="Node3D" parent="MapRenderer/Chunks" unique_id=403449556 instance=ExtResource("62_a32ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0)
+
+[node name="ChunkX5Z1" type="Node3D" parent="MapRenderer/Chunks" unique_id=1655458043 instance=ExtResource("51_mfnkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 60)
+
+[node name="ChunkX5Z2" type="Node3D" parent="MapRenderer/Chunks" unique_id=1760075874 instance=ExtResource("48_eec5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 120)
+
+[node name="ChunkX5Z3" type="Node3D" parent="MapRenderer/Chunks" unique_id=673196799 instance=ExtResource("45_ie1eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 180)
+
+[node name="ChunkX5Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=558280750 instance=ExtResource("37_rb6ph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 240)
+
 [node name="BigBoss" parent="." unique_id=1977180204 node_paths=PackedStringArray("movement_animation") instance=ExtResource("18_isd4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 159.5)
 movement_animation = NodePath("Movement")
@@ -1646,7 +1749,7 @@ shape = SubResource("SphereShape3D_tvikc")
 script = ExtResource("12_tvikc")
 metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
 
-[node name="Part1" type="CSGSphere3D" parent="Part1" unique_id=629962069]
+[node name="Part1" type="CSGSphere3D" parent="Part1" unique_id=1145446118]
 material = SubResource("StandardMaterial3D_tmm0v")
 
 [node name="Part2" type="RigidBody3D" parent="." unique_id=1134422633]
@@ -1690,6 +1793,22 @@ metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
 
 [node name="Part1" type="CSGSphere3D" parent="Part4" unique_id=2082941372]
 material = SubResource("StandardMaterial3D_tmm0v")
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=320015939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.5, -6.5, 91.5)
+mesh = SubResource("PlaneMesh_s2x2q")
+
+[node name="Area3D" type="Area3D" parent="Water" unique_id=1429181898]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/Area3D" unique_id=393943666]
+shape = SubResource("WorldBoundaryShape3D_s2x2q")
+
+[node name="BaseDamageComponent" type="Node" parent="Water/Area3D" unique_id=1886537263]
+script = ExtResource("3_x8hl5")
+base_damage = 2137.0
+metadata/_custom_type_script = "uid://djg0m48s04bny"
 
 [connection signal="area_entered" from="Graybox/CombatTutorialArea/ChangePartDebug" to="Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
 [connection signal="all_parts_fused" from="Graybox/RadioTower" to="BigBoss" method="_on_start_boss_battle"]
