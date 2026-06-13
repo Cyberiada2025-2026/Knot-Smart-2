@@ -27,14 +27,17 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	#visible = not camera.is_position_behind(enemy.global_position + Vector3(0, enemy_height, 0))
+	visible = camera.is_position_in_frustum(enemy.global_position) #and camera.is_position_in_frustum(enemy.global_position + Vector3(0, enemy_height, 0))
 	var screen_pos = camera.unproject_position(enemy.global_position + Vector3(0, enemy_height, 0))
-	visible = not camera.is_position_behind(enemy.global_position + Vector3(0, enemy_height, 0))
-	print(screen_pos)
 	global_position = screen_pos
 	global_position += Vector2(-get_rect().size.x / 2, 0)
 	var distance = camera.global_transform.origin.distance_to(enemy.global_transform.origin)
-	var scale_factor = clamp(pow(10.0 / distance, 1.5), 0.1, 0.7)
-	scale = Vector2(scale_factor, scale_factor)
+	if(distance<50):
+		var scale_factor = clamp(pow(10.0 / distance, 1.5), 0.1, 0.7)
+		scale = Vector2(scale_factor, scale_factor)
+	else:
+		visible = false
 
 
 func change_bar_size():

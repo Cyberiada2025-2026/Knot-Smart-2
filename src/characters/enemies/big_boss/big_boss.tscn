@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://1c02ina18c38" path="res://characters/enemies/big_boss/big_boss.gd" id="1_6goto"]
 [ext_resource type="Script" uid="uid://b5oot86kgom7d" path="res://shared/health/health_component.gd" id="1_rxbay"]
+[ext_resource type="AudioStream" uid="uid://by6s533bmmlrw" path="res://shared/ost/TheLastDefense.ogg" id="2_206ui"]
 [ext_resource type="Script" uid="uid://dy0ohauxfd8go" path="res://shared/health/death_component.gd" id="2_l4672"]
 [ext_resource type="Script" uid="uid://7sxs6ubjcqmo" path="res://shared/health/hit_box.gd" id="3_l4672"]
+[ext_resource type="PackedScene" uid="uid://cggbrnvoiqko0" path="res://ui/health/enemy_health.tscn" id="5_q0q4j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyyrm"]
 radius = 10.0
@@ -19,6 +21,8 @@ height = 52.0
 
 [node name="BigBoss" type="AnimatableBody3D" unique_id=1977180204]
 script = ExtResource("1_6goto")
+win_scene = "res://ui/win/win.tscn"
+battle_soundtrack = ExtResource("2_206ui")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1058731393]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
@@ -32,8 +36,6 @@ disabled = true
 [node name="HealthComponent" type="Node" parent="." unique_id=743713216]
 script = ExtResource("1_rxbay")
 debug_log = true
-max_health = 100.0
-health = 100.0
 metadata/_custom_type_script = "uid://b5oot86kgom7d"
 
 [node name="DeathComponent" type="Node" parent="." unique_id=106231869]
@@ -49,3 +51,8 @@ metadata/_custom_type_script = "uid://7sxs6ubjcqmo"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=2107874777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
 shape = SubResource("CapsuleShape3D_6goto")
+
+[node name="enemyHealth" parent="." unique_id=2117532528 instance=ExtResource("5_q0q4j")]
+enemy_height = 60
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
