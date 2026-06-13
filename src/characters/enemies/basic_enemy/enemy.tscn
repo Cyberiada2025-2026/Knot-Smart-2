@@ -37,6 +37,7 @@
 [ext_resource type="Script" uid="uid://kpru7f8vmtp5" path="res://shared/dialogue/sentence.gd" id="32_yedos"]
 [ext_resource type="Script" uid="uid://cfbfg51ucp1a2" path="res://shared/journal/journal_entry_poi.gd" id="33_o1m3g"]
 [ext_resource type="Script" uid="uid://gfr35mbc1ij6" path="res://shared/journal/journal_entry.gd" id="34_qd6q6"]
+[ext_resource type="PackedScene" uid="uid://cggbrnvoiqko0" path="res://ui/health/enemy_health.tscn" id="38_wjvgd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1krv"]
 radius = 2.0
@@ -100,7 +101,7 @@ shape = SubResource("CapsuleShape3D_y1krv")
 
 [node name="BeehaveTree" type="Node" parent="." unique_id=1892085315 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_r2ijf")
-blackboard = NodePath("@Node@38243")
+blackboard = NodePath("@Node@142534")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
@@ -541,6 +542,8 @@ dialogue = SubResource("Resource_wjvgd")
 [node name="JournalEntryPOI" type="Node" parent="PointOfInterest" unique_id=1237039963]
 script = ExtResource("33_o1m3g")
 journal_entry = SubResource("Resource_y1krv")
+
+[node name="enemyHealth" parent="." unique_id=2117532528 instance=ExtResource("38_wjvgd")]
 
 [connection signal="health_decreased" from="HealthComponent" to="VfxPlayerSequence" method="play"]
 [connection signal="health_depleted" from="HealthComponent" to="DeathComponent" method="_on_death"]
