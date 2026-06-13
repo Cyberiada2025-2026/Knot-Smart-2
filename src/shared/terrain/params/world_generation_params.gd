@@ -18,7 +18,7 @@ extends Resource
 @export_range(1, 100, 1) var tile_size := 8
 
 ## Unit: [b]float[/b] (Godot units / meters).
-@export_range(1, 100, 0.5) var tile_height := 8.0
+@export_range(1, 100, 0.0001) var tile_height := 8.0
 
 
 func get_chunk_unit_size():

@@ -2,7 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://ue78qf62roem" path="res://shared/roads/assets/glb/road_straight.glb" id="1_68ebf"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5qiuh"]
+points = PackedVector3Array(-19.5, -1, -35, 2.5, -1, -35, -19.5, -1, 35, -1, 2.5, -35, 2.5, -1, 35, -1, 2.5, 35, -16, 2.5, 35, -16, 2.5, -35)
+
 [node name="road_straight2" unique_id=925181644 instance=ExtResource("1_68ebf")]
 
-[node name="road_straight" parent="." index="0" unique_id=1029564544]
+[node name="road_straight" parent="." index="0" unique_id=928497664]
 transform = Transform3D(-6.244484e-10, 0, 0.014285714, 0, 0.014285714, 0, -0.014285714, 0, -6.244484e-10, 0, 0.022, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road_straight" index="0" unique_id=590757265]
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="road_straight/StaticBody3D" index="0" unique_id=495604490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.999996, -1.5000002, -2.2737368e-13)
+shape = SubResource("ConvexPolygonShape3D_5qiuh")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="road_straight/StaticBody3D" index="1" unique_id=1029078087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -1.5000002, -2.2737368e-13)
+shape = SubResource("ConvexPolygonShape3D_5qiuh")
+
+[node name="chodnik02" parent="road_straight" index="2" unique_id=1079753846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, -1.5000002, 1.1368684e-13)
+
+[node name="krawężnik02" parent="road_straight" index="5" unique_id=1109140856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -1.5000002, -1.1368684e-13)

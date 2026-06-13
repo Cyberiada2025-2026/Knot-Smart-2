@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://d0aa1l38pc6jy" path="res://characters/enemies/big_boss/big_boss.tscn" id="18_isd4l"]
 [ext_resource type="Script" uid="uid://cbn62hjlskw0a" path="res://shared/buildings/decimate_building/decimate_building.gd" id="18_mhegm"]
 [ext_resource type="MeshLibrary" uid="uid://bqqgkcaxkvu0g" path="res://shared/buildings/assets/models/building_parts_collision_thick.tres" id="19_5psq7"]
-[ext_resource type="Script" uid="uid://cbahrx2fprnxy" path="res://scenes/main/save_texture_as_png.gd" id="24_0a1xl"]
+[ext_resource type="Script" path="res://scenes/main/save_texture_as_png.gd" id="24_0a1xl"]
 [ext_resource type="Script" uid="uid://u5hpdit2bo4g" path="res://shared/terrain/map_renderer.gd" id="24_wxrke"]
 [ext_resource type="Texture2D" uid="uid://ceqk0y0wukn30" path="res://shared/terrain/assets/terrain_noise.png" id="25_2oall"]
 [ext_resource type="Script" uid="uid://no1j1oowuup1" path="res://shared/terrain/params/world_generation_params.gd" id="25_ws866"]
@@ -176,7 +176,7 @@ script = ExtResource("25_ws866")
 map_size = 24
 map_height = 8.0
 tile_size = 5
-tile_height = 2.0
+tile_height = 2.1875
 metadata/_custom_type_script = "uid://no1j1oowuup1"
 
 [sub_resource type="Resource" id="Resource_fpm2n"]
@@ -1675,41 +1675,29 @@ area_limits = SubResource("Resource_vpsi1")
 [node name="Chunks" type="Node3D" parent="MapRenderer" unique_id=1489485307]
 script = ExtResource("34_e4aw2")
 
-[node name="ChunkX3Z7" type="Node3D" parent="MapRenderer/Chunks" unique_id=480854812 instance=ExtResource("46_v53su")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 140)
+[node name="ChunkX3Z7" parent="MapRenderer/Chunks" unique_id=480854812 instance=ExtResource("46_v53su")]
 
-[node name="ChunkX4Z7" type="Node3D" parent="MapRenderer/Chunks" unique_id=1117847917 instance=ExtResource("47_r3g4s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 140)
+[node name="ChunkX4Z7" parent="MapRenderer/Chunks" unique_id=1117847917 instance=ExtResource("47_r3g4s")]
 
-[node name="ChunkX5Z7" type="Node3D" parent="MapRenderer/Chunks" unique_id=1803567352 instance=ExtResource("48_22g1g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 140)
+[node name="ChunkX5Z7" parent="MapRenderer/Chunks" unique_id=1803567352 instance=ExtResource("48_22g1g")]
 
-[node name="ChunkX3Z6" type="Node3D" parent="MapRenderer/Chunks" unique_id=1677431953 instance=ExtResource("49_wqmtu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 120)
+[node name="ChunkX3Z6" parent="MapRenderer/Chunks" unique_id=1677431953 instance=ExtResource("49_wqmtu")]
 
-[node name="ChunkX4Z6" type="Node3D" parent="MapRenderer/Chunks" unique_id=752429785 instance=ExtResource("50_eh7qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 120)
+[node name="ChunkX4Z6" parent="MapRenderer/Chunks" unique_id=752429785 instance=ExtResource("50_eh7qh")]
 
-[node name="ChunkX5Z6" type="Node3D" parent="MapRenderer/Chunks" unique_id=291706004 instance=ExtResource("51_ib6q0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 120)
+[node name="ChunkX5Z6" parent="MapRenderer/Chunks" unique_id=291706004 instance=ExtResource("51_ib6q0")]
 
-[node name="ChunkX3Z5" type="Node3D" parent="MapRenderer/Chunks" unique_id=1200767736 instance=ExtResource("52_ib6q0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 100)
+[node name="ChunkX3Z5" parent="MapRenderer/Chunks" unique_id=1200767736 instance=ExtResource("52_ib6q0")]
 
-[node name="ChunkX4Z5" type="Node3D" parent="MapRenderer/Chunks" unique_id=1794256808 instance=ExtResource("53_tjrly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 100)
+[node name="ChunkX4Z5" parent="MapRenderer/Chunks" unique_id=1794256808 instance=ExtResource("53_tjrly")]
 
-[node name="ChunkX5Z5" type="Node3D" parent="MapRenderer/Chunks" unique_id=1316974565 instance=ExtResource("54_y2bip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100)
+[node name="ChunkX5Z5" parent="MapRenderer/Chunks" unique_id=1316974565 instance=ExtResource("54_y2bip")]
 
-[node name="ChunkX3Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=1806727150 instance=ExtResource("49_o0632")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 80)
+[node name="ChunkX3Z4" parent="MapRenderer/Chunks" unique_id=1806727150 instance=ExtResource("49_o0632")]
 
-[node name="ChunkX4Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=747105499 instance=ExtResource("50_wqmtu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 80)
+[node name="ChunkX4Z4" parent="MapRenderer/Chunks" unique_id=747105499 instance=ExtResource("50_wqmtu")]
 
-[node name="ChunkX5Z4" type="Node3D" parent="MapRenderer/Chunks" unique_id=169806550 instance=ExtResource("51_eh7qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 80)
+[node name="ChunkX5Z4" parent="MapRenderer/Chunks" unique_id=169806550 instance=ExtResource("51_eh7qh")]
 
 [node name="BigBoss" parent="." unique_id=1977180204 node_paths=PackedStringArray("movement_animation") instance=ExtResource("18_isd4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 159.5)
