@@ -2,8 +2,8 @@
 class_name MapInstancer
 extends Resource
 
-var scene_path: String = "user://terrain/"
-var chunk_path = "user://terrain/chunks/"
+var scene_path: String = "res://generated/terrain/"
+var chunk_path = "res://generated/terrain/chunks/"
 var scene_name: String = "generated_map"
 var root_name: String = "Map"
 
@@ -108,6 +108,7 @@ func create_chunk_scene(chunk_coord: Vector2i, chunk_final_path: String) -> void
 
 	var scene = PackedScene.new()
 	var directory_path = chunk_final_path.get_base_dir()
+	print(directory_path)
 	if not DirAccess.dir_exists_absolute(directory_path):
 		DirAccess.make_dir_recursive_absolute(directory_path)
 
