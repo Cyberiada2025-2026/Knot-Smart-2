@@ -12,8 +12,11 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 	blueprint = manager.blueprint
 	world_generation_params = manager.world_generation_params
 
+	var noise_image: Image = null
 	var water_image: Image = null
 	var textures_map: Image = null
+	var noise_width: int = 0
+	var noise_height: int = 0
 	var img_width: int = 0
 	var img_height: int = 0
 	var txt_width: int = 0
@@ -22,27 +25,34 @@ func run_generation(manager: GridGenerationPipeline) -> void:
 	for data in terrain_params.textures:
 		texture_data[data.color] = data.material
 	
+	if !terrain_params.noise:
+		return
+		
+	noise_image = terrain_params.noise.get_image()
+	noise_width = noise_image.get_width()
+	noise_height = noise_image.get_height()
+	
+	
 	if terrain_params.water:
-		if terrain_params.water:
-			water_image = terrain_params.water.get_image()
-			img_width = water_image.get_width()
-			img_height = water_image.get_height()
-		if terrain_params.texture_map:
-			textures_map = terrain_params.texture_map.get_image()
-			txt_width = textures_map.get_width()
-			txt_height = textures_map.get_height()
+		water_image = terrain_params.water.get_image()
+		img_width = water_image.get_width()
+		img_height = water_image.get_height()
+	if terrain_params.texture_map:			
+		textures_map = terrain_params.texture_map.get_image()
+		txt_width = textures_map.get_width()
+		txt_height = textures_map.get_height()
 
 	for x in blueprint.world_size:
 		for z in blueprint.world_size:
 			var coord = Vector2i(x, z)
 
-			var raw_val = terrain_params.noise.get_noise_2d(x, z)
+			var raw_val = noise_image.get_pixel(x % noise_width, z % noise_height).v
 			if x % 2 == 1 and z % 2 == 1:
-				raw_val = terrain_params.noise.get_noise_2d(x - 1, z - 1)
+				raw_val = noise_image.get_pixel((x - 1) % noise_width, (z - 1) % noise_height).v
 			elif x % 2 == 1:
-				raw_val = terrain_params.noise.get_noise_2d(x - 1, z)
+				raw_val = noise_image.get_pixel((x - 1) % noise_width, z  % noise_height).v
 			elif z % 2 == 1:
-				raw_val = terrain_params.noise.get_noise_2d(x, z - 1)
+				raw_val = noise_image.get_pixel(x % noise_width, (z - 1) % noise_height).v
 
 			var normalized = (raw_val + 1) / 2.0
 			var level = floor(
