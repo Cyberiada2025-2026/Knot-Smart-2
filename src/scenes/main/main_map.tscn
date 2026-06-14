@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://d3elyqmhqqwkc" path="res://scenes/main/building_pair_small.tscn" id="36_bx2do"]
 [ext_resource type="PackedScene" uid="uid://dck8itbvbpxnt" path="res://shared/generator_parts/generator_part_out_of_bounds.tscn" id="36_m81eg"]
 [ext_resource type="PackedScene" uid="uid://dhjdclmlt7xq8" path="res://scenes/main/plant_wall_foliage.tscn" id="38_6pbj8"]
-[ext_resource type="Script" uid="uid://inkb2xheq2vo" path="res://scenes/main/play_anim_on_event.gd" id="40_6pbj8"]
+[ext_resource type="Script" uid="uid://cw8ipuwmthig2" path="res://scenes/main/play_anim_on_event.gd" id="40_6pbj8"]
 [ext_resource type="PackedScene" uid="uid://b3pq3lm4pjpdk" path="res://characters/enemies/basic_enemy/enemy.tscn" id="78_7wli1"]
 [ext_resource type="Script" uid="uid://bm0wrygl0ikje" path="res://shared/point_of_interest/point_of_interest.gd" id="78_oveuq"]
 [ext_resource type="Script" uid="uid://krqwntoiv6fm" path="res://shared/point_of_interest/components/speech_poi.gd" id="79_awfjg"]
@@ -42,8 +42,8 @@
 [ext_resource type="PackedScene" uid="uid://btmd85pvej0kk" path="res://shared/debris/single/debris5.tscn" id="81_gl766"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wvbdd"]
-vertices = PackedVector3Array(55.5, -0.2831955, 35.25, 58, -0.033195496, 34.75, 58, -0.033195496, 30.75, 19.75, -0.033195496, 42.5, 19.75, -0.033195496, 47.25, 20.75, -0.2831955, 48.5, 26, -0.033195496, 40.25, 20, -0.033195496, 40.25, 54.75, -0.2831955, 36.5, 48.5, -0.033195496, 30.75, 27.25, -0.033195496, 39.5, 46.75, -0.2831955, 27.75, 39.75, -0.2831955, 27.75, 39.75, -0.2831955, 30.5, 47.25, -0.033195496, 30, 38, -0.2831955, 32.25, 27.75, -0.2831955, 38.5, 39, -0.2831955, 31.75, 58.25, -0.2831955, 62.5, 55.5, -0.2831955, 52.75, 54.75, -0.2831955, 51.5, 27.75, -0.2831955, 32.25, 20.75, -0.2831955, 62.5, 58.25, -0.2831955, 53.25)
-polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 7), PackedInt32Array(5, 7, 6), PackedInt32Array(0, 8, 2), PackedInt32Array(2, 8, 9), PackedInt32Array(5, 6, 10), PackedInt32Array(11, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(10, 16, 15), PackedInt32Array(17, 13, 14), PackedInt32Array(20, 19, 18), PackedInt32Array(17, 14, 15), PackedInt32Array(15, 14, 9), PackedInt32Array(15, 9, 8), PackedInt32Array(15, 8, 20), PackedInt32Array(16, 21, 15), PackedInt32Array(10, 15, 5), PackedInt32Array(5, 15, 22), PackedInt32Array(22, 15, 20), PackedInt32Array(22, 20, 18), PackedInt32Array(19, 23, 18)]
+vertices = PackedVector3Array(55.5, 0, 35.25, 58, 0.25, 34.75, 58, 0.25, 30.75, 19.75, 0.25, 42.5, 20.25, 0, 48, 20.75, 0, 48.5, 26, 0.25, 40.25, 20, 0.25, 40.25, 54.75, 0, 36.5, 48.5, 0.25, 30.75, 38, 0, 32.25, 27.75, 0, 32.25, 27.75, 0, 38.5, 46.75, 0, 27.75, 39.75, 0, 27.75, 39.75, 0, 30.5, 47.25, 0.25, 30, 20.75, 0, 60.25, 39, 0, 60.25, 39, 0, 31.75, 27.25, 0.25, 39.5, 59.25, 0, 62.5, 59.25, 0, 53.25, 56.5, 0, 53.25, 40.25, 0, 61, 54.75, 0, 51.5, 55.25, 0, 52.5, 40.75, 0, 62.5)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 7), PackedInt32Array(5, 7, 6), PackedInt32Array(0, 8, 2), PackedInt32Array(2, 8, 9), PackedInt32Array(12, 11, 10), PackedInt32Array(13, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(18, 17, 5), PackedInt32Array(19, 15, 16), PackedInt32Array(20, 12, 10), PackedInt32Array(19, 16, 10), PackedInt32Array(10, 16, 9), PackedInt32Array(10, 9, 8), PackedInt32Array(23, 22, 21), PackedInt32Array(25, 24, 18), PackedInt32Array(20, 10, 5), PackedInt32Array(5, 10, 18), PackedInt32Array(18, 10, 25), PackedInt32Array(25, 10, 8), PackedInt32Array(26, 23, 21), PackedInt32Array(5, 6, 20), PackedInt32Array(26, 21, 25), PackedInt32Array(25, 21, 27), PackedInt32Array(25, 27, 24)]
 geometry_collision_mask = 4294902016
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"navmesh_combat_tut"
@@ -142,7 +142,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_isd4l"]
 resource_name = "move_to_gen"
-length = 60.0
+length = 120.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,7 +150,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 60),
+"times": PackedFloat32Array(0, 119.86667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-38.5, 0, 159.5), Vector3(33.5, 0, -11)]
@@ -224,12 +224,37 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 1.5707964, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatableBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatableBody:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_18mwh"]
 resource_name = "fall_down"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
@@ -241,7 +266,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
@@ -250,6 +275,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.13397183, 0.008088016),
 "update": 0,
 "values": [Vector3(60, -0.5, 63), Vector3(60, -12.434786, 64.585396)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatableBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0.008333334, 4.9666667),
+"transitions": PackedFloat32Array(6.062873, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.9999733, -12.000002, -3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatableBody:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.008333334, 4.9666667),
+"transitions": PackedFloat32Array(6.062873, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-4.3545064e-08, -3.9901693e-08, 1.4835299)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6yd7f"]
@@ -323,6 +372,7 @@ navigation_mesh = SubResource("NavigationMesh_wvbdd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.393677, -0.5, 149.59488)
 script = ExtResource("12_b0av3")
 radius = 35.0
+visualize = false
 soundtrack = ExtResource("13_4yqb1")
 metadata/_custom_type_script = "uid://qmqrw6ncjc"
 
@@ -1625,7 +1675,7 @@ metadata/_custom_type_script = "uid://djg0m48s04bny"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
 [node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@18895")
+blackboard = NodePath("@Node@41694")
 
 [node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
 max_health = 5.0
@@ -2467,7 +2517,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.5, 136)
 [node name="Part3" parent="." unique_id=1554434201 instance=ExtResource("30_m81eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0.5, 141)
 
-[node name="Part1" type="CSGSphere3D" parent="Part3" unique_id=2008974876]
+[node name="Part2" type="CSGSphere3D" parent="Part3" unique_id=2008974876]
 radius = 1.0
 material = SubResource("StandardMaterial3D_tmm0v")
 
@@ -2487,9 +2537,17 @@ script = ExtResource("10_rjtpl")
 size = Vector3i(6, 9, 6)
 metadata/_custom_type_script = "uid://cp8ed61leg0wl"
 
-[node name="GeneratedBuilding" type="Node3D" parent="BuildingGenerator13" unique_id=362253253]
+[node name="AnimatableBody" type="AnimatableBody3D" parent="BuildingGenerator13" unique_id=422084445]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 257
+sync_to_physics = false
 
-[node name="@GridMap@30872" type="GridMap" parent="BuildingGenerator13/GeneratedBuilding" unique_id=1650317265]
+[node name="@CollisionShape3D@30877" type="CollisionShape3D" parent="BuildingGenerator13/AnimatableBody" unique_id=1578286534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 12.599999, 6)
+shape = SubResource("BoxShape3D_6pbj8")
+
+[node name="@GridMap@30872" type="GridMap" parent="BuildingGenerator13/AnimatableBody" unique_id=1650317265]
+transform = Transform3D(0.99999994, 0, -3.5527137e-15, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 mesh_library = ExtResource("11_si2mp")
 cell_size = Vector3(2, 2.8, 2)
 cell_center_y = false
@@ -2497,7 +2555,8 @@ data = {
 "cells": PackedInt32Array(0, 0, 1048578, 0, 1, 1048578, 0, 2, 1048579, 0, 3, 1048578, 0, 4, 1048579, 0, 5, 1048579, 65536, 0, 1048578, 65536, 1, 1048578, 65536, 2, 1048578, 65536, 3, 1048578, 65536, 4, 1048578, 65536, 5, 1048579, 131072, 0, 1048579, 131072, 1, 1048578, 131072, 2, 1048579, 131072, 3, 1048578, 131072, 4, 1048578, 131072, 5, 1048578, 196608, 0, 1048578, 196608, 1, 1048578, 196608, 2, 1048578, 196608, 3, 1048578, 196608, 4, 1048579, 196608, 5, 1048578, 262144, 0, 1048579, 262144, 1, 1048579, 262144, 2, 1048578, 262144, 3, 1048579, 262144, 4, 1048578, 262144, 5, 1048578, 327680, 0, 1048578, 327680, 1, 1048578, 327680, 2, 1048578, 327680, 3, 1048578, 327680, 4, 1048578, 327680, 5, 1048578, 393216, 0, 1048578, 393216, 1, 1048578, 393216, 2, 1048578, 393216, 3, 1048579, 393216, 4, 1048578, 393216, 5, 1048578, 458752, 0, 1048578, 458752, 1, 1048579, 458752, 2, 1048578, 458752, 3, 1048578, 458752, 4, 1048578, 458752, 5, 1048579, 524288, 0, 1048578, 524288, 1, 1048578, 524288, 2, 1048578, 524288, 3, 1048579, 524288, 4, 1048578, 524288, 5, 1048578, 6, 0, 1048579, 6, 1, 1048579, 6, 2, 1048579, 6, 3, 1048579, 6, 4, 1048578, 6, 5, 1048578, 65542, 0, 1048578, 65542, 1, 1048578, 65542, 2, 1048578, 65542, 3, 1048578, 65542, 4, 1048578, 65542, 5, 1048579, 131078, 0, 1048578, 131078, 1, 1048579, 131078, 2, 1048578, 131078, 3, 1048578, 131078, 4, 1048578, 131078, 5, 1048578, 196614, 0, 1048579, 196614, 1, 1048578, 196614, 2, 1048578, 196614, 3, 1048578, 196614, 4, 1048579, 196614, 5, 1048579, 262150, 0, 1048578, 262150, 1, 1048578, 262150, 2, 1048579, 262150, 3, 1048578, 262150, 4, 1048578, 262150, 5, 1048578, 327686, 0, 1048578, 327686, 1, 1048578, 327686, 2, 1048578, 327686, 3, 1048579, 327686, 4, 1048578, 327686, 5, 1048579, 393222, 0, 1048578, 393222, 1, 1048579, 393222, 2, 1048578, 393222, 3, 1048578, 393222, 4, 1048579, 393222, 5, 1048578, 458758, 0, 1048578, 458758, 1, 1048578, 458758, 2, 1048578, 458758, 3, 1048579, 458758, 4, 1048579, 458758, 5, 1048578, 524294, 0, 1048579, 524294, 1, 1048579, 524294, 2, 1048578, 524294, 3, 1048578, 524294, 4, 1048578, 524294, 5, 1048579)
 }
 
-[node name="@GridMap@30873" type="GridMap" parent="BuildingGenerator13/GeneratedBuilding" unique_id=1852005375]
+[node name="@GridMap@30873" type="GridMap" parent="BuildingGenerator13/AnimatableBody" unique_id=1852005375]
+transform = Transform3D(0.99999994, 0, -3.5527137e-15, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 mesh_library = ExtResource("11_si2mp")
 cell_size = Vector3(2, 2.8, 2)
 cell_center_y = false
@@ -2505,7 +2564,8 @@ data = {
 "cells": PackedInt32Array(0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 3, 5, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 4, 5, 0, 5, 0, 0, 5, 1, 0, 5, 2, 0, 5, 3, 0, 5, 4, 0, 5, 5, 0, 589824, 0, 0, 589824, 1, 0, 589824, 2, 0, 589824, 3, 0, 589824, 4, 0, 589824, 5, 0, 589825, 0, 0, 589825, 1, 0, 589825, 2, 0, 589825, 3, 0, 589825, 4, 0, 589825, 5, 0, 589826, 0, 0, 589826, 1, 0, 589826, 2, 0, 589826, 3, 0, 589826, 4, 0, 589826, 5, 0, 589827, 0, 0, 589827, 1, 0, 589827, 2, 0, 589827, 3, 0, 589827, 4, 0, 589827, 5, 0, 589828, 0, 0, 589828, 1, 0, 589828, 2, 0, 589828, 3, 0, 589828, 4, 0, 589828, 5, 0, 589829, 0, 0, 589829, 1, 0, 589829, 2, 0, 589829, 3, 0, 589829, 4, 0, 589829, 5, 0)
 }
 
-[node name="@GridMap@30874" type="GridMap" parent="BuildingGenerator13/GeneratedBuilding" unique_id=1425487893]
+[node name="@GridMap@30874" type="GridMap" parent="BuildingGenerator13/AnimatableBody" unique_id=1425487893]
+transform = Transform3D(0.99999994, 0, -3.5527137e-15, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 mesh_library = ExtResource("11_si2mp")
 cell_size = Vector3(2, 2.8, 2)
 cell_center_y = false
@@ -2513,19 +2573,15 @@ data = {
 "cells": PackedInt32Array(0, 0, 4, 65536, 0, 2, 131072, 0, 3, 196608, 0, 2, 262144, 0, 2, 327680, 0, 3, 393216, 0, 2, 458752, 0, 2, 524288, 0, 2, 1, 0, 2, 65537, 0, 3, 131073, 0, 2, 196609, 0, 3, 262145, 0, 2, 327681, 0, 2, 393217, 0, 3, 458753, 0, 2, 524289, 0, 3, 2, 0, 2, 65538, 0, 2, 131074, 0, 2, 196610, 0, 3, 262146, 0, 3, 327682, 0, 3, 393218, 0, 2, 458754, 0, 2, 524290, 0, 2, 3, 0, 2, 65539, 0, 2, 131075, 0, 2, 196611, 0, 2, 262147, 0, 2, 327683, 0, 2, 393219, 0, 3, 458755, 0, 3, 524291, 0, 2, 4, 0, 2, 65540, 0, 2, 131076, 0, 2, 196612, 0, 2, 262148, 0, 2, 327684, 0, 2, 393220, 0, 3, 458756, 0, 3, 524292, 0, 2, 5, 0, 2, 65541, 0, 3, 131077, 0, 3, 196613, 0, 2, 262149, 0, 2, 327685, 0, 3, 393221, 0, 3, 458757, 0, 2, 524293, 0, 3, 0, 6, 2, 65536, 6, 2, 131072, 6, 2, 196608, 6, 2, 262144, 6, 2, 327680, 6, 2, 393216, 6, 3, 458752, 6, 2, 524288, 6, 3, 1, 6, 2, 65537, 6, 2, 131073, 6, 2, 196609, 6, 2, 262145, 6, 3, 327681, 6, 2, 393217, 6, 2, 458753, 6, 3, 524289, 6, 3, 2, 6, 2, 65538, 6, 2, 131074, 6, 2, 196610, 6, 2, 262146, 6, 3, 327682, 6, 2, 393218, 6, 2, 458754, 6, 2, 524290, 6, 2, 3, 6, 2, 65539, 6, 2, 131075, 6, 2, 196611, 6, 2, 262147, 6, 2, 327683, 6, 2, 393219, 6, 2, 458755, 6, 2, 524291, 6, 3, 4, 6, 3, 65540, 6, 2, 131076, 6, 3, 196612, 6, 2, 262148, 6, 2, 327684, 6, 3, 393220, 6, 2, 458756, 6, 2, 524292, 6, 2, 5, 6, 3, 65541, 6, 2, 131077, 6, 2, 196613, 6, 2, 262149, 6, 2, 327685, 6, 3, 393221, 6, 2, 458757, 6, 2, 524293, 6, 3)
 }
 
+[node name="GeneratedBuilding" type="Node3D" parent="BuildingGenerator13" unique_id=362253253]
+transform = Transform3D(0.8660253, -0.5, -5.8562186e-09, 0.5, 0.8660253, 2.1855687e-08, -5.8562186e-09, -2.1855692e-08, 1, 0, 0, 0)
+
 [node name="@NavigationObstacle3D@30875" type="NavigationObstacle3D" parent="BuildingGenerator13/GeneratedBuilding" unique_id=974075778]
 visible = false
 height = 100.0
 vertices = PackedVector3Array(0, 0, 0, 0, 0, 12, 12, 0, 12, 12, 0, 0)
 affect_navigation_mesh = true
 avoidance_enabled = false
-
-[node name="_StaticBody3D_30876" type="AnimatableBody3D" parent="BuildingGenerator13/GeneratedBuilding" unique_id=196256134]
-collision_layer = 257
-
-[node name="@CollisionShape3D@30877" type="CollisionShape3D" parent="BuildingGenerator13/GeneratedBuilding/_StaticBody3D_30876" unique_id=1578286534]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 12.599999, 6)
-shape = SubResource("BoxShape3D_6pbj8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BuildingGenerator13" unique_id=610205334]
 libraries/ = SubResource("AnimationLibrary_6yd7f")

@@ -1,16 +1,13 @@
 [gd_scene format=3 uid="uid://dok2k0qk1a7ta"]
 
-[ext_resource type="Script" uid="uid://d3priws45vp1i" path="res://shared/nature_generators/tree_generator/tree_generator.gd" id="1_6gbb2"]
 [ext_resource type="Resource" uid="uid://dmcuh0thd0ntg" path="res://shared/buildings/model_management/tenement_house_tileset.tres" id="2_ipu2h"]
-[ext_resource type="PackedScene" uid="uid://cclq7jgpfrccu" path="res://shared/nature_generators/tree_generator/tree_materials/branches/dandelion_branches/dandelion_branches.tscn" id="2_qnicv"]
-[ext_resource type="Script" uid="uid://cs824opuvcx8k" path="res://shared/nature_generators/foliage_generator/foliage_parameters.gd" id="3_2wred"]
-[ext_resource type="Material" uid="uid://wu6m01tfoh1q" path="res://shared/nature_generators/tree_generator/tree_materials/bark/bark.tres" id="4_xihla"]
-[ext_resource type="Script" uid="uid://s0k1bcrvckmc" path="res://shared/nature_generators/tree_generator/tree_parameters.gd" id="5_7crpr"]
 [ext_resource type="PackedScene" uid="uid://djfrk2uv5ur0b" path="res://shared/debris/piles/debris_pile_2.tscn" id="6_2wred"]
 [ext_resource type="MeshLibrary" uid="uid://do0epgoydekpb" path="res://shared/buildings/assets/models/tenement_house_tiles_enterable.tres" id="7_g1faw"]
 [ext_resource type="PackedScene" uid="uid://ctr84bt67oahh" path="res://shared/debris/piles/debris_pile_1.tscn" id="7_xihla"]
+[ext_resource type="PackedScene" uid="uid://defn5yjy78ix4" path="res://shared/nature_generators/tree_generator/prefabs/tree5.tscn" id="8_8nbw3"]
 [ext_resource type="PackedScene" uid="uid://cekls8dq3kd3y" path="res://shared/plants/vines/bent_vines_2_thin.tscn" id="8_d6vdo"]
 [ext_resource type="PackedScene" uid="uid://dtsgxkym0sobe" path="res://shared/plants/vines/bent_vines_1_normal.tscn" id="9_r4dge"]
+[ext_resource type="PackedScene" uid="uid://bn0bjhcj5avki" path="res://shared/nature_generators/tree_generator/prefabs/tree4.tscn" id="9_r8t4o"]
 [ext_resource type="PackedScene" uid="uid://1peooswj26s5" path="res://shared/plants/vines/basic_vines_thick.tscn" id="10_6kg6w"]
 [ext_resource type="PackedScene" uid="uid://dh4aw1k0cdf40" path="res://shared/plants/vines/bent_vines_1_thick.tscn" id="11_u3hxq"]
 [ext_resource type="Script" uid="uid://c8acika7wo4ks" path="res://shared/buildings/building_generation/building_generator.gd" id="12_ipu2h"]
@@ -18,6 +15,9 @@
 [ext_resource type="Script" uid="uid://o0oessya87xf" path="res://shared/buildings/building_generation/building_shape_description.gd" id="15_1djfu"]
 [ext_resource type="Script" uid="uid://cp8ed61leg0wl" path="res://shared/buildings/building_generation/box_description.gd" id="16_d3uka"]
 [ext_resource type="Script" uid="uid://cbn62hjlskw0a" path="res://shared/buildings/decimate_building/decimate_building.gd" id="17_etnvg"]
+[ext_resource type="PackedScene" uid="uid://dpbcjs1dr4vxe" path="res://shared/nature_generators/tree_generator/prefabs/tree1.tscn" id="17_g1faw"]
+[ext_resource type="PackedScene" uid="uid://bo23tv6yguitm" path="res://shared/nature_generators/tree_generator/prefabs/tree2.tscn" id="18_nfrs4"]
+[ext_resource type="PackedScene" uid="uid://nd864u3myomf" path="res://shared/nature_generators/tree_generator/prefabs/tree3.tscn" id="19_1djfu"]
 [ext_resource type="MeshLibrary" uid="uid://d2nblkfe0h2gb" path="res://shared/buildings/assets/models/tenement_house_tiles_flat.tres" id="19_g1faw"]
 
 [sub_resource type="Resource" id="Resource_joa1j"]
@@ -30,40 +30,6 @@ min_room_size = Vector3i(5, 1, 5)
 max_room_size = Vector3i(8, 1, 8)
 long_room_tendency = 0.2
 metadata/_custom_type_script = "uid://uq2ee3iq6x08"
-
-[sub_resource type="Resource" id="Resource_q3afr"]
-script = ExtResource("3_2wred")
-seed = 2715167173
-mesh = ExtResource("2_qnicv")
-scale = 2.0
-metadata/_custom_type_script = "uid://cs824opuvcx8k"
-
-[sub_resource type="Resource" id="Resource_7u7ig"]
-script = ExtResource("5_7crpr")
-seed = 2449010304
-material = ExtResource("4_xihla")
-min_count = 2
-max_count = 3
-branch_recursion_level = 1
-foliage_parameters = SubResource("Resource_q3afr")
-metadata/_custom_type_script = "uid://s0k1bcrvckmc"
-
-[sub_resource type="Resource" id="Resource_2wred"]
-script = ExtResource("3_2wred")
-seed = 2715167173
-mesh = ExtResource("2_qnicv")
-scale = 2.0
-metadata/_custom_type_script = "uid://cs824opuvcx8k"
-
-[sub_resource type="Resource" id="Resource_xihla"]
-script = ExtResource("5_7crpr")
-seed = 563141312
-material = ExtResource("4_xihla")
-min_count = 2
-max_count = 3
-branch_recursion_level = 1
-foliage_parameters = SubResource("Resource_2wred")
-metadata/_custom_type_script = "uid://s0k1bcrvckmc"
 
 [sub_resource type="Resource" id="Resource_g1faw"]
 script = ExtResource("14_nfrs4")
@@ -133,17 +99,11 @@ vertices = PackedVector3Array(0, 0, 0, 0, 0, 10, 16, 0, 10, 16, 0, 0)
 affect_navigation_mesh = true
 avoidance_enabled = false
 
-[node name="TreeGenerator" type="Node3D" parent="." unique_id=1636540979]
+[node name="TreeGenerator" parent="." unique_id=1093754622 instance=ExtResource("8_8nbw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.159087, -0.5319556, 2.8596125)
-script = ExtResource("1_6gbb2")
-params = SubResource("Resource_7u7ig")
-metadata/_custom_type_script = "uid://d3priws45vp1i"
 
-[node name="TreeGenerator2" type="Node3D" parent="." unique_id=754248397]
-transform = Transform3D(-0.72176015, 0, -0.69214326, 0, 1, 0, 0.69214326, 0, -0.72176015, -16.2693, -0.5319556, -11.699533)
-script = ExtResource("1_6gbb2")
-params = SubResource("Resource_xihla")
-metadata/_custom_type_script = "uid://d3priws45vp1i"
+[node name="TreeGenerator2" parent="." unique_id=1567449531 instance=ExtResource("9_r8t4o")]
+transform = Transform3D(-0.72176015, 0, -0.6921432, 0, 1, 0, 0.6921432, 0, -0.72176015, -16.2693, -0.5319556, -11.699533)
 
 [node name="DebrisPile3" parent="." unique_id=2036146628 instance=ExtResource("6_2wred")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.054852, -0.22342682, -7.122856)
@@ -249,3 +209,80 @@ collision_layer = 257
 [node name="_CollisionShape3D_43361" type="CollisionShape3D" parent="BuildingGenerator4/GeneratedBuilding/_StaticBody3D_43360" unique_id=1739645003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5.6, 5)
 shape = SubResource("BoxShape3D_nfrs4")
+
+[node name="Trees" type="Node3D" parent="." unique_id=1623455654]
+
+[node name="TreeGenerator" parent="Trees" unique_id=202791369 instance=ExtResource("17_g1faw")]
+transform = Transform3D(-0.7451619, 0, 0.6668835, 0, 1, 0, -0.6668835, 0, -0.7451619, 2.636126, 0, -9.706811)
+
+[node name="TreeGenerator2" parent="Trees" unique_id=1266538486 instance=ExtResource("17_g1faw")]
+transform = Transform3D(-0.802984, 0, -0.5960006, 0, 1, 0, 0.5960006, 0, -0.802984, -8.46615, 0, -9.311664)
+
+[node name="TreeGenerator3" parent="Trees" unique_id=1159220776 instance=ExtResource("17_g1faw")]
+transform = Transform3D(-0.78043044, 0, -0.6252426, 0, 1, 0, 0.6252426, 0, -0.78043044, -4.232462, 0, 47.191093)
+
+[node name="TreeGenerator4" parent="Trees" unique_id=930872294 instance=ExtResource("17_g1faw")]
+transform = Transform3D(0.5325808, 0, -0.84637916, 0, 1, 0, 0.84637916, 0, 0.5325808, 39.86186, -0.69820535, -20.431955)
+
+[node name="TreeGenerator5" parent="Trees" unique_id=1474824469 instance=ExtResource("17_g1faw")]
+transform = Transform3D(-0.91993105, 0, 0.39208022, 0, 1, 0, -0.39208022, 0, -0.91993105, 38.156593, -0.625, 1.029953)
+
+[node name="TreeGenerator6" parent="Trees" unique_id=153282973 instance=ExtResource("17_g1faw")]
+transform = Transform3D(0.30055597, 0, -0.9537642, 0, 1, 0, 0.9537642, 0, 0.30055597, 11.429772, -0.6249962, 19.179192)
+
+[node name="TreeGenerator7" parent="Trees" unique_id=668579522 instance=ExtResource("18_nfrs4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7403133, 6.3870773)
+
+[node name="TreeGenerator8" parent="Trees" unique_id=1568459884 instance=ExtResource("18_nfrs4")]
+transform = Transform3D(0.4907517, 0, 0.87129945, 0, 1, 0, -0.87129945, 0, 0.4907517, 41.92961, -0.625, -4.112034)
+
+[node name="TreeGenerator9" parent="Trees" unique_id=842409567 instance=ExtResource("18_nfrs4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.781284, -0.625, -19.263472)
+
+[node name="TreeGenerator10" parent="Trees" unique_id=149505017 instance=ExtResource("18_nfrs4")]
+transform = Transform3D(0.78832227, 0, 0.6152625, 0, 1, 0, -0.6152625, 0, 0.78832227, 26.609863, -0.625, 1.5522385)
+
+[node name="TreeGenerator11" parent="Trees" unique_id=107091397 instance=ExtResource("18_nfrs4")]
+transform = Transform3D(0.8330661, 0, 0.5531735, 0, 1, 0, -0.5531735, 0, 0.8330661, -4.128992, -0.625, 34.584972)
+
+[node name="TreeGenerator12" parent="Trees" unique_id=14246919 instance=ExtResource("18_nfrs4")]
+transform = Transform3D(0.9907597, 0, 0.13562912, 0, 1, 0, -0.13562912, 0, 0.9907597, -14.55876, -0.6250038, 58.371872)
+
+[node name="TreeGenerator13" parent="Trees" unique_id=1929491768 instance=ExtResource("19_1djfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.800861, -0.625, -18.357101)
+
+[node name="TreeGenerator15" parent="Trees" unique_id=1323857692 instance=ExtResource("19_1djfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.345605, -0.625, 49.139324)
+
+[node name="TreeGenerator16" parent="Trees" unique_id=1171162242 instance=ExtResource("19_1djfu")]
+transform = Transform3D(-0.5432624, 0, -0.83956295, 0, 1, 0, 0.83956295, 0, -0.5432624, 19.823933, -0.625, -32.098488)
+
+[node name="TreeGenerator14" parent="Trees" unique_id=1291891572 instance=ExtResource("9_r8t4o")]
+transform = Transform3D(-0.698153, 0, 0.71594846, 0, 1, 0, -0.71594846, 0, -0.698153, -17.039143, -0.6249962, 25.58463)
+
+[node name="TreeGenerator17" parent="Trees" unique_id=1951640961 instance=ExtResource("8_8nbw3")]
+transform = Transform3D(0.95242774, 0, 0.30476457, 0, 1, 0, -0.30476457, 0, 0.95242774, -15.908354, -1, 15.854984)
+
+[node name="TreeGenerator18" parent="Trees" unique_id=504977193 instance=ExtResource("18_nfrs4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.215538, -0.625, 93.914406)
+
+[node name="TreeGenerator19" parent="Trees" unique_id=1370648106 instance=ExtResource("18_nfrs4")]
+transform = Transform3D(0.9208864, 0, 0.38983127, 0, 1, 0, -0.38983127, 0, 0.9208864, -5.9643536, -0.625, 91.77676)
+
+[node name="TreeGenerator20" parent="Trees" unique_id=682772732 instance=ExtResource("17_g1faw")]
+transform = Transform3D(0.8810889, 0, -0.47295064, 0, 1, 0, 0.47295064, 0, 0.8810889, -13.335005, -0.6250019, 95.47882)
+
+[node name="TreeGenerator21" parent="Trees" unique_id=179234374 instance=ExtResource("17_g1faw")]
+transform = Transform3D(0.3401662, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.3401662, -32.200546, -0.62500095, 92.56294)
+
+[node name="TreeGenerator22" parent="Trees" unique_id=472873737 instance=ExtResource("19_1djfu")]
+transform = Transform3D(-0.047681767, 0, -0.99886256, 0, 1, 0, 0.99886256, 0, -0.047681767, -47.99685, -0.625, 135.13763)
+
+[node name="TreeGenerator23" parent="Trees" unique_id=656762207 instance=ExtResource("19_1djfu")]
+transform = Transform3D(0.21326916, 0, -0.9769935, 0, 1, 0, 0.9769935, 0, 0.21326916, 7.451805, -0.57571507, 167.70802)
+
+[node name="TreeGenerator24" parent="Trees" unique_id=1833799998 instance=ExtResource("9_r8t4o")]
+transform = Transform3D(0.9048494, 0, -0.42573184, 0, 1, 0, 0.42573184, 0, 0.9048494, -18.638262, -1.0509291, 140.15103)
+
+[node name="TreeGenerator25" parent="Trees" unique_id=1635121003 instance=ExtResource("8_8nbw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.553905, -0.625, 122.07465)
