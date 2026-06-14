@@ -9,6 +9,7 @@ var can_move := false
 var world: World3D
 var target: Node3D
 var should_track_target: bool = false
+var animation_player: AnimationPlayer
 
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var shapecast = $ShapeCast3D
@@ -16,6 +17,8 @@ var should_track_target: bool = false
 
 func _ready() -> void:
 	world = Engine.get_main_loop().root.get_world_3d()
+	animation_player = find_child("AnimationPlayer")
+	animation_player.play("Walk")
 
 
 func get_point_on_map(point: Vector3) -> Vector3:
