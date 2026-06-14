@@ -195,9 +195,6 @@ geometry_source_group_name = &"navmesh_part2"
 agent_height = 6.0
 agent_radius = 2.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
-albedo_color = Color(1, 0, 1, 1)
-
 [node name="MainMap" type="Node3D" unique_id=1480515348]
 
 [node name="Szymon" parent="." unique_id=904338965 instance=ExtResource("1_isd4l")]
@@ -1583,7 +1580,7 @@ metadata/_custom_type_script = "uid://djg0m48s04bny"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
 [node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@18888")
+blackboard = NodePath("@Node@18895")
 
 [node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
 max_health = 5.0
@@ -2785,23 +2782,11 @@ transform = Transform3D(-2.4147193, 0, -2.980233e-08, 0, 3.399334, 0, -1.5735625
 [node name="Part1" parent="." unique_id=225790775 instance=ExtResource("30_m81eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, 25)
 
-[node name="Part1" type="CSGSphere3D" parent="Part1" unique_id=74489122]
-radius = 1.0
-material = SubResource("StandardMaterial3D_tmm0v")
-
 [node name="Part2" parent="." unique_id=894088557 instance=ExtResource("30_m81eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.5, 136)
 
-[node name="Part1" type="CSGSphere3D" parent="Part2" unique_id=1828017266]
-radius = 1.0
-material = SubResource("StandardMaterial3D_tmm0v")
-
 [node name="Part3" parent="." unique_id=1554434201 instance=ExtResource("30_m81eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0.5, 141)
-
-[node name="Part1" type="CSGSphere3D" parent="Part3" unique_id=2008974876]
-radius = 1.0
-material = SubResource("StandardMaterial3D_tmm0v")
 
 [connection signal="all_parts_fused" from="Map/Graybox/RadioTower" to="BigBoss" method="_on_start_boss_battle"]
 [connection signal="health_depleted" from="Enemy/HealthComponent" to="Map/Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
