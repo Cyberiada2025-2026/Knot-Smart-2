@@ -9,11 +9,14 @@ extends AnimatableBody3D
 @export var health_component: HealthComponent
 var animation_player: AnimationPlayer
 
+var is_battle: bool = false
+
 
 func _ready() -> void:
 	animation_player = boss_model.find_child("AnimationPlayer")
 	animation_player.play("Laying")
 	health_component.is_protected = true
+	last_pos = position
 
 
 func _on_start_boss_battle() -> void:
@@ -25,6 +28,7 @@ func _on_start_boss_battle() -> void:
 	music_player.set_soundtrack(battle_soundtrack)
 	music_player.disable_areas()
 
+	is_battle = true
 	get_tree().create_timer(120.0).timeout.connect(destroy_generator)
 
 
@@ -37,3 +41,11 @@ func _on_health_component_health_depleted() -> void:
 func destroy_generator() -> void:
 	print("You lost")
 	get_tree().change_scene_to_file(lose_scene)
+
+
+var last_pos: Vector3 = Vector3()
+
+func _physics_process(_delta: float) -> void:
+	if is_battle:
+		look_at(Vector3(40.5, position.y, -16.5))
+		last_pos = position
