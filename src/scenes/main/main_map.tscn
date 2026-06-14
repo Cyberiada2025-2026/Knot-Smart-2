@@ -153,11 +153,6 @@ script = ExtResource("80_0a1xl")
 sentences = Array[ExtResource("81_d8whw")]([SubResource("Resource_u8h14")])
 metadata/_custom_type_script = "uid://dhpmrqniojeb4"
 
-[sub_resource type="Resource" id="Resource_6yd7f"]
-script = ExtResource("80_0a1xl")
-sentences = Array[ExtResource("81_d8whw")]([SubResource("Resource_u8h14")])
-metadata/_custom_type_script = "uid://dhpmrqniojeb4"
-
 [sub_resource type="Animation" id="Animation_mhegm"]
 length = 0.001
 tracks/0/type = "value"
@@ -200,6 +195,11 @@ material = ExtResource("33_srf2b")
 size = Vector2(400, 140)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_s2x2q"]
+
+[sub_resource type="Resource" id="Resource_6yd7f"]
+script = ExtResource("80_0a1xl")
+sentences = Array[ExtResource("81_d8whw")]([SubResource("Resource_u8h14")])
+metadata/_custom_type_script = "uid://dhpmrqniojeb4"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_acfpd"]
 size = Vector3(18, 19.6, 20)
@@ -1643,18 +1643,6 @@ script = ExtResource("79_awfjg")
 dialogue = SubResource("Resource_tlwao")
 metadata/_custom_type_script = "uid://krqwntoiv6fm"
 
-[node name="PointOfInterest2" type="Node3D" parent="Map/Graybox/RadioTower" unique_id=270415261]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -41.283195, 59.50448)
-script = ExtResource("78_oveuq")
-radius = 16.0
-visualize = false
-metadata/_custom_type_script = "uid://bm0wrygl0ikje"
-
-[node name="SpeechPOI" type="Node" parent="Map/Graybox/RadioTower/PointOfInterest2" unique_id=384162524]
-script = ExtResource("79_awfjg")
-dialogue = SubResource("Resource_6yd7f")
-metadata/_custom_type_script = "uid://krqwntoiv6fm"
-
 [node name="MapRenderer" parent="Map" unique_id=481359591 instance=ExtResource("28_acfpd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.5, -5, -80.5)
 
@@ -1788,6 +1776,18 @@ metadata/_custom_type_script = "uid://bm0wrygl0ikje"
 [node name="SpeechPOI" type="Node" parent="PointOfInterest" unique_id=1692632447]
 script = ExtResource("79_awfjg")
 dialogue = SubResource("Resource_tlwao")
+metadata/_custom_type_script = "uid://krqwntoiv6fm"
+
+[node name="PointOfInterest2" type="Node3D" parent="." unique_id=270415261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -2.2831955, 44.00448)
+script = ExtResource("78_oveuq")
+radius = 16.0
+visualize = false
+metadata/_custom_type_script = "uid://bm0wrygl0ikje"
+
+[node name="SpeechPOI" type="Node" parent="PointOfInterest2" unique_id=384162524]
+script = ExtResource("79_awfjg")
+dialogue = SubResource("Resource_6yd7f")
 metadata/_custom_type_script = "uid://krqwntoiv6fm"
 
 [node name="PostTutorial" type="Node3D" parent="." unique_id=1325096776 groups=["navmesh_part2"]]
