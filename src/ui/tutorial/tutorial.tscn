@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cysjx27t16lw5"]
 
 [ext_resource type="Script" uid="uid://da1g8g8od3xxv" path="res://ui/tutorial/tutorial.gd" id="1_tkdws"]
+[ext_resource type="Texture2D" uid="uid://b77gjfhdu4uhn" path="res://ui/game_over/background.png" id="2_104xa"]
+[ext_resource type="Theme" uid="uid://cj65b87g70pt0" path="res://ui/health/button_theme.tres" id="3_xip1d"]
 
 [node name="Tutorial" type="Control" unique_id=310617842 node_paths=PackedStringArray("text_labels", "next_button", "skip_button")]
 layout_mode = 3
@@ -14,19 +16,11 @@ text_labels = [NodePath("VBoxContainer/Text1"), NodePath("VBoxContainer/Text2"),
 next_button = NodePath("VBoxContainer/HBoxContainer/Next Button")
 skip_button = NodePath("VBoxContainer/HBoxContainer/Skip Button")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1506525754]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="." unique_id=706129649]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_104xa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1520330159]
 layout_mode = 1
@@ -45,7 +39,6 @@ grow_vertical = 2
 [node name="Text1" type="RichTextLabel" parent="VBoxContainer" unique_id=1392196135]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_colors/default_color = Color(0.4, 0.4117647, 1, 1)
 text = "WASD - movement
 Space - jump
 Mouse wheel - zoom
@@ -60,7 +53,6 @@ horizontal_alignment = 1
 visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_colors/default_color = Color(0.4, 0.4117647, 1, 1)
 text = "N - toggle gravity change
 Tab - view journal
 RMB - toggle views
@@ -74,7 +66,7 @@ horizontal_alignment = 1
 visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_colors/default_color = Color(0.4, 0.4117647, 1, 1)
+theme_override_font_sizes/normal_font_size = 13
 text = "Rope interact view:
 LMB - add/break rope
 Mouse wheel - pull/push rope
@@ -87,19 +79,22 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1488960919]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 4
 alignment = 1
 
 [node name="Skip Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1079179620]
 process_mode = 3
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme = ExtResource("3_xip1d")
 text = "Skip
 "
 
 [node name="Next Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1807891422]
 process_mode = 3
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme = ExtResource("3_xip1d")
 text = "Next
 "
 
