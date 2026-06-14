@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://ds23isyj385on"]
 
 [ext_resource type="Script" uid="uid://doqxxfg1qiy8i" path="res://ui/pause_menu/pause_menu.gd" id="1_b8ecp"]
+[ext_resource type="Texture2D" uid="uid://1k8hiuxqq78n" path="res://ui/pause_menu/background_pause_menu.png" id="2_le02u"]
+[ext_resource type="Texture2D" uid="uid://chsybp308aw0d" path="res://ui/pause_menu/button.png" id="3_b4b0p"]
+[ext_resource type="Texture2D" uid="uid://bwgc0evksww58" path="res://ui/pause_menu/pause_menu.png" id="3_c3jo5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c3jo5"]
+texture = ExtResource("3_b4b0p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uraes"]
+texture = ExtResource("3_b4b0p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ihaig"]
+texture = ExtResource("3_b4b0p")
 
 [node name="PauseMenu" type="Node" unique_id=473504245]
 process_mode = 3
@@ -15,7 +27,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=615393504]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("2_le02u")
+
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1659341705]
+visible = false
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("3_c3jo5")
+
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=1224272992]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,6 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=202007547]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,5 +88,56 @@ process_mode = 3
 layout_mode = 2
 text = "quit game"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=1782974228]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 160.0
+offset_bottom = 71.0
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b]Pause
+"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control" unique_id=1758160502]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 66.0
+offset_right = 162.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.9021, 0.97, 0.97, 1)
+theme_override_colors/font_focus_color = Color(0.84629995, 0.93, 0.93, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_c3jo5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uraes")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ihaig")
+text = "Resume game"
+
+[node name="Button2" type="Button" parent="Control" unique_id=1746507235]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 109.0
+offset_right = 162.0
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(0.9021, 0.97, 0.97, 1)
+theme_override_colors/font_focus_color = Color(0.84629995, 0.93, 0.93, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_c3jo5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uraes")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ihaig")
+text = "Quit game"
+
+[node name="ColorRect2" type="ColorRect" parent="Control" unique_id=854201579]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 15.0
+color = Color(0.3529412, 1, 1, 1)
+
 [connection signal="pressed" from="Control/VBoxContainer/Close Button" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_quit_button_pressed"]
