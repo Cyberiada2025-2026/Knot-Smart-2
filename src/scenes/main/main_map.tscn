@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://u8e7ivwgn30i"]
 
+[ext_resource type="PackedScene" uid="uid://dok2k0qk1a7ta" path="res://scenes/main/szymon.tscn" id="1_isd4l"]
 [ext_resource type="PackedScene" uid="uid://c4sgtcvhksqls" path="res://characters/player/player.tscn" id="1_s4hfs"]
 [ext_resource type="PackedScene" uid="uid://in67fgdec5fi" path="res://scenes/main/leon.tscn" id="2_2imt8"]
 [ext_resource type="Script" uid="uid://b0sxpo4x8f11a" path="res://shared/day_night_cycle/day_night_cycle.gd" id="2_si2mp"]
@@ -14,25 +15,14 @@
 [ext_resource type="CompressedTexture3D" uid="uid://bmqvnf4nb6r6f" path="res://shared/day_night_cycle/LUTs/LUT_night.png" id="6_5psq7"]
 [ext_resource type="PackedScene" uid="uid://cwmyt6y2863aq" path="res://shared/antennas/radio_tower/radio_tower.tscn" id="6_f8fwh"]
 [ext_resource type="Script" uid="uid://uq2ee3iq6x08" path="res://shared/buildings/building_generation/building_generation_params.gd" id="8_e2d8t"]
-[ext_resource type="PackedScene" uid="uid://defn5yjy78ix4" path="res://shared/nature_generators/tree_generator/prefabs/tree5.tscn" id="8_l7tt2"]
 [ext_resource type="Script" uid="uid://o0oessya87xf" path="res://shared/buildings/building_generation/building_shape_description.gd" id="9_fbtr5"]
 [ext_resource type="PackedScene" uid="uid://cxr2xiej7ep2p" path="res://shared/post_processing/world_environment.tscn" id="9_rjtpl"]
-[ext_resource type="PackedScene" uid="uid://bn0bjhcj5avki" path="res://shared/nature_generators/tree_generator/prefabs/tree4.tscn" id="9_t3m1x"]
-[ext_resource type="PackedScene" uid="uid://djfrk2uv5ur0b" path="res://shared/debris/piles/debris_pile_2.tscn" id="10_kximk"]
 [ext_resource type="Script" uid="uid://cp8ed61leg0wl" path="res://shared/buildings/building_generation/box_description.gd" id="10_rjtpl"]
-[ext_resource type="PackedScene" uid="uid://ctr84bt67oahh" path="res://shared/debris/piles/debris_pile_1.tscn" id="11_fj30k"]
 [ext_resource type="MeshLibrary" uid="uid://dxdix3oesovgs" path="res://shared/buildings/assets/models/building_parts_no_collision.tres" id="11_si2mp"]
 [ext_resource type="Script" uid="uid://qmqrw6ncjc" path="res://shared/music_player_areas/music_player_area.gd" id="12_b0av3"]
-[ext_resource type="PackedScene" uid="uid://cekls8dq3kd3y" path="res://shared/plants/vines/bent_vines_2_thin.tscn" id="12_v53su"]
 [ext_resource type="AudioStream" uid="uid://cw6vr3tsvr0gg" path="res://shared/ost/CloseEncounter.ogg" id="13_4yqb1"]
 [ext_resource type="Resource" uid="uid://c8xhbj0f06miu" path="res://shared/buildings/model_management/basic_building_tileset_thick_walls.tres" id="13_jppmo"]
-[ext_resource type="PackedScene" uid="uid://dtsgxkym0sobe" path="res://shared/plants/vines/bent_vines_1_normal.tscn" id="13_r3g4s"]
-[ext_resource type="PackedScene" uid="uid://1peooswj26s5" path="res://shared/plants/vines/basic_vines_thick.tscn" id="14_22g1g"]
-[ext_resource type="PackedScene" uid="uid://dh4aw1k0cdf40" path="res://shared/plants/vines/bent_vines_1_thick.tscn" id="15_o0632"]
-[ext_resource type="PackedScene" uid="uid://dpbcjs1dr4vxe" path="res://shared/nature_generators/tree_generator/prefabs/tree1.tscn" id="17_wqmtu"]
-[ext_resource type="PackedScene" uid="uid://bo23tv6yguitm" path="res://shared/nature_generators/tree_generator/prefabs/tree2.tscn" id="18_eh7qh"]
 [ext_resource type="PackedScene" uid="uid://d0aa1l38pc6jy" path="res://characters/enemies/big_boss/big_boss.tscn" id="18_isd4l"]
-[ext_resource type="PackedScene" uid="uid://nd864u3myomf" path="res://shared/nature_generators/tree_generator/prefabs/tree3.tscn" id="19_ib6q0"]
 [ext_resource type="Script" uid="uid://cbn62hjlskw0a" path="res://shared/buildings/decimate_building/decimate_building.gd" id="22_6yd7f"]
 [ext_resource type="MeshLibrary" uid="uid://bqqgkcaxkvu0g" path="res://shared/buildings/assets/models/building_parts_collision_thick.tres" id="23_a1yee"]
 [ext_resource type="Resource" uid="uid://dmcuh0thd0ntg" path="res://shared/buildings/model_management/tenement_house_tileset.tres" id="24_4eq3o"]
@@ -52,27 +42,6 @@
 [ext_resource type="Script" uid="uid://krqwntoiv6fm" path="res://shared/point_of_interest/components/speech_poi.gd" id="79_awfjg"]
 [ext_resource type="Script" uid="uid://dhpmrqniojeb4" path="res://shared/dialogue/dialogue.gd" id="80_0a1xl"]
 [ext_resource type="Script" uid="uid://kpru7f8vmtp5" path="res://shared/dialogue/sentence.gd" id="81_d8whw"]
-
-[sub_resource type="Resource" id="Resource_joa1j"]
-script = ExtResource("8_e2d8t")
-random_seed = 59
-building_tileset = ExtResource("24_4eq3o")
-outside_door_count = 3
-generate_rooms = true
-min_room_size = Vector3i(5, 1, 5)
-max_room_size = Vector3i(8, 1, 8)
-long_room_tendency = 0.2
-metadata/_custom_type_script = "uid://uq2ee3iq6x08"
-
-[sub_resource type="Resource" id="Resource_g1faw"]
-script = ExtResource("8_e2d8t")
-random_seed = 59
-building_tileset = ExtResource("24_4eq3o")
-outside_door_count = 3
-metadata/_custom_type_script = "uid://uq2ee3iq6x08"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nfrs4"]
-size = Vector3(10, 11.2, 10)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wvbdd"]
 vertices = PackedVector3Array(55.5, 0, 35.25, 58, 0.25, 34.75, 58, 0.25, 30.75, 19.75, 0.25, 42.5, 20.25, 0, 48, 20.75, 0, 48.5, 26, 0.25, 40.25, 20, 0.25, 40.25, 54.75, 0, 36.5, 48.5, 0.25, 30.75, 38, 0, 32.25, 27.75, 0, 32.25, 27.75, 0, 38.5, 46.75, 0, 27.75, 39.75, 0, 27.75, 39.75, 0, 30.5, 47.25, 0.25, 30, 20.75, 0, 60.25, 39, 0, 60.25, 39, 0, 31.75, 27.25, 0.25, 39.5, 59.25, 0, 62.5, 59.25, 0, 53.25, 56.5, 0, 53.25, 40.25, 0, 61, 54.75, 0, 51.5, 55.25, 0, 52.5, 40.75, 0, 62.5)
@@ -424,292 +393,7 @@ _data = {
 
 [node name="MainMap" type="Node3D" unique_id=1480515348]
 
-[node name="Szymon" type="Node3D" parent="." unique_id=904338965]
-
-[node name="BuildingGenerator5" type="Node3D" parent="Szymon" unique_id=1474393064 node_paths=PackedStringArray("generated_building_node")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, -0.5, 10.5)
-script = ExtResource("6_0hmuk")
-building_generation_params = SubResource("Resource_joa1j")
-generated_building_node = NodePath("GeneratedBuilding")
-metadata/_custom_type_script = "uid://c8acika7wo4ks"
-
-[node name="BuildingShapeDescription" type="Node" parent="Szymon/BuildingGenerator5" unique_id=290509782]
-script = ExtResource("9_fbtr5")
-metadata/_custom_type_script = "uid://o0oessya87xf"
-
-[node name="BoxDescription" type="Node" parent="Szymon/BuildingGenerator5/BuildingShapeDescription" unique_id=521595335]
-script = ExtResource("10_rjtpl")
-size = Vector3i(8, 2, 5)
-metadata/_custom_type_script = "uid://cp8ed61leg0wl"
-
-[node name="DecimateBuilding" type="Node3D" parent="Szymon/BuildingGenerator5" unique_id=239605419]
-script = ExtResource("22_6yd7f")
-strength = 0.234
-iterations = 19
-seed_value = 771696584
-metadata/_custom_type_script = "uid://cbn62hjlskw0a"
-
-[node name="GeneratedBuilding" type="Node3D" parent="Szymon/BuildingGenerator5" unique_id=1069199471]
-
-[node name="@GridMap@28555" type="GridMap" parent="Szymon/BuildingGenerator5/GeneratedBuilding" unique_id=528404305]
-mesh_library = ExtResource("25_webmx")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(3, 2, 1048580, 65539, 0, 1048580, 0, 0, 1048579, 0, 2, 1048578, 0, 3, 1048578, 0, 4, 1048578, 3, 0, 1048578, 3, 1, 1048578, 3, 3, 1048578, 3, 4, 1048578, 65536, 3, 1048579, 65536, 4, 1048578, 65539, 1, 1048578, 65539, 2, 1048578, 65539, 3, 1048578, 65539, 4, 1048578, 8, 0, 1048580, 8, 1, 1048578, 8, 2, 1048578, 8, 3, 1048580, 8, 4, 1048579, 65544, 0, 1048578, 65544, 1, 1048579, 65544, 2, 1048579, 65544, 3, 1048579, 65544, 4, 1048578)
-}
-
-[node name="@GridMap@28556" type="GridMap" parent="Szymon/BuildingGenerator5/GeneratedBuilding" unique_id=1837082948]
-mesh_library = ExtResource("25_webmx")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 65536, 3, 0, 65536, 4, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 65538, 0, 0, 65538, 1, 0, 65538, 2, 0, 65538, 3, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 5, 0, 0, 5, 1, 0, 5, 2, 0, 5, 3, 0, 5, 4, 0, 6, 0, 0, 6, 1, 0, 6, 2, 0, 6, 3, 0, 6, 4, 0, 7, 0, 0, 7, 1, 0, 7, 2, 0, 7, 3, 0, 7, 4, 0, 65539, 0, 0, 65539, 1, 0, 65539, 2, 0, 65539, 3, 0, 65539, 4, 0, 65540, 1, 0, 65540, 2, 0, 65540, 3, 0, 65541, 0, 0, 65541, 1, 0, 65541, 2, 0, 65541, 3, 0, 65541, 4, 0, 65542, 0, 0, 65542, 1, 0, 65542, 2, 0, 65542, 3, 0, 65542, 4, 0, 65543, 1, 0, 65543, 2, 0, 65543, 3, 0)
-}
-
-[node name="@GridMap@28557" type="GridMap" parent="Szymon/BuildingGenerator5/GeneratedBuilding" unique_id=1271934769]
-mesh_library = ExtResource("25_webmx")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 0, 3, 1, 0, 2, 2, 0, 2, 0, 5, 3, 1, 5, 2, 2, 5, 2, 65538, 0, 2, 65536, 5, 2, 65537, 5, 2, 65538, 5, 2, 3, 0, 3, 5, 0, 3, 6, 0, 2, 7, 0, 2, 3, 5, 2, 4, 5, 2, 5, 5, 3, 6, 5, 2, 7, 5, 2, 65539, 0, 2, 65541, 0, 2, 65542, 0, 2, 65539, 5, 3, 65540, 5, 2, 65541, 5, 2, 65542, 5, 2, 65543, 5, 2)
-}
-
-[node name="@NavigationObstacle3D@28558" type="NavigationObstacle3D" parent="Szymon/BuildingGenerator5/GeneratedBuilding" unique_id=1860515206]
-visible = false
-height = 100.0
-vertices = PackedVector3Array(0, 0, 0, 0, 0, 10, 16, 0, 10, 16, 0, 0)
-affect_navigation_mesh = true
-avoidance_enabled = false
-
-[node name="TreeGenerator" parent="Szymon" unique_id=1093754622 instance=ExtResource("8_l7tt2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.159087, -0.5319556, 2.8596125)
-
-[node name="TreeGenerator2" parent="Szymon" unique_id=1567449531 instance=ExtResource("9_t3m1x")]
-transform = Transform3D(-0.72176015, 0, -0.6921432, 0, 1, 0, 0.6921432, 0, -0.72176015, -16.2693, -0.5319556, -11.699533)
-
-[node name="DebrisPile3" parent="Szymon" unique_id=2036146628 instance=ExtResource("10_kximk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.054852, -0.22342682, -7.122856)
-
-[node name="DebrisPile4" parent="Szymon" unique_id=1103096767 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.577469, -0.23560229, -13.975695)
-
-[node name="DebrisPile5" parent="Szymon" unique_id=900855053 instance=ExtResource("10_kximk")]
-transform = Transform3D(-0.9998996, 0, 0.014171541, 0, 1, 0, -0.014171541, 0, -0.9998996, 41.73802, -0.22342682, 125.36626)
-
-[node name="DebrisPile6" parent="Szymon" unique_id=1662767892 instance=ExtResource("11_fj30k")]
-transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 44.198128, -0.23560134, 130.34824)
-
-[node name="DebrisPile7" parent="Szymon" unique_id=2030485631 instance=ExtResource("10_kximk")]
-transform = Transform3D(0.46944076, 0, 0.88296396, 0, 1, 0, -0.88296396, 0, 0.46944076, 13.987819, -0.22342682, -17.955887)
-
-[node name="DebrisPile2" parent="Szymon" unique_id=2065655849 instance=ExtResource("10_kximk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.546778, 0.029802084, 14.493747)
-
-[node name="DebrisPile1" parent="Szymon" unique_id=2069696039 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.48944, -0.13423002, 123.3667)
-
-[node name="Bent Vines 2 Thin" parent="Szymon" unique_id=203890781 instance=ExtResource("12_v53su")]
-transform = Transform3D(0.46309707, 0.42997932, 0.7750215, 0.15799814, 0.8203821, -0.54955375, -0.87211084, 0.37694892, 0.31198058, 14.60062, 3.5560255, 5.5316215)
-
-[node name="Bent Vines 1 Normal" parent="Szymon" unique_id=1460533781 instance=ExtResource("13_r3g4s")]
-transform = Transform3D(0.45867643, 0.19058774, 0.8679239, 0.7781093, 0.38555557, -0.49587592, -0.42914096, 0.9027864, 0.028546974, 13.6862755, 3.4541602, 5.1231575)
-
-[node name="Basic Vines Thick" parent="Szymon" unique_id=1120199189 instance=ExtResource("14_22g1g")]
-transform = Transform3D(1, 0, 0, 0, 0.07765868, -1.4525245, 0, 0.9969801, 0.11314285, 18.044844, 3.70405, 4.6580625)
-
-[node name="Basic Vines Thick2" parent="Szymon" unique_id=761440186 instance=ExtResource("14_22g1g")]
-transform = Transform3D(-1.0121741, 0, 0, 0, 0.07765868, -1.4525245, 0, 0.9969801, 0.11314285, 18.26076, 3.70405, 4.7623076)
-
-[node name="Bent Vines 1 Thick" parent="Szymon" unique_id=1327238883 instance=ExtResource("15_o0632")]
-transform = Transform3D(-0.12522615, -0.87854505, -0.46095246, -0.036632914, 0.4683874, -0.88276345, 0.9914517, -0.09365903, -0.090838015, 10.951313, 0.55127287, 7.300574)
-
-[node name="Bent Vines 2 Thin2" parent="Szymon" unique_id=635691820 instance=ExtResource("12_v53su")]
-transform = Transform3D(0.8405382, -0.5417522, 0, 0.5417522, 0.8405382, 0, 0, 0, 1, 11.693227, 2.0958886, 7.7728806)
-
-[node name="Bent Vines 2 Thin3" parent="Szymon" unique_id=954406873 instance=ExtResource("12_v53su")]
-transform = Transform3D(0.8279965, -0.52921045, 4.305608e-09, 0.53358495, 0.8209507, 0.009823786, 0.009453497, 0.0145447375, -0.55448604, 11.693227, 1.8848345, 8.333765)
-
-[node name="Bent Vines 1 Normal2" parent="Szymon" unique_id=1786948188 instance=ExtResource("13_r3g4s")]
-transform = Transform3D(-0.40554038, -0.7017391, 0.58574677, 1.5497097e-08, 0.6408068, 0.7677024, -0.9140773, 0.3113343, -0.25987303, 10.422854, 0.9211472, 10.447767)
-
-[node name="DebrisPile8" parent="Szymon" unique_id=1383379092 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.395778, -0.2849095, 1.230334)
-
-[node name="BuildingGenerator4" type="Node3D" parent="Szymon" unique_id=759830214 node_paths=PackedStringArray("generated_building_node")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, -0.5, 0.5)
-script = ExtResource("6_0hmuk")
-building_generation_params = SubResource("Resource_g1faw")
-generated_building_node = NodePath("GeneratedBuilding")
-metadata/_custom_type_script = "uid://c8acika7wo4ks"
-
-[node name="BuildingShapeDescription" type="Node" parent="Szymon/BuildingGenerator4" unique_id=1872445610]
-script = ExtResource("9_fbtr5")
-is_visible = true
-metadata/_custom_type_script = "uid://o0oessya87xf"
-
-[node name="BoxDescription" type="Node" parent="Szymon/BuildingGenerator4/BuildingShapeDescription" unique_id=673549591]
-script = ExtResource("10_rjtpl")
-size = Vector3i(5, 4, 5)
-metadata/_custom_type_script = "uid://cp8ed61leg0wl"
-
-[node name="GeneratedBuilding" type="Node3D" parent="Szymon/BuildingGenerator4" unique_id=1368878904]
-
-[node name="_GridMap_43356" type="GridMap" parent="Szymon/BuildingGenerator4/GeneratedBuilding" unique_id=797865029]
-mesh_library = ExtResource("25_lk058")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 0, 1048578, 0, 1, 1048579, 0, 2, 1048580, 0, 3, 1048578, 0, 4, 1048578, 65536, 0, 1048578, 65536, 1, 1048579, 65536, 2, 1048579, 65536, 3, 1048579, 65536, 4, 1048578, 131072, 0, 1048579, 131072, 1, 1048578, 131072, 2, 1048578, 131072, 3, 1048578, 131072, 4, 1048578, 196608, 0, 1048579, 196608, 1, 1048578, 196608, 2, 1048578, 196608, 3, 1048578, 196608, 4, 1048578, 5, 0, 1048578, 5, 1, 1048578, 5, 2, 1048578, 5, 3, 1048578, 5, 4, 1048580, 65541, 0, 1048578, 65541, 1, 1048578, 65541, 2, 1048578, 65541, 3, 1048579, 65541, 4, 1048578, 131077, 0, 1048579, 131077, 1, 1048578, 131077, 2, 1048578, 131077, 3, 1048578, 131077, 4, 1048578, 196613, 0, 1048579, 196613, 1, 1048579, 196613, 2, 1048578, 196613, 3, 1048578, 196613, 4, 1048578)
-}
-
-[node name="_GridMap_43357" type="GridMap" parent="Szymon/BuildingGenerator4/GeneratedBuilding" unique_id=271007049]
-mesh_library = ExtResource("25_lk058")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 262144, 0, 0, 262144, 1, 0, 262144, 2, 0, 262144, 3, 0, 262144, 4, 0, 262145, 0, 0, 262145, 1, 0, 262145, 2, 0, 262145, 3, 0, 262145, 4, 0, 262146, 0, 0, 262146, 1, 0, 262146, 2, 0, 262146, 3, 0, 262146, 4, 0, 262147, 0, 0, 262147, 1, 0, 262147, 2, 0, 262147, 3, 0, 262147, 4, 0, 262148, 0, 0, 262148, 1, 0, 262148, 2, 0, 262148, 3, 0, 262148, 4, 0)
-}
-
-[node name="_GridMap_43358" type="GridMap" parent="Szymon/BuildingGenerator4/GeneratedBuilding" unique_id=1122473657]
-mesh_library = ExtResource("25_lk058")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 0, 2, 65536, 0, 2, 131072, 0, 2, 196608, 0, 2, 1, 0, 2, 65537, 0, 2, 131073, 0, 3, 196609, 0, 3, 2, 0, 4, 65538, 0, 2, 131074, 0, 3, 196610, 0, 2, 3, 0, 3, 65539, 0, 2, 131075, 0, 3, 196611, 0, 3, 4, 0, 2, 65540, 0, 2, 131076, 0, 3, 196612, 0, 2, 0, 5, 2, 65536, 5, 3, 131072, 5, 3, 196608, 5, 2, 1, 5, 3, 65537, 5, 2, 131073, 5, 2, 196609, 5, 2, 2, 5, 3, 65538, 5, 2, 131074, 5, 3, 196610, 5, 2, 3, 5, 2, 65539, 5, 2, 131075, 5, 2, 196611, 5, 2, 4, 5, 2, 65540, 5, 3, 131076, 5, 2, 196612, 5, 2)
-}
-
-[node name="_NavigationObstacle3D_43359" type="NavigationObstacle3D" parent="Szymon/BuildingGenerator4/GeneratedBuilding" unique_id=1360273598]
-visible = false
-height = 100.0
-vertices = PackedVector3Array(0, 0, 0, 0, 0, 10, 10, 0, 10, 10, 0, 0)
-affect_navigation_mesh = true
-avoidance_enabled = false
-
-[node name="_StaticBody3D_43360" type="StaticBody3D" parent="Szymon/BuildingGenerator4/GeneratedBuilding" unique_id=1781940310]
-collision_layer = 257
-
-[node name="_CollisionShape3D_43361" type="CollisionShape3D" parent="Szymon/BuildingGenerator4/GeneratedBuilding/_StaticBody3D_43360" unique_id=1739645003]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5.6, 5)
-shape = SubResource("BoxShape3D_nfrs4")
-
-[node name="Trees" type="Node3D" parent="Szymon" unique_id=1623455654]
-
-[node name="TreeGenerator" parent="Szymon/Trees" unique_id=202791369 instance=ExtResource("17_wqmtu")]
-transform = Transform3D(-0.7451619, 0, 0.6668835, 0, 1, 0, -0.6668835, 0, -0.7451619, 2.636126, 0, -9.706811)
-
-[node name="TreeGenerator2" parent="Szymon/Trees" unique_id=1266538486 instance=ExtResource("17_wqmtu")]
-transform = Transform3D(-0.802984, 0, -0.5960006, 0, 1, 0, 0.5960006, 0, -0.802984, -8.46615, 0, -9.311664)
-
-[node name="TreeGenerator3" parent="Szymon/Trees" unique_id=1159220776 instance=ExtResource("17_wqmtu")]
-transform = Transform3D(-0.78043044, 0, -0.6252426, 0, 1, 0, 0.6252426, 0, -0.78043044, -4.232462, 0, 47.191093)
-
-[node name="TreeGenerator4" parent="Szymon/Trees" unique_id=930872294 instance=ExtResource("17_wqmtu")]
-transform = Transform3D(0.5325808, 0, -0.84637916, 0, 1, 0, 0.84637916, 0, 0.5325808, 39.86186, -0.69820535, -20.431955)
-
-[node name="TreeGenerator5" parent="Szymon/Trees" unique_id=1474824469 instance=ExtResource("17_wqmtu")]
-transform = Transform3D(-0.91993105, 0, 0.39208022, 0, 1, 0, -0.39208022, 0, -0.91993105, 38.156593, -0.625, 1.029953)
-
-[node name="TreeGenerator6" parent="Szymon/Trees" unique_id=153282973 instance=ExtResource("17_wqmtu")]
-transform = Transform3D(0.30055597, 0, -0.9537642, 0, 1, 0, 0.9537642, 0, 0.30055597, 11.429772, -0.6249962, 19.179192)
-
-[node name="TreeGenerator7" parent="Szymon/Trees" unique_id=668579522 instance=ExtResource("18_eh7qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7403133, 6.3870773)
-
-[node name="TreeGenerator8" parent="Szymon/Trees" unique_id=1568459884 instance=ExtResource("18_eh7qh")]
-transform = Transform3D(0.4907517, 0, 0.87129945, 0, 1, 0, -0.87129945, 0, 0.4907517, 41.92961, -0.625, -4.112034)
-
-[node name="TreeGenerator9" parent="Szymon/Trees" unique_id=842409567 instance=ExtResource("18_eh7qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.781284, -0.625, -19.263472)
-
-[node name="TreeGenerator10" parent="Szymon/Trees" unique_id=149505017 instance=ExtResource("18_eh7qh")]
-transform = Transform3D(0.78832227, 0, 0.6152625, 0, 1, 0, -0.6152625, 0, 0.78832227, 26.609863, -0.625, 1.5522385)
-
-[node name="TreeGenerator11" parent="Szymon/Trees" unique_id=107091397 instance=ExtResource("18_eh7qh")]
-transform = Transform3D(0.8330661, 0, 0.5531735, 0, 1, 0, -0.5531735, 0, 0.8330661, -4.128992, -0.625, 34.584972)
-
-[node name="TreeGenerator12" parent="Szymon/Trees" unique_id=14246919 instance=ExtResource("18_eh7qh")]
-transform = Transform3D(0.9907597, 0, 0.13562912, 0, 1, 0, -0.13562912, 0, 0.9907597, -14.55876, -0.6250038, 58.371872)
-
-[node name="TreeGenerator13" parent="Szymon/Trees" unique_id=1929491768 instance=ExtResource("19_ib6q0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.800861, -0.625, -18.357101)
-
-[node name="TreeGenerator15" parent="Szymon/Trees" unique_id=1323857692 instance=ExtResource("19_ib6q0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.345605, -0.625, 49.139324)
-
-[node name="TreeGenerator16" parent="Szymon/Trees" unique_id=1171162242 instance=ExtResource("19_ib6q0")]
-transform = Transform3D(-0.5432624, 0, -0.83956295, 0, 1, 0, 0.83956295, 0, -0.5432624, 19.823933, -0.625, -32.098488)
-
-[node name="TreeGenerator14" parent="Szymon/Trees" unique_id=1291891572 instance=ExtResource("9_t3m1x")]
-transform = Transform3D(-0.698153, 0, 0.71594846, 0, 1, 0, -0.71594846, 0, -0.698153, -17.039143, -0.6249962, 25.58463)
-
-[node name="TreeGenerator17" parent="Szymon/Trees" unique_id=1951640961 instance=ExtResource("8_l7tt2")]
-transform = Transform3D(0.95242774, 0, 0.30476457, 0, 1, 0, -0.30476457, 0, 0.95242774, -15.908354, -1, 15.854984)
-
-[node name="TreeGenerator18" parent="Szymon/Trees" unique_id=504977193 instance=ExtResource("18_eh7qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.215538, -0.625, 93.914406)
-
-[node name="TreeGenerator19" parent="Szymon/Trees" unique_id=1370648106 instance=ExtResource("18_eh7qh")]
-transform = Transform3D(0.9208864, 0, 0.38983127, 0, 1, 0, -0.38983127, 0, 0.9208864, -5.9643536, -0.625, 91.77676)
-
-[node name="TreeGenerator20" parent="Szymon/Trees" unique_id=682772732 instance=ExtResource("17_wqmtu")]
-transform = Transform3D(0.8810889, 0, -0.47295064, 0, 1, 0, 0.47295064, 0, 0.8810889, -13.335005, -0.6250019, 95.47882)
-
-[node name="TreeGenerator21" parent="Szymon/Trees" unique_id=179234374 instance=ExtResource("17_wqmtu")]
-transform = Transform3D(0.3401662, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.3401662, -32.200546, -0.62500095, 92.56294)
-
-[node name="TreeGenerator22" parent="Szymon/Trees" unique_id=472873737 instance=ExtResource("19_ib6q0")]
-transform = Transform3D(-0.047681767, 0, -0.99886256, 0, 1, 0, 0.99886256, 0, -0.047681767, -47.99685, -0.625, 135.13763)
-
-[node name="TreeGenerator23" parent="Szymon/Trees" unique_id=656762207 instance=ExtResource("19_ib6q0")]
-transform = Transform3D(0.21326916, 0, -0.9769935, 0, 1, 0, 0.9769935, 0, 0.21326916, 7.451805, -0.57571507, 167.70802)
-
-[node name="TreeGenerator24" parent="Szymon/Trees" unique_id=1833799998 instance=ExtResource("9_t3m1x")]
-transform = Transform3D(0.9048494, 0, -0.42573184, 0, 1, 0, 0.42573184, 0, 0.9048494, -18.638262, -1.0509291, 140.15103)
-
-[node name="TreeGenerator25" parent="Szymon/Trees" unique_id=1635121003 instance=ExtResource("8_l7tt2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.553905, -0.625, 122.07465)
-
-[node name="MoreDebris" type="Node3D" parent="Szymon" unique_id=324760292]
-
-[node name="DebrisPile9" parent="Szymon/MoreDebris" unique_id=1873734018 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.908169, -0.040413857, 7.718294)
-
-[node name="DebrisPile10" parent="Szymon/MoreDebris" unique_id=2040274515 instance=ExtResource("10_kximk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.151241, 1.9555597, -9.060616)
-
-[node name="DebrisPile11" parent="Szymon/MoreDebris" unique_id=1649772450 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.438984, -0.23938656, 48.33219)
-
-[node name="DebrisPile12" parent="Szymon/MoreDebris" unique_id=106256269 instance=ExtResource("10_kximk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.182362, 0.019917965, 54.92603)
-
-[node name="DebrisPile13" parent="Szymon/MoreDebris" unique_id=1753853718 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.257786, 0.6748328, 148.94586)
-
-[node name="DebrisPile14" parent="Szymon/MoreDebris" unique_id=1708616739 instance=ExtResource("10_kximk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.114578, 1.3546314, 153.77432)
-
-[node name="DebrisPile15" parent="Szymon/MoreDebris" unique_id=1337517906 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.437149, 0.3749981, 144.25626)
-
-[node name="DebrisPile17" parent="Szymon/MoreDebris" unique_id=690529747 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.352234, 0.6990309, 33.77322)
-
-[node name="DebrisPile18" parent="Szymon/MoreDebris" unique_id=1620282617 instance=ExtResource("10_kximk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.170994, 0.49381065, 29.591782)
-
-[node name="DebrisPile19" parent="Szymon/MoreDebris" unique_id=1424174048 instance=ExtResource("11_fj30k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.643562, 0.51948357, 54.579617)
-
-[node name="DebrisPile20" parent="Szymon/MoreDebris" unique_id=1814527122 instance=ExtResource("11_fj30k")]
-transform = Transform3D(0.117797434, 0, 0.99303764, 0, 1, 0, -0.99303764, 0, 0.117797434, 5.1216965, -0.32040274, 44.96267)
-
-[node name="DebrisPile21" parent="Szymon/MoreDebris" unique_id=357380245 instance=ExtResource("10_kximk")]
-transform = Transform3D(0.26340166, 0, -0.9646863, 0, 1, 0, 0.9646863, 0, 0.26340166, -10.074917, 1.1556435, 36.503597)
-
-[node name="DebrisPile22" parent="Szymon/MoreDebris" unique_id=1437982487 instance=ExtResource("11_fj30k")]
-transform = Transform3D(0.9511428, 0, -0.3087514, 0, 1, 0, 0.3087514, 0, 0.9511428, -3.661914, 0.2549734, 50.91683)
+[node name="Szymon" parent="." unique_id=1444321441 instance=ExtResource("1_isd4l")]
 
 [node name="Leon" parent="." unique_id=1430698029 instance=ExtResource("2_2imt8")]
 
@@ -1940,7 +1624,7 @@ metadata/_custom_type_script = "uid://cbn62hjlskw0a"
 
 [node name="RadioTower" parent="Map/Graybox" unique_id=336301379 instance=ExtResource("6_f8fwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 39, -16.5)
-number_of_parts = 1
+number_of_parts = 3
 
 [node name="PointOfInterest" type="Node3D" parent="Map/Graybox/RadioTower" unique_id=212148188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -41.283195, -0.49552155)
