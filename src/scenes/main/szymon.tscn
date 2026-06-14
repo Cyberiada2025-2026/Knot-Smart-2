@@ -11,6 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://dtsgxkym0sobe" path="res://shared/plants/vines/bent_vines_1_normal.tscn" id="9_r4dge"]
 [ext_resource type="PackedScene" uid="uid://1peooswj26s5" path="res://shared/plants/vines/basic_vines_thick.tscn" id="10_6kg6w"]
 [ext_resource type="PackedScene" uid="uid://dh4aw1k0cdf40" path="res://shared/plants/vines/bent_vines_1_thick.tscn" id="11_u3hxq"]
+[ext_resource type="Script" uid="uid://c8acika7wo4ks" path="res://shared/buildings/building_generation/building_generator.gd" id="12_ipu2h"]
+[ext_resource type="Resource" uid="uid://b10ng08ut3bwu" path="res://shared/buildings/model_management/basic_building_tileset_thick_wide_window.tres" id="13_g1faw"]
+[ext_resource type="Script" uid="uid://uq2ee3iq6x08" path="res://shared/buildings/building_generation/building_generation_params.gd" id="14_nfrs4"]
+[ext_resource type="Script" uid="uid://o0oessya87xf" path="res://shared/buildings/building_generation/building_shape_description.gd" id="15_1djfu"]
+[ext_resource type="Script" uid="uid://cp8ed61leg0wl" path="res://shared/buildings/building_generation/box_description.gd" id="16_d3uka"]
+[ext_resource type="Script" uid="uid://cbn62hjlskw0a" path="res://shared/buildings/decimate_building/decimate_building.gd" id="17_etnvg"]
+[ext_resource type="MeshLibrary" uid="uid://thl4jxqyxath" path="res://shared/buildings/assets/models/basic_building_tileset_thick_wide_window.tres" id="18_fk6vh"]
 
 [sub_resource type="Resource" id="Resource_q3afr"]
 script = ExtResource("3_2wred")
@@ -45,6 +52,17 @@ max_count = 3
 branch_recursion_level = 1
 foliage_parameters = SubResource("Resource_2wred")
 metadata/_custom_type_script = "uid://s0k1bcrvckmc"
+
+[sub_resource type="Resource" id="Resource_joa1j"]
+script = ExtResource("14_nfrs4")
+random_seed = 59
+building_tileset = ExtResource("13_g1faw")
+outside_door_count = 3
+generate_rooms = true
+min_room_size = Vector3i(5, 1, 5)
+max_room_size = Vector3i(8, 1, 8)
+long_room_tendency = 0.2
+metadata/_custom_type_script = "uid://uq2ee3iq6x08"
 
 [node name="Szymon" type="Node3D" unique_id=904338965]
 
@@ -107,3 +125,59 @@ transform = Transform3D(-0.40554038, -0.7017391, 0.58574677, 1.5497097e-08, 0.64
 
 [node name="DebrisPile8" parent="." unique_id=1383379092 instance=ExtResource("7_xihla")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.395778, -0.2849095, 1.230334)
+
+[node name="BuildingGenerator5" type="Node3D" parent="." unique_id=1474393064 node_paths=PackedStringArray("generated_building_node")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, -0.5, 10.5)
+script = ExtResource("12_ipu2h")
+building_generation_params = SubResource("Resource_joa1j")
+generated_building_node = NodePath("GeneratedBuilding")
+metadata/_custom_type_script = "uid://c8acika7wo4ks"
+
+[node name="BuildingShapeDescription" type="Node" parent="BuildingGenerator5" unique_id=290509782]
+script = ExtResource("15_1djfu")
+metadata/_custom_type_script = "uid://o0oessya87xf"
+
+[node name="BoxDescription" type="Node" parent="BuildingGenerator5/BuildingShapeDescription" unique_id=521595335]
+script = ExtResource("16_d3uka")
+size = Vector3i(8, 2, 5)
+metadata/_custom_type_script = "uid://cp8ed61leg0wl"
+
+[node name="DecimateBuilding" type="Node3D" parent="BuildingGenerator5" unique_id=239605419]
+script = ExtResource("17_etnvg")
+strength = 0.234
+iterations = 19
+seed_value = 771696584
+metadata/_custom_type_script = "uid://cbn62hjlskw0a"
+
+[node name="GeneratedBuilding" type="Node3D" parent="BuildingGenerator5" unique_id=1499435559]
+
+[node name="_GridMap_20162" type="GridMap" parent="BuildingGenerator5/GeneratedBuilding" unique_id=192898281]
+mesh_library = ExtResource("18_fk6vh")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(3, 2, 1048580, 65539, 0, 1048580, 0, 0, 1048579, 0, 2, 1048578, 0, 3, 1048578, 0, 4, 1048578, 3, 0, 1048578, 3, 1, 1048578, 3, 3, 1048578, 3, 4, 1048578, 65536, 3, 1048579, 65536, 4, 1048578, 65539, 1, 1048578, 65539, 2, 1048578, 65539, 3, 1048578, 65539, 4, 1048578, 8, 0, 1048580, 8, 1, 1048578, 8, 2, 1048578, 8, 3, 1048580, 8, 4, 1048579, 65544, 0, 1048578, 65544, 1, 1048579, 65544, 2, 1048579, 65544, 3, 1048579, 65544, 4, 1048578)
+}
+
+[node name="_GridMap_20163" type="GridMap" parent="BuildingGenerator5/GeneratedBuilding" unique_id=2054027523]
+mesh_library = ExtResource("18_fk6vh")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 65536, 3, 0, 65536, 4, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 65538, 0, 0, 65538, 1, 0, 65538, 2, 0, 65538, 3, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 5, 0, 0, 5, 1, 0, 5, 2, 0, 5, 3, 0, 5, 4, 0, 6, 0, 0, 6, 1, 0, 6, 2, 0, 6, 3, 0, 6, 4, 0, 7, 0, 0, 7, 1, 0, 7, 2, 0, 7, 3, 0, 7, 4, 0, 65539, 0, 0, 65539, 1, 0, 65539, 2, 0, 65539, 3, 0, 65539, 4, 0, 65540, 1, 0, 65540, 2, 0, 65540, 3, 0, 65541, 0, 0, 65541, 1, 0, 65541, 2, 0, 65541, 3, 0, 65541, 4, 0, 65542, 0, 0, 65542, 1, 0, 65542, 2, 0, 65542, 3, 0, 65542, 4, 0, 65543, 1, 0, 65543, 2, 0, 65543, 3, 0)
+}
+
+[node name="_GridMap_20164" type="GridMap" parent="BuildingGenerator5/GeneratedBuilding" unique_id=48494180]
+mesh_library = ExtResource("18_fk6vh")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 3, 1, 0, 2, 2, 0, 2, 0, 5, 3, 1, 5, 2, 2, 5, 2, 65538, 0, 2, 65536, 5, 2, 65537, 5, 2, 65538, 5, 2, 3, 0, 3, 5, 0, 3, 6, 0, 2, 7, 0, 2, 3, 5, 2, 4, 5, 2, 5, 5, 3, 6, 5, 2, 7, 5, 2, 65539, 0, 2, 65541, 0, 2, 65542, 0, 2, 65539, 5, 3, 65540, 5, 2, 65541, 5, 2, 65542, 5, 2, 65543, 5, 2)
+}
+
+[node name="_NavigationObstacle3D_20165" type="NavigationObstacle3D" parent="BuildingGenerator5/GeneratedBuilding" unique_id=1187709859]
+visible = false
+height = 100.0
+vertices = PackedVector3Array(0, 0, 0, 0, 0, 10, 16, 0, 10, 16, 0, 0)
+affect_navigation_mesh = true
+avoidance_enabled = false
