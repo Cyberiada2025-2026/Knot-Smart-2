@@ -21,13 +21,14 @@
 [ext_resource type="Script" uid="uid://cp8ed61leg0wl" path="res://shared/buildings/building_generation/box_description.gd" id="10_rjtpl"]
 [ext_resource type="MeshLibrary" uid="uid://dxdix3oesovgs" path="res://shared/buildings/assets/models/building_parts_no_collision.tres" id="11_si2mp"]
 [ext_resource type="Script" uid="uid://qmqrw6ncjc" path="res://shared/music_player_areas/music_player_area.gd" id="12_b0av3"]
-[ext_resource type="Script" uid="uid://dk35hvlh1ahhu" path="res://shared/item_fusion_with_tower/fusable_with_tower.gd" id="12_tvikc"]
 [ext_resource type="AudioStream" uid="uid://cw6vr3tsvr0gg" path="res://shared/ost/CloseEncounter.ogg" id="13_4yqb1"]
 [ext_resource type="Resource" uid="uid://c8xhbj0f06miu" path="res://shared/buildings/model_management/basic_building_tileset_thick_walls.tres" id="13_jppmo"]
 [ext_resource type="PackedScene" uid="uid://d0aa1l38pc6jy" path="res://characters/enemies/big_boss/big_boss.tscn" id="18_isd4l"]
 [ext_resource type="PackedScene" uid="uid://conwx7a1fxor3" path="res://scenes/main/map_renderer.tscn" id="28_acfpd"]
+[ext_resource type="PackedScene" uid="uid://dps1yxnixq4w8" path="res://shared/generator_parts/part_base.tscn" id="30_m81eg"]
 [ext_resource type="Material" uid="uid://cs6kr88umcnbn" path="res://shared/water/water.tres" id="33_srf2b"]
 [ext_resource type="PackedScene" uid="uid://d3elyqmhqqwkc" path="res://scenes/main/building_pair_small.tscn" id="36_bx2do"]
+[ext_resource type="PackedScene" uid="uid://dck8itbvbpxnt" path="res://shared/generator_parts/generator_part_out_of_bounds.tscn" id="36_m81eg"]
 [ext_resource type="PackedScene" uid="uid://b3pq3lm4pjpdk" path="res://characters/enemies/basic_enemy/enemy.tscn" id="78_7wli1"]
 [ext_resource type="Script" uid="uid://bm0wrygl0ikje" path="res://shared/point_of_interest/point_of_interest.gd" id="78_oveuq"]
 [ext_resource type="Script" uid="uid://krqwntoiv6fm" path="res://shared/point_of_interest/components/speech_poi.gd" id="79_awfjg"]
@@ -161,12 +162,6 @@ _data = {
 &"move_to_gen": SubResource("Animation_isd4l")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_tvikc"]
-radius = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
-albedo_color = Color(1, 0, 1, 1)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_s2x2q"]
 material = ExtResource("33_srf2b")
 size = Vector2(400, 140)
@@ -196,6 +191,9 @@ geometry_source_geometry_mode = 1
 geometry_source_group_name = &"navmesh_part2"
 agent_height = 6.0
 agent_radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
+albedo_color = Color(1, 0, 1, 1)
 
 [node name="MainMap" type="Node3D" unique_id=1480515348]
 
@@ -1476,67 +1474,6 @@ movement_animation = NodePath("Movement")
 [node name="Movement" type="AnimationPlayer" parent="BigBoss" unique_id=1804274704]
 libraries/ = SubResource("AnimationLibrary_mhegm")
 
-[node name="Part1" type="RigidBody3D" parent="." unique_id=2044586578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.662334, 0.8342514, 25)
-collision_mask = 33
-mass = 10.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Part1" unique_id=981828222]
-shape = SubResource("SphereShape3D_tvikc")
-
-[node name="FusableWithTower" type="Node" parent="Part1" unique_id=1503711086]
-script = ExtResource("12_tvikc")
-metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
-
-[node name="Part1" type="CSGSphere3D" parent="Part1" unique_id=1145446118]
-radius = 1.0
-material = SubResource("StandardMaterial3D_tmm0v")
-
-[node name="PointOfInterest" type="Node3D" parent="Part1" unique_id=1022072223]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-script = ExtResource("78_oveuq")
-radius = 8.0
-visualize = false
-metadata/_custom_type_script = "uid://bm0wrygl0ikje"
-
-[node name="SpeechPOI" type="Node" parent="Part1/PointOfInterest" unique_id=2116052097]
-script = ExtResource("79_awfjg")
-dialogue = SubResource("Resource_tlwao")
-metadata/_custom_type_script = "uid://krqwntoiv6fm"
-
-[node name="Part2" type="RigidBody3D" parent="." unique_id=1134422633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.33766, 0.8342514, 148)
-collision_mask = 33
-mass = 10.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Part2" unique_id=689238273]
-shape = SubResource("SphereShape3D_tvikc")
-
-[node name="FusableWithTower" type="Node" parent="Part2" unique_id=810577825]
-script = ExtResource("12_tvikc")
-metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
-
-[node name="Part1" type="CSGSphere3D" parent="Part2" unique_id=4008452]
-radius = 1.0
-material = SubResource("StandardMaterial3D_tmm0v")
-
-[node name="Part3" type="RigidBody3D" parent="." unique_id=1268727488]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.837666, 0.8342514, -5.5)
-collision_mask = 33
-mass = 10.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Part3" unique_id=1917856778]
-shape = SubResource("SphereShape3D_tvikc")
-
-[node name="FusableWithTower" type="Node" parent="Part3" unique_id=964655317]
-script = ExtResource("12_tvikc")
-metadata/_custom_type_script = "uid://dk35hvlh1ahhu"
-
-[node name="Part1" type="CSGSphere3D" parent="Part3" unique_id=1335384461]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.5, 0, 148)
-radius = 1.0
-material = SubResource("StandardMaterial3D_tmm0v")
-
 [node name="Water" type="MeshInstance3D" parent="." unique_id=320015939]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.5, -6.5, 91.5)
 mesh = SubResource("PlaneMesh_s2x2q")
@@ -1557,7 +1494,7 @@ metadata/_custom_type_script = "uid://djg0m48s04bny"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
 [node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@18913")
+blackboard = NodePath("@Node@324164")
 
 [node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
 max_health = 5.0
@@ -2385,6 +2322,29 @@ navigation_mesh = SubResource("NavigationMesh_bx2do")
 
 [node name="Enemy2" parent="." unique_id=1395597749 instance=ExtResource("78_7wli1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.5, 1.5, 150)
+
+[node name="GeneratorPartOutOfBounds" parent="." unique_id=1234546985 instance=ExtResource("36_m81eg")]
+
+[node name="Part1" parent="." unique_id=225790775 instance=ExtResource("30_m81eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, 25)
+
+[node name="Part1" type="CSGSphere3D" parent="Part1" unique_id=74489122]
+radius = 1.0
+material = SubResource("StandardMaterial3D_tmm0v")
+
+[node name="Part2" parent="." unique_id=894088557 instance=ExtResource("30_m81eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.5, 136)
+
+[node name="Part1" type="CSGSphere3D" parent="Part2" unique_id=1828017266]
+radius = 1.0
+material = SubResource("StandardMaterial3D_tmm0v")
+
+[node name="Part3" parent="." unique_id=1554434201 instance=ExtResource("30_m81eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0.5, 141)
+
+[node name="Part1" type="CSGSphere3D" parent="Part3" unique_id=2008974876]
+radius = 1.0
+material = SubResource("StandardMaterial3D_tmm0v")
 
 [connection signal="all_parts_fused" from="Map/Graybox/RadioTower" to="BigBoss" method="_on_start_boss_battle"]
 [connection signal="health_depleted" from="Enemy/HealthComponent" to="Map/Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
