@@ -25,11 +25,8 @@
 [ext_resource type="AudioStream" uid="uid://cw6vr3tsvr0gg" path="res://shared/ost/CloseEncounter.ogg" id="13_4yqb1"]
 [ext_resource type="Resource" uid="uid://c8xhbj0f06miu" path="res://shared/buildings/model_management/basic_building_tileset_thick_walls.tres" id="13_jppmo"]
 [ext_resource type="PackedScene" uid="uid://d0aa1l38pc6jy" path="res://characters/enemies/big_boss/big_boss.tscn" id="18_isd4l"]
-[ext_resource type="Script" uid="uid://cbn62hjlskw0a" path="res://shared/buildings/decimate_building/decimate_building.gd" id="18_mhegm"]
-[ext_resource type="Resource" uid="uid://b10ng08ut3bwu" path="res://shared/buildings/model_management/basic_building_tileset_thick_wide_window.tres" id="23_eh7qh"]
 [ext_resource type="Script" uid="uid://u5hpdit2bo4g" path="res://shared/terrain/map_renderer.gd" id="24_wxrke"]
 [ext_resource type="Texture2D" uid="uid://ceqk0y0wukn30" path="res://shared/terrain/assets/terrain_noise.png" id="25_2oall"]
-[ext_resource type="MeshLibrary" uid="uid://thl4jxqyxath" path="res://shared/buildings/assets/models/basic_building_tileset_thick_wide_window.tres" id="25_ib6q0"]
 [ext_resource type="Script" uid="uid://no1j1oowuup1" path="res://shared/terrain/params/world_generation_params.gd" id="25_ws866"]
 [ext_resource type="Script" uid="uid://bmtv75byrd25q" path="res://shared/terrain/params/world_display_params.gd" id="26_4jxu6"]
 [ext_resource type="Script" uid="uid://cn6l7oaf3xw32" path="res://shared/terrain/grid_generation_pipeline.gd" id="27_0qi78"]
@@ -372,17 +369,6 @@ size = Vector3(22, 19.6, 22)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fbtr5"]
 size = Vector3(10, 11.2, 10)
-
-[sub_resource type="Resource" id="Resource_tjrly"]
-script = ExtResource("8_e2d8t")
-random_seed = 59
-building_tileset = ExtResource("23_eh7qh")
-outside_door_count = 3
-generate_rooms = true
-min_room_size = Vector3i(5, 1, 5)
-max_room_size = Vector3i(8, 1, 8)
-long_room_tendency = 0.2
-metadata/_custom_type_script = "uid://uq2ee3iq6x08"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_si2mp"]
 size = Vector3(12, 14, 12)
@@ -1337,62 +1323,6 @@ collision_layer = 257
 [node name="_CollisionShape3D_79038" type="CollisionShape3D" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator4/GeneratedBuilding/_StaticBody3D_79037" unique_id=1668624243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5.6, 5)
 shape = SubResource("BoxShape3D_fbtr5")
-
-[node name="BuildingGenerator5" type="Node3D" parent="Map/Graybox/GeneratorArea/Buildings" unique_id=1018656970 node_paths=PackedStringArray("generated_building_node")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, -0.5, 10.5)
-script = ExtResource("6_0hmuk")
-building_generation_params = SubResource("Resource_tjrly")
-generated_building_node = NodePath("GeneratedBuilding")
-metadata/_custom_type_script = "uid://c8acika7wo4ks"
-
-[node name="BuildingShapeDescription" type="Node" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator5" unique_id=1466679731]
-script = ExtResource("9_fbtr5")
-metadata/_custom_type_script = "uid://o0oessya87xf"
-
-[node name="BoxDescription" type="Node" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator5/BuildingShapeDescription" unique_id=186721755]
-script = ExtResource("10_rjtpl")
-size = Vector3i(8, 2, 5)
-metadata/_custom_type_script = "uid://cp8ed61leg0wl"
-
-[node name="DecimateBuilding" type="Node3D" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator5" unique_id=2103915240]
-script = ExtResource("18_mhegm")
-strength = 0.234
-iterations = 19
-seed_value = 771696584
-metadata/_custom_type_script = "uid://cbn62hjlskw0a"
-
-[node name="GeneratedBuilding" type="Node3D" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator5" unique_id=2079391319]
-
-[node name="@GridMap@20162" type="GridMap" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator5/GeneratedBuilding" unique_id=451909572]
-mesh_library = ExtResource("25_ib6q0")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(3, 2, 1048580, 65539, 0, 1048580, 0, 0, 1048579, 0, 2, 1048578, 0, 3, 1048578, 0, 4, 1048578, 3, 0, 1048578, 3, 1, 1048578, 3, 3, 1048578, 3, 4, 1048578, 65536, 3, 1048579, 65536, 4, 1048578, 65539, 1, 1048578, 65539, 2, 1048578, 65539, 3, 1048578, 65539, 4, 1048578, 8, 0, 1048580, 8, 1, 1048578, 8, 2, 1048578, 8, 3, 1048580, 8, 4, 1048579, 65544, 0, 1048578, 65544, 1, 1048579, 65544, 2, 1048579, 65544, 3, 1048579, 65544, 4, 1048578)
-}
-
-[node name="@GridMap@20163" type="GridMap" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator5/GeneratedBuilding" unique_id=1436165042]
-mesh_library = ExtResource("25_ib6q0")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 65536, 3, 0, 65536, 4, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 65538, 0, 0, 65538, 1, 0, 65538, 2, 0, 65538, 3, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 5, 0, 0, 5, 1, 0, 5, 2, 0, 5, 3, 0, 5, 4, 0, 6, 0, 0, 6, 1, 0, 6, 2, 0, 6, 3, 0, 6, 4, 0, 7, 0, 0, 7, 1, 0, 7, 2, 0, 7, 3, 0, 7, 4, 0, 65539, 0, 0, 65539, 1, 0, 65539, 2, 0, 65539, 3, 0, 65539, 4, 0, 65540, 1, 0, 65540, 2, 0, 65540, 3, 0, 65541, 0, 0, 65541, 1, 0, 65541, 2, 0, 65541, 3, 0, 65541, 4, 0, 65542, 0, 0, 65542, 1, 0, 65542, 2, 0, 65542, 3, 0, 65542, 4, 0, 65543, 1, 0, 65543, 2, 0, 65543, 3, 0)
-}
-
-[node name="@GridMap@20164" type="GridMap" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator5/GeneratedBuilding" unique_id=1653891821]
-mesh_library = ExtResource("25_ib6q0")
-cell_size = Vector3(2, 2.8, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 0, 3, 1, 0, 2, 2, 0, 2, 0, 5, 3, 1, 5, 2, 2, 5, 2, 65538, 0, 2, 65536, 5, 2, 65537, 5, 2, 65538, 5, 2, 3, 0, 3, 5, 0, 3, 6, 0, 2, 7, 0, 2, 3, 5, 2, 4, 5, 2, 5, 5, 3, 6, 5, 2, 7, 5, 2, 65539, 0, 2, 65541, 0, 2, 65542, 0, 2, 65539, 5, 3, 65540, 5, 2, 65541, 5, 2, 65542, 5, 2, 65543, 5, 2)
-}
-
-[node name="@NavigationObstacle3D@20165" type="NavigationObstacle3D" parent="Map/Graybox/GeneratorArea/Buildings/BuildingGenerator5/GeneratedBuilding" unique_id=20574224]
-visible = false
-height = 100.0
-vertices = PackedVector3Array(0, 0, 0, 0, 0, 10, 16, 0, 10, 16, 0, 0)
-affect_navigation_mesh = true
-avoidance_enabled = false
 
 [node name="SpawnArea" type="Node3D" parent="Map/Graybox" unique_id=125470212]
 
@@ -2583,7 +2513,7 @@ metadata/_custom_type_script = "uid://djg0m48s04bny"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
 [node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@83721")
+blackboard = NodePath("@Node@18875")
 
 [node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
 max_health = 5.0
