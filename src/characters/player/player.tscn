@@ -66,7 +66,7 @@ player_gravity_controller = NodePath("PlayerPhysics/gravityController")
 collision_layer = 2
 player = NodePath("..")
 
-[node name="PlayerModel" parent="PlayerPhysics" index="1" unique_id=636085063]
+[node name="PlayerModel" parent="PlayerPhysics" index="0" unique_id=1301919891]
 transform = Transform3D(-0.123, 0, -1.0753002e-08, 0, 0.123, 0, 1.0753002e-08, 0, -0.123, 0, 0.01, 0)
 
 [node name="PlayerCamera" parent="PlayerPhysics" unique_id=693967780 node_paths=PackedStringArray("player") instance=ExtResource("3_btcbx")]
@@ -216,6 +216,7 @@ fade_out_duration = 5.0
 metadata/_custom_type_script = "uid://d2htmj7u000iy"
 
 [connection signal="camera_rotated" from="PlayerPhysics/PlayerCamera" to="." method="_on_player_camera_camera_rotated"]
+[connection signal="view_changed" from="PlayerPhysics/PlayerCamera" to="PlayerPhysics" method="_on_player_camera_view_changed"]
 [connection signal="timeout" from="PlayerPhysics/FootstepsMaker/Timer" to="PlayerPhysics/FootstepsMaker" method="_on_timer_timeout"]
 [connection signal="area_entered" from="PlayerPhysics/HitBox" to="StunnableComponent" method="_on_hit_box_entered"]
 [connection signal="body_entered" from="PlayerPhysics/HitBox" to="StunnableComponent" method="_on_hit_box_entered"]

@@ -15,6 +15,7 @@ enum {IDLE, WALK, JUMP}
 
 var animation_tree: AnimationTree
 var walk_blend = 0.0
+var is_shooting = false
 
 
 func _ready() -> void:
@@ -67,8 +68,10 @@ func _handle_move_input(delta: float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, slowing_speed * delta)
 		velocity.z = move_toward(velocity.z, 0, slowing_speed * delta)
-		if is_on_floor_check():
+		if is_on_floor_check() and not is_shooting:
 			animation_tree.set("parameters/Movement/transition_request", "Idle")
+		if is_shooting:
+			animation_tree.set("parameters/Movement/transition_request", "Shoot")
 
 
 func _handle_jump():
@@ -89,3 +92,7 @@ func is_on_floor_check():
 		$RayCast3D.force_raycast_update()
 		if $RayCast3D.is_colliding():
 			return true
+
+
+func _on_player_camera_view_changed() -> void:
+	is_shooting = !is_shooting
