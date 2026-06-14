@@ -146,7 +146,7 @@ metadata/_custom_type_script = "uid://uq2ee3iq6x08"
 
 [sub_resource type="Resource" id="Resource_u8h14"]
 script = ExtResource("81_d8whw")
-text = "This is the generator tower. I need to find the parts to assemble it."
+text = "This rubble might make a good weapon when thrown fast enough."
 
 [sub_resource type="Resource" id="Resource_tlwao"]
 script = ExtResource("80_0a1xl")
@@ -195,6 +195,11 @@ material = ExtResource("33_srf2b")
 size = Vector2(400, 140)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_s2x2q"]
+
+[sub_resource type="Resource" id="Resource_6yd7f"]
+script = ExtResource("80_0a1xl")
+sentences = Array[ExtResource("81_d8whw")]([SubResource("Resource_u8h14")])
+metadata/_custom_type_script = "uid://dhpmrqniojeb4"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_acfpd"]
 size = Vector3(18, 19.6, 20)
@@ -1755,7 +1760,7 @@ metadata/_custom_type_script = "uid://djg0m48s04bny"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
 [node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@29889")
+blackboard = NodePath("@Node@41167")
 
 [node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
 max_health = 5.0
@@ -1771,6 +1776,18 @@ metadata/_custom_type_script = "uid://bm0wrygl0ikje"
 [node name="SpeechPOI" type="Node" parent="PointOfInterest" unique_id=1692632447]
 script = ExtResource("79_awfjg")
 dialogue = SubResource("Resource_tlwao")
+metadata/_custom_type_script = "uid://krqwntoiv6fm"
+
+[node name="PointOfInterest2" type="Node3D" parent="." unique_id=270415261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -2.2831955, 44.00448)
+script = ExtResource("78_oveuq")
+radius = 16.0
+visualize = false
+metadata/_custom_type_script = "uid://bm0wrygl0ikje"
+
+[node name="SpeechPOI" type="Node" parent="PointOfInterest2" unique_id=384162524]
+script = ExtResource("79_awfjg")
+dialogue = SubResource("Resource_6yd7f")
 metadata/_custom_type_script = "uid://krqwntoiv6fm"
 
 [node name="PostTutorial" type="Node3D" parent="." unique_id=1325096776 groups=["navmesh_part2"]]
