@@ -67,8 +67,9 @@ func get_target_pos() -> Vector3:
 
 
 func rotate_with_velocity() -> void:
-	if velocity.length_squared() > 0:
-		look_at(global_position + velocity)
+	var vel_2d = Vector3(velocity.x, 0, velocity.z)
+	if vel_2d.length_squared() > 0:
+		look_at(global_position + vel_2d)
 
 
 func _physics_process(_delta: float) -> void:
