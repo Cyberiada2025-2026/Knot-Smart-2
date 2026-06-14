@@ -20,6 +20,7 @@ func add_entry(entry: JournalEntry) -> void:
 		model.scale = Vector3.ONE * entry.model_scale
 		model.position = Vector3.ZERO  #to ensure model is at the right place
 		subview.add_child(model)
+	print("TEST")
 
 	text.text += ("[b]" + entry.object_name + "[/b]\n" + entry.description)
 	rotate_angle = entry.rotation_angle
