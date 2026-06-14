@@ -19,6 +19,7 @@ height = 52.0
 [node name="BigBoss" type="AnimatableBody3D" unique_id=1977180204 node_paths=PackedStringArray("boss_model")]
 script = ExtResource("1_6goto")
 win_scene = "res://ui/win/win.tscn"
+lose_scene = "res://ui/game_over/game_over.tscn"
 boss_model = NodePath("BigBossModel")
 battle_soundtrack = ExtResource("2_206ui")
 
@@ -33,6 +34,8 @@ debug_color = Color(0.58292794, 0.15449539, 0.29539874, 0.41960785)
 [node name="HealthComponent" type="Node" parent="." unique_id=743713216]
 script = ExtResource("1_rxbay")
 debug_log = true
+max_health = 20.0
+health = 20.0
 metadata/_custom_type_script = "uid://b5oot86kgom7d"
 
 [node name="DeathComponent" type="Node" parent="." unique_id=106231869]

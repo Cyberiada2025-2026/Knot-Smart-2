@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://d3elyqmhqqwkc" path="res://scenes/main/building_pair_small.tscn" id="36_bx2do"]
 [ext_resource type="PackedScene" uid="uid://dck8itbvbpxnt" path="res://shared/generator_parts/generator_part_out_of_bounds.tscn" id="36_m81eg"]
 [ext_resource type="PackedScene" uid="uid://dhjdclmlt7xq8" path="res://scenes/main/plant_wall_foliage.tscn" id="38_6pbj8"]
-[ext_resource type="Script" uid="uid://inkb2xheq2vo" path="res://scenes/main/play_anim_on_event.gd" id="40_6pbj8"]
+[ext_resource type="Script" uid="uid://cw8ipuwmthig2" path="res://scenes/main/play_anim_on_event.gd" id="40_6pbj8"]
 [ext_resource type="PackedScene" uid="uid://b3pq3lm4pjpdk" path="res://characters/enemies/basic_enemy/enemy.tscn" id="78_7wli1"]
 [ext_resource type="Script" uid="uid://bm0wrygl0ikje" path="res://shared/point_of_interest/point_of_interest.gd" id="78_oveuq"]
 [ext_resource type="Script" uid="uid://krqwntoiv6fm" path="res://shared/point_of_interest/components/speech_poi.gd" id="79_awfjg"]
@@ -42,8 +42,8 @@
 [ext_resource type="PackedScene" uid="uid://btmd85pvej0kk" path="res://shared/debris/single/debris5.tscn" id="81_gl766"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wvbdd"]
-vertices = PackedVector3Array(55.5, -0.2831955, 35.25, 58, -0.033195496, 34.75, 58, -0.033195496, 30.75, 19.75, -0.033195496, 42.5, 19.75, -0.033195496, 47.25, 20.75, -0.2831955, 48.5, 26, -0.033195496, 40.25, 20, -0.033195496, 40.25, 54.75, -0.2831955, 36.5, 48.5, -0.033195496, 30.75, 27.25, -0.033195496, 39.5, 46.75, -0.2831955, 27.75, 39.75, -0.2831955, 27.75, 39.75, -0.2831955, 30.5, 47.25, -0.033195496, 30, 38, -0.2831955, 32.25, 27.75, -0.2831955, 38.5, 39, -0.2831955, 31.75, 58.25, -0.2831955, 62.5, 55.5, -0.2831955, 52.75, 54.75, -0.2831955, 51.5, 27.75, -0.2831955, 32.25, 20.75, -0.2831955, 62.5, 58.25, -0.2831955, 53.25)
-polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 7), PackedInt32Array(5, 7, 6), PackedInt32Array(0, 8, 2), PackedInt32Array(2, 8, 9), PackedInt32Array(5, 6, 10), PackedInt32Array(11, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(10, 16, 15), PackedInt32Array(17, 13, 14), PackedInt32Array(20, 19, 18), PackedInt32Array(17, 14, 15), PackedInt32Array(15, 14, 9), PackedInt32Array(15, 9, 8), PackedInt32Array(15, 8, 20), PackedInt32Array(16, 21, 15), PackedInt32Array(10, 15, 5), PackedInt32Array(5, 15, 22), PackedInt32Array(22, 15, 20), PackedInt32Array(22, 20, 18), PackedInt32Array(19, 23, 18)]
+vertices = PackedVector3Array(55.5, 0, 35.25, 58, 0.25, 34.75, 58, 0.25, 30.75, 19.75, 0.25, 42.5, 20.25, 0, 48, 20.75, 0, 48.5, 26, 0.25, 40.25, 20, 0.25, 40.25, 54.75, 0, 36.5, 48.5, 0.25, 30.75, 38, 0, 32.25, 27.75, 0, 32.25, 27.75, 0, 38.5, 46.75, 0, 27.75, 39.75, 0, 27.75, 39.75, 0, 30.5, 47.25, 0.25, 30, 20.75, 0, 60.25, 39, 0, 60.25, 39, 0, 31.75, 27.25, 0.25, 39.5, 59.25, 0, 62.5, 59.25, 0, 53.25, 56.5, 0, 53.25, 40.25, 0, 61, 54.75, 0, 51.5, 55.25, 0, 52.5, 40.75, 0, 62.5)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 7), PackedInt32Array(5, 7, 6), PackedInt32Array(0, 8, 2), PackedInt32Array(2, 8, 9), PackedInt32Array(12, 11, 10), PackedInt32Array(13, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(18, 17, 5), PackedInt32Array(19, 15, 16), PackedInt32Array(20, 12, 10), PackedInt32Array(19, 16, 10), PackedInt32Array(10, 16, 9), PackedInt32Array(10, 9, 8), PackedInt32Array(23, 22, 21), PackedInt32Array(25, 24, 18), PackedInt32Array(20, 10, 5), PackedInt32Array(5, 10, 18), PackedInt32Array(18, 10, 25), PackedInt32Array(25, 10, 8), PackedInt32Array(26, 23, 21), PackedInt32Array(5, 6, 20), PackedInt32Array(26, 21, 25), PackedInt32Array(25, 21, 27), PackedInt32Array(25, 27, 24)]
 geometry_collision_mask = 4294902016
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"navmesh_combat_tut"
@@ -142,7 +142,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_isd4l"]
 resource_name = "move_to_gen"
-length = 60.0
+length = 120.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,7 +150,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 60),
+"times": PackedFloat32Array(0, 119.86667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-38.5, 0, 159.5), Vector3(33.5, 0, -11)]
@@ -1601,6 +1601,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, -0.5, 107.5)
 [node name="BigBoss" parent="." unique_id=1977180204 node_paths=PackedStringArray("movement_animation") instance=ExtResource("18_isd4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 159.5)
 movement_animation = NodePath("Movement")
+lose_scene = "res://ui/game_over/game_over.tscn"
 
 [node name="Movement" type="AnimationPlayer" parent="BigBoss" unique_id=1804274704]
 libraries/ = SubResource("AnimationLibrary_mhegm")
@@ -1625,7 +1626,7 @@ metadata/_custom_type_script = "uid://djg0m48s04bny"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
 [node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@18895")
+blackboard = NodePath("@Node@19324")
 
 [node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
 max_health = 5.0
@@ -2467,7 +2468,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.5, 136)
 [node name="Part3" parent="." unique_id=1554434201 instance=ExtResource("30_m81eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0.5, 141)
 
-[node name="Part1" type="CSGSphere3D" parent="Part3" unique_id=2008974876]
+[node name="Part2" type="CSGSphere3D" parent="Part3" unique_id=2008974876]
 radius = 1.0
 material = SubResource("StandardMaterial3D_tmm0v")
 
