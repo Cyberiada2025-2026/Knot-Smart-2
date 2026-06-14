@@ -10,6 +10,7 @@ var animation_player: AnimationPlayer
 
 func _ready() -> void:
 	animation_player = boss_model.find_child("AnimationPlayer")
+	animation_player.play("Laying")
 
 
 func _on_start_boss_battle() -> void:

@@ -1,0 +1,903 @@
+[gd_scene format=3 uid="uid://conwx7a1fxor3"]
+
+[ext_resource type="Script" uid="uid://u5hpdit2bo4g" path="res://shared/terrain/map_renderer.gd" id="1_h35ac"]
+[ext_resource type="Script" uid="uid://no1j1oowuup1" path="res://shared/terrain/params/world_generation_params.gd" id="2_vl7v8"]
+[ext_resource type="Script" uid="uid://bmtv75byrd25q" path="res://shared/terrain/params/world_display_params.gd" id="3_uie2y"]
+[ext_resource type="Script" uid="uid://cn6l7oaf3xw32" path="res://shared/terrain/grid_generation_pipeline.gd" id="4_slx8h"]
+[ext_resource type="Script" uid="uid://0212vvhximbx" path="res://shared/terrain/terrain_generator.gd" id="5_ydw3b"]
+[ext_resource type="Texture2D" uid="uid://ceqk0y0wukn30" path="res://shared/terrain/assets/terrain_noise.png" id="6_qtf5j"]
+[ext_resource type="Script" uid="uid://ur8xw3m874ob" path="res://shared/terrain/params/terrain_params.gd" id="7_hil2h"]
+[ext_resource type="Texture2D" uid="uid://bktcnfeyxmig5" path="res://shared/terrain/assets/terrain_texture_placeholder.jpg" id="8_h35ac"]
+[ext_resource type="Script" uid="uid://ck40wxh2ro4ev" path="res://shared/terrain/texture_data.gd" id="9_85rej"]
+[ext_resource type="Texture2D" uid="uid://bi3lglw6leh1f" path="res://shared/terrain/assets/pavement2.png" id="10_vjfgu"]
+[ext_resource type="Texture2D" uid="uid://js1ea7svat6e" path="res://shared/terrain/assets/water_map.png" id="11_y3elh"]
+[ext_resource type="Material" uid="uid://cs6kr88umcnbn" path="res://shared/water/water.tres" id="12_yn2yo"]
+[ext_resource type="Script" uid="uid://c52c7x4sbxs7o" path="res://shared/roads/road_generation/road_generator.gd" id="13_pe6k2"]
+[ext_resource type="Script" uid="uid://dq2orvfvtw68e" path="res://shared/roads/road_generation/road_generation_params.gd" id="14_o7l1m"]
+[ext_resource type="Script" uid="uid://clo0d36f066q1" path="res://shared/roads/road_generation/generation_areas.gd" id="15_m11fh"]
+[ext_resource type="Script" uid="uid://o5exsbtpsbth" path="res://shared/roads/road_generation/limiter_area.gd" id="16_gasn6"]
+[ext_resource type="Script" uid="uid://1sivp1454oma" path="res://shared/roads/road_generation/spot.gd" id="17_ea3oq"]
+[ext_resource type="PackedScene" uid="uid://beo772cow55jo" path="res://shared/roads/road_tiling/road_autotile_usable.tscn" id="18_r35w7"]
+[ext_resource type="Script" uid="uid://dan6slu1xdl8l" path="res://shared/terrain/chunk_manager.gd" id="19_sxrvo"]
+[ext_resource type="PackedScene" uid="uid://kis0xiucossm" path="res://generated/terrain/chunks/chunk_0_0.tscn" id="20_jofdl"]
+[ext_resource type="PackedScene" uid="uid://ddyd5cokkyw1x" path="res://generated/terrain/chunks/chunk_0_1.tscn" id="21_5l6w5"]
+[ext_resource type="PackedScene" uid="uid://clspsm3fgsnrm" path="res://generated/terrain/chunks/chunk_0_2.tscn" id="22_u6u81"]
+[ext_resource type="PackedScene" uid="uid://cbhqtw7akv8rt" path="res://generated/terrain/chunks/chunk_0_3.tscn" id="23_s2nyo"]
+[ext_resource type="PackedScene" uid="uid://bk2bqb4bi5jod" path="res://generated/terrain/chunks/chunk_0_4.tscn" id="24_rj3og"]
+[ext_resource type="PackedScene" uid="uid://5wexl7ss4j6d" path="res://generated/terrain/chunks/chunk_0_5.tscn" id="25_ohqf8"]
+[ext_resource type="PackedScene" uid="uid://drqwptsybc0pj" path="res://generated/terrain/chunks/chunk_0_6.tscn" id="26_8pm25"]
+[ext_resource type="PackedScene" uid="uid://dhgxdslc6a8di" path="res://generated/terrain/chunks/chunk_0_7.tscn" id="27_bufwh"]
+[ext_resource type="PackedScene" uid="uid://c64k5k7p6t7xo" path="res://generated/terrain/chunks/chunk_0_8.tscn" id="28_q5y2i"]
+[ext_resource type="PackedScene" uid="uid://cp1k4n7mui23b" path="res://generated/terrain/chunks/chunk_0_9.tscn" id="29_0t3bh"]
+[ext_resource type="PackedScene" uid="uid://bv4ow6pabxwtb" path="res://generated/terrain/chunks/chunk_0_10.tscn" id="30_f2fcf"]
+[ext_resource type="PackedScene" uid="uid://ce1i7jp8tb51q" path="res://generated/terrain/chunks/chunk_0_11.tscn" id="31_rai2e"]
+[ext_resource type="PackedScene" uid="uid://dwum81e5e5lgc" path="res://generated/terrain/chunks/chunk_0_12.tscn" id="32_2rlku"]
+[ext_resource type="PackedScene" uid="uid://cm0i10t67l4t1" path="res://generated/terrain/chunks/chunk_0_13.tscn" id="33_th28f"]
+[ext_resource type="PackedScene" uid="uid://cwghxxlp5l3h4" path="res://generated/terrain/chunks/chunk_0_14.tscn" id="34_php41"]
+[ext_resource type="PackedScene" uid="uid://budlc08nmbo1c" path="res://generated/terrain/chunks/chunk_0_15.tscn" id="35_c57ad"]
+[ext_resource type="PackedScene" uid="uid://cuv4k06nggvmx" path="res://generated/terrain/chunks/chunk_1_0.tscn" id="36_1pb5j"]
+[ext_resource type="PackedScene" uid="uid://dry3ul8cd6vbr" path="res://generated/terrain/chunks/chunk_1_1.tscn" id="37_cajrq"]
+[ext_resource type="PackedScene" uid="uid://dtmsxdcgii512" path="res://generated/terrain/chunks/chunk_1_2.tscn" id="38_dxieb"]
+[ext_resource type="PackedScene" uid="uid://c1df2hvvfiaqb" path="res://generated/terrain/chunks/chunk_1_3.tscn" id="39_t6xnl"]
+[ext_resource type="PackedScene" uid="uid://clejxadvn86e3" path="res://generated/terrain/chunks/chunk_1_4.tscn" id="40_latpv"]
+[ext_resource type="PackedScene" uid="uid://dk021jmh0sggc" path="res://generated/terrain/chunks/chunk_1_5.tscn" id="41_m07dh"]
+[ext_resource type="PackedScene" uid="uid://235cyh7evfk6" path="res://generated/terrain/chunks/chunk_1_6.tscn" id="42_34xcn"]
+[ext_resource type="PackedScene" uid="uid://dob80i4uk24t1" path="res://generated/terrain/chunks/chunk_1_7.tscn" id="43_ys285"]
+[ext_resource type="PackedScene" uid="uid://dct1tjleyml8i" path="res://generated/terrain/chunks/chunk_1_8.tscn" id="44_s8kas"]
+[ext_resource type="PackedScene" uid="uid://d0bf85buwiduh" path="res://generated/terrain/chunks/chunk_1_9.tscn" id="45_fkf21"]
+[ext_resource type="PackedScene" uid="uid://chpyns8uysicn" path="res://generated/terrain/chunks/chunk_1_10.tscn" id="46_m2bbv"]
+[ext_resource type="PackedScene" uid="uid://brxc2c4vi2fec" path="res://generated/terrain/chunks/chunk_1_11.tscn" id="47_sc8mx"]
+[ext_resource type="PackedScene" uid="uid://c0874nrnxfsl" path="res://generated/terrain/chunks/chunk_1_12.tscn" id="48_dutd6"]
+[ext_resource type="PackedScene" uid="uid://d0i4wv2nu7a2c" path="res://generated/terrain/chunks/chunk_1_13.tscn" id="49_h8crg"]
+[ext_resource type="PackedScene" uid="uid://bk0r1qed5438m" path="res://generated/terrain/chunks/chunk_1_14.tscn" id="50_rtrwt"]
+[ext_resource type="PackedScene" uid="uid://cxminva3p85mc" path="res://generated/terrain/chunks/chunk_1_15.tscn" id="51_paadh"]
+[ext_resource type="PackedScene" uid="uid://dtabvidyqtpik" path="res://generated/terrain/chunks/chunk_2_0.tscn" id="52_b0nq5"]
+[ext_resource type="PackedScene" uid="uid://ftov3ou43jil" path="res://generated/terrain/chunks/chunk_2_1.tscn" id="53_0x3bu"]
+[ext_resource type="PackedScene" uid="uid://bc2nvu2q4pgji" path="res://generated/terrain/chunks/chunk_2_2.tscn" id="54_swl27"]
+[ext_resource type="PackedScene" uid="uid://lhjpgwj56blr" path="res://generated/terrain/chunks/chunk_2_3.tscn" id="55_ai3j2"]
+[ext_resource type="PackedScene" uid="uid://bbctpcegmkixa" path="res://generated/terrain/chunks/chunk_2_4.tscn" id="56_sqkfh"]
+[ext_resource type="PackedScene" uid="uid://cmptl5xprh8ka" path="res://generated/terrain/chunks/chunk_2_5.tscn" id="57_7y434"]
+[ext_resource type="PackedScene" uid="uid://b2vlxp1ac65vn" path="res://generated/terrain/chunks/chunk_2_6.tscn" id="58_ruc21"]
+[ext_resource type="PackedScene" uid="uid://cu5gk4xujxn0a" path="res://generated/terrain/chunks/chunk_2_7.tscn" id="59_ngncl"]
+[ext_resource type="PackedScene" uid="uid://cs6wexdwf7uqo" path="res://generated/terrain/chunks/chunk_2_8.tscn" id="60_dckff"]
+[ext_resource type="PackedScene" uid="uid://bfvatcac5awot" path="res://generated/terrain/chunks/chunk_2_9.tscn" id="61_8md80"]
+[ext_resource type="PackedScene" uid="uid://cjhesd4yw5c5k" path="res://generated/terrain/chunks/chunk_2_10.tscn" id="62_j6xsp"]
+[ext_resource type="PackedScene" uid="uid://c8bqvqxxijhak" path="res://generated/terrain/chunks/chunk_2_11.tscn" id="63_oahl3"]
+[ext_resource type="PackedScene" uid="uid://bfcelpg7cas4i" path="res://generated/terrain/chunks/chunk_2_12.tscn" id="64_e0guy"]
+[ext_resource type="PackedScene" uid="uid://cc4l85xt40yt7" path="res://generated/terrain/chunks/chunk_2_13.tscn" id="65_hvtm7"]
+[ext_resource type="PackedScene" uid="uid://2b67br34hr68" path="res://generated/terrain/chunks/chunk_2_14.tscn" id="66_w5fpm"]
+[ext_resource type="PackedScene" uid="uid://rk7eyhvmctiv" path="res://generated/terrain/chunks/chunk_2_15.tscn" id="67_5328l"]
+[ext_resource type="PackedScene" uid="uid://bhp8pe335xfve" path="res://generated/terrain/chunks/chunk_3_0.tscn" id="68_bk8fi"]
+[ext_resource type="PackedScene" uid="uid://b68mxd7nkmcdx" path="res://generated/terrain/chunks/chunk_3_1.tscn" id="69_628bd"]
+[ext_resource type="PackedScene" uid="uid://l4u2ycuccimk" path="res://generated/terrain/chunks/chunk_3_2.tscn" id="70_3uo6e"]
+[ext_resource type="PackedScene" uid="uid://btlwhbo47v4dw" path="res://generated/terrain/chunks/chunk_3_3.tscn" id="71_bswt7"]
+[ext_resource type="PackedScene" uid="uid://dl34ukbdd5pgh" path="res://generated/terrain/chunks/chunk_3_4.tscn" id="72_alixj"]
+[ext_resource type="PackedScene" uid="uid://c8stfgg85cun7" path="res://generated/terrain/chunks/chunk_3_5.tscn" id="73_2g5lf"]
+[ext_resource type="PackedScene" uid="uid://bnhqh1ubfxaqk" path="res://generated/terrain/chunks/chunk_3_6.tscn" id="74_jrfqk"]
+[ext_resource type="PackedScene" uid="uid://crmfqf6q8nmq" path="res://generated/terrain/chunks/chunk_3_7.tscn" id="75_pxgcd"]
+[ext_resource type="PackedScene" uid="uid://ck0n8gpk6ggjy" path="res://generated/terrain/chunks/chunk_3_8.tscn" id="76_xwhjl"]
+[ext_resource type="PackedScene" uid="uid://bgpaea6eh5ee4" path="res://generated/terrain/chunks/chunk_3_9.tscn" id="77_37vbr"]
+[ext_resource type="PackedScene" uid="uid://bykgtm4g3xvg8" path="res://generated/terrain/chunks/chunk_3_10.tscn" id="78_mw4oj"]
+[ext_resource type="PackedScene" uid="uid://da55rd2rd5ii6" path="res://generated/terrain/chunks/chunk_3_11.tscn" id="79_7k5xn"]
+[ext_resource type="PackedScene" uid="uid://p0k268y05xvy" path="res://generated/terrain/chunks/chunk_3_12.tscn" id="80_jmp2g"]
+[ext_resource type="PackedScene" uid="uid://gkjpmcb6ecep" path="res://generated/terrain/chunks/chunk_3_13.tscn" id="81_nrq1o"]
+[ext_resource type="PackedScene" uid="uid://yktm084gnejv" path="res://generated/terrain/chunks/chunk_3_14.tscn" id="82_rtl02"]
+[ext_resource type="PackedScene" uid="uid://byo4y3c12f8hs" path="res://generated/terrain/chunks/chunk_3_15.tscn" id="83_8rt37"]
+[ext_resource type="PackedScene" uid="uid://bneqg2posuejx" path="res://generated/terrain/chunks/chunk_4_0.tscn" id="84_hsnvl"]
+[ext_resource type="PackedScene" uid="uid://dkdkouhglkfx" path="res://generated/terrain/chunks/chunk_4_1.tscn" id="85_u13b3"]
+[ext_resource type="PackedScene" uid="uid://dxpyh4djkfmwf" path="res://generated/terrain/chunks/chunk_4_2.tscn" id="86_ptjyb"]
+[ext_resource type="PackedScene" uid="uid://rxwy63t3eo5x" path="res://generated/terrain/chunks/chunk_4_3.tscn" id="87_633cn"]
+[ext_resource type="PackedScene" uid="uid://gr38msph6dci" path="res://generated/terrain/chunks/chunk_4_4.tscn" id="88_sxwb4"]
+[ext_resource type="PackedScene" uid="uid://dqnixbuaan8v1" path="res://generated/terrain/chunks/chunk_4_5.tscn" id="89_edb7x"]
+[ext_resource type="PackedScene" uid="uid://bn8e3hki28efi" path="res://generated/terrain/chunks/chunk_4_6.tscn" id="90_27cpw"]
+[ext_resource type="PackedScene" uid="uid://vig5tvqn5f6r" path="res://generated/terrain/chunks/chunk_4_7.tscn" id="91_v38cn"]
+[ext_resource type="PackedScene" uid="uid://bhmnsas2te85k" path="res://generated/terrain/chunks/chunk_4_8.tscn" id="92_g0g0b"]
+[ext_resource type="PackedScene" uid="uid://emm48g4jebpm" path="res://generated/terrain/chunks/chunk_4_9.tscn" id="93_o6ggq"]
+[ext_resource type="PackedScene" uid="uid://nw836yrda47h" path="res://generated/terrain/chunks/chunk_4_10.tscn" id="94_y7ijv"]
+[ext_resource type="PackedScene" uid="uid://delig7il5esr2" path="res://generated/terrain/chunks/chunk_4_11.tscn" id="95_hp0oq"]
+[ext_resource type="PackedScene" uid="uid://g1vaytixt8wf" path="res://generated/terrain/chunks/chunk_4_12.tscn" id="96_76cwa"]
+[ext_resource type="PackedScene" uid="uid://bumm5lgehqp8n" path="res://generated/terrain/chunks/chunk_4_13.tscn" id="97_mth2i"]
+[ext_resource type="PackedScene" uid="uid://x2dg0aowvj2l" path="res://generated/terrain/chunks/chunk_4_14.tscn" id="98_r77j6"]
+[ext_resource type="PackedScene" uid="uid://df7qj3pj4n8cp" path="res://generated/terrain/chunks/chunk_4_15.tscn" id="99_o2h8w"]
+[ext_resource type="PackedScene" uid="uid://co76hju7rrmkc" path="res://generated/terrain/chunks/chunk_5_0.tscn" id="100_wleca"]
+[ext_resource type="PackedScene" uid="uid://cpjvpdekm6y73" path="res://generated/terrain/chunks/chunk_5_1.tscn" id="101_k3xd2"]
+[ext_resource type="PackedScene" uid="uid://bwrknbc7w8yoc" path="res://generated/terrain/chunks/chunk_5_2.tscn" id="102_umvrq"]
+[ext_resource type="PackedScene" uid="uid://emhuc0whgd81" path="res://generated/terrain/chunks/chunk_5_3.tscn" id="103_jd73q"]
+[ext_resource type="PackedScene" uid="uid://dpxifwm8b2ftl" path="res://generated/terrain/chunks/chunk_5_4.tscn" id="104_qf8uy"]
+[ext_resource type="PackedScene" uid="uid://c0ad7mwhfu5ha" path="res://generated/terrain/chunks/chunk_5_5.tscn" id="105_eiaqo"]
+[ext_resource type="PackedScene" uid="uid://cq2n436ol5uhg" path="res://generated/terrain/chunks/chunk_5_6.tscn" id="106_424bf"]
+[ext_resource type="PackedScene" uid="uid://uwhynrb62lny" path="res://generated/terrain/chunks/chunk_5_7.tscn" id="107_rlgpf"]
+[ext_resource type="PackedScene" uid="uid://ck1qjgidmmgfh" path="res://generated/terrain/chunks/chunk_5_8.tscn" id="108_mprce"]
+[ext_resource type="PackedScene" uid="uid://dad31yqah87nh" path="res://generated/terrain/chunks/chunk_5_9.tscn" id="109_bjui5"]
+[ext_resource type="PackedScene" uid="uid://btr18xdu8xkls" path="res://generated/terrain/chunks/chunk_5_10.tscn" id="110_i24du"]
+[ext_resource type="PackedScene" uid="uid://dxlk53bhqwtqx" path="res://generated/terrain/chunks/chunk_5_11.tscn" id="111_c8m2c"]
+[ext_resource type="PackedScene" uid="uid://7t2dp5wxrfpl" path="res://generated/terrain/chunks/chunk_5_12.tscn" id="112_qloyb"]
+[ext_resource type="PackedScene" uid="uid://dtewrddg1oibi" path="res://generated/terrain/chunks/chunk_5_13.tscn" id="113_0tiso"]
+[ext_resource type="PackedScene" uid="uid://bbme5jdpi31m2" path="res://generated/terrain/chunks/chunk_5_14.tscn" id="114_xm25f"]
+[ext_resource type="PackedScene" uid="uid://cfguup2i3wok0" path="res://generated/terrain/chunks/chunk_5_15.tscn" id="115_wuv2q"]
+[ext_resource type="PackedScene" uid="uid://dk72wscvs20dh" path="res://generated/terrain/chunks/chunk_6_0.tscn" id="116_o4eew"]
+[ext_resource type="PackedScene" uid="uid://r44o1mlxjhra" path="res://generated/terrain/chunks/chunk_6_1.tscn" id="117_eh6g2"]
+[ext_resource type="PackedScene" uid="uid://dv3fq7nowfxtd" path="res://generated/terrain/chunks/chunk_6_2.tscn" id="118_gju2n"]
+[ext_resource type="PackedScene" uid="uid://b6tume7s05gho" path="res://generated/terrain/chunks/chunk_6_3.tscn" id="119_wvv44"]
+[ext_resource type="PackedScene" uid="uid://bytcvxv83i5o4" path="res://generated/terrain/chunks/chunk_6_4.tscn" id="120_v62up"]
+[ext_resource type="PackedScene" uid="uid://ck68vivqmrbe" path="res://generated/terrain/chunks/chunk_6_5.tscn" id="121_p3n2t"]
+[ext_resource type="PackedScene" uid="uid://cnqeu5gfyoijm" path="res://generated/terrain/chunks/chunk_6_6.tscn" id="122_vigfx"]
+[ext_resource type="PackedScene" uid="uid://dfy0dx8dvsuj1" path="res://generated/terrain/chunks/chunk_6_7.tscn" id="123_cihqc"]
+[ext_resource type="PackedScene" uid="uid://bsypc70tbif4i" path="res://generated/terrain/chunks/chunk_6_8.tscn" id="124_7k2ov"]
+[ext_resource type="PackedScene" uid="uid://bdadgqf0wivc5" path="res://generated/terrain/chunks/chunk_6_9.tscn" id="125_4al2o"]
+[ext_resource type="PackedScene" uid="uid://xdw873auf88e" path="res://generated/terrain/chunks/chunk_6_10.tscn" id="126_fp0hb"]
+[ext_resource type="PackedScene" uid="uid://dk752ma3vcmua" path="res://generated/terrain/chunks/chunk_6_11.tscn" id="127_83ipd"]
+[ext_resource type="PackedScene" uid="uid://5bym6qy71afw" path="res://generated/terrain/chunks/chunk_6_12.tscn" id="128_7i5vn"]
+[ext_resource type="PackedScene" uid="uid://bo48log14q7hv" path="res://generated/terrain/chunks/chunk_6_13.tscn" id="129_nc054"]
+[ext_resource type="PackedScene" uid="uid://o22kxme1j45k" path="res://generated/terrain/chunks/chunk_6_14.tscn" id="130_bcvbb"]
+[ext_resource type="PackedScene" uid="uid://c7ftdmbrr1dx1" path="res://generated/terrain/chunks/chunk_6_15.tscn" id="131_7ow1q"]
+[ext_resource type="PackedScene" uid="uid://xqcsolr0wvkj" path="res://generated/terrain/chunks/chunk_7_0.tscn" id="132_3egjq"]
+[ext_resource type="PackedScene" uid="uid://b3f7wwyp2bmpv" path="res://generated/terrain/chunks/chunk_7_1.tscn" id="133_o2h4o"]
+[ext_resource type="PackedScene" uid="uid://bj66b2vblxqvn" path="res://generated/terrain/chunks/chunk_7_2.tscn" id="134_atyaj"]
+[ext_resource type="PackedScene" uid="uid://d2dogws3a32nk" path="res://generated/terrain/chunks/chunk_7_3.tscn" id="135_50iwa"]
+[ext_resource type="PackedScene" uid="uid://0bfd5bdi7cqb" path="res://generated/terrain/chunks/chunk_7_4.tscn" id="136_nqjd2"]
+[ext_resource type="PackedScene" uid="uid://bym3uqjfsu2vd" path="res://generated/terrain/chunks/chunk_7_5.tscn" id="137_adi1g"]
+[ext_resource type="PackedScene" uid="uid://gy00soxdyo2a" path="res://generated/terrain/chunks/chunk_7_6.tscn" id="138_5xoj4"]
+[ext_resource type="PackedScene" uid="uid://bufnc5ygxgx5h" path="res://generated/terrain/chunks/chunk_7_7.tscn" id="139_npe58"]
+[ext_resource type="PackedScene" uid="uid://c4a8mwrkr76dw" path="res://generated/terrain/chunks/chunk_7_8.tscn" id="140_e01ta"]
+[ext_resource type="PackedScene" uid="uid://bko6h4t4f3a3v" path="res://generated/terrain/chunks/chunk_7_9.tscn" id="141_ghjfo"]
+[ext_resource type="PackedScene" uid="uid://bibq0vklj524d" path="res://generated/terrain/chunks/chunk_7_10.tscn" id="142_n0rf6"]
+[ext_resource type="PackedScene" uid="uid://dcl6eyc82w2vp" path="res://generated/terrain/chunks/chunk_7_11.tscn" id="143_0fafy"]
+[ext_resource type="PackedScene" uid="uid://dm80x5ymemgss" path="res://generated/terrain/chunks/chunk_7_12.tscn" id="144_evx7v"]
+[ext_resource type="PackedScene" uid="uid://cwvee606ixx0v" path="res://generated/terrain/chunks/chunk_7_13.tscn" id="145_4o3xf"]
+[ext_resource type="PackedScene" uid="uid://cliq2eakepm67" path="res://generated/terrain/chunks/chunk_7_14.tscn" id="146_winx5"]
+[ext_resource type="PackedScene" uid="uid://ha112eacb5n5" path="res://generated/terrain/chunks/chunk_7_15.tscn" id="147_gni26"]
+[ext_resource type="PackedScene" uid="uid://c2nlsbsl6n2n6" path="res://generated/terrain/chunks/chunk_8_0.tscn" id="148_f81mv"]
+[ext_resource type="PackedScene" uid="uid://cw32e0l45hynr" path="res://generated/terrain/chunks/chunk_8_1.tscn" id="149_eanpy"]
+[ext_resource type="PackedScene" uid="uid://ckxynolx3w1db" path="res://generated/terrain/chunks/chunk_8_2.tscn" id="150_by45n"]
+[ext_resource type="PackedScene" uid="uid://cl4a74tdjr4ul" path="res://generated/terrain/chunks/chunk_8_3.tscn" id="151_drt01"]
+[ext_resource type="PackedScene" uid="uid://bmlcfaw5en1ac" path="res://generated/terrain/chunks/chunk_8_4.tscn" id="152_0swkt"]
+[ext_resource type="PackedScene" uid="uid://cw1o388srmo2y" path="res://generated/terrain/chunks/chunk_8_5.tscn" id="153_fqgat"]
+[ext_resource type="PackedScene" uid="uid://i81l0duan8gh" path="res://generated/terrain/chunks/chunk_8_6.tscn" id="154_qtqd3"]
+[ext_resource type="PackedScene" uid="uid://biofg1dajvt3g" path="res://generated/terrain/chunks/chunk_8_7.tscn" id="155_xcjfl"]
+[ext_resource type="PackedScene" uid="uid://cmq4ugup01clt" path="res://generated/terrain/chunks/chunk_8_8.tscn" id="156_k043q"]
+[ext_resource type="PackedScene" uid="uid://cui3ihgmihncm" path="res://generated/terrain/chunks/chunk_8_9.tscn" id="157_fjpqn"]
+[ext_resource type="PackedScene" uid="uid://kbjbow4xmlug" path="res://generated/terrain/chunks/chunk_8_10.tscn" id="158_q307a"]
+[ext_resource type="PackedScene" uid="uid://dhdp0ngl36dq1" path="res://generated/terrain/chunks/chunk_8_11.tscn" id="159_1anbl"]
+[ext_resource type="PackedScene" uid="uid://b2rmgk5yvwx3r" path="res://generated/terrain/chunks/chunk_8_12.tscn" id="160_224w1"]
+[ext_resource type="PackedScene" uid="uid://c03wngtuyd7c7" path="res://generated/terrain/chunks/chunk_8_13.tscn" id="161_niesd"]
+[ext_resource type="PackedScene" uid="uid://d1nwl541fqvbr" path="res://generated/terrain/chunks/chunk_8_14.tscn" id="162_x4yhd"]
+[ext_resource type="PackedScene" uid="uid://f75rgvnhvhu6" path="res://generated/terrain/chunks/chunk_8_15.tscn" id="163_hcwc3"]
+[ext_resource type="PackedScene" uid="uid://wy1o6r8s0l5v" path="res://generated/terrain/chunks/chunk_9_0.tscn" id="164_ha543"]
+[ext_resource type="PackedScene" uid="uid://jpt8uudxeoy1" path="res://generated/terrain/chunks/chunk_9_1.tscn" id="165_auyq1"]
+[ext_resource type="PackedScene" uid="uid://ba4ixit6ybhuc" path="res://generated/terrain/chunks/chunk_9_2.tscn" id="166_51crm"]
+[ext_resource type="PackedScene" uid="uid://b5afwp4m363b1" path="res://generated/terrain/chunks/chunk_9_3.tscn" id="167_xyn8e"]
+[ext_resource type="PackedScene" uid="uid://biec66gqvihj3" path="res://generated/terrain/chunks/chunk_9_4.tscn" id="168_g7wyt"]
+[ext_resource type="PackedScene" uid="uid://kj0ne2xv1gb7" path="res://generated/terrain/chunks/chunk_9_5.tscn" id="169_e8hjv"]
+[ext_resource type="PackedScene" uid="uid://58t8gkb6co2w" path="res://generated/terrain/chunks/chunk_9_6.tscn" id="170_f6iys"]
+[ext_resource type="PackedScene" uid="uid://4nvth5cbei4b" path="res://generated/terrain/chunks/chunk_9_7.tscn" id="171_eil03"]
+[ext_resource type="PackedScene" uid="uid://xeyt2lwa1f6a" path="res://generated/terrain/chunks/chunk_9_8.tscn" id="172_h2q01"]
+[ext_resource type="PackedScene" uid="uid://biajp2nmlk1a0" path="res://generated/terrain/chunks/chunk_9_9.tscn" id="173_b8p0b"]
+[ext_resource type="PackedScene" uid="uid://dncsof3e2vlf" path="res://generated/terrain/chunks/chunk_9_10.tscn" id="174_yqlx3"]
+[ext_resource type="PackedScene" uid="uid://dhl34sjp6dxp6" path="res://generated/terrain/chunks/chunk_9_11.tscn" id="175_wsxkh"]
+[ext_resource type="PackedScene" uid="uid://bxb6deicita73" path="res://generated/terrain/chunks/chunk_9_12.tscn" id="176_li1ug"]
+[ext_resource type="PackedScene" uid="uid://xyqnlebgig6n" path="res://generated/terrain/chunks/chunk_9_13.tscn" id="177_j5fmv"]
+[ext_resource type="PackedScene" uid="uid://b0d2nsxtfd86c" path="res://generated/terrain/chunks/chunk_9_14.tscn" id="178_efi7f"]
+[ext_resource type="PackedScene" uid="uid://bhjsyrtrevk3i" path="res://generated/terrain/chunks/chunk_9_15.tscn" id="179_a4fnx"]
+[ext_resource type="PackedScene" uid="uid://tabkdiv3ui3k" path="res://generated/terrain/chunks/chunk_10_0.tscn" id="180_s3qkn"]
+[ext_resource type="PackedScene" uid="uid://nbc8s8oqxkcw" path="res://generated/terrain/chunks/chunk_10_1.tscn" id="181_r57hy"]
+[ext_resource type="PackedScene" uid="uid://cf7pyv8kinnmf" path="res://generated/terrain/chunks/chunk_10_2.tscn" id="182_b5nvw"]
+[ext_resource type="PackedScene" uid="uid://dgvhprromi0e2" path="res://generated/terrain/chunks/chunk_10_3.tscn" id="183_1bca0"]
+[ext_resource type="PackedScene" uid="uid://bot7e3gpearji" path="res://generated/terrain/chunks/chunk_10_4.tscn" id="184_k6ewr"]
+[ext_resource type="PackedScene" uid="uid://op10wv1d2p5y" path="res://generated/terrain/chunks/chunk_10_5.tscn" id="185_o7lsw"]
+[ext_resource type="PackedScene" uid="uid://i7g3w2q1q5uq" path="res://generated/terrain/chunks/chunk_10_6.tscn" id="186_hq7qs"]
+[ext_resource type="PackedScene" uid="uid://cyhnkeuhvqyk4" path="res://generated/terrain/chunks/chunk_10_7.tscn" id="187_8vecg"]
+[ext_resource type="PackedScene" uid="uid://cgxmcfkq1nhvn" path="res://generated/terrain/chunks/chunk_10_8.tscn" id="188_45kbx"]
+[ext_resource type="PackedScene" uid="uid://ofp4jj5sics5" path="res://generated/terrain/chunks/chunk_10_9.tscn" id="189_h76en"]
+[ext_resource type="PackedScene" uid="uid://cqmnyes7lwrob" path="res://generated/terrain/chunks/chunk_10_10.tscn" id="190_60x1q"]
+[ext_resource type="PackedScene" uid="uid://uvijs1o5vun0" path="res://generated/terrain/chunks/chunk_10_11.tscn" id="191_7b00h"]
+[ext_resource type="PackedScene" uid="uid://ds4wocbhiv3md" path="res://generated/terrain/chunks/chunk_10_12.tscn" id="192_jtiko"]
+[ext_resource type="PackedScene" uid="uid://dqvv6yxt633ui" path="res://generated/terrain/chunks/chunk_10_13.tscn" id="193_kfnwr"]
+[ext_resource type="PackedScene" uid="uid://dh22x5r8oixy5" path="res://generated/terrain/chunks/chunk_10_14.tscn" id="194_1ld4k"]
+[ext_resource type="PackedScene" uid="uid://cg4453qly5suf" path="res://generated/terrain/chunks/chunk_10_15.tscn" id="195_drs3w"]
+[ext_resource type="PackedScene" uid="uid://pp2umsix1cw6" path="res://generated/terrain/chunks/chunk_11_0.tscn" id="196_4spin"]
+[ext_resource type="PackedScene" uid="uid://dxsg17d0u1mjt" path="res://generated/terrain/chunks/chunk_11_1.tscn" id="197_4ga0s"]
+[ext_resource type="PackedScene" uid="uid://cqywekk8332kv" path="res://generated/terrain/chunks/chunk_11_2.tscn" id="198_5u1vr"]
+[ext_resource type="PackedScene" uid="uid://cq6j7u15wfuf7" path="res://generated/terrain/chunks/chunk_11_3.tscn" id="199_lghh4"]
+[ext_resource type="PackedScene" uid="uid://t52sgcy6upsd" path="res://generated/terrain/chunks/chunk_11_4.tscn" id="200_prhbx"]
+[ext_resource type="PackedScene" uid="uid://b57ym4a3n2lna" path="res://generated/terrain/chunks/chunk_11_5.tscn" id="201_nx8fv"]
+[ext_resource type="PackedScene" uid="uid://bgnyec5vev6di" path="res://generated/terrain/chunks/chunk_11_6.tscn" id="202_uvn7s"]
+[ext_resource type="PackedScene" uid="uid://cgyw1gvl7omvd" path="res://generated/terrain/chunks/chunk_11_7.tscn" id="203_t6i0s"]
+[ext_resource type="PackedScene" uid="uid://dv25q8b6j2yex" path="res://generated/terrain/chunks/chunk_11_8.tscn" id="204_nqts0"]
+[ext_resource type="PackedScene" uid="uid://6pfigadv5mfl" path="res://generated/terrain/chunks/chunk_11_9.tscn" id="205_bvmoa"]
+[ext_resource type="PackedScene" uid="uid://ba27xbs4mgc8a" path="res://generated/terrain/chunks/chunk_11_10.tscn" id="206_rlf3j"]
+[ext_resource type="PackedScene" uid="uid://ym1qrg1k7ifl" path="res://generated/terrain/chunks/chunk_11_11.tscn" id="207_8jley"]
+[ext_resource type="PackedScene" uid="uid://dghfkrv871xj6" path="res://generated/terrain/chunks/chunk_11_12.tscn" id="208_ig16c"]
+[ext_resource type="PackedScene" uid="uid://d2ll0bqpl2sb8" path="res://generated/terrain/chunks/chunk_11_13.tscn" id="209_3ld2h"]
+[ext_resource type="PackedScene" uid="uid://dbu1mw7fvpuyv" path="res://generated/terrain/chunks/chunk_11_14.tscn" id="210_10c65"]
+[ext_resource type="PackedScene" uid="uid://d0s4lndo3gsuq" path="res://generated/terrain/chunks/chunk_11_15.tscn" id="211_fhqqh"]
+[ext_resource type="PackedScene" uid="uid://bgngxju4bwcby" path="res://generated/terrain/chunks/chunk_12_0.tscn" id="212_jveqc"]
+[ext_resource type="PackedScene" uid="uid://dltuoejmysbmp" path="res://generated/terrain/chunks/chunk_12_1.tscn" id="213_ag24u"]
+[ext_resource type="PackedScene" uid="uid://8nf0tpbyta2q" path="res://generated/terrain/chunks/chunk_12_2.tscn" id="214_5ln6n"]
+[ext_resource type="PackedScene" uid="uid://cggqf4yqpuedy" path="res://generated/terrain/chunks/chunk_12_3.tscn" id="215_t5ao7"]
+[ext_resource type="PackedScene" uid="uid://cnxaehllibyuu" path="res://generated/terrain/chunks/chunk_12_4.tscn" id="216_b60hj"]
+[ext_resource type="PackedScene" uid="uid://c0s6l2l6uuk2l" path="res://generated/terrain/chunks/chunk_12_5.tscn" id="217_7upj1"]
+[ext_resource type="PackedScene" uid="uid://cjeolywt0lk2v" path="res://generated/terrain/chunks/chunk_12_6.tscn" id="218_laoqi"]
+[ext_resource type="PackedScene" uid="uid://nxlfmsrgbawy" path="res://generated/terrain/chunks/chunk_12_7.tscn" id="219_53mmr"]
+[ext_resource type="PackedScene" uid="uid://b5ikagwoaywfk" path="res://generated/terrain/chunks/chunk_12_8.tscn" id="220_q7vjw"]
+[ext_resource type="PackedScene" uid="uid://ipq1dici844b" path="res://generated/terrain/chunks/chunk_12_9.tscn" id="221_xdoql"]
+[ext_resource type="PackedScene" uid="uid://do6dst6l13tca" path="res://generated/terrain/chunks/chunk_12_10.tscn" id="222_jmgeh"]
+[ext_resource type="PackedScene" uid="uid://oyhf4r7l23v6" path="res://generated/terrain/chunks/chunk_12_11.tscn" id="223_th086"]
+[ext_resource type="PackedScene" uid="uid://cm12f3df43cyd" path="res://generated/terrain/chunks/chunk_12_12.tscn" id="224_okn72"]
+[ext_resource type="PackedScene" uid="uid://c044xko8un48w" path="res://generated/terrain/chunks/chunk_12_13.tscn" id="225_1qr4g"]
+[ext_resource type="PackedScene" uid="uid://bo5ulwenx1idy" path="res://generated/terrain/chunks/chunk_12_14.tscn" id="226_afw6w"]
+[ext_resource type="PackedScene" uid="uid://btvo07kq3tval" path="res://generated/terrain/chunks/chunk_12_15.tscn" id="227_4lduk"]
+[ext_resource type="PackedScene" uid="uid://bceetl5n4fwom" path="res://generated/terrain/chunks/chunk_13_0.tscn" id="228_7orab"]
+[ext_resource type="PackedScene" uid="uid://bqt2r4w7vqkni" path="res://generated/terrain/chunks/chunk_13_1.tscn" id="229_ebel6"]
+[ext_resource type="PackedScene" uid="uid://mhac8vkesrtg" path="res://generated/terrain/chunks/chunk_13_2.tscn" id="230_betvy"]
+[ext_resource type="PackedScene" uid="uid://dipll111sakac" path="res://generated/terrain/chunks/chunk_13_3.tscn" id="231_emiv6"]
+[ext_resource type="PackedScene" uid="uid://cfvc7lm68s770" path="res://generated/terrain/chunks/chunk_13_4.tscn" id="232_kb6c1"]
+[ext_resource type="PackedScene" uid="uid://x0ckr3280bkg" path="res://generated/terrain/chunks/chunk_13_5.tscn" id="233_7mlte"]
+[ext_resource type="PackedScene" uid="uid://6e7hhsp6duup" path="res://generated/terrain/chunks/chunk_13_6.tscn" id="234_uql4y"]
+[ext_resource type="PackedScene" uid="uid://c6g67wgdokncp" path="res://generated/terrain/chunks/chunk_13_7.tscn" id="235_mx7ol"]
+[ext_resource type="PackedScene" uid="uid://dvrwnuyo1mtlc" path="res://generated/terrain/chunks/chunk_13_8.tscn" id="236_5wvs6"]
+[ext_resource type="PackedScene" uid="uid://mdwsehjirdgf" path="res://generated/terrain/chunks/chunk_13_9.tscn" id="237_u3q68"]
+[ext_resource type="PackedScene" uid="uid://cffvq6mtuqhyg" path="res://generated/terrain/chunks/chunk_13_10.tscn" id="238_ceqqf"]
+[ext_resource type="PackedScene" uid="uid://bwkd1q6f26tiu" path="res://generated/terrain/chunks/chunk_13_11.tscn" id="239_wyt43"]
+[ext_resource type="PackedScene" uid="uid://vx5dorhp1ypt" path="res://generated/terrain/chunks/chunk_13_12.tscn" id="240_yrrww"]
+[ext_resource type="PackedScene" uid="uid://ds8ygu3goyd1a" path="res://generated/terrain/chunks/chunk_13_13.tscn" id="241_14aft"]
+[ext_resource type="PackedScene" uid="uid://cvpn5kqqrqjnn" path="res://generated/terrain/chunks/chunk_13_14.tscn" id="242_bhfed"]
+[ext_resource type="PackedScene" uid="uid://ifhlnhnqkra3" path="res://generated/terrain/chunks/chunk_13_15.tscn" id="243_jogiy"]
+[ext_resource type="PackedScene" uid="uid://dxriygdrit3km" path="res://generated/terrain/chunks/chunk_14_0.tscn" id="244_wc2iw"]
+[ext_resource type="PackedScene" uid="uid://bvfp6wecscgl5" path="res://generated/terrain/chunks/chunk_14_1.tscn" id="245_24kvv"]
+[ext_resource type="PackedScene" uid="uid://daodcigxs0hs0" path="res://generated/terrain/chunks/chunk_14_2.tscn" id="246_swfw8"]
+[ext_resource type="PackedScene" uid="uid://berv87if2mm4j" path="res://generated/terrain/chunks/chunk_14_3.tscn" id="247_qtklq"]
+[ext_resource type="PackedScene" uid="uid://mwcwp1a5m8ii" path="res://generated/terrain/chunks/chunk_14_4.tscn" id="248_mu6dy"]
+[ext_resource type="PackedScene" uid="uid://j6647dvs3r6o" path="res://generated/terrain/chunks/chunk_14_5.tscn" id="249_26irl"]
+[ext_resource type="PackedScene" uid="uid://csjoqylyua3f7" path="res://generated/terrain/chunks/chunk_14_6.tscn" id="250_7oify"]
+[ext_resource type="PackedScene" uid="uid://ckcrlgi3yi3e4" path="res://generated/terrain/chunks/chunk_14_7.tscn" id="251_ryn8m"]
+[ext_resource type="PackedScene" uid="uid://dl10qwxggwm8w" path="res://generated/terrain/chunks/chunk_14_8.tscn" id="252_gpwnr"]
+[ext_resource type="PackedScene" uid="uid://chqkkfsonuk0l" path="res://generated/terrain/chunks/chunk_14_9.tscn" id="253_bstol"]
+[ext_resource type="PackedScene" uid="uid://dsx68oeaub3a8" path="res://generated/terrain/chunks/chunk_14_10.tscn" id="254_bs7no"]
+[ext_resource type="PackedScene" uid="uid://dcep5q01o5so7" path="res://generated/terrain/chunks/chunk_14_11.tscn" id="255_twd0k"]
+[ext_resource type="PackedScene" uid="uid://bs6imidxybo8l" path="res://generated/terrain/chunks/chunk_14_12.tscn" id="256_fo1le"]
+[ext_resource type="PackedScene" uid="uid://dgqph4lb6xjf2" path="res://generated/terrain/chunks/chunk_14_13.tscn" id="257_7gebk"]
+[ext_resource type="PackedScene" uid="uid://52qwl31fn0jb" path="res://generated/terrain/chunks/chunk_14_14.tscn" id="258_jxkvy"]
+[ext_resource type="PackedScene" uid="uid://bncp5l6aroy8c" path="res://generated/terrain/chunks/chunk_14_15.tscn" id="259_2bu5k"]
+[ext_resource type="PackedScene" uid="uid://bqmgf3584hw75" path="res://generated/terrain/chunks/chunk_15_0.tscn" id="260_31adk"]
+[ext_resource type="PackedScene" uid="uid://chk6a5jat01r2" path="res://generated/terrain/chunks/chunk_15_1.tscn" id="261_s8ihx"]
+[ext_resource type="PackedScene" uid="uid://bqc5p67f2eu3d" path="res://generated/terrain/chunks/chunk_15_2.tscn" id="262_1o8ep"]
+[ext_resource type="PackedScene" uid="uid://rcil0u58hav2" path="res://generated/terrain/chunks/chunk_15_3.tscn" id="263_h5j0x"]
+[ext_resource type="PackedScene" uid="uid://5oyl67fseeri" path="res://generated/terrain/chunks/chunk_15_4.tscn" id="264_n178s"]
+[ext_resource type="PackedScene" uid="uid://cscn4tdi6035p" path="res://generated/terrain/chunks/chunk_15_5.tscn" id="265_xu3ua"]
+[ext_resource type="PackedScene" uid="uid://c3hakw3vn2te8" path="res://generated/terrain/chunks/chunk_15_6.tscn" id="266_tpdka"]
+[ext_resource type="PackedScene" uid="uid://dr68gmedfi06e" path="res://generated/terrain/chunks/chunk_15_7.tscn" id="267_7j7o5"]
+[ext_resource type="PackedScene" uid="uid://cgtc0oxrugtf6" path="res://generated/terrain/chunks/chunk_15_8.tscn" id="268_a28x1"]
+[ext_resource type="PackedScene" uid="uid://cf3k2yqd6l21f" path="res://generated/terrain/chunks/chunk_15_9.tscn" id="269_4bxu1"]
+[ext_resource type="PackedScene" uid="uid://dcs5i8kayug21" path="res://generated/terrain/chunks/chunk_15_10.tscn" id="270_55lip"]
+[ext_resource type="PackedScene" uid="uid://b5sodpmacovlt" path="res://generated/terrain/chunks/chunk_15_11.tscn" id="271_f5f5p"]
+[ext_resource type="PackedScene" uid="uid://bef7t62iduugn" path="res://generated/terrain/chunks/chunk_15_12.tscn" id="272_agt04"]
+[ext_resource type="PackedScene" uid="uid://6irhcou8dq8a" path="res://generated/terrain/chunks/chunk_15_13.tscn" id="273_wn1vd"]
+[ext_resource type="PackedScene" uid="uid://3h6u2a0miyev" path="res://generated/terrain/chunks/chunk_15_14.tscn" id="274_jf1lt"]
+[ext_resource type="PackedScene" uid="uid://yjehelk2vi1k" path="res://generated/terrain/chunks/chunk_15_15.tscn" id="275_fmb3m"]
+
+[sub_resource type="Resource" id="Resource_jdm0r"]
+script = ExtResource("2_vl7v8")
+map_size = 16
+map_height = 8.0
+tile_size = 5
+tile_height = 2.1875
+metadata/_custom_type_script = "uid://no1j1oowuup1"
+
+[sub_resource type="Resource" id="Resource_fpm2n"]
+script = ExtResource("3_uie2y")
+render_distance = 32
+metadata/_custom_type_script = "uid://bmtv75byrd25q"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3sml"]
+albedo_texture = ExtResource("8_h35ac")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgk0a"]
+albedo_texture = ExtResource("10_vjfgu")
+
+[sub_resource type="Resource" id="Resource_2s5in"]
+script = ExtResource("9_85rej")
+color = Color(0.003921569, 0, 0, 1)
+material = SubResource("StandardMaterial3D_jgk0a")
+metadata/_custom_type_script = "uid://ck40wxh2ro4ev"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4ma6"]
+albedo_color = Color(0.53441477, 0.20030746, 0.65288526, 1)
+
+[sub_resource type="Resource" id="Resource_c4wdo"]
+script = ExtResource("9_85rej")
+color = Color(0, 0, 0.9019608, 1)
+material = SubResource("StandardMaterial3D_q4ma6")
+metadata/_custom_type_script = "uid://ck40wxh2ro4ev"
+
+[sub_resource type="Resource" id="Resource_14ps6"]
+script = ExtResource("7_hil2h")
+noise = ExtResource("6_qtf5j")
+water = ExtResource("11_y3elh")
+water_threshold = 0.5
+water_levels = 5.0
+textures = Array[ExtResource("9_85rej")]([SubResource("Resource_2s5in"), SubResource("Resource_c4wdo")])
+terrain_material = SubResource("StandardMaterial3D_m3sml")
+water_material = ExtResource("12_yn2yo")
+metadata/_custom_type_script = "uid://ur8xw3m874ob"
+
+[sub_resource type="Resource" id="Resource_xhnvh"]
+script = ExtResource("14_o7l1m")
+highway_generation_split_count = 7
+generation_seed = 10
+
+[sub_resource type="Resource" id="Resource_7wli1"]
+script = ExtResource("17_ea3oq")
+start = Vector2i(-20, -20)
+end = Vector2i(100, 100)
+
+[sub_resource type="Resource" id="Resource_tsm84"]
+script = ExtResource("17_ea3oq")
+end = Vector2i(32, 32)
+
+[sub_resource type="Resource" id="Resource_vpsi1"]
+script = ExtResource("17_ea3oq")
+start = Vector2i(12, 12)
+end = Vector2i(20, 14)
+
+[node name="MapRenderer" type="Node3D" unique_id=481359591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.5, -4.5, -81)
+script = ExtResource("1_h35ac")
+world_generation_params = SubResource("Resource_jdm0r")
+world_display_params = SubResource("Resource_fpm2n")
+metadata/_custom_type_script = "uid://u5hpdit2bo4g"
+
+[node name="GridGenerationPipeline" type="Node" parent="." unique_id=721626864]
+script = ExtResource("4_slx8h")
+metadata/_custom_type_script = "uid://cn6l7oaf3xw32"
+
+[node name="TerrainGenerator" type="Node" parent="GridGenerationPipeline" unique_id=1092805512]
+script = ExtResource("5_ydw3b")
+terrain_params = SubResource("Resource_14ps6")
+metadata/_custom_type_script = "uid://0212vvhximbx"
+
+[node name="RoadGenerator" type="Node" parent="GridGenerationPipeline" unique_id=1976527430]
+script = ExtResource("13_pe6k2")
+generation_params = SubResource("Resource_xhnvh")
+limit_areas_visualization = true
+metadata/_custom_type_script = "uid://c52c7x4sbxs7o"
+
+[node name="GenerationAreas" type="Node" parent="GridGenerationPipeline/RoadGenerator" unique_id=1529020638]
+script = ExtResource("15_m11fh")
+
+[node name="LimiterArea" type="Node" parent="GridGenerationPipeline/RoadGenerator/GenerationAreas" unique_id=965802250]
+script = ExtResource("16_gasn6")
+min_spot_size = Vector2i(6, 6)
+max_spot_size = Vector2i(12, 12)
+area_limits = SubResource("Resource_7wli1")
+
+[node name="LimiterArea2" type="Node" parent="GridGenerationPipeline/RoadGenerator/GenerationAreas" unique_id=2075591697]
+script = ExtResource("16_gasn6")
+min_spot_size = Vector2i(4, 4)
+max_spot_size = Vector2i(8, 8)
+area_limits = SubResource("Resource_tsm84")
+
+[node name="LimiterArea3" type="Node" parent="GridGenerationPipeline/RoadGenerator/GenerationAreas" unique_id=724276875]
+script = ExtResource("16_gasn6")
+min_spot_size = Vector2i(4, 6)
+max_spot_size = Vector2i(8, 12)
+area_limits = SubResource("Resource_vpsi1")
+
+[node name="RoadAutotileUsable" parent="GridGenerationPipeline" unique_id=1777804066 instance=ExtResource("18_r35w7")]
+
+[node name="Chunks" type="Node3D" parent="." unique_id=822478227]
+script = ExtResource("19_sxrvo")
+
+[node name="ChunkX0Z0" parent="Chunks" unique_id=1361945479 instance=ExtResource("20_jofdl")]
+
+[node name="ChunkX0Z1" parent="Chunks" unique_id=1449559187 instance=ExtResource("21_5l6w5")]
+
+[node name="ChunkX0Z2" parent="Chunks" unique_id=513180195 instance=ExtResource("22_u6u81")]
+
+[node name="ChunkX0Z3" parent="Chunks" unique_id=1920778752 instance=ExtResource("23_s2nyo")]
+
+[node name="ChunkX0Z4" parent="Chunks" unique_id=854138204 instance=ExtResource("24_rj3og")]
+
+[node name="ChunkX0Z5" parent="Chunks" unique_id=1704438295 instance=ExtResource("25_ohqf8")]
+
+[node name="ChunkX0Z6" parent="Chunks" unique_id=175619068 instance=ExtResource("26_8pm25")]
+
+[node name="ChunkX0Z7" parent="Chunks" unique_id=1096484388 instance=ExtResource("27_bufwh")]
+
+[node name="ChunkX0Z8" parent="Chunks" unique_id=2121689071 instance=ExtResource("28_q5y2i")]
+
+[node name="ChunkX0Z9" parent="Chunks" unique_id=959123926 instance=ExtResource("29_0t3bh")]
+
+[node name="ChunkX0Z10" parent="Chunks" unique_id=1738893631 instance=ExtResource("30_f2fcf")]
+
+[node name="ChunkX0Z11" parent="Chunks" unique_id=185054720 instance=ExtResource("31_rai2e")]
+
+[node name="ChunkX0Z12" parent="Chunks" unique_id=1516870569 instance=ExtResource("32_2rlku")]
+
+[node name="ChunkX0Z13" parent="Chunks" unique_id=116434576 instance=ExtResource("33_th28f")]
+
+[node name="ChunkX0Z14" parent="Chunks" unique_id=103251863 instance=ExtResource("34_php41")]
+
+[node name="ChunkX0Z15" parent="Chunks" unique_id=1358553477 instance=ExtResource("35_c57ad")]
+
+[node name="ChunkX1Z0" parent="Chunks" unique_id=595087581 instance=ExtResource("36_1pb5j")]
+
+[node name="ChunkX1Z1" parent="Chunks" unique_id=1108683914 instance=ExtResource("37_cajrq")]
+
+[node name="ChunkX1Z2" parent="Chunks" unique_id=61030519 instance=ExtResource("38_dxieb")]
+
+[node name="ChunkX1Z3" parent="Chunks" unique_id=1618739196 instance=ExtResource("39_t6xnl")]
+
+[node name="ChunkX1Z4" parent="Chunks" unique_id=541921546 instance=ExtResource("40_latpv")]
+
+[node name="ChunkX1Z5" parent="Chunks" unique_id=802502731 instance=ExtResource("41_m07dh")]
+
+[node name="ChunkX1Z6" parent="Chunks" unique_id=1849045088 instance=ExtResource("42_34xcn")]
+
+[node name="ChunkX1Z7" parent="Chunks" unique_id=115081341 instance=ExtResource("43_ys285")]
+
+[node name="ChunkX1Z8" parent="Chunks" unique_id=277400032 instance=ExtResource("44_s8kas")]
+
+[node name="ChunkX1Z9" parent="Chunks" unique_id=1271899770 instance=ExtResource("45_fkf21")]
+
+[node name="ChunkX1Z10" parent="Chunks" unique_id=124478583 instance=ExtResource("46_m2bbv")]
+
+[node name="ChunkX1Z11" parent="Chunks" unique_id=1333480485 instance=ExtResource("47_sc8mx")]
+
+[node name="ChunkX1Z12" parent="Chunks" unique_id=1975731001 instance=ExtResource("48_dutd6")]
+
+[node name="ChunkX1Z13" parent="Chunks" unique_id=2045645891 instance=ExtResource("49_h8crg")]
+
+[node name="ChunkX1Z14" parent="Chunks" unique_id=1535633964 instance=ExtResource("50_rtrwt")]
+
+[node name="ChunkX1Z15" parent="Chunks" unique_id=1336748048 instance=ExtResource("51_paadh")]
+
+[node name="ChunkX2Z0" parent="Chunks" unique_id=632368346 instance=ExtResource("52_b0nq5")]
+
+[node name="ChunkX2Z1" parent="Chunks" unique_id=83829535 instance=ExtResource("53_0x3bu")]
+
+[node name="ChunkX2Z2" parent="Chunks" unique_id=682798391 instance=ExtResource("54_swl27")]
+
+[node name="ChunkX2Z3" parent="Chunks" unique_id=1512661829 instance=ExtResource("55_ai3j2")]
+
+[node name="ChunkX2Z4" parent="Chunks" unique_id=1031222506 instance=ExtResource("56_sqkfh")]
+
+[node name="ChunkX2Z5" parent="Chunks" unique_id=1292139896 instance=ExtResource("57_7y434")]
+
+[node name="ChunkX2Z6" parent="Chunks" unique_id=1932867282 instance=ExtResource("58_ruc21")]
+
+[node name="ChunkX2Z7" parent="Chunks" unique_id=1656110354 instance=ExtResource("59_ngncl")]
+
+[node name="ChunkX2Z8" parent="Chunks" unique_id=801957923 instance=ExtResource("60_dckff")]
+
+[node name="ChunkX2Z9" parent="Chunks" unique_id=468862086 instance=ExtResource("61_8md80")]
+
+[node name="ChunkX2Z10" parent="Chunks" unique_id=104748657 instance=ExtResource("62_j6xsp")]
+
+[node name="ChunkX2Z11" parent="Chunks" unique_id=1911684966 instance=ExtResource("63_oahl3")]
+
+[node name="ChunkX2Z12" parent="Chunks" unique_id=68813703 instance=ExtResource("64_e0guy")]
+
+[node name="ChunkX2Z13" parent="Chunks" unique_id=373621316 instance=ExtResource("65_hvtm7")]
+
+[node name="ChunkX2Z14" parent="Chunks" unique_id=1119324881 instance=ExtResource("66_w5fpm")]
+
+[node name="ChunkX2Z15" parent="Chunks" unique_id=1609242038 instance=ExtResource("67_5328l")]
+
+[node name="ChunkX3Z0" parent="Chunks" unique_id=1412644424 instance=ExtResource("68_bk8fi")]
+
+[node name="ChunkX3Z1" parent="Chunks" unique_id=113486495 instance=ExtResource("69_628bd")]
+
+[node name="ChunkX3Z2" parent="Chunks" unique_id=246718781 instance=ExtResource("70_3uo6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 40)
+
+[node name="ChunkX3Z3" parent="Chunks" unique_id=195861915 instance=ExtResource("71_bswt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
+
+[node name="ChunkX3Z4" parent="Chunks" unique_id=1243152357 instance=ExtResource("72_alixj")]
+
+[node name="ChunkX3Z5" parent="Chunks" unique_id=541214112 instance=ExtResource("73_2g5lf")]
+
+[node name="ChunkX3Z6" parent="Chunks" unique_id=1284431758 instance=ExtResource("74_jrfqk")]
+
+[node name="ChunkX3Z7" parent="Chunks" unique_id=642600646 instance=ExtResource("75_pxgcd")]
+
+[node name="ChunkX3Z8" parent="Chunks" unique_id=620824072 instance=ExtResource("76_xwhjl")]
+
+[node name="ChunkX3Z9" parent="Chunks" unique_id=1391261695 instance=ExtResource("77_37vbr")]
+
+[node name="ChunkX3Z10" parent="Chunks" unique_id=850210918 instance=ExtResource("78_mw4oj")]
+
+[node name="ChunkX3Z11" parent="Chunks" unique_id=546129104 instance=ExtResource("79_7k5xn")]
+
+[node name="ChunkX3Z12" parent="Chunks" unique_id=1377531061 instance=ExtResource("80_jmp2g")]
+
+[node name="ChunkX3Z13" parent="Chunks" unique_id=115361102 instance=ExtResource("81_nrq1o")]
+
+[node name="ChunkX3Z14" parent="Chunks" unique_id=699575802 instance=ExtResource("82_rtl02")]
+
+[node name="ChunkX3Z15" parent="Chunks" unique_id=111302179 instance=ExtResource("83_8rt37")]
+
+[node name="ChunkX4Z0" parent="Chunks" unique_id=192912240 instance=ExtResource("84_hsnvl")]
+
+[node name="ChunkX4Z1" parent="Chunks" unique_id=815528150 instance=ExtResource("85_u13b3")]
+
+[node name="ChunkX4Z2" parent="Chunks" unique_id=1624720205 instance=ExtResource("86_ptjyb")]
+
+[node name="ChunkX4Z3" parent="Chunks" unique_id=63806613 instance=ExtResource("87_633cn")]
+
+[node name="ChunkX4Z4" parent="Chunks" unique_id=65523090 instance=ExtResource("88_sxwb4")]
+
+[node name="ChunkX4Z5" parent="Chunks" unique_id=364343132 instance=ExtResource("89_edb7x")]
+
+[node name="ChunkX4Z6" parent="Chunks" unique_id=906284615 instance=ExtResource("90_27cpw")]
+
+[node name="ChunkX4Z7" parent="Chunks" unique_id=13331947 instance=ExtResource("91_v38cn")]
+
+[node name="ChunkX4Z8" parent="Chunks" unique_id=1611891115 instance=ExtResource("92_g0g0b")]
+
+[node name="ChunkX4Z9" parent="Chunks" unique_id=1144205738 instance=ExtResource("93_o6ggq")]
+
+[node name="ChunkX4Z10" parent="Chunks" unique_id=2024426781 instance=ExtResource("94_y7ijv")]
+
+[node name="ChunkX4Z11" parent="Chunks" unique_id=758369975 instance=ExtResource("95_hp0oq")]
+
+[node name="ChunkX4Z12" parent="Chunks" unique_id=438373541 instance=ExtResource("96_76cwa")]
+
+[node name="ChunkX4Z13" parent="Chunks" unique_id=2006210978 instance=ExtResource("97_mth2i")]
+
+[node name="ChunkX4Z14" parent="Chunks" unique_id=1692138126 instance=ExtResource("98_r77j6")]
+
+[node name="ChunkX4Z15" parent="Chunks" unique_id=1910318499 instance=ExtResource("99_o2h8w")]
+
+[node name="ChunkX5Z0" parent="Chunks" unique_id=1531492458 instance=ExtResource("100_wleca")]
+
+[node name="ChunkX5Z1" parent="Chunks" unique_id=1362305504 instance=ExtResource("101_k3xd2")]
+
+[node name="ChunkX5Z2" parent="Chunks" unique_id=887815658 instance=ExtResource("102_umvrq")]
+
+[node name="ChunkX5Z3" parent="Chunks" unique_id=1281789835 instance=ExtResource("103_jd73q")]
+
+[node name="ChunkX5Z4" parent="Chunks" unique_id=1492783150 instance=ExtResource("104_qf8uy")]
+
+[node name="ChunkX5Z5" parent="Chunks" unique_id=883505736 instance=ExtResource("105_eiaqo")]
+
+[node name="ChunkX5Z6" parent="Chunks" unique_id=411357854 instance=ExtResource("106_424bf")]
+
+[node name="ChunkX5Z7" parent="Chunks" unique_id=1392083448 instance=ExtResource("107_rlgpf")]
+
+[node name="ChunkX5Z8" parent="Chunks" unique_id=1817747571 instance=ExtResource("108_mprce")]
+
+[node name="ChunkX5Z9" parent="Chunks" unique_id=1870902142 instance=ExtResource("109_bjui5")]
+
+[node name="ChunkX5Z10" parent="Chunks" unique_id=132753917 instance=ExtResource("110_i24du")]
+
+[node name="ChunkX5Z11" parent="Chunks" unique_id=405839239 instance=ExtResource("111_c8m2c")]
+
+[node name="ChunkX5Z12" parent="Chunks" unique_id=836567290 instance=ExtResource("112_qloyb")]
+
+[node name="ChunkX5Z13" parent="Chunks" unique_id=2128574696 instance=ExtResource("113_0tiso")]
+
+[node name="ChunkX5Z14" parent="Chunks" unique_id=1636510498 instance=ExtResource("114_xm25f")]
+
+[node name="ChunkX5Z15" parent="Chunks" unique_id=1631914569 instance=ExtResource("115_wuv2q")]
+
+[node name="ChunkX6Z0" parent="Chunks" unique_id=1687609214 instance=ExtResource("116_o4eew")]
+
+[node name="ChunkX6Z1" parent="Chunks" unique_id=184962904 instance=ExtResource("117_eh6g2")]
+
+[node name="ChunkX6Z2" parent="Chunks" unique_id=1320219619 instance=ExtResource("118_gju2n")]
+
+[node name="ChunkX6Z3" parent="Chunks" unique_id=1417943618 instance=ExtResource("119_wvv44")]
+
+[node name="ChunkX6Z4" parent="Chunks" unique_id=1253308104 instance=ExtResource("120_v62up")]
+
+[node name="ChunkX6Z5" parent="Chunks" unique_id=2143367337 instance=ExtResource("121_p3n2t")]
+
+[node name="ChunkX6Z6" parent="Chunks" unique_id=1920199202 instance=ExtResource("122_vigfx")]
+
+[node name="ChunkX6Z7" parent="Chunks" unique_id=1434755027 instance=ExtResource("123_cihqc")]
+
+[node name="ChunkX6Z8" parent="Chunks" unique_id=104938417 instance=ExtResource("124_7k2ov")]
+
+[node name="ChunkX6Z9" parent="Chunks" unique_id=334052512 instance=ExtResource("125_4al2o")]
+
+[node name="ChunkX6Z10" parent="Chunks" unique_id=346866151 instance=ExtResource("126_fp0hb")]
+
+[node name="ChunkX6Z11" parent="Chunks" unique_id=690773368 instance=ExtResource("127_83ipd")]
+
+[node name="ChunkX6Z12" parent="Chunks" unique_id=697632454 instance=ExtResource("128_7i5vn")]
+
+[node name="ChunkX6Z13" parent="Chunks" unique_id=708897908 instance=ExtResource("129_nc054")]
+
+[node name="ChunkX6Z14" parent="Chunks" unique_id=1853467482 instance=ExtResource("130_bcvbb")]
+
+[node name="ChunkX6Z15" parent="Chunks" unique_id=639287735 instance=ExtResource("131_7ow1q")]
+
+[node name="ChunkX7Z0" parent="Chunks" unique_id=1667044784 instance=ExtResource("132_3egjq")]
+
+[node name="ChunkX7Z1" parent="Chunks" unique_id=1013154669 instance=ExtResource("133_o2h4o")]
+
+[node name="ChunkX7Z2" parent="Chunks" unique_id=920079146 instance=ExtResource("134_atyaj")]
+
+[node name="ChunkX7Z3" parent="Chunks" unique_id=31097126 instance=ExtResource("135_50iwa")]
+
+[node name="ChunkX7Z4" parent="Chunks" unique_id=214721537 instance=ExtResource("136_nqjd2")]
+
+[node name="ChunkX7Z5" parent="Chunks" unique_id=1956061284 instance=ExtResource("137_adi1g")]
+
+[node name="ChunkX7Z6" parent="Chunks" unique_id=185712127 instance=ExtResource("138_5xoj4")]
+
+[node name="ChunkX7Z7" parent="Chunks" unique_id=503584258 instance=ExtResource("139_npe58")]
+
+[node name="ChunkX7Z8" parent="Chunks" unique_id=1407603059 instance=ExtResource("140_e01ta")]
+
+[node name="ChunkX7Z9" parent="Chunks" unique_id=642842441 instance=ExtResource("141_ghjfo")]
+
+[node name="ChunkX7Z10" parent="Chunks" unique_id=2089219653 instance=ExtResource("142_n0rf6")]
+
+[node name="ChunkX7Z11" parent="Chunks" unique_id=1567683750 instance=ExtResource("143_0fafy")]
+
+[node name="ChunkX7Z12" parent="Chunks" unique_id=1754947721 instance=ExtResource("144_evx7v")]
+
+[node name="ChunkX7Z13" parent="Chunks" unique_id=1542318088 instance=ExtResource("145_4o3xf")]
+
+[node name="ChunkX7Z14" parent="Chunks" unique_id=648945964 instance=ExtResource("146_winx5")]
+
+[node name="ChunkX7Z15" parent="Chunks" unique_id=424750528 instance=ExtResource("147_gni26")]
+
+[node name="ChunkX8Z0" parent="Chunks" unique_id=1132961377 instance=ExtResource("148_f81mv")]
+
+[node name="ChunkX8Z1" parent="Chunks" unique_id=2018873912 instance=ExtResource("149_eanpy")]
+
+[node name="ChunkX8Z2" parent="Chunks" unique_id=1459363357 instance=ExtResource("150_by45n")]
+
+[node name="ChunkX8Z3" parent="Chunks" unique_id=1710229041 instance=ExtResource("151_drt01")]
+
+[node name="ChunkX8Z4" parent="Chunks" unique_id=888991205 instance=ExtResource("152_0swkt")]
+
+[node name="ChunkX8Z5" parent="Chunks" unique_id=1234197733 instance=ExtResource("153_fqgat")]
+
+[node name="ChunkX8Z6" parent="Chunks" unique_id=274517234 instance=ExtResource("154_qtqd3")]
+
+[node name="ChunkX8Z7" parent="Chunks" unique_id=983567254 instance=ExtResource("155_xcjfl")]
+
+[node name="ChunkX8Z8" parent="Chunks" unique_id=262133387 instance=ExtResource("156_k043q")]
+
+[node name="ChunkX8Z9" parent="Chunks" unique_id=1256257811 instance=ExtResource("157_fjpqn")]
+
+[node name="ChunkX8Z10" parent="Chunks" unique_id=1201202147 instance=ExtResource("158_q307a")]
+
+[node name="ChunkX8Z11" parent="Chunks" unique_id=770689404 instance=ExtResource("159_1anbl")]
+
+[node name="ChunkX8Z12" parent="Chunks" unique_id=1102926935 instance=ExtResource("160_224w1")]
+
+[node name="ChunkX8Z13" parent="Chunks" unique_id=165263965 instance=ExtResource("161_niesd")]
+
+[node name="ChunkX8Z14" parent="Chunks" unique_id=1200134002 instance=ExtResource("162_x4yhd")]
+
+[node name="ChunkX8Z15" parent="Chunks" unique_id=1671799948 instance=ExtResource("163_hcwc3")]
+
+[node name="ChunkX9Z0" parent="Chunks" unique_id=1975263276 instance=ExtResource("164_ha543")]
+
+[node name="ChunkX9Z1" parent="Chunks" unique_id=733476389 instance=ExtResource("165_auyq1")]
+
+[node name="ChunkX9Z2" parent="Chunks" unique_id=815942569 instance=ExtResource("166_51crm")]
+
+[node name="ChunkX9Z3" parent="Chunks" unique_id=248396588 instance=ExtResource("167_xyn8e")]
+
+[node name="ChunkX9Z4" parent="Chunks" unique_id=1798225323 instance=ExtResource("168_g7wyt")]
+
+[node name="ChunkX9Z5" parent="Chunks" unique_id=40761819 instance=ExtResource("169_e8hjv")]
+
+[node name="ChunkX9Z6" parent="Chunks" unique_id=1172062644 instance=ExtResource("170_f6iys")]
+
+[node name="ChunkX9Z7" parent="Chunks" unique_id=1093985472 instance=ExtResource("171_eil03")]
+
+[node name="ChunkX9Z8" parent="Chunks" unique_id=1178808524 instance=ExtResource("172_h2q01")]
+
+[node name="ChunkX9Z9" parent="Chunks" unique_id=296411504 instance=ExtResource("173_b8p0b")]
+
+[node name="ChunkX9Z10" parent="Chunks" unique_id=1211231210 instance=ExtResource("174_yqlx3")]
+
+[node name="ChunkX9Z11" parent="Chunks" unique_id=65627467 instance=ExtResource("175_wsxkh")]
+
+[node name="ChunkX9Z12" parent="Chunks" unique_id=1597790703 instance=ExtResource("176_li1ug")]
+
+[node name="ChunkX9Z13" parent="Chunks" unique_id=146667124 instance=ExtResource("177_j5fmv")]
+
+[node name="ChunkX9Z14" parent="Chunks" unique_id=1768157047 instance=ExtResource("178_efi7f")]
+
+[node name="ChunkX9Z15" parent="Chunks" unique_id=74517154 instance=ExtResource("179_a4fnx")]
+
+[node name="ChunkX10Z0" parent="Chunks" unique_id=1505636046 instance=ExtResource("180_s3qkn")]
+
+[node name="ChunkX10Z1" parent="Chunks" unique_id=163232306 instance=ExtResource("181_r57hy")]
+
+[node name="ChunkX10Z2" parent="Chunks" unique_id=779359437 instance=ExtResource("182_b5nvw")]
+
+[node name="ChunkX10Z3" parent="Chunks" unique_id=1865260476 instance=ExtResource("183_1bca0")]
+
+[node name="ChunkX10Z4" parent="Chunks" unique_id=1639198261 instance=ExtResource("184_k6ewr")]
+
+[node name="ChunkX10Z5" parent="Chunks" unique_id=1696948035 instance=ExtResource("185_o7lsw")]
+
+[node name="ChunkX10Z6" parent="Chunks" unique_id=1253037724 instance=ExtResource("186_hq7qs")]
+
+[node name="ChunkX10Z7" parent="Chunks" unique_id=1475305896 instance=ExtResource("187_8vecg")]
+
+[node name="ChunkX10Z8" parent="Chunks" unique_id=208869904 instance=ExtResource("188_45kbx")]
+
+[node name="ChunkX10Z9" parent="Chunks" unique_id=483082279 instance=ExtResource("189_h76en")]
+
+[node name="ChunkX10Z10" parent="Chunks" unique_id=1428672954 instance=ExtResource("190_60x1q")]
+
+[node name="ChunkX10Z11" parent="Chunks" unique_id=768154683 instance=ExtResource("191_7b00h")]
+
+[node name="ChunkX10Z12" parent="Chunks" unique_id=537971712 instance=ExtResource("192_jtiko")]
+
+[node name="ChunkX10Z13" parent="Chunks" unique_id=651527169 instance=ExtResource("193_kfnwr")]
+
+[node name="ChunkX10Z14" parent="Chunks" unique_id=1166970225 instance=ExtResource("194_1ld4k")]
+
+[node name="ChunkX10Z15" parent="Chunks" unique_id=1169602254 instance=ExtResource("195_drs3w")]
+
+[node name="ChunkX11Z0" parent="Chunks" unique_id=1726610834 instance=ExtResource("196_4spin")]
+
+[node name="ChunkX11Z1" parent="Chunks" unique_id=1347941097 instance=ExtResource("197_4ga0s")]
+
+[node name="ChunkX11Z2" parent="Chunks" unique_id=191717042 instance=ExtResource("198_5u1vr")]
+
+[node name="ChunkX11Z3" parent="Chunks" unique_id=98720642 instance=ExtResource("199_lghh4")]
+
+[node name="ChunkX11Z4" parent="Chunks" unique_id=1637584438 instance=ExtResource("200_prhbx")]
+
+[node name="ChunkX11Z5" parent="Chunks" unique_id=87275425 instance=ExtResource("201_nx8fv")]
+
+[node name="ChunkX11Z6" parent="Chunks" unique_id=176962872 instance=ExtResource("202_uvn7s")]
+
+[node name="ChunkX11Z7" parent="Chunks" unique_id=209551795 instance=ExtResource("203_t6i0s")]
+
+[node name="ChunkX11Z8" parent="Chunks" unique_id=1120702288 instance=ExtResource("204_nqts0")]
+
+[node name="ChunkX11Z9" parent="Chunks" unique_id=1732398097 instance=ExtResource("205_bvmoa")]
+
+[node name="ChunkX11Z10" parent="Chunks" unique_id=410268756 instance=ExtResource("206_rlf3j")]
+
+[node name="ChunkX11Z11" parent="Chunks" unique_id=1646893585 instance=ExtResource("207_8jley")]
+
+[node name="ChunkX11Z12" parent="Chunks" unique_id=862277037 instance=ExtResource("208_ig16c")]
+
+[node name="ChunkX11Z13" parent="Chunks" unique_id=265834353 instance=ExtResource("209_3ld2h")]
+
+[node name="ChunkX11Z14" parent="Chunks" unique_id=1393753066 instance=ExtResource("210_10c65")]
+
+[node name="ChunkX11Z15" parent="Chunks" unique_id=1553601477 instance=ExtResource("211_fhqqh")]
+
+[node name="ChunkX12Z0" parent="Chunks" unique_id=1404554135 instance=ExtResource("212_jveqc")]
+
+[node name="ChunkX12Z1" parent="Chunks" unique_id=1562994794 instance=ExtResource("213_ag24u")]
+
+[node name="ChunkX12Z2" parent="Chunks" unique_id=1210581898 instance=ExtResource("214_5ln6n")]
+
+[node name="ChunkX12Z3" parent="Chunks" unique_id=1540859022 instance=ExtResource("215_t5ao7")]
+
+[node name="ChunkX12Z4" parent="Chunks" unique_id=342136924 instance=ExtResource("216_b60hj")]
+
+[node name="ChunkX12Z5" parent="Chunks" unique_id=2019379615 instance=ExtResource("217_7upj1")]
+
+[node name="ChunkX12Z6" parent="Chunks" unique_id=979199068 instance=ExtResource("218_laoqi")]
+
+[node name="ChunkX12Z7" parent="Chunks" unique_id=1150262359 instance=ExtResource("219_53mmr")]
+
+[node name="ChunkX12Z8" parent="Chunks" unique_id=1913467569 instance=ExtResource("220_q7vjw")]
+
+[node name="ChunkX12Z9" parent="Chunks" unique_id=1559344993 instance=ExtResource("221_xdoql")]
+
+[node name="ChunkX12Z10" parent="Chunks" unique_id=287871332 instance=ExtResource("222_jmgeh")]
+
+[node name="ChunkX12Z11" parent="Chunks" unique_id=645595005 instance=ExtResource("223_th086")]
+
+[node name="ChunkX12Z12" parent="Chunks" unique_id=435367959 instance=ExtResource("224_okn72")]
+
+[node name="ChunkX12Z13" parent="Chunks" unique_id=806141098 instance=ExtResource("225_1qr4g")]
+
+[node name="ChunkX12Z14" parent="Chunks" unique_id=94904290 instance=ExtResource("226_afw6w")]
+
+[node name="ChunkX12Z15" parent="Chunks" unique_id=1400125158 instance=ExtResource("227_4lduk")]
+
+[node name="ChunkX13Z0" parent="Chunks" unique_id=1763460338 instance=ExtResource("228_7orab")]
+
+[node name="ChunkX13Z1" parent="Chunks" unique_id=1158864240 instance=ExtResource("229_ebel6")]
+
+[node name="ChunkX13Z2" parent="Chunks" unique_id=661396405 instance=ExtResource("230_betvy")]
+
+[node name="ChunkX13Z3" parent="Chunks" unique_id=1642990092 instance=ExtResource("231_emiv6")]
+
+[node name="ChunkX13Z4" parent="Chunks" unique_id=929075741 instance=ExtResource("232_kb6c1")]
+
+[node name="ChunkX13Z5" parent="Chunks" unique_id=1649364964 instance=ExtResource("233_7mlte")]
+
+[node name="ChunkX13Z6" parent="Chunks" unique_id=865860968 instance=ExtResource("234_uql4y")]
+
+[node name="ChunkX13Z7" parent="Chunks" unique_id=1233675736 instance=ExtResource("235_mx7ol")]
+
+[node name="ChunkX13Z8" parent="Chunks" unique_id=981281472 instance=ExtResource("236_5wvs6")]
+
+[node name="ChunkX13Z9" parent="Chunks" unique_id=1834583366 instance=ExtResource("237_u3q68")]
+
+[node name="ChunkX13Z10" parent="Chunks" unique_id=180914695 instance=ExtResource("238_ceqqf")]
+
+[node name="ChunkX13Z11" parent="Chunks" unique_id=216280351 instance=ExtResource("239_wyt43")]
+
+[node name="ChunkX13Z12" parent="Chunks" unique_id=289291699 instance=ExtResource("240_yrrww")]
+
+[node name="ChunkX13Z13" parent="Chunks" unique_id=1338130873 instance=ExtResource("241_14aft")]
+
+[node name="ChunkX13Z14" parent="Chunks" unique_id=1049376812 instance=ExtResource("242_bhfed")]
+
+[node name="ChunkX13Z15" parent="Chunks" unique_id=474833196 instance=ExtResource("243_jogiy")]
+
+[node name="ChunkX14Z0" parent="Chunks" unique_id=453608528 instance=ExtResource("244_wc2iw")]
+
+[node name="ChunkX14Z1" parent="Chunks" unique_id=714075550 instance=ExtResource("245_24kvv")]
+
+[node name="ChunkX14Z2" parent="Chunks" unique_id=1820208432 instance=ExtResource("246_swfw8")]
+
+[node name="ChunkX14Z3" parent="Chunks" unique_id=1739856648 instance=ExtResource("247_qtklq")]
+
+[node name="ChunkX14Z4" parent="Chunks" unique_id=1215773384 instance=ExtResource("248_mu6dy")]
+
+[node name="ChunkX14Z5" parent="Chunks" unique_id=741748437 instance=ExtResource("249_26irl")]
+
+[node name="ChunkX14Z6" parent="Chunks" unique_id=2079132299 instance=ExtResource("250_7oify")]
+
+[node name="ChunkX14Z7" parent="Chunks" unique_id=1344782449 instance=ExtResource("251_ryn8m")]
+
+[node name="ChunkX14Z8" parent="Chunks" unique_id=799896896 instance=ExtResource("252_gpwnr")]
+
+[node name="ChunkX14Z9" parent="Chunks" unique_id=1860348641 instance=ExtResource("253_bstol")]
+
+[node name="ChunkX14Z10" parent="Chunks" unique_id=615231523 instance=ExtResource("254_bs7no")]
+
+[node name="ChunkX14Z11" parent="Chunks" unique_id=1468440586 instance=ExtResource("255_twd0k")]
+
+[node name="ChunkX14Z12" parent="Chunks" unique_id=620912983 instance=ExtResource("256_fo1le")]
+
+[node name="ChunkX14Z13" parent="Chunks" unique_id=476624310 instance=ExtResource("257_7gebk")]
+
+[node name="ChunkX14Z14" parent="Chunks" unique_id=1476592380 instance=ExtResource("258_jxkvy")]
+
+[node name="ChunkX14Z15" parent="Chunks" unique_id=2130626575 instance=ExtResource("259_2bu5k")]
+
+[node name="ChunkX15Z0" parent="Chunks" unique_id=1300845837 instance=ExtResource("260_31adk")]
+
+[node name="ChunkX15Z1" parent="Chunks" unique_id=552493981 instance=ExtResource("261_s8ihx")]
+
+[node name="ChunkX15Z2" parent="Chunks" unique_id=1131832223 instance=ExtResource("262_1o8ep")]
+
+[node name="ChunkX15Z3" parent="Chunks" unique_id=1152405502 instance=ExtResource("263_h5j0x")]
+
+[node name="ChunkX15Z4" parent="Chunks" unique_id=509092578 instance=ExtResource("264_n178s")]
+
+[node name="ChunkX15Z5" parent="Chunks" unique_id=78424016 instance=ExtResource("265_xu3ua")]
+
+[node name="ChunkX15Z6" parent="Chunks" unique_id=293938719 instance=ExtResource("266_tpdka")]
+
+[node name="ChunkX15Z7" parent="Chunks" unique_id=1395411564 instance=ExtResource("267_7j7o5")]
+
+[node name="ChunkX15Z8" parent="Chunks" unique_id=1138886116 instance=ExtResource("268_a28x1")]
+
+[node name="ChunkX15Z9" parent="Chunks" unique_id=688155411 instance=ExtResource("269_4bxu1")]
+
+[node name="ChunkX15Z10" parent="Chunks" unique_id=30723351 instance=ExtResource("270_55lip")]
+
+[node name="ChunkX15Z11" parent="Chunks" unique_id=1894462934 instance=ExtResource("271_f5f5p")]
+
+[node name="ChunkX15Z12" parent="Chunks" unique_id=489763550 instance=ExtResource("272_agt04")]
+
+[node name="ChunkX15Z13" parent="Chunks" unique_id=1591971607 instance=ExtResource("273_wn1vd")]
+
+[node name="ChunkX15Z14" parent="Chunks" unique_id=369165820 instance=ExtResource("274_jf1lt")]
+
+[node name="ChunkX15Z15" parent="Chunks" unique_id=891644394 instance=ExtResource("275_fmb3m")]
