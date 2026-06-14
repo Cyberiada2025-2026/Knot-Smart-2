@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c62pp8s4uhak7"]
 
 [ext_resource type="Script" uid="uid://dh2w1k74fxdh3" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+[ext_resource type="Texture2D" uid="uid://6sh5sg2g3ufh" path="res://ui/main_menu/backgroujnd.png" id="2_mu8pm"]
+[ext_resource type="Theme" uid="uid://cex6h41gb1u5q" path="res://ui/main_menu/new_theme.tres" id="3_omy8q"]
 
 [node name="MainMenu" type="Control" unique_id=1677560445 groups=["unpausable"]]
 light_mask = 0
@@ -14,7 +16,16 @@ grow_vertical = 2
 script = ExtResource("1_uhj5c")
 main_scene = "res://scenes/main/main_map.tscn"
 
-[node name="Background" type="ColorRect" parent="." unique_id=183335166]
+[node name="Control" type="Control" parent="." unique_id=2103402224]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Control" unique_id=183335166]
 visibility_layer = 65536
 layout_mode = 1
 anchors_preset = 15
@@ -24,27 +35,29 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=331304660]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=331304660]
 visibility_layer = 65536
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 11.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Padding" type="Control" parent="HBoxContainer" unique_id=516679975]
+[node name="Padding" type="Control" parent="Control/HBoxContainer" unique_id=516679975]
 visibility_layer = 65536
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1716038917]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=1716038917]
 visibility_layer = 65536
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Game title" type="RichTextLabel" parent="HBoxContainer/VBoxContainer" unique_id=1947432400]
+[node name="Game title" type="RichTextLabel" parent="Control/HBoxContainer/VBoxContainer" unique_id=1947432400]
 visibility_layer = 65536
 layout_mode = 2
 size_flags_vertical = 0
@@ -52,19 +65,65 @@ theme_override_font_sizes/normal_font_size = 16
 text = "Knot smart"
 fit_content = true
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1527863379]
+[node name="Button" type="Button" parent="Control/HBoxContainer/VBoxContainer" unique_id=1527863379]
 visibility_layer = 65536
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 16
 text = "Play"
 
-[node name="Quit button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1598593622]
+[node name="Quit button" type="Button" parent="Control/HBoxContainer/VBoxContainer" unique_id=1598593622]
 visibility_layer = 65536
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 16
 text = "Quit"
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Quit button" to="." method="_on_quit_button_pressed"]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=559033321]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_mu8pm")
+
+[node name="Game title" type="RichTextLabel" parent="." unique_id=579933440]
+visibility_layer = 65536
+layout_mode = 0
+offset_left = 102.0
+offset_top = 32.0
+offset_right = 424.0
+offset_bottom = 77.0
+size_flags_vertical = 0
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]Knot smart"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="." unique_id=1810621647]
+visibility_layer = 65536
+layout_mode = 0
+offset_left = 219.0
+offset_top = 91.0
+offset_right = 279.0
+offset_bottom = 116.0
+scale = Vector2(1.2000048, 1)
+size_flags_horizontal = 0
+theme = ExtResource("3_omy8q")
+text = "Play"
+
+[node name="Quit button" type="Button" parent="." unique_id=386509608]
+visibility_layer = 65536
+layout_mode = 0
+offset_left = 219.0
+offset_top = 123.0
+offset_right = 279.0
+offset_bottom = 148.0
+scale = Vector2(1.2000048, 1)
+size_flags_horizontal = 0
+theme = ExtResource("3_omy8q")
+text = "Quit"
+
+[connection signal="pressed" from="Control/HBoxContainer/VBoxContainer/Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/VBoxContainer/Quit button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Quit button" to="." method="_on_quit_button_pressed"]

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ds23isyj385on"]
 
 [ext_resource type="Script" uid="uid://doqxxfg1qiy8i" path="res://ui/pause_menu/pause_menu.gd" id="1_b8ecp"]
+[ext_resource type="Texture2D" uid="uid://1k8hiuxqq78n" path="res://ui/pause_menu/background_pause_menu.png" id="2_le02u"]
+[ext_resource type="Theme" uid="uid://cj65b87g70pt0" path="res://ui/health/button_theme.tres" id="3_le02u"]
 
 [node name="PauseMenu" type="Node" unique_id=473504245]
 process_mode = 3
@@ -15,51 +17,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1224272992]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=615393504]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("2_le02u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=202007547]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -55.0
-offset_right = 100.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer" unique_id=1501121890]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_colors/default_color = Color(0.4, 0.4117647, 1, 1)
-text = "pause
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=1782974228]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 160.0
+offset_bottom = 71.0
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b]Pause
 "
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="Close Button" type="Button" parent="Control/VBoxContainer" unique_id=281467682]
-process_mode = 3
-layout_mode = 2
-text = "close menu"
+[node name="Button" type="Button" parent="Control" unique_id=1758160502]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 66.0
+offset_right = 162.0
+offset_bottom = 96.0
+theme = ExtResource("3_le02u")
+text = "Resume game"
 
-[node name="Quit Button" type="Button" parent="Control/VBoxContainer" unique_id=123022079]
-process_mode = 3
-layout_mode = 2
-text = "quit game"
+[node name="Button2" type="Button" parent="Control" unique_id=1746507235]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 109.0
+offset_right = 162.0
+offset_bottom = 139.0
+theme = ExtResource("3_le02u")
+text = "Quit game"
 
-[connection signal="pressed" from="Control/VBoxContainer/Close Button" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_quit_button_pressed"]

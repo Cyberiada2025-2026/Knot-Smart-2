@@ -1,14 +1,14 @@
 extends TextureProgressBar
 
-var player: Node
+var boss: Node
 var health_component: HealthComponent
 var max_health: float
 var health: float
 
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("Player")
-	health_component = player.get_node("HealthComponent")
+	boss = get_parent()
+	health_component = boss.get_node("HealthComponent")
 	max_health = health_component.max_health
 	health = health_component.health
 	health_changed()

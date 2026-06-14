@@ -549,6 +549,7 @@ script = ExtResource("33_o1m3g")
 journal_entry = SubResource("Resource_y1krv")
 
 [node name="enemyHealth" parent="." unique_id=2117532528 instance=ExtResource("38_wjvgd")]
+enemy_height = 8
 
 [connection signal="health_decreased" from="HealthComponent" to="VfxPlayerSequence" method="play"]
 [connection signal="health_depleted" from="HealthComponent" to="DeathComponent" method="_on_death"]

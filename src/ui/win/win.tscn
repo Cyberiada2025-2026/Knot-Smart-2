@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b7x4eyygbdby5"]
 
 [ext_resource type="Script" uid="uid://cffaye7bhetfe" path="res://ui/win/win.gd" id="1_pge7v"]
+[ext_resource type="Texture2D" uid="uid://b77gjfhdu4uhn" path="res://ui/game_over/background.png" id="2_pf6w0"]
+[ext_resource type="Theme" uid="uid://cj65b87g70pt0" path="res://ui/health/button_theme.tres" id="3_q3kvq"]
 
 [node name="WinScreen" type="Control" unique_id=492886027]
 process_mode = 3
@@ -21,6 +23,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1384400413]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_pf6w0")
+
 [node name="Control" type="Control" parent="." unique_id=1135439236]
 layout_mode = 1
 anchors_preset = 8
@@ -28,9 +36,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
+offset_left = -100.0
 offset_top = -75.0
-offset_right = 125.0
+offset_right = 100.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -39,11 +47,13 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 46.0
+offset_top = 12.0
+offset_bottom = 81.0
 grow_horizontal = 2
+bbcode_enabled = true
 text = "You won!
 Thanks for playing.
-We hope you liked the game."
+We hope you liked it!"
 fit_content = true
 horizontal_alignment = 1
 
@@ -59,6 +69,7 @@ offset_top = -31.0
 offset_right = 75.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("3_q3kvq")
 text = "Main menu"
 
 [connection signal="pressed" from="Control/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
