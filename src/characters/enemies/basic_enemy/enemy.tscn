@@ -39,9 +39,9 @@
 [ext_resource type="Script" uid="uid://gfr35mbc1ij6" path="res://shared/journal/journal_entry.gd" id="34_qd6q6"]
 [ext_resource type="PackedScene" uid="uid://cggbrnvoiqko0" path="res://ui/health/enemy_health.tscn" id="38_wjvgd"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_wjvgd"]
-height = 5.3
-radius = 4.5
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wjvgd"]
+radius = 2.0
+height = 4.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r2ijf"]
 radius = 10.0
@@ -56,7 +56,7 @@ radius = 6.0
 height = 12.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uwcne"]
-size = Vector3(2, 3, 1)
+size = Vector3(9, 5, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2vyja"]
 radius = 1.5
@@ -85,7 +85,7 @@ script = ExtResource("34_qd6q6")
 object_name = "Enemy"
 description = "This is an enemy"
 page = 3
-model_scene = "uid://ds0lm2shdnd07"
+model_scene = "uid://dth3dxyhvvs4j"
 model_scale = 0.3
 rotation_angle = 0.2
 metadata/_custom_type_script = "uid://gfr35mbc1ij6"
@@ -97,12 +97,12 @@ script = ExtResource("1_2cllp")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1344185253]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.549, 0)
-shape = SubResource("CylinderShape3D_wjvgd")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.549, 0.5)
+shape = SubResource("CapsuleShape3D_wjvgd")
 
 [node name="BeehaveTree" type="Node" parent="." unique_id=1892085315 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_r2ijf")
-blackboard = NodePath("@Node@20361")
+blackboard = NodePath("@Node@171449")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
@@ -469,7 +469,7 @@ health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://7sxs6ubjcqmo"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=126329277]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 shape = SubResource("BoxShape3D_uwcne")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1094944780]
