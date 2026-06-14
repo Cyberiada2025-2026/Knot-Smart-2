@@ -10,7 +10,6 @@
 [ext_resource type="CompressedTexture3D" uid="uid://bxk4ky7cnaadh" path="res://shared/day_night_cycle/LUTs/LUT_sunset.png" id="4_mhegm"]
 [ext_resource type="PackedScene" uid="uid://c10j1e40th8h1" path="res://scenes/main/stanislaw.tscn" id="4_tvikc"]
 [ext_resource type="Script" uid="uid://bxjrubfcv84ac" path="res://shared/health/stun_component.gd" id="4_vas5k"]
-[ext_resource type="Script" uid="uid://bh2wj72adhamc" path="res://shared/changing_parts/changing_part.gd" id="5_321mu"]
 [ext_resource type="CompressedTexture3D" uid="uid://dr3gvkecm4lp3" path="res://shared/day_night_cycle/LUTs/LUT_day.png" id="5_jppmo"]
 [ext_resource type="Script" uid="uid://c8acika7wo4ks" path="res://shared/buildings/building_generation/building_generator.gd" id="6_0hmuk"]
 [ext_resource type="CompressedTexture3D" uid="uid://bmqvnf4nb6r6f" path="res://shared/day_night_cycle/LUTs/LUT_night.png" id="6_5psq7"]
@@ -31,7 +30,8 @@
 [ext_resource type="Material" uid="uid://cs6kr88umcnbn" path="res://shared/water/water.tres" id="33_srf2b"]
 [ext_resource type="PackedScene" uid="uid://d3elyqmhqqwkc" path="res://scenes/main/building_pair_small.tscn" id="36_bx2do"]
 [ext_resource type="PackedScene" uid="uid://dck8itbvbpxnt" path="res://shared/generator_parts/generator_part_out_of_bounds.tscn" id="36_m81eg"]
-[ext_resource type="PackedScene" uid="uid://c0k6p6rrthw50" path="res://shared/plants/vine_wall/vine_wall.tscn" id="38_b1iiq"]
+[ext_resource type="PackedScene" uid="uid://dhjdclmlt7xq8" path="res://scenes/main/plant_wall_foliage.tscn" id="38_6pbj8"]
+[ext_resource type="Script" uid="uid://inkb2xheq2vo" path="res://scenes/main/play_anim_on_event.gd" id="40_6pbj8"]
 [ext_resource type="PackedScene" uid="uid://b3pq3lm4pjpdk" path="res://characters/enemies/basic_enemy/enemy.tscn" id="78_7wli1"]
 [ext_resource type="Script" uid="uid://bm0wrygl0ikje" path="res://shared/point_of_interest/point_of_interest.gd" id="78_oveuq"]
 [ext_resource type="Script" uid="uid://krqwntoiv6fm" path="res://shared/point_of_interest/components/speech_poi.gd" id="79_awfjg"]
@@ -58,9 +58,6 @@ albedo_color = Color(0.27876335, 0.5639823, 0.7337263, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vas5k"]
 albedo_color = Color(0.19765523, 0.28450212, 0.06796286, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_321mu"]
-albedo_color = Color(0.7582494, 0.332663, 0.35947967, 1)
 
 [sub_resource type="Resource" id="Resource_isd4l"]
 script = ExtResource("8_e2d8t")
@@ -194,6 +191,72 @@ geometry_source_geometry_mode = 1
 geometry_source_group_name = &"navmesh_part2"
 agent_height = 6.0
 agent_radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmm0v"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6pbj8"]
+size = Vector3(12, 25.199999, 12)
+
+[sub_resource type="Animation" id="Animation_6pbj8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(60, -0.5, 63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_18mwh"]
+resource_name = "fall_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.13397183, 0.008088016),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(-4.347756e-08, 1.5707964, 1.4673158)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.13397183, 0.008088016),
+"update": 0,
+"values": [Vector3(60, -0.5, 63), Vector3(60, -12.434786, 64.585396)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6yd7f"]
+_data = {
+&"RESET": SubResource("Animation_6pbj8"),
+&"fall_down": SubResource("Animation_18mwh")
+}
 
 [node name="MainMap" type="Node3D" unique_id=1480515348]
 
@@ -364,24 +427,6 @@ script = ExtResource("4_vas5k")
 stun_duration = 0.5
 speed_multiplier = 0.8
 metadata/_custom_type_script = "uid://bxjrubfcv84ac"
-
-[node name="ChangingPart" type="Node3D" parent="Map/Graybox/CombatTutorialArea" unique_id=47721873 node_paths=PackedStringArray("before_change", "after_change")]
-script = ExtResource("5_321mu")
-before_change = NodePath("TowerStanding")
-after_change = NodePath("TowerFallen")
-
-[node name="TowerStanding" type="CSGBox3D" parent="Map/Graybox/CombatTutorialArea/ChangingPart" unique_id=1683246960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 11.5, 56.25)
-use_collision = true
-collision_layer = 257
-size = Vector3(11.5, 24, 12)
-material = SubResource("StandardMaterial3D_321mu")
-
-[node name="TowerFallen" type="CSGBox3D" parent="Map/Graybox/CombatTutorialArea/ChangingPart" unique_id=739714956]
-transform = Transform3D(1, 0, 0, 0, 0.087155804, -0.9961947, 0, 0.9961947, 0.087155804, 66, -4.5, 74)
-collision_layer = 257
-size = Vector3(11.5, 24, 10.5)
-material = SubResource("StandardMaterial3D_321mu")
 
 [node name="Buildings" type="Node3D" parent="Map/Graybox/CombatTutorialArea" unique_id=678247753]
 
@@ -2409,373 +2454,7 @@ navigation_mesh = SubResource("NavigationMesh_bx2do")
 [node name="Enemy2" parent="." unique_id=1395597749 instance=ExtResource("78_7wli1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.5, 1.5, 150)
 
-[node name="PlantWallFoliage" type="Node3D" parent="." unique_id=1259681604]
-
-[node name="VineWall" parent="PlantWallFoliage" unique_id=2113348542 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.9599999, 0, 0, 0, 1.3, 0, 0, 0, 1, 22, -0.5, -39)
-
-[node name="VineWall2" parent="PlantWallFoliage" unique_id=427721162 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.372, 0, 0, 0, 1.3, 0, 0, 0, 1, 27.5, -0.5, -39)
-
-[node name="VineWall3" parent="PlantWallFoliage" unique_id=201962117 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(0.9701505, 0, -0.70710677, 0, 1.6899998, 0, 0.9701505, 0, 0.70710677, 28, -0.5, -33.5)
-
-[node name="VineWall4" parent="PlantWallFoliage" unique_id=569265339 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.1881868, 0, -0.5, 0, 1.9604001, 0, 0.6859999, 0, -0.8660254, 41.5, 0, 5)
-
-[node name="VineWall5" parent="PlantWallFoliage" unique_id=743037416 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.1881868, 0, -0.5, 0, 1.9604001, 0, 0.6859999, 0, -0.8660254, 41.5, 12, 5)
-
-[node name="VineWall6" parent="PlantWallFoliage" unique_id=1631176328 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-0.9701505, 0, -0.7071067, 0, 1.9604001, 0, 0.97015035, 0, -0.7071067, 41.479378, 25, 5.3053513)
-
-[node name="VineWall7" parent="PlantWallFoliage" unique_id=1468189411 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.7439995, 0, -2.980232e-08, 0, 3.3326802, 0, -1.7881393e-07, 0, -0.9999999, 47, 17, 2.5)
-
-[node name="VineWall8" parent="PlantWallFoliage" unique_id=986961750 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.3841858e-07, 0, -0.99999976, 0, 1.9603999, 0, 2.7439995, 0, 0, 43.479378, 23.5, 15.805351)
-
-[node name="VineWall9" parent="PlantWallFoliage" unique_id=1687600981 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.1920929e-07, 0, -0.99999976, 0, 1.9603999, 0, 1.3719997, 0, 0, 43.479378, 12.5, 11.305351)
-
-[node name="VineWall10" parent="PlantWallFoliage" unique_id=727207299 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.7439995, 0, -2.980232e-08, 0, 3.3326802, 0, -1.7881393e-07, 0, -0.9999999, 30, -10.5, 6)
-
-[node name="VineWall11" parent="PlantWallFoliage" unique_id=705555435 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.7439995, 0, -2.980232e-08, 0, 1.9996082, 0, -1.7881393e-07, 0, -0.9999999, 21.5, -2.5, 6)
-
-[node name="VineWall12" parent="PlantWallFoliage" unique_id=136362924 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-5.88699e-08, 0, -0.9999998, 0, 1.9996082, 0, 2.7439995, 0, 7.3513704e-08, 19.5, -1.5, 20)
-
-[node name="VineWall13" parent="PlantWallFoliage" unique_id=2143074022 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-5.2135987, 0, -2.9802317e-08, 3.397465e-07, -1.1537546e-07, 0.9999998, 1.485079e-14, 2.639483, 4.371138e-08, 27.5, 11.5, 7.5)
-
-[node name="VineWall14" parent="PlantWallFoliage" unique_id=622121758 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.3511814e-07, 2.1115863, 4.3711385e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, 3.0911427, -9.2300375e-08, 2.9802312e-08, 20.5, 11.5, 20.5)
-
-[node name="VineWall15" parent="PlantWallFoliage" unique_id=1106170901 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.7934504, 0, 1.7881393e-07, 0, 1.3997257, 0, -5.9604645e-08, 0, 1.1999997, 28, 2.5, 24)
-
-[node name="VineWall16" parent="PlantWallFoliage" unique_id=479377914 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(0.46417916, 0, -1.1591105, 0, 1.3997257, 0, 1.73234, 0, 0.310583, 20.5, 2.5, 23)
-
-[node name="VineWall17" parent="PlantWallFoliage" unique_id=750901189 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.7439995, 0, 4.3711378e-08, 0, 3.5287197, 0, 1.18474546e-07, 0, 0.99999976, 55.479378, 16.5, 20.305351)
-
-[node name="VineWall18" parent="PlantWallFoliage" unique_id=1989475994 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.7439995, 0, 4.3711378e-08, 0, 2.1172318, 0, 1.18474546e-07, 0, 0.99999976, 59.479378, 10.5, 20.305351)
-
-[node name="VineWall19" parent="PlantWallFoliage" unique_id=1073295005 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.7439995, 0, 4.3711378e-08, 0, 2.2936678, 0, 1.18474546e-07, 0, 0.99999976, 59.479378, 24, 20.305351)
-
-[node name="VineWall20" parent="PlantWallFoliage" unique_id=564894221 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.3841852e-07, 0, -0.9999997, 0, 2.1172316, 0, 2.7439995, 0, 0, 59.479378, -7, 39.30535)
-
-[node name="VineWall21" parent="PlantWallFoliage" unique_id=1947949580 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.04216045e-14, 2.1172316, 4.3711374e-08, 2.3841852e-07, -9.254713e-08, 0.9999997, 2.7439995, 0, 0, 60.479378, 7, 39.30535)
-
-[node name="VineWall22" parent="PlantWallFoliage" unique_id=868559538 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(6.252963e-15, 2.1172316, 4.3711374e-08, 1.4305112e-07, -9.254713e-08, 0.9999997, 1.6463997, 0, 0, 0.47937775, 9, 35.30535)
-
-[node name="VineWall23" parent="PlantWallFoliage" unique_id=835626430 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.7024364e-08, 1.2270533, 0.23293711, 1.3817679e-07, -0.32878798, 0.86933297, 1.6463997, 0, 0, 11.979378, 9, 35.30535)
-
-[node name="VineWall24" parent="PlantWallFoliage" unique_id=220188045 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.6463999, -9.254714e-08, -1.9106846e-15, 7.196638e-08, -2.1172314, -8.742274e-08, 1.4305111e-07, -1.8509425e-07, 0.99999964, 0.47937775, 8, 36.80535)
-
-[node name="VineWall25" parent="PlantWallFoliage" unique_id=526879461 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.6463999, -9.254714e-08, -1.9106846e-15, 7.196638e-08, -2.1172314, -8.742274e-08, 1.4305111e-07, -1.8509425e-07, 0.99999964, 6.9793777, 8, 36.80535)
-
-[node name="VineWall26" parent="PlantWallFoliage" unique_id=1119827673 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-7.1084685e-08, 1.8509425e-07, -0.99999964, 7.196638e-08, -2.1172314, -8.742274e-08, -1.6463999, -9.254713e-08, -4.3711385e-08, -0.020622253, 6.5, 29.305351)
-
-[node name="VineWall27" parent="PlantWallFoliage" unique_id=1572236916 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.8153434, -3.7018847e-08, -1.9106844e-15, 2.446174e-07, -3.7018847e-08, 0.9999996, -1.2306255e-07, 0.8468925, 4.3711363e-08, 1.4793777, 9, 31.805351)
-
-[node name="VineWall28" parent="PlantWallFoliage" unique_id=107378578 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.7439992, 0, -2.9802319e-08, 0, 1.9996082, 0, -1.7881393e-07, 0, -0.9999998, 6.5, -5, 27.5)
-
-[node name="VineWall29" parent="PlantWallFoliage" unique_id=1494962444 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.9875795e-07, 0, 0.9999998, 0, 3.399334, 0, -2.743999, 0, 1.3909061e-08, -29, -5, 8)
-
-[node name="VineWall30" parent="PlantWallFoliage" unique_id=1812380278 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(0.35509974, 0, 0.96592563, 0, 3.399334, 0, -1.3252498, 0, 0.25881898, -29, -8, 17.5)
-
-[node name="VineWall31" parent="PlantWallFoliage" unique_id=546402432 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-0.68599963, 0, 0.8660251, 0, 3.3993335, 0, -1.1881864, 0, -0.49999985, -31, -8.5, 3)
-
-[node name="VineWall32" parent="PlantWallFoliage" unique_id=1360123904 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.9875795e-07, 0, 0.9999998, 0, 3.399334, 0, -2.743999, 0, 1.3909061e-08, -32.5, -6, -20.5)
-
-[node name="VineWall33" parent="PlantWallFoliage" unique_id=1121094600 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.9875795e-07, 0, 0.9999998, 0, 3.399334, 0, -2.743999, 0, 1.3909061e-08, -32.5, -6, 38)
-
-[node name="VineWall34" parent="PlantWallFoliage" unique_id=342070994 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.9599999, 0, 0, 0, 1.3, 0, 0, 0, 1, -22.5, -3.5, -24.5)
-
-[node name="VineWall35" parent="PlantWallFoliage" unique_id=127656900 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.9599999, 0, 0, 0, 1.3, 0, 0, 0, 1, -17, -3.5, -24.5)
-
-[node name="VineWall36" parent="PlantWallFoliage" unique_id=508677746 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.9875795e-07, 0, 0.9999998, 0, 3.399334, 0, -2.743999, 0, 1.3909061e-08, -36, -14.5, 61.5)
-
-[node name="VineWall37" parent="PlantWallFoliage" unique_id=180524624 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.743999, 0, -5.7620447e-08, 0, 3.399334, 0, 4.1870197e-07, 0, 0.9999998, -37.5, -14.5, 74.5)
-
-[node name="VineWall38" parent="PlantWallFoliage" unique_id=1449288584 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.743999, 0, -5.7620447e-08, 0, 3.399334, 0, 4.1870197e-07, 0, 0.9999998, -44, -14.5, 74.5)
-
-[node name="VineWall39" parent="PlantWallFoliage" unique_id=69050801 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.743999, 0, -5.7620454e-08, 4.18702e-07, -8.9153765e-08, 0.9999998, -3.779933e-14, -2.0396004, -4.371138e-08, -37.5, 6.5, 74)
-
-[node name="VineWall40" parent="PlantWallFoliage" unique_id=309021227 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.743999, 0, -5.7620454e-08, 4.18702e-07, -8.9153765e-08, 0.9999998, -3.779933e-14, -2.0396004, -4.371138e-08, -44, 6.5, 74)
-
-[node name="VineWall41" parent="PlantWallFoliage" unique_id=1553419462 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.9073482e-07, 0, -0.9999997, 0, 2.1172316, 0, 2.1951997, 0, 0, 66.97938, -10, 66.30535)
-
-[node name="VineWall42" parent="PlantWallFoliage" unique_id=1683630931 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.9073482e-07, 0, -0.9999997, 0, 2.1172316, 0, 2.1951997, 0, 0, 66.97938, -10, 57.80535)
-
-[node name="VineWall43" parent="PlantWallFoliage" unique_id=1917246196 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.018399, 0, -2.9802314e-08, 0, 3.399334, 0, -1.9669535e-07, 0, -0.9999998, 4.5, -14.5, 81)
-
-[node name="VineWall44" parent="PlantWallFoliage" unique_id=1135837892 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.2863375e-07, 0, 0.9999998, 0, 3.3993344, 0, -3.0183992, 0, 1.3909061e-08, 19, -14.5, 82.5)
-
-[node name="VineWall45" parent="PlantWallFoliage" unique_id=1683638438 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-5.9251056e-07, 0, -0.9999998, 0, 3.3993344, 0, 3.018399, 0, -1.01331814e-07, 2.5, -14.5, 95.5)
-
-[node name="VineWall46" parent="PlantWallFoliage" unique_id=1709083173 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.018399, 0, -2.9802315e-08, 1.9669538e-07, -7.429481e-08, 0.99999994, 2.4683089e-14, 1.6996672, 4.3711385e-08, 5.5, 8, 82)
-
-[node name="VineWall47" parent="PlantWallFoliage" unique_id=1930747097 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.2863375e-07, 0, 0.9999998, 0, 3.3993344, 0, -3.0183992, 0, 1.3909061e-08, 19, -14.5, 110)
-
-[node name="VineWall48" parent="PlantWallFoliage" unique_id=953366224 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.0183992, 0, -5.762044e-08, 0, 3.3993344, 0, 4.6057212e-07, 0, 0.99999976, 17.5, -14.5, 125)
-
-[node name="VineWall49" parent="PlantWallFoliage" unique_id=1416967518 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0183988, -2.9717924e-07, 5.7620408e-08, 4.60572e-07, -1.4858959e-07, 0.99999964, -2.638768e-07, 3.3993342, 4.371137e-08, 5, 8, 103)
-
-[node name="VineWall50" parent="PlantWallFoliage" unique_id=1777012272 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.2073594, -2.971792e-07, 5.7620415e-08, 1.842288e-07, -1.4858958e-07, 0.99999976, -1.0555072e-07, 3.399334, 4.3711374e-08, -1, 8, 128.5)
-
-[node name="VineWall51" parent="PlantWallFoliage" unique_id=1602775601 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.2863375e-07, 0, 0.9999998, 0, 3.3993344, 0, -3.0183992, 0, 1.3909061e-08, 4.5, -14.5, 133)
-
-[node name="VineWall52" parent="PlantWallFoliage" unique_id=486519004 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.2863375e-07, 0, 0.9999998, 0, 3.3993344, 0, -3.0183992, 0, 1.3909061e-08, 4.5, -13.5, 127.5)
-
-[node name="VineWall53" parent="PlantWallFoliage" unique_id=1519598036 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-6.4756904e-08, 0, -0.9999998, 0, 3.3993344, 0, 3.018399, 0, 7.35137e-08, -1.0000005, -14.5, 140)
-
-[node name="VineWall54" parent="PlantWallFoliage" unique_id=195617471 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-6.4756904e-08, 0, -0.9999998, 0, 3.3993344, 0, 3.018399, 0, 7.35137e-08, -0.9999995, -13.5, 145.5)
-
-[node name="VineWall55" parent="PlantWallFoliage" unique_id=700499936 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.3841858e-07, 0, -0.99999976, 0, 3.5287194, 0, 2.7439992, 0, 0, 84.47938, -6, 93.80535)
-
-[node name="VineWall56" parent="PlantWallFoliage" unique_id=520074290 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.3841858e-07, 0, -0.99999976, 0, 3.5287194, 0, 2.7439992, 0, 0, 84.47938, 0, 96.80535)
-
-[node name="VineWall57" parent="PlantWallFoliage" unique_id=1276138989 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 84.47938, 7, 92.30535)
-
-[node name="VineWall58" parent="PlantWallFoliage" unique_id=152871261 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 84.47938, 7.5, 103.80535)
-
-[node name="VineWall59" parent="PlantWallFoliage" unique_id=1056108268 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 84.47938, 7, 113.30535)
-
-[node name="VineWall60" parent="PlantWallFoliage" unique_id=1361155468 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 84.47938, 7, 122.30535)
-
-[node name="VineWall61" parent="PlantWallFoliage" unique_id=435978547 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 84.47938, 7.5, 132.30536)
-
-[node name="VineWall62" parent="PlantWallFoliage" unique_id=1424158576 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-4.4452786, 0, 4.371138e-08, 0, 4.4461865, 0, -5.8054746e-07, 0, -0.99999976, 85.97938, -5, 80.80535)
-
-[node name="VineWall63" parent="PlantWallFoliage" unique_id=1223451442 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.4695992, 0, 4.371137e-08, 0, 2.4701037, 0, 1.0662713e-07, 0, 0.9999999, 78.85438, -11, 68.93035)
-
-[node name="VineWall64" parent="PlantWallFoliage" unique_id=1434004574 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.4695992, 0, 4.371137e-08, 0, 2.4701037, 0, 1.0662713e-07, 0, 0.9999999, 88.35438, -11.5, 68.93035)
-
-[node name="VineWall65" parent="PlantWallFoliage" unique_id=210781086 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.4695992, 0, 4.371137e-08, 0, 2.4701037, 0, 1.0662713e-07, 0, 0.9999999, 97.35438, -11.5, 68.93035)
-
-[node name="VineWall66" parent="PlantWallFoliage" unique_id=765686185 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.4695992, 0, 4.371137e-08, 0, 2.4701037, 0, 1.0662713e-07, 0, 0.9999999, 107.354385, -11, 68.93035)
-
-[node name="VineWall67" parent="PlantWallFoliage" unique_id=836378730 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.3511814e-07, 2.1115863, 4.3711385e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, 3.0911427, -9.2300375e-08, 2.9802312e-08, 68.5, 4.5, 66)
-
-[node name="VineWall68" parent="PlantWallFoliage" unique_id=1404484930 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.3511814e-07, 2.1115863, 4.3711385e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, 3.0911427, -9.2300375e-08, 2.9802312e-08, 74, 18, 110.5)
-
-[node name="VineWall69" parent="PlantWallFoliage" unique_id=873274472 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.3511814e-07, 2.1115863, 4.3711385e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, 3.0911427, -9.2300375e-08, 2.9802312e-08, 74, 18, 121)
-
-[node name="VineWall70" parent="PlantWallFoliage" unique_id=1049708679 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.3511814e-07, 2.1115863, 4.3711385e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, 3.0911427, -9.2300375e-08, 2.9802312e-08, 74, 18, 134)
-
-[node name="VineWall71" parent="PlantWallFoliage" unique_id=1105079242 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.743999, 0, 4.3711374e-08, 0, 3.5287192, 0, -3.5836257e-07, 0, -0.9999997, 78.97938, -11.5, 95.80535)
-
-[node name="VineWall72" parent="PlantWallFoliage" unique_id=521915609 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.743999, 0, 4.3711374e-08, 0, 3.5287192, 0, -3.5836257e-07, 0, -0.9999997, 75.97938, -5.5, 95.80535)
-
-[node name="VineWall73" parent="PlantWallFoliage" unique_id=661822266 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, 80.47938, 1.5, 95.80535)
-
-[node name="VineWall74" parent="PlantWallFoliage" unique_id=1926220558 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.3841855e-07, 0, -0.9999997, 0, 3.5287192, 0, 2.7439988, 0, -1.4210855e-14, 74.97938, -11.5, 108.80535)
-
-[node name="VineWall75" parent="PlantWallFoliage" unique_id=1946361790 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.3841855e-07, 0, -0.9999997, 0, 3.5287192, 0, 2.7439988, 0, -1.4210855e-14, 74.97938, -5.5, 111.80535)
-
-[node name="VineWall76" parent="PlantWallFoliage" unique_id=706197465 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457677e-07, 0, -0.9999999, 0, 2.4701037, 0, 2.4695992, 0, -1.4210855e-14, 74.97938, 1.5, 107.30535)
-
-[node name="VineWall77" parent="PlantWallFoliage" unique_id=185906545 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 74.47938, 0.5, 122.30535)
-
-[node name="VineWall78" parent="PlantWallFoliage" unique_id=1376341635 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 74.47938, 1, 132.30536)
-
-[node name="VineWall79" parent="PlantWallFoliage" unique_id=321791851 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 75.47938, -3.5, 163.80536)
-
-[node name="VineWall80" parent="PlantWallFoliage" unique_id=554432525 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 75.47938, -3, 173.80536)
-
-[node name="VineWall81" parent="PlantWallFoliage" unique_id=1528703380 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, 48.479378, -3.5, 178.30536)
-
-[node name="VineWall82" parent="PlantWallFoliage" unique_id=712816933 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, 38.479378, -3, 178.30536)
-
-[node name="VineWall83" parent="PlantWallFoliage" unique_id=1192976646 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(4.3047598e-07, 0, 0.9999999, 0, 2.4701037, 0, -2.4695992, 0, 8.7422784e-08, 21.979378, -8, 168.30536)
-
-[node name="VineWall84" parent="PlantWallFoliage" unique_id=120498668 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(4.3047598e-07, 0, 0.9999999, 0, 2.4701037, 0, -2.4695992, 0, 8.7422784e-08, 21.979378, -7.5, 158.30536)
-
-[node name="VineWall85" parent="PlantWallFoliage" unique_id=2065773934 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457679e-07, 0, -0.9999999, 0, 2.470104, 0, 2.4695995, 0, 0, 13.979378, -8, 164.30536)
-
-[node name="VineWall86" parent="PlantWallFoliage" unique_id=783520967 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457679e-07, 0, -0.9999999, 0, 2.470104, 0, 2.4695995, 0, 0, 13.979378, -7.5, 174.30536)
-
-[node name="VineWall87" parent="PlantWallFoliage" unique_id=2036067528 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.4488313, -2.971792e-07, 5.762041e-08, 2.2107456e-07, -1.4858958e-07, 0.9999997, -1.2666086e-07, 3.399334, 4.371137e-08, 15.5, 8, 155.5)
-
-[node name="VineWall88" parent="PlantWallFoliage" unique_id=1278270109 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(1.3511814e-07, 2.1115863, 4.3711385e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, 3.0911427, -9.2300375e-08, 2.9802312e-08, 76.5, 12.5, 168.5)
-
-[node name="VineWall89" parent="PlantWallFoliage" unique_id=507415609 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 84.47938, 7, 168.80536)
-
-[node name="VineWall90" parent="PlantWallFoliage" unique_id=363928364 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 84.47938, 7, 177.80536)
-
-[node name="VineWall91" parent="PlantWallFoliage" unique_id=1984474141 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457672e-07, 0, -0.99999976, 0, 2.4701035, 0, 2.4695992, 0, 0, 84.47938, 7.5, 187.80536)
-
-[node name="VineWall92" parent="PlantWallFoliage" unique_id=328726522 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, 50.979378, 0.5, 188.30536)
-
-[node name="VineWall93" parent="PlantWallFoliage" unique_id=1858090859 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, 40.979378, 1, 188.30536)
-
-[node name="VineWall94" parent="PlantWallFoliage" unique_id=1709645530 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0911424, 7.1054274e-15, -2.9802308e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, -1.4210855e-14, 2.111586, 4.371138e-08, 40.5, 12.5, 180)
-
-[node name="VineWall95" parent="PlantWallFoliage" unique_id=1306916373 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0911424, 7.1054274e-15, -2.9802308e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, -1.4210855e-14, 2.111586, 4.371138e-08, -7, 9, 179)
-
-[node name="VineWall96" parent="PlantWallFoliage" unique_id=2026848780 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0911424, 7.1054274e-15, -2.9802308e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, -1.4210855e-14, 2.111586, 4.371138e-08, -16.5, 9, 179)
-
-[node name="VineWall97" parent="PlantWallFoliage" unique_id=1982844486 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0911424, 7.1054274e-15, -2.9802308e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, -1.4210855e-14, 2.111586, 4.371138e-08, -26.5, 9, 179)
-
-[node name="VineWall98" parent="PlantWallFoliage" unique_id=179772795 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0911424, 7.1054274e-15, -2.9802308e-08, 2.0143567e-07, -9.230036e-08, 0.99999976, -1.4210855e-14, 2.111586, 4.371138e-08, -38.5, 9, 179)
-
-[node name="VineWall99" parent="PlantWallFoliage" unique_id=2041144785 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695995, 0, 4.3711378e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999998, -5.0206223, -6.5, 177.30536)
-
-[node name="VineWall100" parent="PlantWallFoliage" unique_id=159662745 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695995, 0, 4.3711378e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999998, -15.020622, -6, 177.30536)
-
-[node name="VineWall101" parent="PlantWallFoliage" unique_id=1076065664 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457679e-07, 0, -0.9999999, 0, 2.470104, 0, 2.4695995, 0, 0, -23.520622, -8, 164.30536)
-
-[node name="VineWall102" parent="PlantWallFoliage" unique_id=1453775792 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.1457679e-07, 0, -0.9999999, 0, 2.470104, 0, 2.4695995, 0, 0, -23.520622, -7.5, 174.30536)
-
-[node name="VineWall103" parent="PlantWallFoliage" unique_id=1784849695 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(4.30476e-07, 0, 0.9999999, 0, 2.4701037, 0, -2.4695992, 0, 8.742276e-08, -14.520622, -8, 162.80536)
-
-[node name="VineWall104" parent="PlantWallFoliage" unique_id=1695796041 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(4.30476e-07, 0, 0.9999999, 0, 2.4701037, 0, -2.4695992, 0, 8.742276e-08, -14.520622, -7.5, 152.80536)
-
-[node name="VineWall105" parent="PlantWallFoliage" unique_id=148946377 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-1.4488313, -2.971792e-07, 5.762041e-08, 2.2107456e-07, -1.4858958e-07, 0.9999997, -1.2666086e-07, 3.399334, 4.371137e-08, -21.5, 8, 154.5)
-
-[node name="VineWall106" parent="PlantWallFoliage" unique_id=600547407 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.2863375e-07, 0, 0.9999998, 0, 3.399334, 0, -3.018399, 0, 1.3909061e-08, -66, -11, 97)
-
-[node name="VineWall107" parent="PlantWallFoliage" unique_id=1850607373 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, -12.895622, 1.5, 188.43036)
-
-[node name="VineWall108" parent="PlantWallFoliage" unique_id=1220640539 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, -22.395622, 1, 188.43036)
-
-[node name="VineWall109" parent="PlantWallFoliage" unique_id=1425046089 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, -31.395622, 1, 188.43036)
-
-[node name="VineWall110" parent="PlantWallFoliage" unique_id=1106842250 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, -41.395622, 1.5, 188.43036)
-
-[node name="VineWall111" parent="PlantWallFoliage" unique_id=84458999 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4695992, 0, 4.3711385e-08, 0, 2.4701037, 0, -3.2252638e-07, 0, -0.9999999, -5.3956223, 1, 188.43036)
-
-[node name="VineWall112" parent="PlantWallFoliage" unique_id=27713553 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.2863375e-07, 0, 0.9999998, 0, 3.399334, 0, -3.018399, 0, 1.3909061e-08, -63.5, 2, 154)
-
-[node name="VineWall113" parent="PlantWallFoliage" unique_id=1128065571 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.62907e-07, 0, 0.9999998, 0, 3.399334, 0, -2.4147193, 0, 1.3909061e-08, -63.5, -5.5, 151.5)
-
-[node name="VineWall114" parent="PlantWallFoliage" unique_id=1557009100 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.62907e-07, 0, 0.9999998, 0, 3.399334, 0, -2.4147193, 0, 1.3909061e-08, -66.5, -10.5, 144)
-
-[node name="VineWall115" parent="PlantWallFoliage" unique_id=1091858374 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0183988, 0, -2.9802326e-08, 0, 3.399334, 0, -1.9669531e-07, 0, -0.9999997, -76.75, 2, 150.75)
-
-[node name="VineWall116" parent="PlantWallFoliage" unique_id=717949217 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4147193, 0, -2.980233e-08, 0, 3.399334, 0, -1.5735625e-07, 0, -0.99999976, -79.25, -5.5, 150.75)
-
-[node name="VineWall117" parent="PlantWallFoliage" unique_id=443570642 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(3.2863375e-07, 0, 0.9999998, 0, 3.399334, 0, -3.018399, 0, 1.3909061e-08, -38.5, 9, 171.5)
-
-[node name="VineWall118" parent="PlantWallFoliage" unique_id=240418188 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(2.62907e-07, 0, 0.9999998, 0, 3.399334, 0, -2.4147193, 0, 1.3909061e-08, -38.5, 1.5, 169)
-
-[node name="VineWall119" parent="PlantWallFoliage" unique_id=1841591759 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0183988, 0, -2.9802326e-08, 0, 3.399334, 0, -1.9669531e-07, 0, -0.9999997, -53.75, 11, 167.25)
-
-[node name="VineWall120" parent="PlantWallFoliage" unique_id=304123568 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4147193, 0, -2.980233e-08, 0, 3.399334, 0, -1.5735625e-07, 0, -0.99999976, -56.25, 3.5, 167.25)
-
-[node name="VineWall121" parent="PlantWallFoliage" unique_id=1609111922 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-3.0183988, 0, -2.9802326e-08, 0, 3.399334, 0, -1.9669531e-07, 0, -0.9999997, -65.75, 8.5, 167.25)
-
-[node name="VineWall122" parent="PlantWallFoliage" unique_id=45262930 instance=ExtResource("38_b1iiq")]
-transform = Transform3D(-2.4147193, 0, -2.980233e-08, 0, 3.399334, 0, -1.5735625e-07, 0, -0.99999976, -68.25, 1, 167.25)
+[node name="PlantWallFoliage" parent="." unique_id=590222623 instance=ExtResource("38_6pbj8")]
 
 [node name="GeneratorPartOutOfBounds" parent="." unique_id=1234546985 instance=ExtResource("36_m81eg")]
 
@@ -2788,7 +2467,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.5, 136)
 [node name="Part3" parent="." unique_id=1554434201 instance=ExtResource("30_m81eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0.5, 141)
 
+[node name="Part1" type="CSGSphere3D" parent="Part3" unique_id=2008974876]
+radius = 1.0
+material = SubResource("StandardMaterial3D_tmm0v")
+
+[node name="BuildingGenerator13" type="Node3D" parent="." unique_id=1997566074 node_paths=PackedStringArray("generated_building_node")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 0.9999998, 0, -0.9999998, 0, -4.371139e-08, 60, -0.5, 63)
+script = ExtResource("6_0hmuk")
+building_generation_params = SubResource("Resource_isd4l")
+generated_building_node = NodePath("GeneratedBuilding")
+metadata/_custom_type_script = "uid://c8acika7wo4ks"
+
+[node name="BuildingShapeDescription" type="Node" parent="BuildingGenerator13" unique_id=193610566]
+script = ExtResource("9_fbtr5")
+metadata/_custom_type_script = "uid://o0oessya87xf"
+
+[node name="BoxDescription" type="Node" parent="BuildingGenerator13/BuildingShapeDescription" unique_id=2147439207]
+script = ExtResource("10_rjtpl")
+size = Vector3i(6, 9, 6)
+metadata/_custom_type_script = "uid://cp8ed61leg0wl"
+
+[node name="GeneratedBuilding" type="Node3D" parent="BuildingGenerator13" unique_id=362253253]
+
+[node name="@GridMap@30872" type="GridMap" parent="BuildingGenerator13/GeneratedBuilding" unique_id=1650317265]
+mesh_library = ExtResource("11_si2mp")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 1048578, 0, 1, 1048578, 0, 2, 1048579, 0, 3, 1048578, 0, 4, 1048579, 0, 5, 1048579, 65536, 0, 1048578, 65536, 1, 1048578, 65536, 2, 1048578, 65536, 3, 1048578, 65536, 4, 1048578, 65536, 5, 1048579, 131072, 0, 1048579, 131072, 1, 1048578, 131072, 2, 1048579, 131072, 3, 1048578, 131072, 4, 1048578, 131072, 5, 1048578, 196608, 0, 1048578, 196608, 1, 1048578, 196608, 2, 1048578, 196608, 3, 1048578, 196608, 4, 1048579, 196608, 5, 1048578, 262144, 0, 1048579, 262144, 1, 1048579, 262144, 2, 1048578, 262144, 3, 1048579, 262144, 4, 1048578, 262144, 5, 1048578, 327680, 0, 1048578, 327680, 1, 1048578, 327680, 2, 1048578, 327680, 3, 1048578, 327680, 4, 1048578, 327680, 5, 1048578, 393216, 0, 1048578, 393216, 1, 1048578, 393216, 2, 1048578, 393216, 3, 1048579, 393216, 4, 1048578, 393216, 5, 1048578, 458752, 0, 1048578, 458752, 1, 1048579, 458752, 2, 1048578, 458752, 3, 1048578, 458752, 4, 1048578, 458752, 5, 1048579, 524288, 0, 1048578, 524288, 1, 1048578, 524288, 2, 1048578, 524288, 3, 1048579, 524288, 4, 1048578, 524288, 5, 1048578, 6, 0, 1048579, 6, 1, 1048579, 6, 2, 1048579, 6, 3, 1048579, 6, 4, 1048578, 6, 5, 1048578, 65542, 0, 1048578, 65542, 1, 1048578, 65542, 2, 1048578, 65542, 3, 1048578, 65542, 4, 1048578, 65542, 5, 1048579, 131078, 0, 1048578, 131078, 1, 1048579, 131078, 2, 1048578, 131078, 3, 1048578, 131078, 4, 1048578, 131078, 5, 1048578, 196614, 0, 1048579, 196614, 1, 1048578, 196614, 2, 1048578, 196614, 3, 1048578, 196614, 4, 1048579, 196614, 5, 1048579, 262150, 0, 1048578, 262150, 1, 1048578, 262150, 2, 1048579, 262150, 3, 1048578, 262150, 4, 1048578, 262150, 5, 1048578, 327686, 0, 1048578, 327686, 1, 1048578, 327686, 2, 1048578, 327686, 3, 1048579, 327686, 4, 1048578, 327686, 5, 1048579, 393222, 0, 1048578, 393222, 1, 1048579, 393222, 2, 1048578, 393222, 3, 1048578, 393222, 4, 1048579, 393222, 5, 1048578, 458758, 0, 1048578, 458758, 1, 1048578, 458758, 2, 1048578, 458758, 3, 1048579, 458758, 4, 1048579, 458758, 5, 1048578, 524294, 0, 1048579, 524294, 1, 1048579, 524294, 2, 1048578, 524294, 3, 1048578, 524294, 4, 1048578, 524294, 5, 1048579)
+}
+
+[node name="@GridMap@30873" type="GridMap" parent="BuildingGenerator13/GeneratedBuilding" unique_id=1852005375]
+mesh_library = ExtResource("11_si2mp")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 3, 5, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 4, 5, 0, 5, 0, 0, 5, 1, 0, 5, 2, 0, 5, 3, 0, 5, 4, 0, 5, 5, 0, 589824, 0, 0, 589824, 1, 0, 589824, 2, 0, 589824, 3, 0, 589824, 4, 0, 589824, 5, 0, 589825, 0, 0, 589825, 1, 0, 589825, 2, 0, 589825, 3, 0, 589825, 4, 0, 589825, 5, 0, 589826, 0, 0, 589826, 1, 0, 589826, 2, 0, 589826, 3, 0, 589826, 4, 0, 589826, 5, 0, 589827, 0, 0, 589827, 1, 0, 589827, 2, 0, 589827, 3, 0, 589827, 4, 0, 589827, 5, 0, 589828, 0, 0, 589828, 1, 0, 589828, 2, 0, 589828, 3, 0, 589828, 4, 0, 589828, 5, 0, 589829, 0, 0, 589829, 1, 0, 589829, 2, 0, 589829, 3, 0, 589829, 4, 0, 589829, 5, 0)
+}
+
+[node name="@GridMap@30874" type="GridMap" parent="BuildingGenerator13/GeneratedBuilding" unique_id=1425487893]
+mesh_library = ExtResource("11_si2mp")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 4, 65536, 0, 2, 131072, 0, 3, 196608, 0, 2, 262144, 0, 2, 327680, 0, 3, 393216, 0, 2, 458752, 0, 2, 524288, 0, 2, 1, 0, 2, 65537, 0, 3, 131073, 0, 2, 196609, 0, 3, 262145, 0, 2, 327681, 0, 2, 393217, 0, 3, 458753, 0, 2, 524289, 0, 3, 2, 0, 2, 65538, 0, 2, 131074, 0, 2, 196610, 0, 3, 262146, 0, 3, 327682, 0, 3, 393218, 0, 2, 458754, 0, 2, 524290, 0, 2, 3, 0, 2, 65539, 0, 2, 131075, 0, 2, 196611, 0, 2, 262147, 0, 2, 327683, 0, 2, 393219, 0, 3, 458755, 0, 3, 524291, 0, 2, 4, 0, 2, 65540, 0, 2, 131076, 0, 2, 196612, 0, 2, 262148, 0, 2, 327684, 0, 2, 393220, 0, 3, 458756, 0, 3, 524292, 0, 2, 5, 0, 2, 65541, 0, 3, 131077, 0, 3, 196613, 0, 2, 262149, 0, 2, 327685, 0, 3, 393221, 0, 3, 458757, 0, 2, 524293, 0, 3, 0, 6, 2, 65536, 6, 2, 131072, 6, 2, 196608, 6, 2, 262144, 6, 2, 327680, 6, 2, 393216, 6, 3, 458752, 6, 2, 524288, 6, 3, 1, 6, 2, 65537, 6, 2, 131073, 6, 2, 196609, 6, 2, 262145, 6, 3, 327681, 6, 2, 393217, 6, 2, 458753, 6, 3, 524289, 6, 3, 2, 6, 2, 65538, 6, 2, 131074, 6, 2, 196610, 6, 2, 262146, 6, 3, 327682, 6, 2, 393218, 6, 2, 458754, 6, 2, 524290, 6, 2, 3, 6, 2, 65539, 6, 2, 131075, 6, 2, 196611, 6, 2, 262147, 6, 2, 327683, 6, 2, 393219, 6, 2, 458755, 6, 2, 524291, 6, 3, 4, 6, 3, 65540, 6, 2, 131076, 6, 3, 196612, 6, 2, 262148, 6, 2, 327684, 6, 3, 393220, 6, 2, 458756, 6, 2, 524292, 6, 2, 5, 6, 3, 65541, 6, 2, 131077, 6, 2, 196613, 6, 2, 262149, 6, 2, 327685, 6, 3, 393221, 6, 2, 458757, 6, 2, 524293, 6, 3)
+}
+
+[node name="@NavigationObstacle3D@30875" type="NavigationObstacle3D" parent="BuildingGenerator13/GeneratedBuilding" unique_id=974075778]
+visible = false
+height = 100.0
+vertices = PackedVector3Array(0, 0, 0, 0, 0, 12, 12, 0, 12, 12, 0, 0)
+affect_navigation_mesh = true
+avoidance_enabled = false
+
+[node name="_StaticBody3D_30876" type="AnimatableBody3D" parent="BuildingGenerator13/GeneratedBuilding" unique_id=196256134]
+collision_layer = 257
+
+[node name="@CollisionShape3D@30877" type="CollisionShape3D" parent="BuildingGenerator13/GeneratedBuilding/_StaticBody3D_30876" unique_id=1578286534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 12.599999, 6)
+shape = SubResource("BoxShape3D_6pbj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BuildingGenerator13" unique_id=610205334]
+libraries/ = SubResource("AnimationLibrary_6yd7f")
+script = ExtResource("40_6pbj8")
+
 [connection signal="all_parts_fused" from="Map/Graybox/RadioTower" to="BigBoss" method="_on_start_boss_battle"]
-[connection signal="health_depleted" from="Enemy/HealthComponent" to="Map/Graybox/CombatTutorialArea/ChangingPart" method="_on_change_part"]
+[connection signal="health_depleted" from="Enemy/HealthComponent" to="BuildingGenerator13/AnimationPlayer" method="_on_enemy_died"]
 
 [editable path="Enemy"]
