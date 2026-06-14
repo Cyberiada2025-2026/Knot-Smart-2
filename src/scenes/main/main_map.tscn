@@ -40,11 +40,8 @@
 [ext_resource type="PackedScene" uid="uid://b3pq3lm4pjpdk" path="res://characters/enemies/basic_enemy/enemy.tscn" id="78_7wli1"]
 [ext_resource type="Script" uid="uid://bm0wrygl0ikje" path="res://shared/point_of_interest/point_of_interest.gd" id="78_oveuq"]
 [ext_resource type="Script" uid="uid://krqwntoiv6fm" path="res://shared/point_of_interest/components/speech_poi.gd" id="79_awfjg"]
-[ext_resource type="PackedScene" uid="uid://bie1yxa2arqux" path="res://shared/debris/single/debris1.tscn" id="79_wut8q"]
 [ext_resource type="Script" uid="uid://dhpmrqniojeb4" path="res://shared/dialogue/dialogue.gd" id="80_0a1xl"]
-[ext_resource type="PackedScene" uid="uid://b6dvbytkt43yx" path="res://shared/debris/single/debris2.tscn" id="80_oveuq"]
 [ext_resource type="Script" uid="uid://kpru7f8vmtp5" path="res://shared/dialogue/sentence.gd" id="81_d8whw"]
-[ext_resource type="PackedScene" uid="uid://btmd85pvej0kk" path="res://shared/debris/single/debris5.tscn" id="81_gl766"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wvbdd"]
 vertices = PackedVector3Array(55.5, 0, 35.25, 58, 0.25, 34.75, 58, 0.25, 30.75, 19.75, 0.25, 42.5, 20.25, 0, 48, 20.75, 0, 48.5, 26, 0.25, 40.25, 20, 0.25, 40.25, 54.75, 0, 36.5, 48.5, 0.25, 30.75, 38, 0, 32.25, 27.75, 0, 32.25, 27.75, 0, 38.5, 46.75, 0, 27.75, 39.75, 0, 27.75, 39.75, 0, 30.5, 47.25, 0.25, 30, 20.75, 0, 60.25, 39, 0, 60.25, 39, 0, 31.75, 27.25, 0.25, 39.5, 59.25, 0, 62.5, 59.25, 0, 53.25, 56.5, 0, 53.25, 40.25, 0, 61, 54.75, 0, 51.5, 55.25, 0, 52.5, 40.75, 0, 62.5)
@@ -215,6 +212,26 @@ max_room_size = Vector3i(8, 2, 8)
 long_room_tendency = 0.2
 metadata/_custom_type_script = "uid://uq2ee3iq6x08"
 
+[sub_resource type="Resource" id="Resource_ujn2h"]
+script = ExtResource("8_e2d8t")
+random_seed = 2059
+building_tileset = ExtResource("13_jppmo")
+generate_rooms = true
+min_room_size = Vector3i(5, 2, 5)
+max_room_size = Vector3i(8, 2, 8)
+long_room_tendency = 0.2
+metadata/_custom_type_script = "uid://uq2ee3iq6x08"
+
+[sub_resource type="Resource" id="Resource_f50o1"]
+script = ExtResource("8_e2d8t")
+random_seed = 2059
+building_tileset = ExtResource("13_jppmo")
+generate_rooms = true
+min_room_size = Vector3i(5, 2, 5)
+max_room_size = Vector3i(8, 2, 8)
+long_room_tendency = 0.2
+metadata/_custom_type_script = "uid://uq2ee3iq6x08"
+
 [sub_resource type="Resource" id="Resource_b3bc2"]
 script = ExtResource("8_e2d8t")
 random_seed = 2059
@@ -376,7 +393,7 @@ _data = {
 
 [node name="MainMap" type="Node3D" unique_id=1480515348]
 
-[node name="Szymon" parent="." unique_id=904338965 instance=ExtResource("1_isd4l")]
+[node name="Szymon" parent="." unique_id=1444321441 instance=ExtResource("1_isd4l")]
 
 [node name="Leon" parent="." unique_id=1430698029 instance=ExtResource("2_2imt8")]
 
@@ -1607,7 +1624,7 @@ metadata/_custom_type_script = "uid://cbn62hjlskw0a"
 
 [node name="RadioTower" parent="Map/Graybox" unique_id=336301379 instance=ExtResource("6_f8fwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 39, -16.5)
-number_of_parts = 1
+number_of_parts = 3
 
 [node name="PointOfInterest" type="Node3D" parent="Map/Graybox/RadioTower" unique_id=212148188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -41.283195, -0.49552155)
@@ -1738,20 +1755,11 @@ metadata/_custom_type_script = "uid://djg0m48s04bny"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
 [node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@76148")
+blackboard = NodePath("@Node@29889")
 
 [node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
 max_health = 5.0
 health = 5.0
-
-[node name="Debris1" parent="." unique_id=894731067 instance=ExtResource("79_wut8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 2, 34.5)
-
-[node name="Debris2" parent="." unique_id=36024407 instance=ExtResource("80_oveuq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 3.28685, 32)
-
-[node name="Debris5" parent="." unique_id=88912901 instance=ExtResource("81_gl766")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0.5, 35.5)
 
 [node name="PointOfInterest" type="Node3D" parent="." unique_id=1571521642]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 11)
@@ -2091,8 +2099,119 @@ transform = Transform3D(-1, 0, -3.178652e-08, 0, 1, 0, 3.178652e-08, 0, -1, 79, 
 [node name="BuildingPairSmall5" parent="PostTutorial/Buildings" unique_id=1552985658 instance=ExtResource("36_bx2do")]
 transform = Transform3D(1, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, 1, -2, -1, 116.5)
 
-[node name="BuildingPairSmall6" parent="PostTutorial/Buildings" unique_id=505424172 instance=ExtResource("36_bx2do")]
+[node name="BuildingPairSmall6" type="Node3D" parent="PostTutorial/Buildings" unique_id=505424172]
 transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -27.5, -1, 106.5)
+
+[node name="BuildingGenerator13" type="Node3D" parent="PostTutorial/Buildings/BuildingPairSmall6" unique_id=30067277 node_paths=PackedStringArray("generated_building_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.999998)
+script = ExtResource("6_0hmuk")
+building_generation_params = SubResource("Resource_ujn2h")
+generated_building_node = NodePath("GeneratedBuilding")
+metadata/_custom_type_script = "uid://c8acika7wo4ks"
+
+[node name="BuildingShapeDescription" type="Node" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator13" unique_id=106881289]
+script = ExtResource("9_fbtr5")
+metadata/_custom_type_script = "uid://o0oessya87xf"
+
+[node name="BoxDescription" type="Node" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator13/BuildingShapeDescription" unique_id=1380905554]
+script = ExtResource("10_rjtpl")
+size = Vector3i(6, 5, 6)
+metadata/_custom_type_script = "uid://cp8ed61leg0wl"
+
+[node name="DecimateBuilding" type="Node3D" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator13" unique_id=489287398]
+script = ExtResource("22_6yd7f")
+strength = 0.276
+iterations = 10
+seed_value = 836533698
+metadata/_custom_type_script = "uid://cbn62hjlskw0a"
+
+[node name="GeneratedBuilding" type="Node3D" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator13" unique_id=943766370]
+
+[node name="@GridMap@49757" type="GridMap" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator13/GeneratedBuilding" unique_id=112036986]
+mesh_library = ExtResource("23_a1yee")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(131076, 3, 1048580, 196612, 4, 1048580, 4, 3, 1048580, 131076, 1, 1048580, 196608, 0, 1048578, 0, 2, 1048578, 0, 3, 1048580, 0, 4, 1048578, 0, 5, 1048579, 65536, 2, 1048578, 65536, 3, 1048578, 65536, 4, 1048579, 65536, 5, 1048579, 4, 2, 1048578, 4, 4, 1048578, 4, 5, 1048578, 65540, 2, 1048578, 65540, 3, 1048578, 65540, 4, 1048578, 65540, 5, 1048578, 4, 0, 1048578, 4, 1, 1048578, 65540, 0, 1048578, 65540, 1, 1048578, 6, 0, 1048579, 6, 1, 1048578, 65542, 0, 1048578, 65542, 1, 1048578, 6, 2, 1048579, 6, 3, 1048578, 6, 4, 1048578, 6, 5, 1048579, 65542, 2, 1048579, 65542, 3, 1048579, 65542, 4, 1048578, 65542, 5, 1048578, 0, 0, 1048578, 0, 1, 1048578, 65536, 0, 1048578, 65536, 1, 1048579, 131072, 0, 1048578, 131072, 2, 1048578, 131072, 3, 1048578, 131072, 5, 1048578, 131076, 2, 1048578, 131076, 4, 1048578, 131076, 5, 1048578, 196608, 3, 1048578, 196608, 5, 1048578, 196612, 2, 1048578, 196612, 3, 1048578, 196612, 5, 1048578, 262148, 3, 1048578, 131078, 0, 1048578, 131078, 1, 1048579, 196614, 0, 1048578, 196614, 1, 1048578, 262150, 1, 1048578, 131078, 2, 1048578, 131078, 3, 1048578, 131078, 4, 1048579, 131078, 5, 1048578, 196614, 2, 1048578, 196614, 3, 1048579, 196614, 4, 1048579, 196614, 5, 1048578, 262150, 3, 1048578, 262150, 4, 1048578)
+}
+
+[node name="@GridMap@49758" type="GridMap" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator13/GeneratedBuilding" unique_id=710595874]
+mesh_library = ExtResource("23_a1yee")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(131073, 5, 1, 196608, 5, 1, 196608, 0, 0, 196609, 0, 0, 196609, 1, 0, 196610, 0, 0, 196610, 1, 0, 196611, 0, 0, 196611, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 3, 5, 0, 131072, 2, 0, 131072, 3, 0, 131072, 5, 0, 131073, 2, 0, 131073, 3, 0, 131073, 4, 0, 131074, 2, 0, 131074, 3, 0, 131074, 4, 0, 131074, 5, 0, 131075, 2, 0, 131075, 3, 0, 131075, 4, 0, 131075, 5, 0, 4, 0, 0, 4, 1, 0, 5, 0, 0, 5, 1, 0, 131076, 1, 0, 131077, 0, 0, 131077, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 4, 5, 0, 5, 2, 0, 5, 3, 0, 5, 4, 0, 5, 5, 0, 131076, 2, 0, 131076, 3, 0, 131076, 4, 0, 131076, 5, 0, 131077, 2, 0, 131077, 3, 0, 131077, 4, 0, 131077, 5, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 2, 0, 0, 2, 1, 0, 3, 0, 0, 3, 1, 0, 131072, 0, 0, 131073, 0, 0, 131073, 1, 0, 131074, 0, 0, 131074, 1, 0, 131075, 0, 0, 131075, 1, 0, 196608, 3, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 0, 196609, 5, 0, 196610, 2, 0, 196610, 3, 0, 196610, 4, 0, 196610, 5, 0, 196611, 2, 0, 196611, 3, 0, 196611, 4, 0, 196611, 5, 0, 196612, 2, 0, 196612, 3, 0, 196612, 4, 0, 196612, 5, 0, 196613, 2, 0, 196613, 3, 0, 196613, 4, 0, 196613, 5, 0)
+}
+
+[node name="@GridMap@49759" type="GridMap" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator13/GeneratedBuilding" unique_id=1339685030]
+mesh_library = ExtResource("23_a1yee")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(131073, 2, 4, 196611, 2, 4, 3, 2, 4, 4, 2, 4, 196608, 0, 3, 196609, 0, 2, 196610, 0, 3, 262146, 0, 2, 196611, 0, 2, 196609, 2, 2, 196610, 2, 2, 262146, 2, 2, 0, 2, 2, 65536, 2, 2, 1, 2, 2, 65537, 2, 2, 2, 2, 2, 65538, 2, 2, 65539, 2, 2, 0, 6, 2, 65536, 6, 2, 1, 6, 2, 65537, 6, 3, 2, 6, 3, 65538, 6, 2, 3, 6, 3, 65539, 6, 2, 4, 0, 2, 65540, 0, 2, 5, 0, 2, 65541, 0, 2, 65540, 2, 2, 5, 2, 2, 65541, 2, 2, 4, 6, 3, 65540, 6, 2, 5, 6, 3, 65541, 6, 2, 0, 0, 2, 65536, 0, 2, 1, 0, 2, 65537, 0, 2, 2, 0, 3, 65538, 0, 2, 3, 0, 2, 65539, 0, 2, 131072, 0, 2, 131073, 0, 2, 131074, 0, 3, 131075, 0, 2, 131072, 2, 2, 131074, 2, 2, 131075, 2, 2, 131072, 6, 2, 131073, 6, 2, 131074, 6, 3, 131075, 6, 3, 196609, 6, 2, 262145, 6, 3, 196610, 6, 3, 262146, 6, 2, 196611, 6, 3, 131077, 0, 3, 196613, 0, 2, 131076, 2, 2, 196612, 2, 2, 131077, 2, 2, 196613, 2, 2, 131076, 6, 3, 131077, 6, 2, 196612, 6, 2)
+}
+
+[node name="@NavigationObstacle3D@49760" type="NavigationObstacle3D" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator13/GeneratedBuilding" unique_id=2094250322]
+visible = false
+height = 100.0
+vertices = PackedVector3Array(0, 0, 0, 0, 0, 12, 12, 0, 12, 12, 0, 0)
+affect_navigation_mesh = true
+avoidance_enabled = false
+
+[node name="BuildingGenerator14" type="Node3D" parent="PostTutorial/Buildings/BuildingPairSmall6" unique_id=1567166993 node_paths=PackedStringArray("generated_building_node")]
+script = ExtResource("6_0hmuk")
+building_generation_params = SubResource("Resource_f50o1")
+generated_building_node = NodePath("GeneratedBuilding")
+metadata/_custom_type_script = "uid://c8acika7wo4ks"
+
+[node name="BuildingShapeDescription" type="Node" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator14" unique_id=1996636312]
+script = ExtResource("9_fbtr5")
+metadata/_custom_type_script = "uid://o0oessya87xf"
+
+[node name="BoxDescription" type="Node" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator14/BuildingShapeDescription" unique_id=395911903]
+script = ExtResource("10_rjtpl")
+size = Vector3i(4, 4, 6)
+metadata/_custom_type_script = "uid://cp8ed61leg0wl"
+
+[node name="DecimateBuilding" type="Node3D" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator14" unique_id=272753994]
+script = ExtResource("22_6yd7f")
+strength = 0.246
+iterations = 33
+seed_value = 232006167
+metadata/_custom_type_script = "uid://cbn62hjlskw0a"
+
+[node name="GeneratedBuilding" type="Node3D" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator14" unique_id=1990669040]
+
+[node name="@GridMap@48468" type="GridMap" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator14/GeneratedBuilding" unique_id=950466626]
+mesh_library = ExtResource("23_a1yee")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 1048578, 65536, 0, 1048578, 4, 0, 1048578, 65540, 0, 1048578, 131072, 0, 1048578, 131076, 0, 1048578, 0, 1, 1048578, 0, 2, 1048580, 0, 3, 1048578, 0, 4, 1048579, 0, 5, 1048578, 65536, 1, 1048579, 65536, 3, 1048578, 65536, 4, 1048579, 65536, 5, 1048579, 4, 1, 1048578, 4, 2, 1048578, 4, 3, 1048578, 4, 4, 1048578, 4, 5, 1048578, 65540, 1, 1048578, 65540, 2, 1048578, 65540, 3, 1048579, 65540, 4, 1048578, 65540, 5, 1048579, 131072, 1, 1048578, 131072, 5, 1048578, 131076, 1, 1048578, 131076, 2, 1048578, 131076, 3, 1048579, 131076, 4, 1048578, 131076, 5, 1048578)
+}
+
+[node name="@GridMap@48469" type="GridMap" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator14/GeneratedBuilding" unique_id=1667242141]
+mesh_library = ExtResource("23_a1yee")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 131072, 0, 0, 131073, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 3, 5, 0, 131072, 1, 0, 131072, 5, 0, 131073, 1, 0, 131073, 2, 0, 131073, 3, 0, 131073, 4, 0, 131073, 5, 0, 131074, 1, 0, 131074, 2, 0, 131074, 4, 0, 131074, 5, 0, 131075, 1, 0, 131075, 2, 0, 131075, 3, 0, 131075, 4, 0, 131075, 5, 0)
+}
+
+[node name="@GridMap@48470" type="GridMap" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator14/GeneratedBuilding" unique_id=563198967]
+mesh_library = ExtResource("23_a1yee")
+cell_size = Vector3(2, 2.8, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 1, 4, 131075, 1, 4, 0, 0, 3, 65536, 0, 2, 1, 0, 3, 65537, 0, 3, 2, 0, 2, 65538, 0, 2, 3, 0, 3, 65539, 0, 2, 65536, 1, 2, 1, 1, 2, 65537, 1, 2, 2, 1, 2, 65538, 1, 2, 3, 1, 2, 65539, 1, 2, 131072, 0, 3, 131073, 0, 2, 131072, 1, 2, 131073, 1, 2, 196609, 1, 2, 131074, 1, 2, 0, 6, 2, 65536, 6, 2, 1, 6, 2, 65537, 6, 2, 2, 6, 2, 65538, 6, 3, 3, 6, 2, 65539, 6, 3, 131072, 6, 2, 131074, 6, 3, 131075, 6, 3)
+}
+
+[node name="@NavigationObstacle3D@48471" type="NavigationObstacle3D" parent="PostTutorial/Buildings/BuildingPairSmall6/BuildingGenerator14/GeneratedBuilding" unique_id=2052255666]
+visible = false
+height = 100.0
+vertices = PackedVector3Array(0, 0, 0, 0, 0, 12, 8, 0, 12, 8, 0, 0)
+affect_navigation_mesh = true
+avoidance_enabled = false
 
 [node name="BuildingGenerator7" type="Node3D" parent="PostTutorial/Buildings" unique_id=309670034 node_paths=PackedStringArray("generated_building_node")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 51.5, 1.5, 104.5)
