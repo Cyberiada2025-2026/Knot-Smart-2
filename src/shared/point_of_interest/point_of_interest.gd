@@ -39,6 +39,7 @@ func _init():
 	collider.shape = SphereShape3D.new()
 	# set player's collision layer
 	area.set_collision_mask_value(2, true)
+	area.set_collision_layer_value(1, false)
 
 	area.add_child(visualization_mesh)
 	visualization_mesh.mesh = SphereMesh.new()
