@@ -25,6 +25,8 @@
 [ext_resource type="Resource" uid="uid://c8xhbj0f06miu" path="res://shared/buildings/model_management/basic_building_tileset_thick_walls.tres" id="13_jppmo"]
 [ext_resource type="PackedScene" uid="uid://d0aa1l38pc6jy" path="res://characters/enemies/big_boss/big_boss.tscn" id="18_isd4l"]
 [ext_resource type="PackedScene" uid="uid://conwx7a1fxor3" path="res://scenes/main/map_renderer.tscn" id="28_acfpd"]
+[ext_resource type="PackedScene" uid="uid://c4gdh3na88sul" path="res://shared/fences/wire_fence/wire_fence.tscn" id="29_m81eg"]
+[ext_resource type="PackedScene" uid="uid://by6tc6oibk1hi" path="res://shared/fences/metal_fence/metal_fence.tscn" id="30_b1iiq"]
 [ext_resource type="PackedScene" uid="uid://dps1yxnixq4w8" path="res://shared/generator_parts/part_base.tscn" id="30_m81eg"]
 [ext_resource type="Material" uid="uid://cs6kr88umcnbn" path="res://shared/water/water.tres" id="33_srf2b"]
 [ext_resource type="PackedScene" uid="uid://d3elyqmhqqwkc" path="res://scenes/main/building_pair_small.tscn" id="36_bx2do"]
@@ -1467,6 +1469,92 @@ metadata/_custom_type_script = "uid://krqwntoiv6fm"
 
 [node name="MapRenderer" parent="Map" unique_id=481359591 instance=ExtResource("28_acfpd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.5, -5, -80.5)
+
+[node name="Fences" type="Node3D" parent="Map" unique_id=1765577381]
+
+[node name="StaticBody3D" parent="Map/Fences" unique_id=834015262 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20.5, -0.5, 62.5)
+
+[node name="StaticBody3D2" parent="Map/Fences" unique_id=542358571 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.5, -0.5, 62.5)
+
+[node name="StaticBody3D3" parent="Map/Fences" unique_id=1117295363 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28.5, -0.5, 62.5)
+
+[node name="StaticBody3D4" parent="Map/Fences" unique_id=281895173 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.5, -0.5, 62.5)
+
+[node name="StaticBody3D5" parent="Map/Fences" unique_id=1799676029 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 36.5, -0.5, 62.5)
+
+[node name="StaticBody3D6" parent="Map/Fences" unique_id=1800356586 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.5, -0.5, 62.5)
+
+[node name="StaticBody3D7" parent="Map/Fences" unique_id=1262627210 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.5, -0.5, 62.5)
+
+[node name="StaticBody3D8" parent="Map/Fences" unique_id=326270225 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.5, -0.5, 62.5)
+
+[node name="StaticBody3D9" parent="Map/Fences" unique_id=699740367 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5, -0.5, 62.5)
+
+[node name="StaticBody3D10" parent="Map/Fences" unique_id=1190497612 instance=ExtResource("29_m81eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.5, 48.5)
+
+[node name="StaticBody3D11" parent="Map/Fences" unique_id=1219644057 instance=ExtResource("29_m81eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.5, 52.5)
+
+[node name="StaticBody3D12" parent="Map/Fences" unique_id=765381275 instance=ExtResource("29_m81eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.5, 56.5)
+
+[node name="StaticBody3D13" parent="Map/Fences" unique_id=1147091442 instance=ExtResource("29_m81eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.5, 60.5)
+
+[node name="MetalFence" parent="Map/Fences" unique_id=2019968806 instance=ExtResource("30_b1iiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, 17.5)
+
+[node name="MetalFence2" parent="Map/Fences" unique_id=1230120921 instance=ExtResource("30_b1iiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, 13.5)
+
+[node name="MetalFence4" parent="Map/Fences" unique_id=1526312538 instance=ExtResource("30_b1iiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, 6.5)
+
+[node name="StaticBody3D14" parent="Map/Fences" unique_id=449949981 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.5, -0.5, -0.5)
+
+[node name="StaticBody3D15" parent="Map/Fences" unique_id=1905694986 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.5, -0.5, -0.5)
+
+[node name="StaticBody3D16" parent="Map/Fences" unique_id=1148066247 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, -0.5, -9)
+
+[node name="StaticBody3D17" parent="Map/Fences" unique_id=1069182287 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, -0.5, -13)
+
+[node name="StaticBody3D18" parent="Map/Fences" unique_id=1628770186 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, -0.5, -17)
+
+[node name="StaticBody3D19" parent="Map/Fences" unique_id=2022547630 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, -0.5, -21)
+
+[node name="StaticBody3D20" parent="Map/Fences" unique_id=2051796762 instance=ExtResource("29_m81eg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, -0.5, 47)
+
+[node name="MetalFence3" parent="Map/Fences" unique_id=788623243 instance=ExtResource("30_b1iiq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.5, -0.5, 121.5)
+
+[node name="MetalFence5" parent="Map/Fences" unique_id=1782993137 instance=ExtResource("30_b1iiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, -0.5, 119.5)
+
+[node name="MetalFence6" parent="Map/Fences" unique_id=915579555 instance=ExtResource("30_b1iiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, -0.5, 115.5)
+
+[node name="MetalFence7" parent="Map/Fences" unique_id=1355818612 instance=ExtResource("30_b1iiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, -0.5, 111.5)
+
+[node name="MetalFence8" parent="Map/Fences" unique_id=825707419 instance=ExtResource("30_b1iiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, -0.5, 107.5)
 
 [node name="BigBoss" parent="." unique_id=1977180204 node_paths=PackedStringArray("movement_animation") instance=ExtResource("18_isd4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 159.5)
