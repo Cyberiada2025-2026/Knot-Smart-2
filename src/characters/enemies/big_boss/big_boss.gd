@@ -20,6 +20,7 @@ func _ready() -> void:
 
 
 func _on_start_boss_battle() -> void:
+	get_node("BossHealth").visible = true
 	health_component.is_protected = false
 	animation_player.play("Walk")
 	movement_animation.play("move_to_gen")
