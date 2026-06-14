@@ -1,18 +1,22 @@
 [gd_scene format=3 uid="uid://bd54neo0vnuug"]
 
 [ext_resource type="Script" uid="uid://0fwfv15d2488" path="res://characters/player/player_physics.gd" id="1_267bi"]
-[ext_resource type="PackedScene" uid="uid://bi7hkhprp31go" path="res://characters/player/player_model.glb" id="3_c153i"]
+[ext_resource type="PackedScene" uid="uid://bpwwtngx87b5u" path="res://characters/player/player_model.tscn" id="2_88xc3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hysn5"]
-radius = 0.25
+radius = 0.22070313
 height = 0.8
 
 [node name="PlayerPhysics" type="CharacterBody3D" unique_id=655149680 node_paths=PackedStringArray("player_model")]
 script = ExtResource("1_267bi")
 player_model = NodePath("PlayerModel")
 
+[node name="PlayerModel" parent="." unique_id=472242567 instance=ExtResource("2_88xc3")]
+transform = Transform3D(0.123, 0, 0, 0, 0.123, 0, 0, 0, 0.123, 0, 0.015, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=333128885]
 shape = SubResource("CapsuleShape3D_hysn5")
+debug_color = Color(0.800943, 0.36536294, 0.54918444, 0.41960785)
 
-[node name="PlayerModel" parent="." unique_id=636085063 instance=ExtResource("3_c153i")]
-transform = Transform3D(-0.13, 0, 0, 0, 0.13, 0, 0, 0, -0.13, 0, 0, 0)
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1229292301]
+target_position = Vector3(0, -0.405, 0)
