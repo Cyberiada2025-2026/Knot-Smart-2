@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://ci0kee6ebyhk4" path="res://ui/health/health.tscn" id="18_d2agh"]
 [ext_resource type="PackedScene" uid="uid://17qprvlcd6dk" path="res://shared/teleporters/teleporter_selection_window.tscn" id="22_7b6hw"]
 [ext_resource type="Script" uid="uid://d2htmj7u000iy" path="res://characters/player/music_player/music_player.gd" id="26_4cx7u"]
+[ext_resource type="PackedScene" uid="uid://cysjx27t16lw5" path="res://ui/tutorial/tutorial.tscn" id="27_w53g3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hysn5"]
 radius = 0.3
@@ -220,6 +221,8 @@ script = ExtResource("26_4cx7u")
 fade_in_duration = 5.0
 fade_out_duration = 5.0
 metadata/_custom_type_script = "uid://d2htmj7u000iy"
+
+[node name="Tutorial" parent="." unique_id=310617842 instance=ExtResource("27_w53g3")]
 
 [connection signal="camera_rotated" from="PlayerPhysics/PlayerCamera" to="." method="_on_player_camera_camera_rotated"]
 [connection signal="view_changed" from="PlayerPhysics/PlayerCamera" to="PlayerPhysics" method="_on_player_camera_view_changed"]
