@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://cysjx27t16lw5"]
 
-[node name="Tutorial" type="Control" unique_id=310617842]
+[ext_resource type="Script" uid="uid://da1g8g8od3xxv" path="res://ui/tutorial/tutorial.gd" id="1_tkdws"]
+
+[node name="Tutorial" type="Control" unique_id=310617842 node_paths=PackedStringArray("text_labels", "next_button", "skip_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tkdws")
+text_labels = [NodePath("VBoxContainer/Text1"), NodePath("VBoxContainer/Text2"), NodePath("VBoxContainer/Text3")]
+next_button = NodePath("VBoxContainer/HBoxContainer/Next Button")
+skip_button = NodePath("VBoxContainer/HBoxContainer/Skip Button")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1506525754]
 layout_mode = 1
@@ -96,3 +102,6 @@ process_mode = 3
 layout_mode = 2
 text = "Next
 "
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Skip Button" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next Button" to="." method="_on_next_button_pressed"]
