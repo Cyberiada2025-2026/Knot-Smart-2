@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bo23tv6yguitm" path="res://shared/nature_generators/tree_generator/prefabs/tree2.tscn" id="18_nfrs4"]
 [ext_resource type="PackedScene" uid="uid://nd864u3myomf" path="res://shared/nature_generators/tree_generator/prefabs/tree3.tscn" id="19_1djfu"]
 [ext_resource type="MeshLibrary" uid="uid://d2nblkfe0h2gb" path="res://shared/buildings/assets/models/tenement_house_tiles_flat.tres" id="19_g1faw"]
+[ext_resource type="Material" uid="uid://c4h215ab0dcip" path="res://shared/street-planes/hex.tres" id="20_1djfu"]
+[ext_resource type="Material" uid="uid://co4xfg4l5qibb" path="res://shared/street-planes/whatever.tres" id="21_d3uka"]
 
 [sub_resource type="Resource" id="Resource_joa1j"]
 script = ExtResource("14_nfrs4")
@@ -40,6 +42,18 @@ metadata/_custom_type_script = "uid://uq2ee3iq6x08"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nfrs4"]
 size = Vector3(10, 11.2, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_etnvg"]
+material = ExtResource("20_1djfu")
+size = Vector2(40, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fk6vh"]
+material = ExtResource("20_1djfu")
+size = Vector2(30, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_joa1j"]
+material = ExtResource("21_d3uka")
+size = Vector2(10, 100)
 
 [node name="Szymon" type="Node3D" unique_id=1444321441]
 
@@ -327,3 +341,29 @@ transform = Transform3D(0.26340166, 0, -0.9646863, 0, 1, 0, 0.9646863, 0, 0.2634
 
 [node name="DebrisPile22" parent="MoreDebris" unique_id=879635126 instance=ExtResource("7_xihla")]
 transform = Transform3D(0.9511428, 0, -0.3087514, 0, 1, 0, 0.3087514, 0, 0.9511428, -3.661914, 0.2549734, 50.91683)
+
+[node name="Planes" type="Node3D" parent="." unique_id=711493919]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Planes" unique_id=1444508745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4628534, -0.61649656, -25.512745)
+mesh = SubResource("PlaneMesh_etnvg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Planes" unique_id=1637424440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5271177, -0.61649656, 54.391182)
+mesh = SubResource("PlaneMesh_etnvg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Planes" unique_id=687748234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.535744, -0.61649656, 54.391182)
+mesh = SubResource("PlaneMesh_etnvg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Planes" unique_id=1675498724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.480373, -0.61649656, 144.25487)
+mesh = SubResource("PlaneMesh_fk6vh")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Planes" unique_id=1068500260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.480373, -0.61649656, 144.25487)
+mesh = SubResource("PlaneMesh_fk6vh")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Planes" unique_id=1769604944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.445843, -0.61649656, 14.38736)
+mesh = SubResource("PlaneMesh_joa1j")
