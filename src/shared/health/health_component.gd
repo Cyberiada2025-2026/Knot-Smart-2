@@ -20,6 +20,7 @@ signal health_depleted
 @export var health: float = 10.0:
 	set(value):
 		if is_protected:
+			print("is protected")
 			return
 		var prev_health = health
 		health = clamp(value, 0, max_health)
