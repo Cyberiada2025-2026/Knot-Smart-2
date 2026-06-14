@@ -60,6 +60,7 @@
 [ext_resource type="PackedScene" uid="uid://cu5gk4xujxn0a" path="res://generated/terrain/chunks/chunk_2_7.tscn" id="51_53hsn"]
 [ext_resource type="PackedScene" uid="uid://dpxifwm8b2ftl" path="res://generated/terrain/chunks/chunk_5_4.tscn" id="51_eh7qh"]
 [ext_resource type="PackedScene" uid="uid://cq2n436ol5uhg" path="res://generated/terrain/chunks/chunk_5_6.tscn" id="51_ib6q0"]
+[ext_resource type="PackedScene" uid="uid://c8stfgg85cun7" path="res://generated/terrain/chunks/chunk_3_5.tscn" id="52_ib6q0"]
 [ext_resource type="PackedScene" uid="uid://cs6wexdwf7uqo" path="res://generated/terrain/chunks/chunk_2_8.tscn" id="52_wvhc8"]
 [ext_resource type="PackedScene" uid="uid://dqnixbuaan8v1" path="res://generated/terrain/chunks/chunk_4_5.tscn" id="53_tjrly"]
 [ext_resource type="PackedScene" uid="uid://b68mxd7nkmcdx" path="res://generated/terrain/chunks/chunk_3_1.tscn" id="54_dvbek"]
@@ -2007,8 +2008,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
 
 [node name="ChunkX3Z4" parent="Map/MapRenderer/Chunks" unique_id=1821002448 instance=ExtResource("49_o0632")]
 
-[node name="ChunkX3Z5" parent="Map/MapRenderer/Chunks" unique_id=1307044592 instance=ExtResource("49_o0632")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 100)
+[node name="ChunkX3Z5" parent="Map/MapRenderer/Chunks" unique_id=541214112 instance=ExtResource("52_ib6q0")]
 
 [node name="ChunkX3Z6" parent="Map/MapRenderer/Chunks" unique_id=1284431758 instance=ExtResource("49_wqmtu")]
 
@@ -2424,6 +2424,7 @@ libraries/ = SubResource("AnimationLibrary_mhegm")
 [node name="Part1" type="RigidBody3D" parent="." unique_id=2044586578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.662334, 0.8342514, 25)
 collision_mask = 33
+mass = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Part1" unique_id=981828222]
 shape = SubResource("SphereShape3D_tvikc")
@@ -2451,6 +2452,7 @@ metadata/_custom_type_script = "uid://krqwntoiv6fm"
 [node name="Part2" type="RigidBody3D" parent="." unique_id=1134422633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.837666, 0.8342514, -0.5)
 collision_mask = 33
+mass = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Part2" unique_id=689238273]
 shape = SubResource("SphereShape3D_tvikc")
@@ -2466,6 +2468,7 @@ material = SubResource("StandardMaterial3D_tmm0v")
 [node name="Part3" type="RigidBody3D" parent="." unique_id=1268727488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.837666, 0.8342514, -5.5)
 collision_mask = 33
+mass = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Part3" unique_id=1917856778]
 shape = SubResource("SphereShape3D_tvikc")
@@ -2481,6 +2484,7 @@ material = SubResource("StandardMaterial3D_tmm0v")
 [node name="Part4" type="RigidBody3D" parent="." unique_id=1358025925]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.837666, 0.8342514, -9.5)
 collision_mask = 33
+mass = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Part4" unique_id=32541308]
 shape = SubResource("SphereShape3D_tvikc")
@@ -2513,7 +2517,7 @@ metadata/_custom_type_script = "uid://djg0m48s04bny"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89036, -0.5000019, 43.89575)
 
 [node name="BeehaveTree" parent="Enemy" index="2" unique_id=1892085315 node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@18875")
+blackboard = NodePath("@Node@169425")
 
 [node name="HealthComponent" parent="Enemy" index="6" unique_id=1094944780]
 max_health = 5.0
