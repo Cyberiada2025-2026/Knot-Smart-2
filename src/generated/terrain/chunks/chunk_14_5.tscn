@@ -1,11 +1,15 @@
 [gd_scene format=4 uid="uid://j6647dvs3r6o"]
 
 [ext_resource type="Texture2D" uid="uid://bktcnfeyxmig5" path="res://shared/terrain/assets/terrain_texture_placeholder.jpg" id="1_24315"]
+[ext_resource type="PackedScene" uid="uid://bg628kvl7vxme" path="res://shared/roads/assets/mesh instance/road_turn.tscn" id="2_ky7cm"]
+[ext_resource type="PackedScene" uid="uid://cybi2kynvvyxj" path="res://shared/roads/assets/mesh instance/road_straight.tscn" id="2_xy3y7"]
+[ext_resource type="PackedScene" uid="uid://t1yeltg2l1xt" path="res://shared/roads/assets/mesh instance/road_straight_slope.tscn" id="3_by75u"]
+[ext_resource type="PackedScene" uid="uid://cugjnd5r2v62b" path="res://shared/roads/assets/mesh instance/road_t.tscn" id="4_qy651"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3sml"]
 albedo_texture = ExtResource("1_24315")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ky7cm"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_by75u"]
 _surfaces = [{
 "aabb": AABB(0, 4.375, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -16,10 +20,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAAjEAAAAAAAACgQAAAjEAAAAAAAAAAAAAAjEAAAKBAAACgQAAAjEAAAAAAAACgQAAAjEAAAKBAAAAAAAAAjEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0tpjb"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qy651"]
 data = PackedVector3Array(0, 4.375, 0, 5, 4.375, 0, 0, 4.375, 5, 5, 4.375, 0, 5, 4.375, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xy3y7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_wajy3"]
 _surfaces = [{
 "aabb": AABB(0, 4.375, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -30,10 +34,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAAjEAAAAAAAACgQAAAjEAAAAAAAAAAAAAAjEAAAKBAAACgQAAAjEAAAAAAAACgQAAAjEAAAKBAAAAAAAAAjEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_by75u"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dlfgc"]
 data = PackedVector3Array(0, 4.375, 0, 5, 4.375, 0, 0, 4.375, 5, 5, 4.375, 0, 5, 4.375, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_qy651"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_pkmdu"]
 _surfaces = [{
 "aabb": AABB(0, 4.375, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -44,10 +48,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAAjEAAAAAAAACgQAAAjEAAAAAAAAAAAAAAjEAAAKBAAACgQAAAjEAAAAAAAACgQAAAjEAAAKBAAAAAAAAAjEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wajy3"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wpaq5"]
 data = PackedVector3Array(0, 4.375, 0, 5, 4.375, 0, 0, 4.375, 5, 5, 4.375, 0, 5, 4.375, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_dlfgc"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_pbefe"]
 _surfaces = [{
 "aabb": AABB(0, 4.375, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -58,10 +62,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAAjEAAAAAAAACgQAAAjEAAAAAAAAAAAAAAjEAAAKBAAACgQAAAjEAAAAAAAACgQAAAjEAAAKBAAAAAAAAAjEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pkmdu"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l0ir8"]
 data = PackedVector3Array(0, 4.375, 0, 5, 4.375, 0, 0, 4.375, 5, 5, 4.375, 0, 5, 4.375, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_wpaq5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_bwmeq"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 2.1875, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -72,10 +76,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAAjEAAAAAAAACgQAAADEAAAAAAAAAAAAAAjEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAAjEAAAKBA9KYK2QrZhKz0pgrZCtmErPSmCtkK2YSs9KYK2QrZhKz0pgrZCtmErPSmCtkK2YSs")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pbefe"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ycoc7"]
 data = PackedVector3Array(0, 4.375, 0, 5, 2.1875, 0, 0, 4.375, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_l0ir8"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_v4q3j"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 2.1875, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -86,10 +90,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAAjEAAAAAAAACgQAAADEAAAAAAAAAAAAAAjEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAAjEAAAKBA9KYK2QrZhKz0pgrZCtmErPSmCtkK2YSs9KYK2QrZhKz0pgrZCtmErPSmCtkK2YSs")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bwmeq"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0bjp3"]
 data = PackedVector3Array(0, 4.375, 0, 5, 2.1875, 0, 0, 4.375, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ycoc7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4t5fo"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 2.1875, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -100,10 +104,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAAjEAAAAAAAACgQAAADEAAAAAAAAAAAAAAjEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAAjEAAAKBA9KYK2QrZhKz0pgrZCtmErPSmCtkK2YSs9KYK2QrZhKz0pgrZCtmErPSmCtkK2YSs")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v4q3j"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_s08ww"]
 data = PackedVector3Array(0, 4.375, 0, 5, 2.1875, 0, 0, 4.375, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_0bjp3"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4prjy"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 2.1875, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -114,10 +118,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAAjEAAAAAAAACgQAAADEAAAAAAAAAAAAAAjEAAAKBAAACgQAAADEAAAAAAAACgQAAAjEAAAKBAAAAAAAAAjEAAAKBA9KYK2QrZhKz0pgrZCtmErPSmCtkK2YSs9Kb//////7/0pv//////v/Sm//////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4t5fo"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kpss0"]
 data = PackedVector3Array(0, 4.375, 0, 5, 2.1875, 0, 0, 4.375, 5, 5, 2.1875, 0, 5, 4.375, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_s08ww"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_n824e"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -128,10 +132,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAADEAAAAAAAACgQAAADEAAAAAAAAAAAAAADEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAADEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4prjy"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6eglg"]
 data = PackedVector3Array(0, 2.1875, 0, 5, 2.1875, 0, 0, 2.1875, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 2.1875, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_kpss0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_q03e6"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -142,10 +146,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAADEAAAAAAAACgQAAADEAAAAAAAAAAAAAADEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAADEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n824e"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4b2kp"]
 data = PackedVector3Array(0, 2.1875, 0, 5, 2.1875, 0, 0, 2.1875, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 2.1875, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_6eglg"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_w6sey"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -156,10 +160,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAADEAAAAAAAACgQAAADEAAAAAAAAAAAAAADEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAADEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q03e6"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gsxta"]
 data = PackedVector3Array(0, 2.1875, 0, 5, 2.1875, 0, 0, 2.1875, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 2.1875, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_4b2kp"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_p6f6k"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 2.1875, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -170,10 +174,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAADEAAAAAAAACgQAAADEAAAAAAAAAAAAAAjEAAAKBAAACgQAAADEAAAAAAAACgQAAAjEAAAKBAAAAAAAAAjEAAAKBA9Kb//////7/0pv//////v/Sm//////+/9Kb//////7/0pv//////v/Sm//////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_w6sey"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hf2fo"]
 data = PackedVector3Array(0, 2.1875, 0, 5, 2.1875, 0, 0, 4.375, 5, 5, 2.1875, 0, 5, 4.375, 5, 0, 4.375, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_gsxta"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_fgeoc"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -184,10 +188,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAADEAAAAAAAACgQAAADEAAAAAAAAAAAAAADEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAADEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p6f6k"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sfp0m"]
 data = PackedVector3Array(0, 2.1875, 0, 5, 2.1875, 0, 0, 2.1875, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 2.1875, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_hf2fo"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ail4b"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -198,10 +202,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAADEAAAAAAAACgQAAADEAAAAAAAAAAAAAADEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAADEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fgeoc"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r0am4"]
 data = PackedVector3Array(0, 2.1875, 0, 5, 2.1875, 0, 0, 2.1875, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 2.1875, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_sfp0m"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_c60k0"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 1e-05, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -212,10 +216,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAADEAAAAAAAACgQAAADEAAAAAAAAAAAAAADEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAADEAAAKBA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ail4b"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y8rxa"]
 data = PackedVector3Array(0, 2.1875, 0, 5, 2.1875, 0, 0, 2.1875, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 2.1875, 5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_r0am4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_k4joh"]
 _surfaces = [{
 "aabb": AABB(0, 2.1875, 0, 5, 2.1875, 5),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
@@ -226,183 +230,219 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAAAADEAAAAAAAACgQAAADEAAAAAAAAAAAAAAjEAAAKBAAACgQAAADEAAAAAAAACgQAAADEAAAKBAAAAAAAAAjEAAAKBA9Kb//////7/0pv//////v/Sm//////+/9KYK2QrZhKz0pgrZCtmErPSmCtkK2YSs")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c60k0"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rnycc"]
 data = PackedVector3Array(0, 2.1875, 0, 5, 2.1875, 0, 0, 4.375, 5, 5, 2.1875, 0, 5, 2.1875, 5, 0, 4.375, 5)
 
-[node name="ChunkX14Z5" type="Node3D" unique_id=102580600]
+[node name="ChunkX14Z5" type="Node3D" unique_id=741748437]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 0, 100)
 
-[node name="Tile_0_0" type="MeshInstance3D" parent="." unique_id=828774164]
+[node name="Tile_0_0" type="MeshInstance3D" parent="." unique_id=1120750906]
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_ky7cm")
+mesh = SubResource("ArrayMesh_by75u")
 
-[node name="_col" type="StaticBody3D" parent="Tile_0_0" unique_id=165142908]
+[node name="_col" type="StaticBody3D" parent="Tile_0_0" unique_id=614978702]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_0_0/_col" unique_id=860753372]
-shape = SubResource("ConcavePolygonShape3D_0tpjb")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_0_0/_col" unique_id=1455763620]
+shape = SubResource("ConcavePolygonShape3D_qy651")
 
-[node name="Tile_0_1" type="MeshInstance3D" parent="." unique_id=213413845]
+[node name="@Node3D@37216" type="Node3D" parent="." unique_id=1812852192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.375, 0)
+
+[node name="road_straight2" type="Node3D" parent="@Node3D@37216" unique_id=925181644 instance=ExtResource("2_xy3y7")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 2.5, 0, 2.5)
+
+[node name="Tile_0_1" type="MeshInstance3D" parent="." unique_id=516381063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_xy3y7")
+mesh = SubResource("ArrayMesh_wajy3")
 
-[node name="_col" type="StaticBody3D" parent="Tile_0_1" unique_id=1945071748]
+[node name="_col" type="StaticBody3D" parent="Tile_0_1" unique_id=788096235]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_0_1/_col" unique_id=1791883180]
-shape = SubResource("ConcavePolygonShape3D_by75u")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_0_1/_col" unique_id=1754384150]
+shape = SubResource("ConcavePolygonShape3D_dlfgc")
 
-[node name="Tile_0_2" type="MeshInstance3D" parent="." unique_id=279074263]
+[node name="@Node3D@37217" type="Node3D" parent="." unique_id=1297753888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.375, 5)
+
+[node name="road_straight2" type="Node3D" parent="@Node3D@37217" unique_id=1269155457 instance=ExtResource("2_xy3y7")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 2.5, 0, 2.5)
+
+[node name="Tile_0_2" type="MeshInstance3D" parent="." unique_id=595873908]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_qy651")
+mesh = SubResource("ArrayMesh_pkmdu")
 
-[node name="_col" type="StaticBody3D" parent="Tile_0_2" unique_id=187962083]
+[node name="_col" type="StaticBody3D" parent="Tile_0_2" unique_id=2012684859]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_0_2/_col" unique_id=281690663]
-shape = SubResource("ConcavePolygonShape3D_wajy3")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_0_2/_col" unique_id=418730709]
+shape = SubResource("ConcavePolygonShape3D_wpaq5")
 
-[node name="Tile_0_3" type="MeshInstance3D" parent="." unique_id=869397573]
+[node name="@Node3D@37218" type="Node3D" parent="." unique_id=67907957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.375, 10)
+
+[node name="road_T2" type="Node3D" parent="@Node3D@37218" unique_id=183470808 instance=ExtResource("4_qy651")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 2.5, 0, 2.5)
+
+[node name="Tile_0_3" type="MeshInstance3D" parent="." unique_id=988659938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_dlfgc")
+mesh = SubResource("ArrayMesh_pbefe")
 
-[node name="_col" type="StaticBody3D" parent="Tile_0_3" unique_id=1716997324]
+[node name="_col" type="StaticBody3D" parent="Tile_0_3" unique_id=846130889]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_0_3/_col" unique_id=1658998056]
-shape = SubResource("ConcavePolygonShape3D_pkmdu")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_0_3/_col" unique_id=1548242065]
+shape = SubResource("ConcavePolygonShape3D_l0ir8")
 
-[node name="Tile_1_0" type="MeshInstance3D" parent="." unique_id=1408604379]
+[node name="Tile_1_0" type="MeshInstance3D" parent="." unique_id=1435757955]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_wpaq5")
+mesh = SubResource("ArrayMesh_bwmeq")
 
-[node name="_col" type="StaticBody3D" parent="Tile_1_0" unique_id=725244257]
+[node name="_col" type="StaticBody3D" parent="Tile_1_0" unique_id=420211344]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_1_0/_col" unique_id=341578205]
-shape = SubResource("ConcavePolygonShape3D_pbefe")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_1_0/_col" unique_id=1368878688]
+shape = SubResource("ConcavePolygonShape3D_ycoc7")
 
-[node name="Tile_1_1" type="MeshInstance3D" parent="." unique_id=1381260587]
+[node name="Tile_1_1" type="MeshInstance3D" parent="." unique_id=1110384472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_l0ir8")
+mesh = SubResource("ArrayMesh_v4q3j")
 
-[node name="_col" type="StaticBody3D" parent="Tile_1_1" unique_id=699150130]
+[node name="_col" type="StaticBody3D" parent="Tile_1_1" unique_id=1247474200]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_1_1/_col" unique_id=762360074]
-shape = SubResource("ConcavePolygonShape3D_bwmeq")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_1_1/_col" unique_id=1606940620]
+shape = SubResource("ConcavePolygonShape3D_0bjp3")
 
-[node name="Tile_1_2" type="MeshInstance3D" parent="." unique_id=1873752312]
+[node name="Tile_1_2" type="MeshInstance3D" parent="." unique_id=206292210]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 10)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_ycoc7")
+mesh = SubResource("ArrayMesh_4t5fo")
 
-[node name="_col" type="StaticBody3D" parent="Tile_1_2" unique_id=340696954]
+[node name="_col" type="StaticBody3D" parent="Tile_1_2" unique_id=270694346]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_1_2/_col" unique_id=2119567671]
-shape = SubResource("ConcavePolygonShape3D_v4q3j")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_1_2/_col" unique_id=1513433178]
+shape = SubResource("ConcavePolygonShape3D_s08ww")
 
-[node name="Tile_1_3" type="MeshInstance3D" parent="." unique_id=2019258229]
+[node name="@Node3D@37219" type="Node3D" parent="." unique_id=915194275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.1875, 10)
+
+[node name="road_straight_slope2" type="Node3D" parent="@Node3D@37219" unique_id=1854170182 instance=ExtResource("3_by75u")]
+transform = Transform3D(-5, 0, -7.54979e-07, 0, 5, 0, 7.54979e-07, 0, -5, 2.5, 0, 2.5)
+
+[node name="Tile_1_3" type="MeshInstance3D" parent="." unique_id=1695476661]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 15)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_0bjp3")
+mesh = SubResource("ArrayMesh_4prjy")
 
-[node name="_col" type="StaticBody3D" parent="Tile_1_3" unique_id=1618879148]
+[node name="_col" type="StaticBody3D" parent="Tile_1_3" unique_id=924592964]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_1_3/_col" unique_id=257857752]
-shape = SubResource("ConcavePolygonShape3D_4t5fo")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_1_3/_col" unique_id=1130807417]
+shape = SubResource("ConcavePolygonShape3D_kpss0")
 
-[node name="Tile_2_0" type="MeshInstance3D" parent="." unique_id=837312047]
+[node name="Tile_2_0" type="MeshInstance3D" parent="." unique_id=117955596]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_s08ww")
+mesh = SubResource("ArrayMesh_n824e")
 
-[node name="_col" type="StaticBody3D" parent="Tile_2_0" unique_id=571906311]
+[node name="_col" type="StaticBody3D" parent="Tile_2_0" unique_id=1269239532]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_2_0/_col" unique_id=361226247]
-shape = SubResource("ConcavePolygonShape3D_4prjy")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_2_0/_col" unique_id=408501124]
+shape = SubResource("ConcavePolygonShape3D_6eglg")
 
-[node name="Tile_2_1" type="MeshInstance3D" parent="." unique_id=242976467]
+[node name="Tile_2_1" type="MeshInstance3D" parent="." unique_id=180746617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_kpss0")
+mesh = SubResource("ArrayMesh_q03e6")
 
-[node name="_col" type="StaticBody3D" parent="Tile_2_1" unique_id=1177569812]
+[node name="_col" type="StaticBody3D" parent="Tile_2_1" unique_id=83187108]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_2_1/_col" unique_id=562799047]
-shape = SubResource("ConcavePolygonShape3D_n824e")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_2_1/_col" unique_id=261155323]
+shape = SubResource("ConcavePolygonShape3D_4b2kp")
 
-[node name="Tile_2_2" type="MeshInstance3D" parent="." unique_id=1597982506]
+[node name="Tile_2_2" type="MeshInstance3D" parent="." unique_id=739741281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_6eglg")
+mesh = SubResource("ArrayMesh_w6sey")
 
-[node name="_col" type="StaticBody3D" parent="Tile_2_2" unique_id=1182922062]
+[node name="_col" type="StaticBody3D" parent="Tile_2_2" unique_id=623671347]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_2_2/_col" unique_id=1297042117]
-shape = SubResource("ConcavePolygonShape3D_q03e6")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_2_2/_col" unique_id=723753099]
+shape = SubResource("ConcavePolygonShape3D_gsxta")
 
-[node name="Tile_2_3" type="MeshInstance3D" parent="." unique_id=1549833331]
+[node name="@Node3D@37220" type="Node3D" parent="." unique_id=445001943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1875, 10)
+
+[node name="road_turn2" type="Node3D" parent="@Node3D@37220" unique_id=1186231403 instance=ExtResource("2_ky7cm")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 2.5, 0, 2.5)
+
+[node name="Tile_2_3" type="MeshInstance3D" parent="." unique_id=1513814116]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_4b2kp")
+mesh = SubResource("ArrayMesh_p6f6k")
 
-[node name="_col" type="StaticBody3D" parent="Tile_2_3" unique_id=755542391]
+[node name="_col" type="StaticBody3D" parent="Tile_2_3" unique_id=272206216]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_2_3/_col" unique_id=2043276557]
-shape = SubResource("ConcavePolygonShape3D_w6sey")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_2_3/_col" unique_id=614118465]
+shape = SubResource("ConcavePolygonShape3D_hf2fo")
 
-[node name="Tile_3_0" type="MeshInstance3D" parent="." unique_id=261407046]
+[node name="@Node3D@37221" type="Node3D" parent="." unique_id=1989668494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1875, 15)
+
+[node name="road_straight_slope2" type="Node3D" parent="@Node3D@37221" unique_id=1704923214 instance=ExtResource("3_by75u")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 2.5, 0, 2.5)
+
+[node name="Tile_3_0" type="MeshInstance3D" parent="." unique_id=1193811412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_gsxta")
+mesh = SubResource("ArrayMesh_fgeoc")
 
-[node name="_col" type="StaticBody3D" parent="Tile_3_0" unique_id=1389006929]
+[node name="_col" type="StaticBody3D" parent="Tile_3_0" unique_id=26391037]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_3_0/_col" unique_id=991858482]
-shape = SubResource("ConcavePolygonShape3D_p6f6k")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_3_0/_col" unique_id=1357257471]
+shape = SubResource("ConcavePolygonShape3D_sfp0m")
 
-[node name="Tile_3_1" type="MeshInstance3D" parent="." unique_id=878202051]
+[node name="Tile_3_1" type="MeshInstance3D" parent="." unique_id=1419282862]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_hf2fo")
+mesh = SubResource("ArrayMesh_ail4b")
 
-[node name="_col" type="StaticBody3D" parent="Tile_3_1" unique_id=283533850]
+[node name="_col" type="StaticBody3D" parent="Tile_3_1" unique_id=389374466]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_3_1/_col" unique_id=1411749743]
-shape = SubResource("ConcavePolygonShape3D_fgeoc")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_3_1/_col" unique_id=1069079919]
+shape = SubResource("ConcavePolygonShape3D_r0am4")
 
-[node name="Tile_3_2" type="MeshInstance3D" parent="." unique_id=348481017]
+[node name="Tile_3_2" type="MeshInstance3D" parent="." unique_id=795794404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 10)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_sfp0m")
+mesh = SubResource("ArrayMesh_c60k0")
 
-[node name="_col" type="StaticBody3D" parent="Tile_3_2" unique_id=1971073239]
+[node name="_col" type="StaticBody3D" parent="Tile_3_2" unique_id=1068802373]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_3_2/_col" unique_id=1244662411]
-shape = SubResource("ConcavePolygonShape3D_ail4b")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_3_2/_col" unique_id=704181854]
+shape = SubResource("ConcavePolygonShape3D_y8rxa")
 
-[node name="Tile_3_3" type="MeshInstance3D" parent="." unique_id=285295411]
+[node name="Tile_3_3" type="MeshInstance3D" parent="." unique_id=1850618598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
 material_override = SubResource("StandardMaterial3D_m3sml")
-mesh = SubResource("ArrayMesh_r0am4")
+mesh = SubResource("ArrayMesh_k4joh")
 
-[node name="_col" type="StaticBody3D" parent="Tile_3_3" unique_id=242437535]
+[node name="_col" type="StaticBody3D" parent="Tile_3_3" unique_id=1228348135]
 collision_layer = 265
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_3_3/_col" unique_id=1251110298]
-shape = SubResource("ConcavePolygonShape3D_c60k0")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_3_3/_col" unique_id=465270322]
+shape = SubResource("ConcavePolygonShape3D_rnycc")
