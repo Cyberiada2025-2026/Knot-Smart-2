@@ -6,7 +6,7 @@ extends AudioStreamPlayer
 @export var fade_out_duration: float = 1
 @export var volume: float = 0.0
 
-const MIN_VOLUME = -40
+const MIN_VOLUME = -80
 
 var fade_tween = null
 var areas_disabled = false
