@@ -37,4 +37,3 @@ func _on_health_component_health_depleted() -> void:
 func destroy_generator() -> void:
 	print("You lost")
 	get_tree().change_scene_to_file(lose_scene)
-
